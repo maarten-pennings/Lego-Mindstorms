@@ -135,6 +135,9 @@ The `sin1h(x)` is only accurate on the range 0..180. To make it periodic, I used
 
 Download the [code](My%20Blocks/sin1h.rbt).
 
+
+### Sinus application: test
+
 To test the sinus, I wrote the following program; it draws
 [Lissajous](https://en.wikipedia.org/wiki/Lissajous_curve) figures.
 
@@ -144,7 +147,30 @@ This is an example output
 
 ![Lissajous](images/lissajous.jpg)
 
-Download the [code](Progs/lissjous.rbt).
+Download the [code](Progs/lissajous.rbt).
+
+
+### Sinus application: motor control
+
+The real application of the sinus block is "swinging" motion, e.g. wind shield wipers, swing, etc.
+See [AntonsMindstorms](https://antonsmindstorms.com/2019/01/24/how-to-program-two-synchronised-ev3-motors/) for an explanation.
+
+In a nutshell: there are two tasks. 
+One task uses an continuously increasing timer as argument of the sinus function. The result (after multiplying with an amplitude constant) is the target angle of the wiper.
+The second task is a P(ID) controller: it computes the error between the actual motor angle and the current target, and uses a proportional control for the power of the motor.
+
+![wiper](images/wiper.png)
+
+Download the [code](Progs/wiper.rbt).
+
+
+### Sinus application: synchronized motors
+
+A key aspect of the timer-target setup, is that a second motor can be incorporated - meaning that the two motors run in sync!
+
+That is demoed by this parent pushing its child on a swing [swing](https://www.youtube.com/watch?v=0GbMUhZlRqk).
+
+Download the [code](Progs/swing.rbt).
 
 
 ### Create your own blocks
