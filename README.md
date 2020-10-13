@@ -56,7 +56,7 @@ To add the Integer Math Block, create an empty file `Numeric Operations.txt` in 
 
 By the way, all installed blocks can be found here `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine\vi.lib\LEGO\Blocks`.
 
-Found this tip See [here](http://linearactuator.blogspot.com/2009/08/interger-blocks-in-nxt-g-20.html).
+Found this tip [here](http://linearactuator.blogspot.com/2009/08/interger-blocks-in-nxt-g-20.html).
 
 
 ### Div and mod
@@ -70,7 +70,7 @@ This My Block uses the Integer Math block above, as can be seen in the diagram b
 
 Download the [code](My%20Blocks/divmod.rbt).
 
-### Sinus (half period).
+### Sinus (half period)
 
 For fancy "rocking" motor movement, a sinus is useful. Unlike EV3, NXT-G doesn't provide that function.
 The indian mathematician Bhaskara I devised a relatively simple 
@@ -127,7 +127,7 @@ I converted this formula to a My Block with the following diagram.
 Download the [code](My%20Blocks/sin1h(1).rbt).
 
 
-### Sinus
+### Sinus (positive angles)
 
 The `sin1h(x)` is only accurate on the range 0..180. To make it periodic, I used the `divmod` from above.
 
@@ -192,7 +192,10 @@ My NXT brick (Settings > NXT Version) reports
 My NXT-G IDE reports
 - v2.0.f4
 
-See [lego](https://www.lego.com/en-us/themes/mindstorms/downloads) for the latest firmware or the IDE.
+See [lego](https://www.lego.com/en-us/themes/mindstorms/downloads) for the latest 
+- [firmware](https://www.lego.com/cdn/cs/set/assets/blt3502cca1438605b8/Firmware131_Download1.zip)
+- the [IDE](https://www.lego.com/assets/franchisesites/mindstorms/mac-window-installers/nxt-g-installer-v2.0f6-windows.zip#nourlrewrite)
+- or the [USB driver](https://www.lego.com/cdn/cs/set/assets/bltea140e66e32fadf0/NXT_Fantom_Drivers_v120.zip)
 
 
 ### Resetting the NXT
