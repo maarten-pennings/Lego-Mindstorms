@@ -179,9 +179,9 @@ Never tried it, but it seems you can make your own block using [labview](ftp://f
 
 
 
-## Firmware problems
+## Install
 
-### Firmware versions
+### Software versions
 
 My NXT brick (Settings > NXT Version) reports
 - FW 1.31
@@ -197,6 +197,14 @@ See [lego](https://www.lego.com/en-us/themes/mindstorms/downloads) for the lates
 - the [IDE](https://www.lego.com/assets/franchisesites/mindstorms/mac-window-installers/nxt-g-installer-v2.0f6-windows.zip#nourlrewrite)
 - or the [USB driver](https://www.lego.com/cdn/cs/set/assets/bltea140e66e32fadf0/NXT_Fantom_Drivers_v120.zip)
 
+### NEXT-G IDE install on WIN10
+On Windows 10, the IDE downloaded from lego.com, now longer installs.
+
+I found a work [around](https://www.reddit.com/r/mindstorms/comments/fn2vdh/fix_nxtg_software_on_x64_windows_10/):
+- Download the last version (v2.0f6) of the software from the lego mindstorms website.
+- Unzip the archive
+- Copy [this batch file](install.bat) inside the base folder, where "setup.exe" is located
+- Run this batch
 
 ### Resetting the NXT
 If the running icon stops spinning, the NXT has frozen and you must reset it. Follow these steps to reset the NXT:
