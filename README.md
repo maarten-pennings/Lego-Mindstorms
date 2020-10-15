@@ -58,6 +58,7 @@ By the way, all installed blocks can be found here `C:\Program Files (x86)\LEGO 
 
 Found this tip [here](http://linearactuator.blogspot.com/2009/08/interger-blocks-in-nxt-g-20.html).
 
+To make it easy, just copy [engine_EditorVIs_BlockRegistry](engine_EditorVIs_BlockRegistry).
 
 ### Div and mod
 
@@ -205,6 +206,10 @@ I found a work [around](https://www.reddit.com/r/mindstorms/comments/fn2vdh/fix_
 - Unzip the archive
 - Copy [this batch file](install.bat) inside the base folder, where "setup.exe" is located
 - Run this batch
+
+### IDE goodies
+
+In [engine_pictures](engine_pictures) you find some big arrows and big digits to copy to the pictures directory of your NXT installation.
 
 ### Resetting the NXT
 If the running icon stops spinning, the NXT has frozen and you must reset it. Follow these steps to reset the NXT:
