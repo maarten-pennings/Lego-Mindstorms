@@ -3,8 +3,8 @@ Hints, tips, and tricks for the LEGO NXT Mindstorms robotics system.
 
 
 ## Links
-- [8527 retail 1.0](https://www.lego.com/biassets/bi/4520729.pdf)
-- [8547 retail 2.0](https://www.lego.com/biassets/bi/4589647.pdf)
+- [8527 retail 1.0](https://www.lego.com/biassets/bi/4520729.pdf) with [bricklink parts list](https://www.bricklink.com/catalogItemInv.asp?S=8527-1)
+- [8547 retail 2.0](https://www.lego.com/biassets/bi/4589647.pdf) with [bricklink parts list](https://www.bricklink.com/catalogItemInv.asp?S=8547-1)
 - [Hints by Coert Vonk](https://coertvonk.com/family/school/inquiries/lego-mindstorms-nxt-g-6107)
 
 
@@ -27,11 +27,10 @@ Autoselection of blocks makes selecting wires harder. Tip: double click the wire
 If a wire is selected, a press on [Delete] deletes the whole tree. Tip: click the input port to delete just the branch.
 ![](images/delete-wire-branch.png)
 
-Want to make some space on the beam? Just drag a technic pin. If you hoover to long before clicking, it _branches_ the beam instead of making place (see next tip).
-This dragging also works to remove space.
+Want to make some space on the beam? Just drag a technic pin. If you hoover too long before clicking, it _branches_ the beam instead of making place (see next tip). Dragging also works to _remove_ space.
 ![](images/drag-for-space.png)
 
-Branching a bea, is very subtle. First hoover over the branch point until it "highlights" (very subtle). Then drag towards a new block that you placed before.
+Branching a beam, is not intuitive. First hoover over the branch point until it "highlights" (very subtle). Then drag towards a new block that you placed before.
 ![](images/drag-for-beam.png)
 
 
