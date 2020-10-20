@@ -16,32 +16,38 @@ NXT-G is the IDE (integrated development environment) that comes with Lego Minds
 It does have its quirks; this chapter has some tips.
 
 First tip: ctrl-drag to duplicate a block.
+
 ![](images/duplicate-block.png)
 
 A not so convenient feature: blocks are auto selected.
+
 ![](images/auto-block-select.png)
 
 Autoselection of blocks makes selecting wires harder. Tip: double click the wire.
+
 ![](images/select-wire.png)
 
-If a wire is selected, a press on [Delete] deletes the whole tree. Tip: click the input port to delete just the branch.
+If a wire is selected, a press on the DELETE key deletes the whole tree. Tip: click the input port to delete just the branch.
+
 ![](images/delete-wire-branch.png)
 
 Want to make some space on the beam? Just drag a technic pin. If you hoover too long before clicking, it _branches_ the beam instead of making place (see next tip). Dragging also works to _remove_ space.
+
 ![](images/drag-for-space.png)
 
 Branching a beam, is not intuitive. First hoover over the branch point until it "highlights" (very subtle). Then drag towards a new block that you placed before.
+
 ![](images/drag-for-beam.png)
 
 
 Some hotkeys:
-- 1, 2, 3: selects the "common palette", the "complete palette" and the "custom palette"
-- ArrowLeft, ArrowRight, ArrowUp, ArrowDown, PgUp, PgDn, home, end: pans the paper
+- 1, 2, 3: selects the "common palette", the "complete palette" and the "custom palette".
+- ArrowLeft, ArrowRight, ArrowUp, ArrowDown, PgUp, PgDn, home, end: pans the "paper" (workarea).
 - Holding CTRL and SHIFT down, the mouse changes into a hand; it grabs the "paper" for panning.
-- ^B build (?)
-- ^D (build and) download
-- ^R (build, download and) run
-- ^I NXT window
+- ^B to build/compile (?).
+- ^D to (build and) download.
+- ^R to (build, download and) run.
+- ^I selects NXT window.
 
 
 ## Blocks 
@@ -53,11 +59,17 @@ To add the Integer Math Block, create an empty file `Numeric Operations.txt` in 
 
 `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine\EditorVIs\BlockRegistry\`**`Data\Numeric Operations.txt`**
 
+After restarting the IDE, you find a math block with an exclamation mark.
+
+![Integer Math block](images/intmath.png)
+
+You might wonder why you would want integer math. For one thing: it allows to compute `div` and `mod` (see next section).
+
 By the way, all installed blocks can be found here `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine\vi.lib\LEGO\Blocks`.
 
 Found this tip [here](http://linearactuator.blogspot.com/2009/08/interger-blocks-in-nxt-g-20.html).
 
-To make it easy, just copy [engine_EditorVIs_BlockRegistry](engine_EditorVIs_BlockRegistry).
+As an alternative, just copy [engine_EditorVIs_BlockRegistry](engine_EditorVIs_BlockRegistry).
 
 ### Div and mod
 
@@ -73,11 +85,11 @@ Download the [code](My%20Blocks/divmod.rbt).
 ### Sinus (half period)
 
 For fancy "rocking" motor movement, a sinus is useful. Unlike EV3, NXT-G doesn't provide that function.
-The indian mathematician Bhaskara I devised a relatively simple 
+The indian mathematician Bhaskara 1 devised a relatively simple 
 [formula](https://en.wikipedia.org/wiki/Bhaskara_I%27s_sine_approximation_formula) to approximate 
 the first half period of the sinus function.
 
-This formula is accurate to about 0.2% on the range 0<=x<=180.
+This formula is accurate to about 0.2% in the range 0<=x<=180.
 
 |   x  | sin1h(x) |  sin(x) |  error |
 |-----:|---------:|--------:|-------:|
@@ -129,7 +141,7 @@ Download the [code](My%20Blocks/sin1h(1).rbt).
 
 ### Sinus (positive angles)
 
-The `sin1h(x)` is only accurate on the range 0..180. To make it periodic, I used the `divmod` from above.
+The `sin1h(x)` is only accurate in the range 0..180. To make it periodic, I used the `divmod` from above.
 
 ![sin(x)](images/sin(x).png)
 
@@ -173,8 +185,8 @@ That is demoed by this parent pushing its child on a swing [swing](https://www.y
 Download the [code](Progs/swing.rbt).
 
 
-### Create your own blocks
-Never tried it, but it seems you can make your own block using [labview](ftp://ftp.ni.com/evaluation/mindstorms/NXT_Creating_MINDSTORMS_Blocks.pdf).
+### Create your own native blocks
+Never tried it, but it seems you can make your own native block using [labview](ftp://ftp.ni.com/evaluation/mindstorms/NXT_Creating_MINDSTORMS_Blocks.pdf).
 
 
 
@@ -198,7 +210,7 @@ See [lego](https://www.lego.com/en-us/themes/mindstorms/downloads) for the lates
 - or the [USB driver](https://www.lego.com/cdn/cs/set/assets/bltea140e66e32fadf0/NXT_Fantom_Drivers_v120.zip)
 
 ### NEXT-G IDE install on WIN10
-On Windows 10, the IDE downloaded from lego.com, now longer installs.
+On my Windows 10, the IDE downloaded from lego.com, no longer installs.
 
 I found a work [around](https://www.reddit.com/r/mindstorms/comments/fn2vdh/fix_nxtg_software_on_x64_windows_10/):
 - Download the last version (v2.0f6) of the software from the lego mindstorms website.
