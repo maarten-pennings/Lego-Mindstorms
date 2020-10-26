@@ -25,7 +25,7 @@ There have been four generations of the Mindstorms [wiki](https://en.wikipedia.o
   
 - **Robot Inventor**  
   2020: v1.0 [51515](https://www.bricklink.com/v2/catalog/catalogitem.page?S=51515-1)  
-  ?MHz, ?flash, ?RAM, 5x5 LED, Bluetooth, USB micro, beeper, micro Python
+  100MHz ARM M4, 1MBflash, 32 MB RAM, 5x5 LED, Bluetooth, USB micro, beeper, MicroPython
 
 ## Details
 
