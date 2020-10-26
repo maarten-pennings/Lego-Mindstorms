@@ -10,6 +10,10 @@ It makes a turn that way, and continues to drive straight again.
 There is one more peculiarity: this car only makes "exact" 90 degree turns (using the built-in yaw sensor).
 When driving straight, it also uses the yaw sensor to keep it direction.
 
+Here is a [short video](https://youtu.be/--oO_Eg1EDk) with a close-up of the car.
+
+Here is a [long video](https://youtu.be/2BKyWezTPEI) with a top-view of the driving area.
+
 
 ## Steps
 
@@ -58,5 +62,11 @@ When driving straight, it also uses the yaw sensor to keep it direction.
 **Step 15** Finished result.
 ![step 15](steps/step15.jpg)
 
+
+## Software
+
+In the directory [prog](prog) you find the [file](prog/radarcar.lms) that you can open in the mindstorms app.
+
+This program is writte in Python. For the reader's convenience I have included the [Python source](prog/radarcar.py). I hope to keep them in sync!
 
 (end)
