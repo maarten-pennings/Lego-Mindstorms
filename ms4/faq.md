@@ -266,24 +266,24 @@ Word blocks is horrible
   - @F4 stops aplication.
   - @F or @H (for file or help menu) is _not_ working.
   - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.
-  - I found not hotkey for Run or Download
-  - Cursor keys (panning) do nothing
+  - I found no hotkey for Run or Download.
+  - Cursor keys (panning) do nothing.
 
 Python is better. But not due to Lego, but because they took a standard control for the editor.
 It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) 
-  - ^C, ^V, ^X for copy, paste, cut
-  - ^Z, ^Y for undo, redo
-  - cursor movement with arrow or page keys, optionally in combination with ^ 
-  - Select by pressing # while moving cursor
-  - ^F, ^H for find and replace (grr the hub bar overlaps with the find bar)
-  - **^#P issues a play**
-  - ^#D issues a download
-  - **there is no way to clear the console other than to restart the whole mindstorms app - grr**
-  - **you can only walk up (arrow-up, page-up) in the console, not down, and the scroll bar sucks - grr**
-  - fancy line commenting: ^K^C add line comment, ^K^U delete line comment, ^/ toggle line comment
-  - #@A to toggle block comment
-  - very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement
-  - **there is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings**
+  - ^C, ^V, ^X for copy, paste, cut.
+  - ^Z, ^Y for undo, redo.
+  - Cursor movement with arrow or page keys, optionally in combination with ^.
+  - Select by pressing # while moving cursor.
+  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar).
+  - **^#P issues a play**.
+  - ^#D issues a download.
+  - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
+  - **You can only walk up (arrow-up, page-up) in the console, not down, and the scroll bar sucks - grr**.
+  - Fancy line commenting: ^K^C add line comment, ^K^U delete line comment, ^/ toggle line comment.
+  - #@A to toggle block comment.
+  - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
+  - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
   
 
 (end)
