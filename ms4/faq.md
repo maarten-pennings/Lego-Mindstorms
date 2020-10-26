@@ -241,7 +241,7 @@ In Word block, there is an explicit stop block.
 
 ![Stopping in Word block](images/wordblockstop.png)
 
-In Python, I haven't found a good one yet. I did find `os.exit(0)`.
+In Python, I haven't found a good one yet. I did find `sys.exit(0)` (don't forget the `import sys`).
 It does stop the program, but with a sort-of error.
 You can see this in the console (red message), but also the center LED on the hub flashes red 3 times.
 
