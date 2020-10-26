@@ -36,7 +36,7 @@ I found a [work around](https://www.reddit.com/r/mindstorms/comments/fn2vdh/fix_
 
 In [engine_pictures](engine_pictures) you find some big arrows and big digits to copy to the pictures directory of your NXT installation.
 
-In [engine_EditorVIs_BlockRegistry](engine_EditorVIs_BlockRegistry) you find a "block" that performs integer math. For some more detail, see [blocks](../blocks).
+In [engine_EditorVIs_BlockRegistry](engine_EditorVIs_BlockRegistry) you find a "block" that performs integer math. For some more detail, see [blocks](../blocks.md#).
 
 On my machine these directories need to be copied here `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine`.
 
