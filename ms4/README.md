@@ -2,10 +2,10 @@
 
 ## FAQ
 
-There is an extended [Mindstorms robot inventor FAQ](faq.md)
+I have written a [Mindstorms robot inventor FAQ](faq.md).
 
 ## Radar car
 
-I have documented on project [radar car](radarcar)
+I have documented my first project: [radar car](radarcar).
 
 (end)
