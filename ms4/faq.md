@@ -1,4 +1,4 @@
-# Lego Mindstorms Robot Inventor "Mindstorms 4" FAQ
+# Lego Mindstorms Robot Inventor "Mindstorms 4" 51515 FAQ
 
 This FAQ has been written from the perspective of using a _Windows PC_ as host, not e.g. a tablet.
 
@@ -36,7 +36,7 @@ Found [here](https://winaero.com/desktop-shortcut-store-app-windows-10/).
 
 
 ## What are the technical specs of Mindstorms 4?
-lego has leaflets on [Spike prime](https://education.lego.com/en-us/support/spike-prime/technical-specifications), which
+Lego has leaflets on [Spike prime](https://education.lego.com/en-us/support/spike-prime/technical-specifications), which
 is largely the same.
 
 - **hub**: 5x5 LEDs, 6 ports, Gyro, 3 buttons one with RGB LED, beeper, Bluetooth, USB, MicroPython  
@@ -107,7 +107,7 @@ It seems the project is saved constantly when you interact with it (clicking the
 I see the time stamp change in the file explorer. 
 
 The only condition is that the project is non-empty, or that you did a Save As.
-(so an empty project that is not renamed does not yet get saved).
+So, an empty project that is not renamed does not yet get saved.
 
 
 ## Can I "remote control" my robot?
