@@ -111,7 +111,7 @@ However, it turns out to be an archive. If you have, e.g. [7zip](https://www.7-z
 This `icon.svg` is the icon displayed on the projects page. For a Python program it is a fixed one, for a Word block program it is a "picture" of the program.
 
 The `manifest.json` contains unknown details. I have removed all details of the `frames` field for the word block.
-```json
+```text
 {                                                                {
   "type":"word-blocks",                                            "type":"python",
   "autoDelete":false,                                              "autoDelete":false,
@@ -158,7 +158,7 @@ The `manifest.json` contains unknown details. I have removed all details of the 
   }
 }
 
-``` 
+```
 
 The third file is the actual program. For Word blocks some for me unknown format.
 For Python, it is Python text wrapped in json, below freely formatted by me for readability.
@@ -327,14 +327,14 @@ You can see this in the console (red message), but also the center LED on the hu
 
 ![Stopping in Python](images/pythonstop.png)
 
-Instead of using `sys.exit()`, we can also use `raise SystemExit`, which is more or less the 
+Instead of using `sys.exit()`, we can also use `raise SystemExit`, which is more or less the
 [same](https://docs.python.org/3/library/exceptions.html#:~:text=exception%20SystemExit,function.).
 It also suffers from the same problem: red message in console and red flashes on hub.
 
 ## What is degrees, position and relative position?
 
-The motors in Mindstorms 4 are a bit different then the earlier ones (NXT and EV3). 
-The motors in the last 3 generations of Mindstorms all have a position sensor, but the one in Mindstorms 4 is _absolute_. 
+The motors in Mindstorms 4 are a bit different then the earlier ones (NXT and EV3).
+The motors in the last 3 generations of Mindstorms all have a position sensor, but the one in Mindstorms 4 is _absolute_.
 So, for example, it not only knows that it _moved_ 45 degrees, it also knows it is _at_ 60 degrees (assuming the motor started at 15).
 The "0 degrees" is arbitrary, but it is marked on the motorhub.
 
@@ -348,7 +348,7 @@ The absolute sensor is nice for "non drive wheel motors". When motors are used f
 But when motors are used for a door, a windshield wiper, a swinging radar, a clock, the robot needs to know where the "zero" position is.
 In the past you needed a touch sensor for that (or drive the motor to a mechanical stop). But no longer in Mindstorms 4.
 
-There is one small problem though: when a motor rotates, the _position_ sensor wraps around: it goes from 357, 358, 359, 0, 1, 2. 
+There is one small problem though: when a motor rotates, the _position_ sensor wraps around: it goes from 357, 358, 359, 0, 1, 2.
 To solve this, there is a second "sensor" _relative position_. This one keeps on counting.
 In the screenshot below, the motor moved (by hand actually) nearly 1.3 rotation. The _relative position_ recorded this as 460 degrees, but the _position_ of the hub is 100 degrees.
 
@@ -357,7 +357,7 @@ In the screenshot below, the motor moved (by hand actually) nearly 1.3 rotation.
 For me the term _relative position_ is a bit confusing, I expected something like "cumulative degrees".
 But it is clear the _position_ is actually "absolute position" (lego just dropped the "absolute"), so the other one is "relative" :-)
 
-The _position_ sensor is located in the "Motors" section of the Word blocks palette, 
+The _position_ sensor is located in the "Motors" section of the Word blocks palette,
 but for the _relative position_ sensor you need to enable the extension "More Motors".
 
 One last word, some of my motors seem to be ~10 degrees off with respect to their "zero mark".
@@ -366,73 +366,73 @@ It is structural, so that is easily fixed by adding a correction of 10.
 
 ## What are all those (blue) Motor blocks?
 
-At first, the amount of motor block is overwhelming. Let's look at the blue blocks first: "Motors". 
+At first, the amount of motor block is overwhelming. Let's look at the blue blocks first: "Motors".
 
 The color (and name) is a first important hint: the blue blocks ("Motors" and "More Motors") operate on a _single_ motor.
-The pink blocks ("Movement" and "More Movement") operate on _two_ motors.
+The pink blocks ("Movement" and "More Movement") operate on _two_ motors, the left and right one for movement (driving).
 
 Actually, that is a lie (but a simplification that helps understanding).
 The pink Movement blocks control _two_ motors and _keeps them in sync_. If one stops (break it with your hand), the other stops as well.
 Think of a bulldozer with a left and a right track, they need to move at the same speed for the bulldozer to go straight.
-The blue motor blocks on the other hand, control one motor. So there is no syncing. 
+The blue motor blocks on the other hand, control one motor. So there is no syncing.
 And yes, you can use a blue block to control two motors in one go, but they are _not_ synced.
 
 Back to the blue blocks.
 
 ![Motors](images/motors1.png)
 
-The first block tells the _selected motor(s)_ to move, either in _rotations_, _degrees_, or _seconds_. 
-You can specify the _amount_ and the _direction_ (clockwise or counter clockwise). 
+The first block tells the _selected motor(s)_ to move, either in _rotations_, _degrees_, or _seconds_.
+You can specify the _amount_ and the _direction_ (clockwise or counter clockwise).
 Note that if the amount is negative, it also reverse the direction.
 
 The only thing that is missing is speed. Lego decided to exclude speed from the motor blocks.
 Instead they have a separate set-speed block (5th in the figure above); it sets the default speed for that motor.
 We will see that some blocks do have a speed parameter, this takes precedence over the default speed.
-If there is no set-speed block, it defaults to 75%.
+If there is no set-speed block to set the default speed, the defaults is 75%.
 
-The second block is similar, but instead of setting an amount, we set a target _position_. 
+The second block is similar, but instead of setting an amount, we set a target _position_.
 Note that we can force the direction (clockwise or counter clockwise), or let the motor take the shortest path.
 
 The first two blocks have a target (in rotations, degrees, seconds, or position).
-The block switches on the motor(s), waits till the target is reached, and switches off the motor.
+These blocks switch on the motor(s), waits till the target is reached, and switch off the motor.
 Only then the block finishes and the next block will be executed.
 
-Block 3 and 4 split are needed when the target is not know when starting the motor.
+Block 3 and 4 split this start-wait-stop; they are needed when the target is not know when starting the motor.
 There is no amount, just direction (also here the speed comes from the set-speed block).
-Block 3, start motor starts a motor, and then the block finsihes and the next block is executed - but the motor keeps on rotating.
-At some moment - e.g. a sensor sees that the robot gets close to a wall - block 4 stop motor is executed.
-By the way, not the subtle spacing in the figure above: block 3 and 4 belomg together, the spacing is narrow.
+Block 3 start-motor starts a motor, and then the block finishes and the next block is executed - but the motor keeps on rotating.
+At some moment - e.g. a sensor sees that the robot gets close to a wall - block 4 stop-motor is executed.
+By the way, note the subtle spacing in the figure above: block 3 and 4 belong together, the spacing is narrow.
 
 Block 5 sets the default speed as discussed above.
 
-Block 6 and 7 have a different shape. 
+Block 6 and 7 have a different shape.
 The first 5 are known as _Stack Blocks_ in [scratch](https://en.scratch-wiki.info/wiki/Blocks), I would call them _statements_.
 Block 6 and 7 are known as _Reporter Blocks_, I would call them (integer or string) _expressions_.
 In this case they are special form of an expression: they are a function call to a sensor.
-The _position_ gives the (absolute) position of the motor (0..360), and _speed_ the actual speed.
-Note that speed is _not_ the speed set with the set-speed block, but the actual speed of the motor.
+The _position_ gives the (absolute) position of the motor (0..359), and _speed_ the actual speed.
+Note that speed is _not_ the speed set with the set-speed block, but the actual speed of the (running) motor.
 
 There are more blue block: there is an extension with the obvious name More Motors.
-Roughly the add a speed parameter.
+Roughly they add a speed parameter.
 
 ![More Motors](images/motors2.png)
 
-The first one is similar to the first one above. 
-It tells the _selected motor(s)_ to move, either in _rotations_, _degrees_, or _seconds_. 
-You can specify the _amount_ but not explicitly the _direction_ (you can do that by negating the amount). 
+The first "more motors block" is similar to the first "motors block".
+It tells the _selected motor(s)_ to move, either in _rotations_, _degrees_, or _seconds_.
+You can specify the _amount_ but not explicitly the _direction_ (you can do that by negating the amount).
 What is extra is that we can override the default _speed_.
 Note that if the speed is negative, it also reverse the direction.
 
-The second one is similar to the third one above. 
+The second "more motors block" is similar to the third "motors block".
 It switches the motor on. No direction, but there is _speed_.
 Also here, if the speed is negative, direction is reversed.
 
-The third one is similar to the second one above: it goes to a position.
+The third one is similar to the second: it goes to a position.
 But in this case a _relative position_ so there is no need for a path (clockwise or counter clockwise).
 
-Note that _relative position_ is like a software variable. 
-It is changed when _position_ changes, but it does not reset when _position_ transitions from 359 to 0.
-With block 4 set-relative-position we can write that variable, and with block 5 we can read it.
+Note that _relative position_ is like a software variable.
+It tracks changes in _position_, but it does not reset when _position_ transitions from 359 to 0.
+With block 4 set-relative-position we can write that variable (usually reset it to 0), and with block 5 we can read it (find how much degrees the motor rotated since reset).
 
 The next two blocks (6 and 7) are about _power_. I guess they measure current through the motors as opposed to RPM.
 Have not used this.
@@ -449,42 +449,43 @@ Why are there pink Movement blocks next to the blue Motor blocks?
 
 The pink Movement blocks control _two_ motors and _keeps them in sync_. If one stops (break it with your hand), the other stops as well.
 Think of a bulldozer with a left and a right track, they need to move at the same speed for the bulldozer to go straight.
-The blue motor blocks on the other hand, control one motor. So there is no syncing. 
+The blue motor blocks on the other hand, control one motor. So there is no syncing.
 
 The crux is the motors are kept in sync. You will mostly use them for driving, but you could also control two windshield wipers.
-Because they are often used for driving, we see one more unit for amount: centimeters (ok two: also inches).
+Because they are often used for driving, we see one more unit for _amount_: centimeters (ok two: also inches).
 For this to work, we need to set the circumference of the wheel.
 
 ![Wheel circumference](images/wheel.png)
 
 As we see, the standard wheel has a circumference of 175.9 mm, and indeed that is the default setting as we can see in the 7th pink block.
-The 6th block is probably evem morew important: it identifies which two ports are used for the movement motors.
+The 6th block is probably even more important: it identifies which two ports are used for the movement motors.
 Please note that A+B is different then B+A: the direction reverses.
-The 5th block is the default speed setting for the movement motors
+The 5th block is the default speed setting for the movement motors.
+This explains the last three block (5, 6, and 7), the settings blocks.
 
 ![Movement](images/movement.png)
 
-The blocks that are left are familiar. 
+The blocks that are left (1-4) are familiar.
 We have two target blocks (1 and 2), where we can set the target (in cm, inch, rotations, degrees, seconds).
 We have the no-target blocks (block 3 and 4) that start and stop.
 All block have in common that we need to set the "synchronisation" between the motors.
 
 The first block allows forward and backward (both motors same speed), or left and right (one motor still, the other rotating).
 
-The second and third block allow to fine-tune the speed ratio between the wheels. 
+The second and third block allow to fine-tune the speed ratio between the wheels.
 This is a bit funny: up to 95% both motors go in the same direction, but one slower and slower (at 95% it is nearly stopped).
 However, at 100% the "slow" motor suddenly runs at full speed in reverse.
 
-We can also add an extension More Movement.
+We can also add an extension, properly named More Movement.
 
 ![More Movement](images/movement2.png)
 
-As with the blue blocks, now the speed is part of the blocks, overriding the default. 
+As with the blue blocks, now the speed is part of the blocks, overriding the default.
 The difference with blue is that we need to set the speed for both motors.
 So either there are two speed parameters, or one "steer" and one "speed".
 Also here we have blocks that use power (motor current?) instead of speed (motor RPM).
 
-And we have the not yet understood stop, stall or acceleration blocks.
+And I have the not yet understood stop, stall or acceleration blocks.
 
 
 ## How to update the hub firmware?
@@ -526,7 +527,7 @@ It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/short
 
 
 ## What software version is current?
-What is "current"? 
+What is "current"?
 
 At the moment of writing this answer (2020 oct 27):
 
@@ -558,7 +559,7 @@ Right click on the Windows start button and select Device Manager, and fold open
 
 ![COM ports](images/COM.png)
 
-Next, we need a terminal program to send an receive commands over serial. I happen to use an oldy [realterm](https://realterm.sourceforge.io/), [putty](https://www.putty.org/) is popular.
+Next, we need a terminal program to send an receive commands over serial. I happen to use an oldy [realterm](https://realterm.sourceforge.io/), but [putty](https://www.putty.org/) is a popular alternative.
 
 Configure the COM port (115200/8/N/1), and connect.
 The hub is running a program that spits out data, and this now floods the terminal.
@@ -612,7 +613,7 @@ First number looks like the yaw.
 >>>
 ```
 
-The suggested `help()` command is _not_ very useful.
+The `help()` command as suggested when we pressed ^C is _not_ very useful.
 
 ```text
 >>> help()
@@ -699,31 +700,38 @@ MSHubLargeTechnicHub4QcT
 ```
 
 Reading the file `__init__.mpy` is not very succseful.
-And `mpy` file is "a binary container file format that holds precompiled code, and which can be imported like a normal .py module",
+An `mpy` file is "a binary container file format that holds precompiled code, and which can be imported like a normal .py module",
 see [doucmentation](https://docs.micropython.org/en/latest/reference/mpyfiles.html#:~:text=a%20binary,module).
 
 But its presence is important: we have a directory `mindstorms` with a file `__init__.[m]py`, and this means we have a package:
-"The `__init__.py` files are required to make Python treat directories containing the file as packages.", see [documentation](https://docs.python.org/3/tutorial/modules.html#:~:text=The%20__init__.py,packages.). 
+"The `__init__.py` files are required to make Python treat directories containing the file as packages.", see [documentation](https://docs.python.org/3/tutorial/modules.html#:~:text=The%20__init__.py,packages.).
 
 We even see the string `MSHub` in the `__init__.mpy`. Let's try to import and get the yaw.
 
 ```text
->>> from mindstorms import MSHub                                                
->>> h=MSHub()                                                                   
->>> h.motion_sensor.get_yaw_angle()                                             
-50                                                                              
->>> h.motion_sensor.get_yaw_angle()                                             
-62                                                                              
+>>> from mindstorms import MSHub
+>>> h=MSHub()
+>>> h.motion_sensor.get_yaw_angle()
+50
+>>> h.motion_sensor.get_yaw_angle()
+62
 >>>
 ```
 
+Success.
+
+We can now do in REPL what we do in the lego app.
+
+But I'm still confused about the difference between `import hub` and `from mindstorms import MSHub`.
+
+
 ## How can I set the 5x5 matrix in Python?
 There is no easy way in Python to put an image in the 5x5 matrix, other then the list of standard ones.
-There is the `hub.light_matrix.set_pixel(x,y,bright)` call setting one pixel.
+There is the `hub.light_matrix.set_pixel(x,y,bright)` API, setting one pixel at a time.
 I made my own helper.
 
 ```python
-# Lights up 5x5 matrix. 
+# Lights up 5x5 matrix.
 # Parameter `bits` is a 25 bits vector: a 1 switches on that led.
 # Bit 24 is upper left, bit 0 is lower right.
 def set_image(bits):
@@ -737,13 +745,14 @@ def set_image(bits):
 set_image( 0b_01110_00000_00100_00000_00000 )
 ```
 
+todo: show result
 
-## Why is there a wait until helper in Python?
+## Why is there a wait-until helper in Python?
 
 
 ## How can I do parallel tasks in Python?
 
 
-
+## How do I add an extension?
 
 (end)
