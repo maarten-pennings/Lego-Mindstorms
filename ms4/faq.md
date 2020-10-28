@@ -110,7 +110,8 @@ However, it turns out to be an archive. If you have, e.g. [7zip](https://www.7-z
 
 This `icon.svg` is the icon displayed on the projects page. For a Python program it is a fixed one, for a Word block program it is a "picture" of the program.
 
-The `manifest.json` contains unknown details. I have removed all details of the `frames` field for the word block.
+The `manifest.json` contains unknown details. I have freely formatted it for readability (e.g. removed all details of the `frames` field for the word block).
+
 ```text
 {                                                                {
   "type":"word-blocks",                                            "type":"python",
