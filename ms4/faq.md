@@ -475,7 +475,7 @@ The first block allows forward and backward (both motors same speed), or left an
 
 The second and third block allow to fine-tune the speed ratio between the wheels.
 This is a bit funny: up to 95% both motors go in the same direction, but one slower and slower (at 95% it is nearly stopped).
-However, at 100% the "slow" motor suddenly runs at full speed in reverse.
+However, at 100% the "slow" motor suddenly runs at full speed in reverse. See question below on move graph.
 
 We can also add an extension, properly named More Movement.
 
@@ -828,6 +828,82 @@ This holds for every (?) directory except `extra_files` which seems to host the 
 The `boot.py` is run by micro python each time the hub boots.
 After that, it runs `mian.py`. The former file is empty (note the 0 size after the name).
 The `hub_runtime.start()` is the program that spits out the data when we log in (which we stopped with ^C).
+
+
+## When using a motor pair (pink block) what does the steering do (show me the graph)?
+
+The behavior of the steer command in the (pink) motor pair blocks is not very intuitive.
+When going `straight`, both motors have the same power. When going more and more to the right,
+the left motor keeps it speed and right goes slower. 
+So far so good. But at 100, suddenly the right motor reverses.
+Can we graph this?
+
+Unfortunately, there is no console in Word block, so I wrote a scrypt in Python.
+My assumption is that `MotorPair.move()` maps to the pink blocks.
+
+The script loops over all steering values, lets the motors run for 1 second, and then checks how far they got (in degrees).
+
+```python
+from mindstorms import Motor, MotorPair
+
+motorA = Motor('A')
+motorB = Motor('B')
+motorAB = MotorPair('A', 'B')
+
+measurements = []
+for steering in range(-110,111):
+    motorA.set_degrees_counted(0)
+    motorB.set_degrees_counted(0)
+    motorAB.move(1, unit='seconds', steering=steering, speed=100)
+    measurement= ( steering, -motorA.get_degrees_counted(), motorB.get_degrees_counted() )
+    print(measurement)
+    measurements.append( measurement )
+```
+
+If you run this is REPL, you can copy the output.
+The first few lines look like this.
+
+```text
+(-110, -819, 813)
+(-109, -807, 809)
+(-108, -808, 807)
+(-107, -805, 808)
+(-106, -807, 810)
+(-105, -811, 812)
+(-104, -809, 810)
+(-103, -808, 812)
+(-102, -808, 812)
+(-101, -815, 814)
+(-100, -806, 809)
+(-99, -4, 417)
+(-98, 0, 416)
+(-97, 13, 438)
+(-96, 26, 453)
+(-95, 28, 586)
+(-94, 33, 609)
+(-93, 45, 670)
+(-92, 57, 718)
+(-91, 66, 747)
+(-90, 75, 764)
+(-89, 88, 806)
+(-88, 99, 816)
+(-87, 107, 819)
+(-86, 116, 821)
+(-85, 124, 816)
+```
+
+I have saved the complete output as [excel](MotorPairSync.xlsx), and plotted this in a graph.
+ 
+![MotorPair Sync](images/motorpairsync.png)
+ 
+Looking at this graph I have the following obeservations
+- It is symmetrical (positive versus negative steering) - that's good.
+- Let's only look at positive steering 0..100 (steer to the right).
+- The left wheel has constant speed (800) over nearly the full range (0 to ~90).
+- From ~90 to 99 there is a funny dip in the left motor speed.
+- The right wheel has linearly decreasing speed (800 to 0) over nearly the full range (0 to 99). 
+- The only exception is steering at 100, where the motor speed suddenly is -800.
+- The range above 100 is equal to the case at 100.
 
 
 ## How can I set the 5x5 matrix in Python?
