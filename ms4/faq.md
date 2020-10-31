@@ -726,6 +726,110 @@ We can now do in REPL what we do in the lego app.
 But I'm still confused about the difference between `import hub` and `from mindstorms import MSHub`.
 
 
+## Which files are in the Python filesystem?
+
+Since there is a micro OS (uos module) which supports a file system, we can list all files.
+I wrote this Python script
+
+```python
+import os
+
+def ls(dir='/',indent='') :
+  for entry in os.listdir(dir):
+    stat=os.stat(dir+entry)
+    if stat[0]==16384 :
+      print(indent+entry+'/')
+      ls(dir+entry+'/',indent+'  ')
+    if stat[0]==32768 :
+      print(indent+entry, stat[6])
+
+def cat(filename):
+  with open(filename,'r') as file :
+    return file.read()
+
+```
+
+How do I get that on the hub?
+
+- Connect via UART as above. 
+- Don't forget to press ^C to get the REPL prompt.
+- Copy the above Python script with the extra whiteline at the end (as in get it in the clipboard - ^C).
+- In REPL goto paste mode by pressing ^E (see `help()`).
+- Paste the Python script (as in paste the clipboard).
+- Finish paste mode ^D (see help line at start of paste mode).
+- After that, we test with `dir()` that `ls` and `cat` are present.
+- Then we execte both.
+
+The whole session looks like this, but I have removed large chunks to keep the overview
+
+```text
+MicroPython v1.11-1139-gf7407e5a0 on 2020-06-19; LEGO Technic Large Hub with STM32F413xx
+Type "help()" for more information.
+>>>  
+# Pressed ^E here to enter paste mode
+paste mode; Ctrl-C to cancel, Ctrl-D to finish
+=== 
+# Pasted the two function defs
+===
+# pressed ^D here to finish paste mode
+>>> dir()
+['os', '__name__', 'ls', 'hub_runtime', 'gc', 'micropython', 'cat']
+>>> ls()
+projects/
+  22622.py 4742
+  27602.py 228
+runtime/
+  extensions/
+    __init__.mpy 197
+    music.mpy 322
+    sound.mpy 372
+    weather.mpy 1220
+  __init__.mpy 130
+  multimotor.mpy 302
+  stack.mpy 901
+  timer.mpy 141
+mindstorms/
+  __init__.mpy 135
+  control.mpy 58
+  operator.mpy 60
+  util.mpy 52
+sounds/
+  menu_click 13632
+  menu_fastback 17584
+  menu_program_start 15832
+  menu_program_stop 34000
+  menu_shutdown 65706
+  startup 39682
+spike/
+  __init__.mpy 133
+  control.mpy 53
+  operator.mpy 55
+  util.mpy 47
+boot.py 0
+hub_runtime.mpy 2015
+main.py 118
+version.py 54
+extra_files/
+  Affirmative 49108
+  Damage 30370
+  Error 11470
+  Ping 32052
+  Strike 25182
+runtime.log 232
+>>> cat('main.py')
+'import gc\nimport micropython\n\nimport hub_runtime\n\nmicropython.alloc_emergency_exception_buf(256)\n\nhub_runtime.start()\n'
+>>>
+```
+
+I have logged the [output of ls](files.txt).
+Every directory that has an `__init__.mpy` is very likely a Python package.
+This holds for every (?) directory except `extra_files` which seems to host the sounds.
+
+The `boot.py` is run by micro python each time the hub boots.
+After that, it runs `mian.py`. The former file is empty (note the 0 size after the name).
+The `hub_runtime.start()` is the program that spits out the data when we log in (which we stopped with ^C).
+
+
 ## How can I set the 5x5 matrix in Python?
 There is no easy way in Python to put an image in the 5x5 matrix, other then the list of standard ones.
 There is the `hub.light_matrix.set_pixel(x,y,bright)` API, setting one pixel at a time.
@@ -747,6 +851,7 @@ set_image( 0b_01110_00000_00100_00000_00000 )
 ```
 
 todo: show result
+
 
 ## Why is there a wait-until helper in Python?
 
