@@ -834,14 +834,15 @@ The `hub_runtime.start()` is the program that spits out the data when we log in 
 
 The behavior of the steer command in the (pink) motor pair blocks is not very intuitive.
 When going `straight`, both motors have the same power. When going more and more to the right,
-the left motor keeps it speed and right goes slower. 
+the left motor keeps its speed and right goes slower. 
 So far so good. But at 100, suddenly the right motor reverses.
 Can we graph this?
 
-Unfortunately, there is no console in Word block, so I wrote a scrypt in Python.
-My assumption is that `MotorPair.move()` maps to the pink blocks.
+Unfortunately, there is no console in Word block, so I wrote a script in Python.
+My assumption is that `MotorPair.move()` in Python maps to the pink blocks in Word block.
 
 The script loops over all steering values, lets the motors run for 1 second, and then checks how far they got (in degrees).
+Here is the code.
 
 ```python
 from mindstorms import Motor, MotorPair
@@ -860,8 +861,8 @@ for steering in range(-110,111):
     measurements.append( measurement )
 ```
 
-If you run this is REPL, you can copy the output.
-The first few lines look like this.
+If you run this is in REPL, you can copy the output - I don't know how to copy console output in the lego app :-(.
+The first few lines look like this (steering, left motor degrees, right motor degrees):
 
 ```text
 (-110, -819, 813)
@@ -899,11 +900,11 @@ I have saved the complete output as [excel](MotorPairSync.xlsx), and plotted thi
 Looking at this graph I have the following obeservations
 - It is symmetrical (positive versus negative steering) - that's good.
 - Let's only look at positive steering 0..100 (steer to the right).
-- The left wheel has constant speed (800) over nearly the full range (0 to ~90).
-- From ~90 to 99 there is a funny dip in the left motor speed.
-- The right wheel has linearly decreasing speed (800 to 0) over nearly the full range (0 to 99). 
-- The only exception is steering at 100, where the motor speed suddenly is -800.
-- The range above 100 is equal to the case at 100.
+- The left wheel has constant speed (800) over nearly the full range (0 to ~90) - make sense.
+- From ~90 to 99 there is a funny dip in the left motor speed - why?
+- The right wheel has a linearly decreasing speed (800 to 0) over nearly the full range (0 to 99) - sounds good. 
+- The only exception is steering at 100, where the motor speed suddenly is -800 - rotate on the spot exception.
+- The range above 100 is equal to the case at 100 - clipping, makes sense.
 
 
 ## How can I set the 5x5 matrix in Python?
