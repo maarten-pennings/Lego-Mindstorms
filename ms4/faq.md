@@ -2,7 +2,10 @@
 
 This FAQ has been written from the perspective of using a _Windows PC_ as host, not e.g. a tablet.
 
-The FAQ is current split in three sections: general, Word block specific and Python specific questions.
+The FAQ is current split in three sections: 
+[general](#general-questions), 
+[Word block specific](#word-block-specific-questions) and 
+[Python specific](#python-specific-questions) questions.
 
 # General Questions
 
@@ -120,6 +123,8 @@ Non standard windows behavior. Grr.
 
 You can however Save As and _select_ the existing `xxx 1.lms`.
 That pops up an "are you sure you want to overwrite" dialogue.
+
+It also means you can't call your program `beep3`, because the lego app gets confused by the 3, strips it and appends a space and another number. grr.
 
 
 ## What is an lms file?
@@ -821,6 +826,7 @@ I wrote this Python script
 import os
 
 def ls(dir='/',indent='') :
+  if dir and dir[-1]!='/' : dir+='/'
   for entry in os.listdir(dir):
     stat=os.stat(dir+entry)
     if stat[0]==16384 :
@@ -832,7 +838,6 @@ def ls(dir='/',indent='') :
 def cat(filename):
   with open(filename,'r') as file :
     return file.read()
-
 ```
 
 How do I get that on the hub?
