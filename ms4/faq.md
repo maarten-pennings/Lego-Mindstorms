@@ -2,30 +2,42 @@
 
 This FAQ has been written from the perspective of using a _Windows PC_ as host, not e.g. a tablet.
 
+The FAQ is current split in three sections: general, Word block specific and Python specific questions.
+
+# General Questions
 
 ## How to switch off the brick?
 I opened the box, and one of the first things I did was to power on the brick.
 However, I could not figure out how to switch it off.
 
-You have the first download the "IDE" (next question) on your PC (probably MAC also works, but phone doesn't) and then
-upgrade the Hub OS. Only then I was able to switch the hub off.
+You have the first download the lego app (next question) on your PCand then upgrade the Hub OS. 
+Only then I was able to switch the hub off.
+Upgrading OS only works from PC (probably MAC also works, but phone and iPad probably don't) .
 
-How? Keep the big button pressed, it gives three beeps, and then you can release.
+How to switch off? Keep the big button pressed, it gives three beeps, and then you can release.
 In some cases (Python program running instead of a Word Block) I do not hear the three beeps.
 
+Here is a demo on [YouTube](https://youtu.be/CQVBp5e3tng)
 
-## Where is the Lego software?
-The booklet tells you to visit [https://www.lego.com/devicecheck](https://www.lego.com/devicecheck).
-I skipped that, because I have a brand new PC and a brand new Android device.
-But then I wondered where should I _download_ the Mindstorms software?
+
+## Where is the Lego app?
+The booklet in the mindstorms box tells you to visit [https://www.lego.com/devicecheck](https://www.lego.com/devicecheck).
+I skipped that, because I have a brand new PC and a brand new Android device, so no need to check... But then I wondered where should I _download_ the Mindstorms app?
 
 Well, go to [devicecheck](https://www.lego.com/devicecheck), select mindstorms,
 and click on of the "stores" to download the app.
 
-You might like to try the [Spike prime software](https://education.lego.com/en-us/downloads/spike-prime/software).
-It seems identical, and it has support for the force sensor, whcih is missing in the Mindstorms app. Did not try.
+![Available stores](images/stores.png)
 
-## How to make a shortcut to the app on my Windows Desktop?
+Instead of the Mindstorms app, you might like to try the [Spike prime software](https://education.lego.com/en-us/downloads/spike-prime/software).
+It seems identical, and it has support for the force sensor, which is missing in the Mindstorms app. Did not try.
+
+This "app" is what is normally known as an IDE (integrated development environment).
+It is an editor, compiler, uploader, debugger and help system in one.
+But lego calls  "the app".
+
+
+## How to make a shortcut to the Lego app on my Windows Desktop?
 I don't like "apps" from the Windows store. They are special in all kind of ways.
 For example how do you create a shortcut on your desktop?
 
@@ -35,16 +47,16 @@ This pops up a folder with app, and you can drag a shortcut to e.g. your Desktop
 Found [here](https://winaero.com/desktop-shortcut-store-app-windows-10/).
 
 
-## What are the technical specs of Mindstorms 4?
+## What are the technical specs?
 Lego has leaflets on [Spike prime](https://education.lego.com/en-us/support/spike-prime/technical-specifications), which
-is largely the same.
+is largely the same as Mindstorms Robot Inventor.
 
-- **hub**: 5x5 LEDs, 6 ports, Gyro, 3 buttons one with RGB LED, beeper, Bluetooth, USB, MicroPython
-  **cpu:** 100MHz M4, 320 kB RAM, 1M FLASH; 32MB RAM extern
+- **hub**: 5x5 LEDs, 6 ports, Gyro, 3 buttons one with RGB LED, beeper, Bluetooth, USB, MicroPython  
+  **cpu:** 100MHz M4, 320 kB RAM, 1M FLASH; 32MB RAM extern  
   **battery**:  2100 mAh @ 7.3 V  >500 cycles
 - **color sensor**: 100 Hz sample rate,  color sensing (RGB/HSV), reflectivity sensing, ambient sensing, white led emission
 - **distance sensor**: 100 Hz sample rate, range 50..2000 mm, resolution 1 mm, 4 LEDs for decoration
-- **motor**: torque 0..18 Ncm, speed 0..185 RPM, current 110..800 mA;
+- **motor**: torque 0..18 Ncm, speed 0..185 RPM, current 110..800 mA;  
   **rotation sensor**: 360 ticks per revolution, 3 degrees accuracy, 100 Hz sampling
 
 
@@ -53,8 +65,8 @@ Of course, there are the five robots that come with the box.
 Building instructions are digital only, you can find them in the app via Help > Settings > Building instructions.
 Or you can click the robot in the home screen, and go from there in smaller steps.
 Do note that the robots come with add-ons, which are really great,
-for example [charly drum master](https://youtu.be/EAHvnpIGu1U)
-or [tricky chain reaction](https://youtu.be/szFxBSRUh7c?t=167)
+for example [Charly drum master](https://youtu.be/EAHvnpIGu1U)
+or [Tricky chain reaction](https://youtu.be/szFxBSRUh7c?t=167)
 
 If you like more, or simpler builds, you could have a look at [Spike prime instructions](https://education.lego.com/en-us/support/spike-prime/building-instructions)
 
@@ -88,6 +100,16 @@ Now you are _asked_ for the type of project (Word Block or Python).
 After creating the project I suggest to immediately rename with File > Save As.
 
 
+## How to save my project?
+There is no Save button.
+
+It seems the project is saved constantly when you interact with it (clicking the tab is enough).
+I see the time stamp change in the file explorer.
+
+The only condition is that the project is non-empty, or that you did a Save As.
+So, an empty project that is not renamed does not yet get saved, which makes sense.
+
+
 ## Where are my projects saved?
 The lego app made a directory `C:\Users\maarten\Documents\LEGO MINDSTORMS` for my (Maarten's) projects.
 If you Save As `xxx`, the file ends up there, as `xxx 1.lms`.
@@ -100,17 +122,17 @@ You can however Save As and _select_ the existing `xxx 1.lms`.
 That pops up an "are you sure you want to overwrite" dialogue.
 
 
-## What is a .lms file?
+## What is an lms file?
 The Lego app saves Mindstorms projects as files with the extension `.lms` (Lego MindStorms presumably).
 This is a binary file format, which is a pity especially for Python programs.
 
-However, it turns out to be an archive. If you have, e.g. [7zip](https://www.7-zip.org/) you can unzip the lms file.
+However, it turns out to be an archive. If you have, e.g. [7zip](https://www.7-zip.org/) you can unzip lms files.
 
 ![Inside the lms file](images/lms.png)
 
 This `icon.svg` is the icon displayed on the projects page. For a Python program it is a fixed one, for a Word block program it is a "picture" of the program.
 
-The `manifest.json` contains unknown details. I have freely formatted it for readability (e.g. removed all details of the `frames` field for the word block).
+The `manifest.json` contains unknown details. I have freely formatted it for readability (e.g. removed all details of the `frames` field for the word block, added whitespace).
 
 ```text
 {                                                                {
@@ -158,7 +180,6 @@ The `manifest.json` contains unknown details. I have freely formatted it for rea
     }
   }
 }
-
 ```
 
 The third file is the actual program. For Word blocks some for me unknown format.
@@ -181,20 +202,11 @@ For Python, it is Python text wrapped in json, below freely formatted by me for 
 "}
 ```
 
-## How to save my project?
-There is no Save button.
-
-It seems the project is saved constantly when you interact with it (clicking the tab is enough).
-I see the time stamp change in the file explorer.
-
-The only condition is that the project is non-empty, or that you did a Save As.
-So, an empty project that is not renamed does not yet get saved.
-
 
 ## Can I "remote control" my robot?
-A bit hidden feature in the Word Block IDE are the two icons on the right hand side.
+A bit hidden feature in the Word Block editor are the two icons on the right hand side.
 
-The top one (Remote Control) allows you to create a "Remote Control" pane in the IDE, with _widgets_.
+The top one (Remote Control) allows you to create a "Remote Control" pane in the environment, with _widgets_.
 The widgets on the PC pane communicate via Bluetooth to the Hub.
 On the hub they trigger events that can be used in your program.
 
@@ -224,8 +236,80 @@ The remote control is not present in Python - probably because it has no streami
 ![game controller](images/btcontroller.png)
 
 
+## Are there any hotkeys?
+I think Lego did a bad job here. Many functions are not operatable by key.
+Probably lego aims at touch screens.
+
+Note #=shift, ^=ctrl, @=alt
+
+Word blocks is horrible, there are basically no hotkeys.
+  - ^Z for undo is working, but ^Y for redo isn't (it is available in bottom menu or right click menu)
+  - @F4 stops aplication.
+  - @F or @H (for file or help menu) is _not_ working.
+  - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.
+  - I found no hotkey for Run or Download.
+  - Cursor keys (panning) do nothing.
+
+Python is a better. But not due to Lego, but because they took a standard control for the editor.
+It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+  - ^C, ^V, ^X for copy, paste, cut.
+  - ^Z, ^Y for undo, redo.
+  - Cursor movement with arrow or page keys, optionally in combination with ^.
+  - Select by pressing # while moving cursor.
+  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar).
+  - **^#P issues a play**.
+  - ^#D issues a download.
+  - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
+  - **You can only walk up (arrow-up, page-up) in the console, not down, and the scroll bar sucks - grr**.
+  - Fancy line commenting: ^K^C add line comment, ^K^U delete line comment, ^/ toggle line comment.
+  - #@A to toggle block comment.
+  - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
+  - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
+
+
+## How to update the hub firmware?
+I see people talk about hub firmware updates, but the Mindstorms app does not have a feature for that - at least I couldn't find it. Maybe the Spike prime app allows explicit firmware updates (downgrades, alternatives...).
+
+However, when lego releases a new version, you will get a message in the app. If you accept it the hub will be updated.
+This updates the hub’s OS, not the user data (saved projects).
+
+
+## What software version is current?
+What is "current"?
+
+At the moment of writing this answer (2020 oct 27):
+
+- The app version is 4.0.4-dev.99999
+- The Hub OS version is 2.1.4.10
+
+This can be seen from a screenshot
+
+![App and OS Version](images/version.png)
+
+
+## Which Python is used?
+Let's write a script for that! See screenshot.
+- Micro Python 1.11.0
+- on "sys" 3.4.0
+
+No idea how that relates to the Hub OS version.
+
+![Python Version](images/pythonversion.png)
+
+
+
+
+
+
+
+
+
+
+# Word block specific questions
+
+
 ## How can I debug my Word Block program?
-A bit hidden feature in the Word Block IDE are the two icons on the right hand side.
+A bit hidden feature in the Word Block editor are the two icons on the right hand side.
 
 The bottom one (Show/Hide Monitor) allows you to show (hide) a pane with a live view of the variables.
 
@@ -235,17 +319,6 @@ A downside is that the monitor updates periodically (timed), so you do not see a
 The monitor feature does work in "download mode", you  do not have to use "streaming mode". I did expect that...
 
 ![Monitor](images/monitor.png)
-
-
-## How can I debug my Python program?
-Python lacks the monitor feature. Bummer!
-But it does have something better: a console.
-
-You can just `print()` in the hub code, and the print result is send to the PC console.
-
-![Console](images/console.png)
-
-I have not yet found a way to `input()` - that is a pity.
 
 
 ## How to send my project to the Hub?
@@ -305,32 +378,15 @@ can not be opened while programming. Grr.
 ![Word block help](images/wordblockhelp.png)
 
 
-## Is there help (API documentation) for Python?
-The help for Python is found on the right had side in the Python editor.
-
-It is better than the help for Word Blocks. Document structure is better but not good.
-Does support copy and paste (although not for every piece of text).
-Can be open during programming (pfeew).
-
-![Python help](images/pythonhelp.png)
-
-
-## How to stop my program?
+## How to stop my Word block program?
 Good question: if you program doesn't stop, the hub will not power down, so stopping is important.
 
 In Word block, there is an explicit stop block.
 
 ![Stopping in Word block](images/wordblockstop.png)
 
-In Python, I haven't found a good one yet. I did find `sys.exit(0)` (don't forget the `import sys`).
-It does stop the program, but with a sort-of error.
-You can see this in the console (red message), but also the center LED on the hub flashes red 3 times.
+In Python, I haven't found a good one yet. 
 
-![Stopping in Python](images/pythonstop.png)
-
-Instead of using `sys.exit()`, we can also use `raise SystemExit`, which is more or less the
-[same](https://docs.python.org/3/library/exceptions.html#:~:text=exception%20SystemExit,function.).
-It also suffers from the same problem: red message in console and red flashes on hub.
 
 ## What is degrees, position and relative position?
 
@@ -462,7 +518,7 @@ As we see, the standard wheel has a circumference of 175.9 mm, and indeed that i
 The 6th block is probably even more important: it identifies which two ports are used for the movement motors.
 Please note that A+B is different then B+A: the direction reverses.
 The 5th block is the default speed setting for the movement motors.
-This explains the last three block (5, 6, and 7), the settings blocks.
+This completes the explanation of the last three block (5, 6, and 7), the settings blocks.
 
 ![Movement](images/movement.png)
 
@@ -489,65 +545,96 @@ Also here we have blocks that use power (motor current?) instead of speed (motor
 And I have the not yet understood stop, stall or acceleration blocks.
 
 
-## How to update the hub firmware?
-I see people talk about hub firmware updates, but the Mindstorms app does not have a feature for that - at least I couldn't find it. Maybe the Spike prime app allows explicit firmware updates (downgrades, alternatives...).
+## How do I add an extension?
 
-However, when lego releases a new version, you will get a message in the app. If you accept it the hub will be updated.
-This updates the hub’s OS, not the user data (saved projects).
+The Word block has a full palet of blocks to chose from.
+But you can add even more blocks, from so-called extensions.
+Example are
 
+- Extra motor and movement block
+- Sound via host
+- Blocks that are specific for the models that come with the box
+- Game controller integration
 
-## What are the hotkeys?
-I think lego did a bad job here. Many functions are not operatable by key.
-Probably lego aims at touch screens.
-
-Note #=shift, ^=ctrl, @=alt
-
-Word blocks is horrible
-  - ^Z for undo is working, but ^Y for redo isn't (it is available in bottom menu or right click menu)
-  - @F4 stops aplication.
-  - @F or @H (for file or help menu) is _not_ working.
-  - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.
-  - I found no hotkey for Run or Download.
-  - Cursor keys (panning) do nothing.
-
-Python is better. But not due to Lego, but because they took a standard control for the editor.
-It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
-  - ^C, ^V, ^X for copy, paste, cut.
-  - ^Z, ^Y for undo, redo.
-  - Cursor movement with arrow or page keys, optionally in combination with ^.
-  - Select by pressing # while moving cursor.
-  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar).
-  - **^#P issues a play**.
-  - ^#D issues a download.
-  - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
-  - **You can only walk up (arrow-up, page-up) in the console, not down, and the scroll bar sucks - grr**.
-  - Fancy line commenting: ^K^C add line comment, ^K^U delete line comment, ^/ toggle line comment.
-  - #@A to toggle block comment.
-  - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
-  - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
+![Extensions](images/extensions.png)
 
 
-## What software version is current?
-What is "current"?
-
-At the moment of writing this answer (2020 oct 27):
-
-- The IDE version is 4.0.4-dev.99999
-- The Hub OS version is 2.1.4.10
-
-This can be seen from a screenshot
-
-![IDE and OS Version](images/version.png)
 
 
-## Which Python is used?
-Let's write a script for that! See screenshot.
-- Micro Python 1.11.0
-- on system 3.4.0
 
-No idea how that relates to the Hub OS version.
 
-![Python Version](images/pythonversion.png)
+
+
+
+# Python specific questions
+
+
+## How can I debug my Python program?
+Python lacks the monitor feature. Bummer!
+But it does have something better: a console.
+
+You can just `print()` in the hub code, and the print result is send to the PC console.
+
+![Console](images/console.png)
+
+I have not yet found a way to `input()` - that is a pity.
+
+
+## Is there help (API documentation) for Python?
+The help for Python is found on the right had side in the Python editor.
+
+It is better than the help for Word Blocks. Document structure is better but not good.
+Does support copy and paste (although not for every piece of text).
+Can be open during programming (pfeew).
+
+![Python help](images/pythonhelp.png)
+
+
+## How to stop my Python program?
+Good question: if you program doesn't stop, the hub will not power down, so stopping is important.
+
+In Word block, there is an explicit stop block. 
+In Python, I haven't found a good one yet. I did find `sys.exit(0)` (don't forget the `import sys`).
+It does stop the program, but with a sort-of error.
+You can see this in the console (red message), but also the center LED on the hub flashes red 3 times.
+
+![Stopping in Python](images/pythonstop.png)
+
+Instead of using `sys.exit()`, we can also use `raise SystemExit`, which is more or less the
+[same](https://docs.python.org/3/library/exceptions.html#:~:text=exception%20SystemExit,function.).
+It also suffers from the same problem: red message in console and red flashes on hub.
+
+
+## How can I set the 5x5 matrix in Python?
+There is no easy way in Python to put an image in the 5x5 matrix, other then the list of standard ones.
+There is the `hub.light_matrix.set_pixel(x,y,bright)` API, setting one pixel at a time.
+I made my own helper.
+
+```python
+from mindstorms import MSHub
+hub = MSHub()
+
+# Lights up 5x5 matrix.
+# Parameter `bits` is a 25 bits vector: a 1 switches on that led.
+# Bit 24 is upper left, bit 0 is lower right.
+def set_image(bits):
+    hub.light_matrix.off()
+    cur=1<<24
+    for y in range(5):
+        for x in range(5):
+            if bits & cur : hub.light_matrix.set_pixel(x,y,100)
+            cur >>= 1
+
+spiral= 0b_01111_10000_10110_10001_01110
+
+set_image( spiral )
+```
+
+with this as result
+
+![Spiral on hub matrix](images/spiral.jpg)
+
+A downside of the helper is that it sets all pixels either to 0 or to 100 percent brightness.
 
 
 ## Can I connect to REPL - interactive Python?
@@ -563,8 +650,7 @@ Right click on the Windows start button and select Device Manager, and fold open
 Next, we need a terminal program to send an receive commands over serial. I happen to use an oldy [realterm](https://realterm.sourceforge.io/), but [putty](https://www.putty.org/) is a popular alternative.
 
 Configure the COM port (115200/8/N/1), and connect.
-The hub is running a program that spits out data, and this now floods the terminal.
-Stop the program by sending a CTRL-C.
+The hub is running a program (if you want to know `runtime.start()`) that spits out data, and this now floods the terminal. Stop that program by sending a CTRL-C.
 We get a prompt from `MicroPython v1.11-1139-gf7407e5a0 on 2020-06-19; LEGO Technic Large Hub with STM32F413xx`
 
 ![Connect](images/connect.png)
@@ -907,27 +993,73 @@ Looking at this graph I have the following obeservations
 - The range above 100 is equal to the case at 100 - clipping, makes sense.
 
 
-## How can I set the 5x5 matrix in Python?
-There is no easy way in Python to put an image in the 5x5 matrix, other then the list of standard ones.
-There is the `hub.light_matrix.set_pixel(x,y,bright)` API, setting one pixel at a time.
-I made my own helper.
+## How do callbacks work in Python?
+
+Simple example of a callback with a button in REPL:
 
 ```python
-# Lights up 5x5 matrix.
-# Parameter `bits` is a 25 bits vector: a 1 switches on that led.
-# Bit 24 is upper left, bit 0 is lower right.
-def set_image(bits):
-    hub.light_matrix.off()
-    cur=1<<24
-    for y in range(5):
-        for x in range(5):
-            if bits & cur : hub.light_matrix.set_pixel(x,y,100)
-            cur >>= 1
-
-set_image( 0b_01110_00000_00100_00000_00000 )
+import hub
+hub.button.center.on_change(lambda ms:print("pressed",ms))
 ```
 
-todo: show result
+This "installs" a callback.
+You get the REPL prompt back, and nothing seems to have changed.
+But when you now press the center button for about 1 sec, out of the blue there is this message.
+
+```text
+pressed 0
+pressed 1030
+```
+
+With `hub.button.center.on_change(None)` you remove the callback.
+
+Note that the callback is like an interrupt service routine!
+
+```python
+import hub
+import time
+
+count = 0
+
+def reset_count(ms):
+  global count
+  count = 0
+  
+hub.button.center.on_change(reset_count)
+
+def do_count():
+  global count
+  while True:
+    print(count)
+    count = count + 1
+    time.sleep(1)
+```
+
+This is a demo run.
+
+```text
+>>> do_count()
+0
+1
+2
+3
+4
+5   # Pressed the center button of hub here
+0
+1
+2
+3
+4   
+5
+6
+7   # Pressed ^C in REPL here
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 17, in do_count
+KeyboardInterrupt:
+>>>
+```
+
 
 
 ## Why is there a wait-until helper in Python?
@@ -935,7 +1067,5 @@ todo: show result
 
 ## How can I do parallel tasks in Python?
 
-
-## How do I add an extension?
 
 (end)
