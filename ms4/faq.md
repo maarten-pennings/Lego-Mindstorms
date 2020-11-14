@@ -302,10 +302,24 @@ No idea how that relates to the Hub OS version.
 ![Python Version](images/pythonversion.png)
 
 
+## Are there any quality issues?
+I have picked up two from social media, and later found I suffer from both.
 
+The first is the worst: some color sensors are broken.
+I found it [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/405690047110622/) and 
+later [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/404200153926278/).
+The one that came with the 51515 box is fine. 
+But I ordered a second [one](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45605).
+If I plug it in, in the hub, it is sometimes recognized, and sometimes not.
+Recognized means that it lights up, appears in the  "triangle" test app, and is listed in the lego app under the port.
+I contacted Lego support and they are fabulous, they send me a new one.
 
-
-
+The second issue is less of a problem: the O positions of the motors have a deviation.
+I found it [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/399918451021115/?comment_id=399946571018303).
+If you handposition the motor to O, its position is not returned as 0 (but ~5).
+If you tell the motor to go to position 0, it is not at O, but some degrees off.
+Most motors have a deviation within ±5°, but one of mine has an offset of nearly 15°.
+The good news is that it is structural.
 
 
 
@@ -400,7 +414,7 @@ The motors in the last 3 generations of Mindstorms all have a position sensor, b
 So, for example, it not only knows that it _moved_ 45 degrees, it also knows it is _at_ 60 degrees (assuming the motor started at 15).
 The "0 degrees" is arbitrary, but it is marked on the motorhub.
 
-![Position](images/position.png)
+![Position](images/position.jpg)
 
 So, a motor moves _degrees_ (or _rotations_), the "delta", thereby moving from one absolution _position_ to another absolute _position_.
 A _position_ is always a number from (including) 0 to (excluding) 360.
@@ -640,6 +654,19 @@ with this as result
 ![Spiral on hub matrix](images/spiral.jpg)
 
 A downside of the helper is that it sets all pixels either to 0 or to 100 percent brightness.
+
+As it turns [out](https://m.facebook.com/groups/SPIKEcommunity/permalink/1113849935659904), there is a low-level way.
+This means, not using `minstorms.MSHub`, but rather `hub`. Secondly, it is not obvious that `hub.display.show()` is overloaded:
+it not only accepts _strings_ (`hub.display.show("Hello")`), but also _images_.
+I hear you ask what images are. Well, images are objects created from the class `Image`.
+
+```python
+>>> import hub
+>>> img=hub.Image('97531:86420:00900:02468:13579')
+>>> hub.display.show(img)
+```
+
+![low level display control](images/display.jpg)
 
 
 ## Can I connect to REPL - interactive Python?
@@ -1065,6 +1092,131 @@ KeyboardInterrupt:
 >>>
 ```
 
+
+## What is motor.get()?
+
+The Python API has a `motor.get()`. It returns 4 numbers what are those?
+
+The first number is the speed, and the last (forth) number is power.
+You can check that by executing `hub_runtime.hub.port.B.motor.run_at_speed(30)`, and the do a `get()`.
+The first number returned is 30. If you slow the motor with your hand, you see the first number stay at 30, but the last number goes up: you need more power to keep speed.
+
+```python
+>>> hub_runtime.hub.port.B.motor.run_at_speed(30)
+>>> hub_runtime.hub.port.B.motor.get()
+[30, 7673, 133, 32]
+>>> hub_runtime.hub.port.B.motor.get()
+[30, 12439, -141, 42]
+>>> hub_runtime.hub.port.B.motor.run_at_speed(0)
+```
+
+If on the other hand, you issue `hub_runtime.hub.port.B.motor.pwm(40)` and then do `get()`s, this changes.
+The first number returned is 40. If you slow the motor with your hand, you see the first number drop, but the last number stays at 40: with constant power, the speed reduces with friction.
+
+```python
+>>> hub_runtime.hub.port.B.motor.pwm(40)
+>>> hub_runtime.hub.port.B.motor.get()
+[41, 22643, -16, 40]
+>>> hub_runtime.hub.port.B.motor.get()
+[30, 24829, 10, 40]
+>>> hub_runtime.hub.port.B.motor.pwm(0)
+```
+
+The middle two numbers are the relative and absolute position.
+
+In the image below, I first aligned the motor on the O (actually just over it) - and then I powered it (plugged it in).
+Notice that the absolute position is indeed a bit positive (18). The relative position is a software position, initialized to 0 on power up.
+So, first photo shows 0,18 
+
+The I turned it clockwise by 61 degrees.
+Second photo confirms that relative position is no 61 and the absolute 79
+
+I hand rotated about 80 more clockwise, with 139, 158 as result. Still makes sense.
+
+![Motor position](images/rotate-A.jpg)
+
+A small surprise comes after rotating another 50 degrees clockwise.
+The relative position 139 increases to 139, which makes sense.
+The absolute position changes from 158 to -149. So here we see that absolute positions are in the range -180..+180.
+
+Turning some more clockwise goes to 308, -33, so relative still grows and absolute gets closer t0 0.
+
+Turning even more clockwise, the relative keeps on counting even beyond 360 (377), and relative starts increasing from 0 again.
+
+
+## My motor O position is not 0?
+
+When I handposition my 4 motors to O, then connect them to the hub, and then check their position, I get this result
+
+```pyton
+>>> hub_runtime.hub.port.A.motor.get()
+[0, 0, 15, 0]
+>>> hub_runtime.hub.port.B.motor.get()
+[0, 0, 5, 0]
+>>> hub_runtime.hub.port.C.motor.get()
+[0, 0, 0, 0]
+>>> hub_runtime.hub.port.D.motor.get()
+[0, 0, 3, 0]
+```
+
+I did the handpositioning 5 times (with a reset of the hub) and tabulated that.
+
+| motor | test 1 | test 2 | test 3 | test 4 | test 5 | average |
+|:-----:|:------:|:------:|:------:|:------:|:------:|:-------:|
+|   A   |   15   |   12   |   12   |   17   |   12   |   13.6  |
+|   B   |    5   |    6   |    4   |    4   |    6   |    5.0  |
+|   C   |    0   |    5   |    5   |    5   |    4   |    3.8  |
+|   D   |    3   |    6   |    4   |    7   |    9   |    5.8  |
+
+My conclusion is that the sensor offset is structural (as in "Lego mounted the sensor a couple of degrees rotated").
+Especially the motor connected to port A has a large deviation.
+
+We can also test it the other way around: tell the motors to go to position 0 and look at it.
+
+```python
+>>> from mindstorms import Motor
+>>> Motor('A').run_to_position(0)
+>>> Motor('B').run_to_position(0)
+>>> Motor('C').run_to_position(0)
+>>> Motor('D').run_to_position(0)
+```
+
+As we see in the photo, none of the motors is at position O.
+
+![Motor errors](images/motor-error.jpg)
+
+
+## Why are there so many ways to do ... in Python?
+The lego app wants us to use 
+
+```python
+>>> from mindstorms import MSHub
+>>> h=MSHub()
+>>> h.status_light.on()
+```
+
+Note that we create an `h` object from the `MSHub` class in the `mindstorms` package.
+On that object, we call the `on()` method on a `status_light` property (?).
+
+The above does work in Python's REPL. But the REPL way suggests an alternative:
+we can use the `hub` package, and call the `led` function.
+
+```python
+>>> import hub
+>>> hub.led(0,99,0)
+```
+
+What is going on here - why are there two methods?
+As [Erik Mejer explains](https://www.facebook.com/groups/SPIKEcommunity/permalink/1113849935659904/?comment_id=1113856928992538&reply_comment_id=1113946612316903),
+there are two layers.
+
+![Layers](images/layers.png)
+
+The upper layer is the easy to get started with one.
+It's promoted and documented in the app; it’s what gets imported by default.
+
+The lower layer gives access to more functionality but at the risk 
+that it may not play well with the rest of the systems running on the hub. 
 
 
 ## Why is there a wait-until helper in Python?
