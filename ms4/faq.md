@@ -1219,6 +1219,75 @@ The lower layer gives access to more functionality but at the risk
 that it may not play well with the rest of the systems running on the hub. 
 
 
+## How can I do data logging?
+
+Since the MicroPython environment has a filesystem, we can log data to a file.
+Just standard Python ... you would expect.
+I stumbled on one tricky thing, an error "object with buffer protocol required".
+
+I believe the root cause is that MicroPython does not support writing numbers, only strings to files (they have the "characters in a buffer").
+The below program takes 10 light measurements (2 seconds appart) and writes that to a file `data.log`.
+Each measurement it gives a beep.
+
+```python
+from mindstorms import ColorSensor
+from mindstorms import MSHub
+from mindstorms.control import wait_for_seconds
+
+print("datalog")
+hub = MSHub()
+light = ColorSensor('E')
+
+with open('data.log','w') as logfile:
+    for num in range(10):
+        sample = light.get_ambient_light()
+        line = str(num) + ' ' + str(sample)
+        print(line)
+        logfile.write(line+'\n')
+        wait_for_seconds(2)
+        hub.speaker.beep()
+```
+
+Notes
+ - Program suffers from not ending (see question "How to stop my Python program?")
+ - I passed jsut a filename in the example, but you can specify a full path.
+ - The file `data.log` has no path, so it is written to the current directory.
+   As it turns out, that is the root. 
+ - How do I find my file.
+   In the question "Which files are in the Python filesystem?" you'll find an `ls()` command, which works in REPL.
+   If you run that, we get the following file list (abridged). At the end we find our `data.log`.
+   
+   ```text
+   >>> ls()
+   projects/
+   ...
+   .extra_files_hash 539
+   bt-lk1.dat 69
+   bt-lk2.dat 69
+   runtime.log 240
+   data.log 41
+   ```
+
+ - How do "get" my file?
+   In the question "Which files are in the Python filesystem?" you'll find a `cat()` command, which works in REPL.
+   If you run that, we get the following content.
+   
+   ```text
+   >>> cat('data.log')
+   '0 1\n1 12\n2 7\n3 7\n4 5\n5 4\n6 6\n7 5\n8 4\n9 4\n'
+   ```
+
+ - To get them to your PC, you need someting like the [spike tools](https://github.com/nutki/spike-tools).
+   To be investigated.
+   
+ - To delete the log file use e.g. (in REPL)
+
+   ```python
+   import os
+   os.remove('data.log')
+   ```
+
+
 ## Why is there a wait-until helper in Python?
 
 
