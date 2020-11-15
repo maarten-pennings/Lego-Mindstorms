@@ -2,7 +2,7 @@
 
 This FAQ has been written from the perspective of using a _Windows PC_ as host, not e.g. a tablet.
 
-The FAQ is current split in three sections: 
+The FAQ is currently split in three sections: 
 [general](#general-questions), 
 [Word block specific](#word-block-specific-questions) and 
 [Python specific](#python-specific-questions) questions.
@@ -13,7 +13,7 @@ The FAQ is current split in three sections:
 I opened the box, and one of the first things I did was to power on the brick.
 However, I could not figure out how to switch it off.
 
-You have the first download the lego app (next question) on your PCand then upgrade the Hub OS. 
+You have to first download the lego app (next question) on your PC and then upgrade the Hub OS. 
 Only then I was able to switch the hub off.
 Upgrading OS only works from PC (probably MAC also works, but phone and iPad probably don't) .
 
@@ -28,7 +28,7 @@ The booklet in the mindstorms box tells you to visit [https://www.lego.com/devic
 I skipped that, because I have a brand new PC and a brand new Android device, so no need to check... But then I wondered where should I _download_ the Mindstorms app?
 
 Well, go to [devicecheck](https://www.lego.com/devicecheck), select mindstorms,
-and click on of the "stores" to download the app.
+and click on one of the "stores" to download the app.
 
 ![Available stores](images/stores.png)
 
@@ -45,16 +45,18 @@ I don't like "apps" from the Windows store. They are special in all kind of ways
 For example how do you create a shortcut on your desktop?
 
 Go to Start > Run (e.g. Windows-R) and enter `shell:AppsFolder`.
-This pops up a folder with app, and you can drag a shortcut to e.g. your Desktop.
+This pops up a folder with apps, and you can drag a shortcut to e.g. your Desktop.
+
+![Shortcuts](images/shortcut.png)
 
 Found [here](https://winaero.com/desktop-shortcut-store-app-windows-10/).
 
 
 ## What are the technical specs?
-Lego has leaflets on [Spike prime](https://education.lego.com/en-us/support/spike-prime/technical-specifications), which
+Lego has leaflets on [Spike prime](https://education.lego.com/en-gb/product-resources/spike-prime/downloads/technical-specifications), which
 is largely the same as Mindstorms Robot Inventor.
 
-- **hub**: 5x5 LEDs, 6 ports, Gyro, 3 buttons one with RGB LED, beeper, Bluetooth, USB, MicroPython  
+- **hub**: 5x5 LEDs, 6 ports, Gyro, 3 buttons, one with RGB LED, beeper, Bluetooth, USB, MicroPython  
   **cpu:** 100MHz M4, 320 kB RAM, 1M FLASH; 32MB RAM extern  
   **battery**:  2100 mAh @ 7.3 V  >500 cycles
 - **color sensor**: 100 Hz sample rate,  color sensing (RGB/HSV), reflectivity sensing, ambient sensing, white led emission
@@ -78,8 +80,10 @@ If you like more, or simpler builds, you could have a look at [Spike prime instr
 When you start the Lego Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
 At first this is nice, but after a while you want to continue with your own projects.
 
+![Projects](images/projects.png)
+
 You have to click PROJECTS at the bottom of the app's home screen.
-Unfortunately, thw list of projects starts with the standard lego ones, and not with e.g. the most recent ones.
+Unfortunately, the list of projects starts with the standard lego ones, and not with e.g. the most recent ones.
 You have to scroll all the way down.
 
 The Lego app is very limited in using _keys_. The DownArrow doesn't work. Fortunately PageDown does work.
@@ -90,12 +94,12 @@ So does the scroll wheel. The scroll bar itself is too thin to easily grab with 
 Most projects end up with a name like `Project 17`, because the Lego app does not ask for a name.
 By default it just numbers them, using the lowest free number.
 
-You have to explicitly remember to press Save As (preferably right after you create a new project). Grr.
+You have to explicitly remember to press File > Save As (preferably right after you create a new project). Grr.
 
 
 ## How do I start a new project?
-Want to start a new project? Press CODE at the bottom of the home screen. You get an empty new Word Block
-program. Rather have a Python program? In the Word Block editor (top) create a new tab.
+Want to start a new project? Press CODE at the bottom of the home screen. You get an empty new Word Block program. 
+Rather have a Python program? In the Word Block editor (top) create a new tab.
 Or, in the home screen click File > New Project.
 
 Now you are _asked_ for the type of project (Word Block or Python).
@@ -110,16 +114,16 @@ It seems the project is saved constantly when you interact with it (clicking the
 I see the time stamp change in the file explorer.
 
 The only condition is that the project is non-empty, or that you did a Save As.
-So, an empty project that is not renamed does not yet get saved, which makes sense.
+So, only an empty project that is not yet renamed does not get saved, which makes sense.
 
 
 ## Where are my projects saved?
 The lego app made a directory `C:\Users\maarten\Documents\LEGO MINDSTORMS` for my (Maarten's) projects.
 If you Save As `xxx`, the file ends up there, as `xxx 1.lms`.
 
-The extension probably refers to Lego MindStorms. The "space-one" suffix is automatically appended.
+The extension lms probably refers to Lego MindStorms. The "space-one" suffix is automatically appended.
 The next time you Save As a project and _type_ `xxx` it gets the name `xxx 2.lms` (note the `2`).
-Non standard windows behavior. Grr.
+Non-standard windows behavior. Grr.
 
 You can however Save As and _select_ the existing `xxx 1.lms`.
 That pops up an "are you sure you want to overwrite" dialogue.
@@ -129,9 +133,9 @@ It also means you can't call your program `beep3`, because the lego app gets con
 
 ## What is an lms file?
 The Lego app saves Mindstorms projects as files with the extension `.lms` (Lego MindStorms presumably).
-This is a binary file format, which is a pity especially for Python programs.
+This is a binary file format, which is a pity for Python programs.
 
-However, it turns out to be an archive. If you have, e.g. [7zip](https://www.7-zip.org/) you can unzip lms files.
+However, and lms file turns out to be an archive. If you have, e.g. [7zip](https://www.7-zip.org/) you can unzip lms files.
 
 ![Inside the lms file](images/lms.png)
 
@@ -187,8 +191,8 @@ The `manifest.json` contains unknown details. I have freely formatted it for rea
 }
 ```
 
-The third file is the actual program. For Word blocks some for me unknown format.
-For Python, it is Python text wrapped in json, below freely formatted by me for readability.
+The third file is the actual program. For Word blocks, some format, unknown to me.
+For Python, it is the Python text wrapped in json, below freely formatted by me for readability.
 
 ```json
 {"program":"
@@ -212,13 +216,13 @@ For Python, it is Python text wrapped in json, below freely formatted by me for 
 A bit hidden feature in the Word Block editor are the two icons on the right hand side.
 
 The top one (Remote Control) allows you to create a "Remote Control" pane in the environment, with _widgets_.
-The widgets on the PC pane communicate via Bluetooth to the Hub.
+The widgets on the PC pane communicate via Bluetooth (and presumably also USB) to the Hub.
 On the hub they trigger events that can be used in your program.
 
 Great feature! Missing are widgets that _output_ content; most _input_ events in you program.
 For example a virtual LED would be nice, or a string box, or a string list (dare I say "console").
 
-There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in streaming mode (ie live connection to the PC).
+There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in _streaming_ mode (i.e. live connection to the PC). 
 
 The remote control is not present in Python - probably because it has no streaming mode.
 
@@ -227,16 +231,18 @@ The remote control is not present in Python - probably because it has no streami
 
 ## Can I remote control my robot with a game controller?
 At this moment in beta, there is the option to add support for game controllers (Sony, XBox).
+I ordered a [replica](https://www.aliexpress.com/item/1005001493670700.html) of which the rumours tell it is working. Did not yet receive it.
 
 Click the Block Extension button and then either enable the DualShock or XBox One controller.
 New blocks will pop-up in your palette (left).
 
-I assume the controllers send their "button presses" via bluetooth to the PC, the stream to the hub.
-I don't have one so can not test.
+I assume the controllers send their "button presses" via bluetooth to the PC, then stream to the hub.
+I don't have one yet, so cannot test.
 
-There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in streaming mode (ie live connection to the PC).
+There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in streaming mode (ie live connection to the PC). Another drawback is the latency, lingo for "slow": the button press goes from controller, to PC, streamed to hub, then action on the motor. 
 
 The remote control is not present in Python - probably because it has no streaming mode.
+It is pity that Python does not have a Bluetooth package so that we can directly hookup Bluetooth devices.
 
 ![game controller](images/btcontroller.png)
 
@@ -278,10 +284,13 @@ I see people talk about hub firmware updates, but the Mindstorms app does not ha
 However, when lego releases a new version, you will get a message in the app. If you accept it the hub will be updated.
 This updates the hub’s OS, not the user data (saved projects).
 
+By the way, if you open a serial port to the Python REPL (see other question), and press ^C you stop the run-time (?).
+If you then close REPL and start the Lego mindstorms app, it believes the hub firmware is broken and suggest to flash it again.
+You could. you could also just powercycle the the hub (or press ^D for soft reset) while still in REPL.
+
 
 ## What software version is current?
 What is "current"?
-
 At the moment of writing this answer (2020 oct 27):
 
 - The app version is 4.0.4-dev.99999
@@ -310,8 +319,9 @@ I found it [here](https://www.facebook.com/groups/mindstormsrobotinventor/permal
 later [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/404200153926278/).
 The one that came with the 51515 box is fine. 
 But I ordered a second [one](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45605).
-If I plug it in, in the hub, it is sometimes recognized, and sometimes not.
+If I plug it in the hub, it is sometimes recognized, and sometimes not.
 Recognized means that it lights up, appears in the  "triangle" test app, and is listed in the lego app under the port.
+For my second sensor none of these happen (in "half" the time).
 I contacted Lego support and they are fabulous, they send me a new one.
 
 The second issue is less of a problem: the O positions of the motors have a deviation.
@@ -319,7 +329,7 @@ I found it [here](https://www.facebook.com/groups/mindstormsrobotinventor/permal
 If you handposition the motor to O, its position is not returned as 0 (but ~5).
 If you tell the motor to go to position 0, it is not at O, but some degrees off.
 Most motors have a deviation within ±5°, but one of mine has an offset of nearly 15°.
-The good news is that it is structural.
+The good news is that it is structural, so you can compensate in software.
 
 
 
@@ -345,8 +355,8 @@ There are actually three ways to do that.
 
 - The most straighforward way is to press the Play button.
   Your program is compiled, uploaded and run. if a program was running on the hub, it is stopped.
-  Note that the Hub has 20 slots(0..19), the app calls them "storage positions".
-  By default your program goes to slot 0, but if you click the slot select button, you can specify another one.
+  Note that the Hub has 20 slots (0..19), the app calls them "storage positions".
+  By default your program goes to slot 0, but if you click one of the two the slot select buttons (the arrows), you can specify another slot.
 
   If you open the Hub connection on the PC, and then select tab Programs,
   you see the slots with the names of the project they store. Plus the option to delete or reorder slots.
@@ -354,7 +364,7 @@ There are actually three ways to do that.
 - Another way it to only download, not _run_: press the Download button in the slot selection pane.
 
 - A special way to run is _streaming_ mode.
-  It does not save the project in a slot. So code is lost after stopping the program.
+  It does not save the project in a slot. So code is lost on the hub after stopping the program.
   Python does not support streaming.
 
 ![Play](images/play.png)
@@ -363,10 +373,9 @@ There are actually three ways to do that.
 ## What is streaming?
 I'm not entirely sure of all the details of [streaming mode](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946).
 
-- The program you’re creating is not stored in a slot on the hub as is with download mode.
+- The program you’re creating is not stored in a slot on the hub as it is with download mode.
 - Instead, the PC maintains a connection with the hub, and the instructions will stream to the hub as they are executed.
 - You can make "live" changes in your program (see figure).
-- Streaming is faster.
 - Remote control (pane in Mindstorms app, or Game controller) requires streaming mode.
 - Somehow, showing the monitor does not require streaming mode.
 - Also, sound via PC does not require streaming mode.
@@ -379,10 +388,11 @@ I'm not entirely sure of all the details of [streaming mode](https://www.lego.co
 In streaming mode, the code is streamed from the PC to the hub, while the program is executed.
 This sounds a bit like an interpreter, and thus it sounds slow.
 
-It isn't. In fact, it is the other way around: streaming is nearly 1000x faster.
+It isn't always. In fact, it is sometimes the other way around: streaming is nearly 1000x faster in the below program.
 Disclaimer: my test program does not execute a balanced set of blocks, and that is an understatement.
 
 I guess the reason for this is that in streaming mode, all the code is run on the PC, and only _actuator commands_ and _sensor reads_ are streamed to the hub.
+So if you do not do "integer increments on the PC" but need "sensor or actuator actions on the hub" it is likely slower.
 
 ![Speed comparison](images/speed.png)
 
@@ -409,7 +419,7 @@ In Python, I haven't found a good one yet.
 
 ## What is degrees, position and relative position?
 
-The motors in Mindstorms 4 are a bit different then the earlier ones (NXT and EV3).
+The motors in Mindstorms 4 are a bit different from the earlier ones (NXT and EV3).
 The motors in the last 3 generations of Mindstorms all have a position sensor, but the one in Mindstorms 4 is _absolute_.
 So, for example, it not only knows that it _moved_ 45 degrees, it also knows it is _at_ 60 degrees (assuming the motor started at 15).
 The "0 degrees" is arbitrary, but it is marked on the motorhub.
@@ -417,10 +427,10 @@ The "0 degrees" is arbitrary, but it is marked on the motorhub.
 ![Position](images/position.jpg)
 
 So, a motor moves _degrees_ (or _rotations_), the "delta", thereby moving from one absolution _position_ to another absolute _position_.
-A _position_ is always a number from (including) 0 to (excluding) 360.
+A _position_ is always a number from (including) 0 to (excluding) 360 (in Python it seems to be -180..+180).
 The _degrees_ to move can be any number, even fractional (not very exciting) or negative (turn the other way around).
 
-The absolute sensor is nice for "non drive wheel motors". When motors are used for driving, they turn and turn, and there is no "zero" position.
+The absolute sensor is nice for "non drive motors". When motors are used for driving, they turn and turn, and there is no need for a "zero" position.
 But when motors are used for a door, a windshield wiper, a swinging radar, a clock, the robot needs to know where the "zero" position is.
 In the past you needed a touch sensor for that (or drive the motor to a mechanical stop). But no longer in Mindstorms 4.
 
@@ -444,8 +454,8 @@ It is structural, so that is easily fixed by adding a correction of 10.
 
 At first, the amount of motor block is overwhelming. Let's look at the blue blocks first: "Motors".
 
-The color (and name) is a first important hint: the blue blocks ("Motors" and "More Motors") operate on a _single_ motor.
-The pink blocks ("Movement" and "More Movement") operate on _two_ motors, the left and right one for movement (driving).
+The logo and name is a first important hint: the blue blocks ("Motors" and "More Motors") operate on a _single_ motor.
+The pink blocks ("Movement" and "More Movement") operate on _two_ motors, the left and right one for driving (movement).
 
 Actually, that is a lie (but a simplification that helps understanding).
 The pink Movement blocks control _two_ motors and _keeps them in sync_. If one stops (break it with your hand), the other stops as well.
@@ -457,16 +467,16 @@ Back to the blue blocks.
 
 ![Motors](images/motors1.png)
 
-The first block tells the _selected motor(s)_ to move, either in _rotations_, _degrees_, or _seconds_.
+The first block tells the _selected motor_ to move, either in _rotations_, _degrees_, or _seconds_.
 You can specify the _amount_ and the _direction_ (clockwise or counter clockwise).
-Note that if the amount is negative, it also reverse the direction.
+Note that if the amount is negative, the motor reverse the direction.
 
-The only thing that is missing is speed. Lego decided to exclude speed from the motor blocks.
+The only thing that is missing in this command is _speed_. Lego decided to exclude speed from the motor blocks.
 Instead they have a separate set-speed block (5th in the figure above); it sets the default speed for that motor.
 We will see that some blocks do have a speed parameter, this takes precedence over the default speed.
-If there is no set-speed block to set the default speed, the defaults is 75%.
+If there is no set-speed block, the defaults is 75%.
 
-The second block is similar, but instead of setting an amount, we set a target _position_.
+The second motor block is similar, but instead of setting an amount, we set a target _position_.
 Note that we can force the direction (clockwise or counter clockwise), or let the motor take the shortest path.
 
 The first two blocks have a target (in rotations, degrees, seconds, or position).
@@ -475,21 +485,21 @@ Only then the block finishes and the next block will be executed.
 
 Block 3 and 4 split this start-wait-stop; they are needed when the target is not know when starting the motor.
 There is no amount, just direction (also here the speed comes from the set-speed block).
-Block 3 start-motor starts a motor, and then the block finishes and the next block is executed - but the motor keeps on rotating.
+Block 3 start-motor starts a motor, there is no wait the next block is executed immediately - but the motor keeps on rotating.
 At some moment - e.g. a sensor sees that the robot gets close to a wall - block 4 stop-motor is executed.
 By the way, note the subtle spacing in the figure above: block 3 and 4 belong together, the spacing is narrow.
 
 Block 5 sets the default speed as discussed above.
 
 Block 6 and 7 have a different shape.
-The first 5 are known as _Stack Blocks_ in [scratch](https://en.scratch-wiki.info/wiki/Blocks), I would call them _statements_.
+The first 5 blocks are known as _Stack Blocks_ in [scratch](https://en.scratch-wiki.info/wiki/Blocks), I would call them _statements_.
 Block 6 and 7 are known as _Reporter Blocks_, I would call them (integer or string) _expressions_.
 In this case they are special form of an expression: they are a function call to a sensor.
 The _position_ gives the (absolute) position of the motor (0..359), and _speed_ the actual speed.
 Note that speed is _not_ the speed set with the set-speed block, but the actual speed of the (running) motor.
 
 There are more blue block: there is an extension with the obvious name More Motors.
-Roughly they add a speed parameter.
+Roughly they add a speed parameter to the stack blocks.
 
 ![More Motors](images/motors2.png)
 
@@ -503,7 +513,7 @@ The second "more motors block" is similar to the third "motors block".
 It switches the motor on. No direction, but there is _speed_.
 Also here, if the speed is negative, direction is reversed.
 
-The third one is similar to the second: it goes to a position.
+The third one is similar to the second "motors block": it goes to a position.
 But in this case a _relative position_ so there is no need for a path (clockwise or counter clockwise).
 
 Note that _relative position_ is like a software variable.
@@ -511,7 +521,7 @@ It tracks changes in _position_, but it does not reset when _position_ transitio
 With block 4 set-relative-position we can write that variable (usually reset it to 0), and with block 5 we can read it (find how much degrees the motor rotated since reset).
 
 The next two blocks (6 and 7) are about _power_. I guess they measure current through the motors as opposed to RPM.
-Have not used this.
+Have not used this, but did test this in Python (see other question).
 
 The stop and stall blocks (8, 9 , 10) are not working for me - do not understand them.
 
@@ -550,7 +560,7 @@ The first block allows forward and backward (both motors same speed), or left an
 
 The second and third block allow to fine-tune the speed ratio between the wheels.
 This is a bit funny: up to 95% both motors go in the same direction, but one slower and slower (at 95% it is nearly stopped).
-However, at 100% the "slow" motor suddenly runs at full speed in reverse. See question below on move graph.
+However, at 100% the "slow" motor suddenly runs at full speed in reverse. See question below on movement graph (Python).
 
 We can also add an extension, properly named More Movement.
 
@@ -598,6 +608,10 @@ You can just `print()` in the hub code, and the print result is send to the PC c
 
 I have not yet found a way to `input()` - that is a pity.
 
+I also have not found a way to clear the console.
+
+Finally, I have not found keys to scroll down the console.
+
 
 ## Is there help (API documentation) for Python?
 The help for Python is found on the right had side in the Python editor.
@@ -613,7 +627,7 @@ Can be open during programming (pfeew).
 Good question: if you program doesn't stop, the hub will not power down, so stopping is important.
 
 In Word block, there is an explicit stop block. 
-In Python, I haven't found a good one yet. I did find `sys.exit(0)` (don't forget the `import sys`).
+In Python, I haven't found a good method yet. I did find `sys.exit(0)` (don't forget the `import sys`).
 It does stop the program, but with a sort-of error.
 You can see this in the console (red message), but also the center LED on the hub flashes red 3 times.
 
@@ -679,10 +693,10 @@ Right click on the Windows start button and select Device Manager, and fold open
 
 ![COM ports](images/COM.png)
 
-Next, we need a terminal program to send an receive commands over serial. I happen to use an oldy [realterm](https://realterm.sourceforge.io/), but [putty](https://www.putty.org/) is a popular alternative.
+Next, we need a terminal program to send an receive commands over serial. I happen to use an oldy [realterm](https://realterm.sourceforge.io/), but [putty](https://www.putty.org/) is a good and popular alternative.
 
 Configure the COM port (115200/8/N/1), and connect.
-The hub is running a program (if you want to know `runtime.start()`) that spits out data, and this now floods the terminal. Stop that program by sending a CTRL-C.
+The hub is running a program (I think `runtime.start()`) that spits out data, and this now floods the terminal. Stop that program by sending a CTRL-C.
 We get a prompt from `MicroPython v1.11-1139-gf7407e5a0 on 2020-06-19; LEGO Technic Large Hub with STM32F413xx`
 
 ![Connect](images/connect.png)
@@ -732,7 +746,7 @@ First number looks like the yaw.
 >>>
 ```
 
-The `help()` command as suggested when we pressed ^C is _not_ very useful.
+The `help()` command, as suggested when we pressed ^C, is _not_ very useful.
 
 ```text
 >>> help()
@@ -758,7 +772,7 @@ For a list of available modules, type help('modules')
 ```
 
 The `hub.info()` does not work: `name 'hub' isn't defined` (we already knew that, `hub` was not listed by `dir`).
-The CTRL commands seem a bit advanced now.
+The "Control commands" seem a bit advanced now - see [here](https://docs.micropython.org/en/latest/reference/repl.html) for some help.
 There is one good hint though: `help("modules")`.
 
 ```text
@@ -841,7 +855,8 @@ Success.
 
 We can now do in REPL what we do in the lego app.
 
-But I'm still confused about the difference between `import hub` and `from mindstorms import MSHub`.
+Still confused about the difference between `import hub` and `from mindstorms import MSHub`.
+See the question "Why are there so many ways to do ... in Python?"
 
 
 ## Which files are in the Python filesystem?
@@ -944,7 +959,7 @@ Every directory that has an `__init__.mpy` is very likely a Python package.
 This holds for every (?) directory except `extra_files` which seems to host the sounds.
 
 The `boot.py` is run by micro python each time the hub boots.
-After that, it runs `mian.py`. The former file is empty (note the 0 size after the name).
+After that, it runs `main.py`. The former file is empty (note the 0 size after the name).
 The `hub_runtime.start()` is the program that spits out the data when we log in (which we stopped with ^C).
 
 
@@ -1226,7 +1241,7 @@ Just standard Python ... you would expect.
 I stumbled on one tricky thing, an error "object with buffer protocol required".
 
 I believe the root cause is that MicroPython does not support writing numbers, only strings to files (they have the "characters in a buffer").
-The below program takes 10 light measurements (2 seconds appart) and writes that to a file `data.log`.
+The below program takes 10 light measurements (2 seconds appart), converts each measurement to a string, and writes that to a file `data.log`.
 Each measurement it gives a beep.
 
 ```python
@@ -1250,7 +1265,7 @@ with open('data.log','w') as logfile:
 
 Notes
  - Program suffers from not ending (see question "How to stop my Python program?")
- - I passed jsut a filename in the example, but you can specify a full path.
+ - I passed just a filename in the example, but you can specify a full path.
  - The file `data.log` has no path, so it is written to the current directory.
    As it turns out, that is the root. 
  - How do I find my file.
@@ -1268,7 +1283,7 @@ Notes
    data.log 41
    ```
 
- - How do "get" my file?
+ - How do I "get teh contents" of my file?
    In the question "Which files are in the Python filesystem?" you'll find a `cat()` command, which works in REPL.
    If you run that, we get the following content.
    
