@@ -286,7 +286,7 @@ This updates the hub’s OS, not the user data (saved projects).
 
 By the way, if you open a serial port to the Python REPL (see other question), and press ^C you stop the run-time (?).
 If you then close REPL and start the Lego mindstorms app, it believes the hub firmware is broken and suggest to flash it again.
-You could. you could also just powercycle the the hub (or press ^D for soft reset) while still in REPL.
+You could do that. You could also just powercycle the hub (or press ^D for soft reset while still in REPL).
 
 
 ## What software version is current?
