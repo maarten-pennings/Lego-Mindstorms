@@ -251,15 +251,15 @@ First problem was to get it connected to the PC.
  - Your PC must have Bluetooth. Laptops typically have that, desktops typically must use a Bluetooth dongle 
    (e.g. something like [this](https://nl.aliexpress.com/item/4000558398862.html) - note did not test this myself!)
  - You must have enabled bluetooth in Windows.
-   Open the "action center" (the speech bubble right to the clock in the system tray) and make sure Bluetooth is "blue".
+   Open the "action center" (the speech bubble right to the clock in the system tray) and make sure Bluetooth is "blue".  
    ![Enable Bluetooth](images/bluetooth1.png)
  - Only the first time, right-click on this button and select "Goto Settings".
- - In "Bluetooth & other devices" settings, press "Add Bluetooth or other device"
+ - In "Bluetooth & other devices" settings, press "Add Bluetooth or other device".  
    ![Add Bluetooth device](images/bluetooth2.png)
- - In the window that pops up, click "Bluetooth".
+ - In the window that pops up, click "Bluetooth".  
    ![Add Bluetooth device](images/bluetooth3.png)
  - Now, bring the game controller in pairing mode. 
-   To do that, press the SHARE button, and while that is kept pressed, also press center POWER button. 
+   To do that, press the SHARE button, and while that is kept pressed, also press center POWER button.  
    ![Pairing mode](images/dualshock.png)
    Keep them both pressed for around 5 seconds, until pairing mode is entered.
    When pairing mode is entered, the colored light on the game controller starts flashing blue.
