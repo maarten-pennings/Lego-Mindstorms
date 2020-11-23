@@ -260,7 +260,7 @@ First problem was to get it connected to the PC.
    ![Add Bluetooth device](images/bluetooth3.png)
  - Now, bring the game controller in pairing mode. 
    To do that, press the SHARE button, and while that is kept pressed, also press center POWER button.  
-   ![Pairing mode](images/dualshock.png)
+   ![Pairing mode](images/dualshock.png)  
    Keep them both pressed for around 5 seconds, until pairing mode is entered.
    When pairing mode is entered, the colored light on the game controller starts flashing blue.
  - The game controller should appear in the "Add a device" list.
@@ -269,7 +269,7 @@ First problem was to get it connected to the PC.
 #How can I test my game controller?
 I wrote a [test](blocks/DualShockTest.lms), which test all (except SHARE, OPTIONS, or POWER).
 
-![DualShockTest](images/DualShockTest.lms)
+![DualShockTest](images/DualShockTest.png)
 
 
 ## Are there any hotkeys?
