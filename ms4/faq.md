@@ -243,11 +243,11 @@ It is pity that Python does not have a Bluetooth package so that we can directly
 ![game controller](images/btcontroller.png)
 
 
-#How to get my game controller to work?
+## How to get my game controller to work?
 I ordered a [replica DualShock4](https://www.aliexpress.com/item/1005001493670700.html) of which the rumours tell it is working.
 In the mean time, I can confirm it works with Lego mindstorms.
 
-First problem was to get it connected to the PC.
+It took me some time to get it connected to the (Windows) PC. This is what I did.
  - Your PC must have Bluetooth. Laptops typically have that, desktops typically must use a Bluetooth dongle 
    (e.g. something like [this](https://nl.aliexpress.com/item/4000558398862.html) - note did not test this myself!)
  - You must have enabled bluetooth in Windows.
@@ -266,7 +266,7 @@ First problem was to get it connected to the PC.
  - The game controller should appear in the "Add a device" list.
    Click it. "Connecting" apears, and after a while you can clickj "Done"
 
-#How can I test my game controller?
+## How can I test my game controller?
 I wrote a [test](blocks/DualShockTest.lms), which test all (except SHARE, OPTIONS, or POWER).
 
 ![DualShockTest](images/DualShockTest.png)
