@@ -390,12 +390,12 @@ The monitor feature does work in "download mode", you  do not have to use "strea
 There are actually three ways to do that.
 
 - The most straighforward way is to press the Play button.
-  Your program is compiled, uploaded and run. if a program was running on the hub, it is stopped.
+  Your program is compiled, uploaded and run. If a program was running on the hub, it is stopped.
   Note that the Hub has 20 slots (0..19), the app calls them "storage positions".
-  By default your program goes to slot 0, but if you click one of the two the slot select buttons (the arrows), you can specify another slot.
+  By default your program goes to slot 0, but if you click one of the two "slot select buttons" (the arrows), you can specify another slot.
 
   If you open the Hub connection on the PC, and then select tab Programs,
-  you see the slots with the names of the project they store. Plus the option to delete or reorder slots.
+  you see the slots with the names of the project they currently store. Plus the option to delete or reorder slots.
 
 - Another way it to only download, not _run_: press the Download button in the slot selection pane.
 
