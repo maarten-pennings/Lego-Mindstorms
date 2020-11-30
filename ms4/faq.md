@@ -410,7 +410,7 @@ The good news is that it is structural, so you can compensate in software.
 
 To force a motor update, goto the Hub connection, and find the "Update motors" in the overflow menu. You need the Lego app version 10.0.3 or higher.
 
-![Motor update](updatemotors.png)
+![Motor update](images/updatemotors.png)
 
 
 
