@@ -60,6 +60,11 @@ This pops up a folder with apps, and you can drag a shortcut to e.g. your Deskto
 Found [here](https://winaero.com/desktop-shortcut-store-app-windows-10/).
 
 
+## Can I redo the Getting Started?
+
+In the Lego app, goto to Help > Settings > General and click the "Welcom Robot Inventors!".
+
+
 ## What are the technical specs?
 Lego has leaflets on [Spike prime](https://education.lego.com/en-gb/product-resources/spike-prime/downloads/technical-specifications), which
 is largely the same as Mindstorms Robot Inventor.
@@ -335,7 +340,6 @@ You could do that. You could also just powercycle the hub (or press ^D for soft 
 
 
 ## What software version is current?
-What is "current"? 
 The app version is in the title bar.
 The Hub has an OS, its version is shown in the Hub Connection window.
 For Python we use a script 
@@ -352,9 +356,10 @@ print(sys.version)
 - The app version 10.0.3  
   Now has a "Getting started"  
   Now has motor calibration (that O is 0 degrees)
+  Now has robot (extensions) from the community  
 - The Hub OS version is 2.1.4.10
 - Micro Python 1.11.0
-- on "sys" 3.4.0
+- The "sys version" 3.4.0
 
 ![App and OS version](images/version10.0.3.png)
 
@@ -364,7 +369,7 @@ print(sys.version)
 - The app version 10.0.2
 - The Hub OS version is 2.1.4.10
 - Micro Python 1.11.0
-- on "sys" 3.4.0
+- The "sys version" 3.4.0
 
 ![App and OS version](images/version10.0.2.png)
 
@@ -373,7 +378,7 @@ print(sys.version)
 - The app version is 4.0.4-dev.99999
 - The Hub OS version is 2.1.4.10
 - Micro Python 1.11.0
-- on "sys" 3.4.0
+- The "sys version" 3.4.0
 
 ![App and OS Version](images/version.png)
 
@@ -400,7 +405,13 @@ If you handposition the motor to O, its position is not returned as 0 (but ~5).
 If you tell the motor to go to position 0, it is not at O, but some degrees off.
 Most motors have a deviation within ±5°, but one of mine has an offset of nearly 15°.
 The good news is that it is structural, so you can compensate in software.
+
 **Update:** the Lego app version 10.0.3 has a calibration procedure that presumably programs the O correction in the motors.
+
+To force a motor update, goto the Hub connection, and find the "Update motors" in the overflow menu. You need the Lego app version 10.0.3 or higher.
+
+![Motor update](updatemotors.png)
+
 
 
 
