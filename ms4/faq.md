@@ -60,9 +60,9 @@ This pops up a folder with apps, and you can drag a shortcut to e.g. your Deskto
 Found [here](https://winaero.com/desktop-shortcut-store-app-windows-10/).
 
 
-## Can I redo the Getting Started?
+## Can I redo the getting started?
 
-In the Lego app, goto to Help > Settings > General and click the "Welcom Robot Inventors!".
+In the Lego app, goto to Help > Settings > General and click the "Welcome Robot Inventors!".
 
 
 ## What are the technical specs?
