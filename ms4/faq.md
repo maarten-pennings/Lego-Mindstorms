@@ -7,7 +7,11 @@ The FAQ is currently split in three sections:
 [Word block specific](#word-block-specific-questions) and 
 [Python specific](#python-specific-questions) questions.
 
+
+
+
 # General Questions
+
 
 ## How to switch off the brick?
 I opened the box, and one of the first things I did was to power on the brick.
@@ -38,6 +42,10 @@ It seems identical, and it has support for the force sensor, which is missing in
 This "app" is what is normally known as an IDE (integrated development environment).
 It is an editor, compiler, uploader, debugger and help system in one.
 But lego calls  "the app".
+
+I have the feeling that the app updates itself, because sometimes the version number in the titlebar changes.
+However, you not always have the latest-greatest, the update is "slow".
+To force an update goto the Windows Store, search for the Lego Mindstorms app, and press update.
 
 
 ## How to make a shortcut to the Lego app on my Windows Desktop?
@@ -267,6 +275,7 @@ It took me some time to get it connected to the (Windows) PC. This is what I did
    Click it. "Connecting" apears, and after a while you can click "Done".  
    ![Add Bluetooth device](images/bluetooth4.png)
 
+
 ## How can I test my game controller?
 I wrote a [test](blocks/DualShockTest.lms), which test all buttons, except SHARE, OPTIONS, or POWER.
 
@@ -326,25 +335,50 @@ You could do that. You could also just powercycle the hub (or press ^D for soft 
 
 
 ## What software version is current?
-What is "current"?
-At the moment of writing this answer (2020 oct 27):
+What is "current"? 
+The app version is in the title bar.
+The Hub has an OS, its version is shown in the Hub Connection window.
+For Python we use a script 
 
-- The app version is 4.0.4-dev.99999
+```
+import sys
+print(sys.implementation)
+print(sys.version)
+```
+
+
+### Per 2020 nov 30
+
+- The app version 10.0.3  
+  Now has a "Getting started"  
+  Now has motor calibration (that O is 0 degrees)
 - The Hub OS version is 2.1.4.10
-
-This can be seen from a screenshot
-
-![App and OS Version](images/version.png)
-
-
-## Which Python is used?
-Let's write a script for that! See screenshot.
 - Micro Python 1.11.0
 - on "sys" 3.4.0
 
-No idea how that relates to the Hub OS version.
+![App and OS version](images/version10.0.3.png)
+
+
+### Per 2020 nov 29
+
+- The app version 10.0.2
+- The Hub OS version is 2.1.4.10
+- Micro Python 1.11.0
+- on "sys" 3.4.0
+
+![App and OS version](images/version10.0.2.png)
+
+
+### Per 2020 oct 27
+- The app version is 4.0.4-dev.99999
+- The Hub OS version is 2.1.4.10
+- Micro Python 1.11.0
+- on "sys" 3.4.0
+
+![App and OS Version](images/version.png)
 
 ![Python Version](images/pythonversion.png)
+
 
 
 ## Are there any quality issues?
@@ -366,7 +400,7 @@ If you handposition the motor to O, its position is not returned as 0 (but ~5).
 If you tell the motor to go to position 0, it is not at O, but some degrees off.
 Most motors have a deviation within ±5°, but one of mine has an offset of nearly 15°.
 The good news is that it is structural, so you can compensate in software.
-
+**Update:** the Lego app version 10.0.3 has a calibration procedure that presumably programs the O correction in the motors.
 
 
 
