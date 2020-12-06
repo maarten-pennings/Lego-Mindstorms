@@ -416,7 +416,7 @@ To force a motor update, goto the Hub connection, and find the "Update motors" i
 ## Are there special startup features?
 
 Press and hold the left button, and press the center button. This turns on the hub; release both buttons. 
-This startup bypasses `main.py` and the hub should connect as a new COM or tty on your computer via USB.
+This startup bypasses `main.py` and the hub should connect as a new COM port on your computer via USB.
 
 
 
@@ -1421,7 +1421,7 @@ Here is a small overview.
 | light    |    61  | COLOR, REFLT, AMBI, LIGHT, RREFL, RGB I, HSV, SHSV, DEBUG, CALIB |
 | distance |    62  | DISTL, DISTS, SINGL, LISTN, TRAW, LIGHT, PING, ADRAW, CALIB      |
 | force    |    63  | FORCE, TOUCH, TAP, FPEAK, FRAW, FPRAW, CALIB                     |
-| motor(s) |    75  | POWER, SPEED, POS, APOS, LOAD, 1                                 |
+| motor (S)|    75  | POWER, SPEED, POS, APOS, LOAD, 1                                 |
 
 
 ## How can I do data logging?
