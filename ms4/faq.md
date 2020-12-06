@@ -1315,6 +1315,108 @@ The lower layer gives access to more functionality but at the risk
 that it may not play well with the rest of the systems running on the hub. 
 
 
+## What is port info telling me about modes?
+
+I used this script when a peripheral is connected to port A.
+
+```python
+import hub,time
+def infoA():
+	for key,val in hub.port.A.info().items():
+		if key=='modes':
+			for i, v in enumerate( val ):
+				print(key+"["+str(i)+"]=",v)
+				time.sleep(0.1)
+		else :
+			print(key+"=",val)
+```
+
+When I connect the light sensor, this is the output of `infoA()`
+
+```text
+fw_version= 268435456
+modes[0]= {'symbol': 'IDX', 'format': {'datasets': 1, 'type': 0, 'figures': 2, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'COLOR', 'pct': (0.0, 100.0), 'map_in': 228, 'si': (0.0,    10.0), 'raw': (0.0, 10.0)}
+modes[1]= {'symbol': 'PCT', 'format': {'datasets': 1, 'type': 0, 'figures': 3, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'REFLT', 'pct': (0.0, 100.0), 'map_in':  48, 'si': (0.0,   100.0), 'raw': (0.0, 100.0)}
+modes[2]= {'symbol': 'PCT', 'format': {'datasets': 1, 'type': 0, 'figures': 3, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'AMBI' , 'pct': (0.0, 100.0), 'map_in':  48, 'si': (0.0,   100.0), 'raw': (0.0, 100.0)}
+modes[3]= {'symbol': 'PCT', 'format': {'datasets': 3, 'type': 0, 'figures': 3, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x05\x04', 'map_out': 16, 'name': 'LIGHT', 'pct': (0.0, 100.0), 'map_in':   0, 'si': (0.0,   100.0), 'raw': (0.0, 100.0)}
+modes[4]= {'symbol': 'RAW', 'format': {'datasets': 2, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'RREFL', 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0,  1024.0), 'raw': (0.0, 1024.0)}
+modes[5]= {'symbol': 'RAW', 'format': {'datasets': 4, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'RGB I', 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0,  1024.0), 'raw': (0.0, 1024.0)}
+modes[6]= {'symbol': 'RAW', 'format': {'datasets': 3, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'HSV'  , 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0,   360.0), 'raw': (0.0, 360.0)}
+modes[7]= {'symbol': 'RAW', 'format': {'datasets': 4, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'SHSV' , 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0,   360.0), 'raw': (0.0, 360.0)}
+modes[8]= {'symbol': 'RAW', 'format': {'datasets': 4, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'DEBUG', 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0, 65535.0), 'raw': (0.0, 65535.0)}
+modes[9]= {'symbol': ''   , 'format': {'datasets': 7, 'type': 1, 'figures': 5, 'decimals': 0}, 'capability': b'@@\x00\x00\x04\x84'   , 'map_out':  0, 'name': 'CALIB', 'pct': (0.0, 100.0), 'map_in':   0, 'si': (0.0, 65535.0), 'raw': (0.0, 65535.0)}
+speed= 115200
+hw_version= 268435456
+combi_modes= (99,)
+type= 61
+```
+
+When I connect the distance sensor, this is the output
+
+```text
+fw_version= 268435456
+modes[0]= {'symbol': 'CM' , 'format': {'datasets': 1, 'type': 1, 'figures': 5, 'decimals': 1}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'DISTL', 'pct': (0.0, 100.0), 'map_in': 145, 'si': (0.0,   250.0), 'raw': (0.0, 2500.0)}
+modes[1]= {'symbol': 'CM' , 'format': {'datasets': 1, 'type': 1, 'figures': 4, 'decimals': 1}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'DISTS', 'pct': (0.0, 100.0), 'map_in': 241, 'si': (0.0,    32.0), 'raw': (0.0, 320.0)}
+modes[2]= {'symbol': 'CM' , 'format': {'datasets': 1, 'type': 1, 'figures': 5, 'decimals': 1}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'SINGL', 'pct': (0.0, 100.0), 'map_in': 144, 'si': (0.0,   250.0), 'raw': (0.0, 2500.0)}
+modes[3]= {'symbol': 'ST' , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'LISTN', 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0,     1.0), 'raw': (0.0, 1.0)}
+modes[4]= {'symbol': 'uS' , 'format': {'datasets': 1, 'type': 2, 'figures': 5, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'TRAW' , 'pct': (0.0, 100.0), 'map_in': 144, 'si': (0.0, 14577.0), 'raw': (0.0, 14577.0)}
+modes[5]= {'symbol': 'PCT', 'format': {'datasets': 4, 'type': 0, 'figures': 3, 'decimals': 0}, 'capability': b'@ \x00\x00\x04\x84'   , 'map_out':  16, 'name': 'LIGHT', 'pct': (0.0, 100.0), 'map_in':   0, 'si': (0.0,   100.0), 'raw': (0.0, 100.0)}
+modes[6]= {'symbol': 'PCT', 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b'@\x80\x00\x00\x04\x84', 'map_out': 144, 'name': 'PING' , 'pct': (0.0, 100.0), 'map_in':   0, 'si': (0.0,     1.0), 'raw': (0.0, 1.0)}
+modes[7]= {'symbol': 'PCT', 'format': {'datasets': 1, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'ADRAW', 'pct': (0.0, 100.0), 'map_in': 144, 'si': (0.0,  1024.0), 'raw': (0.0, 1024.0)}
+modes[8]= {'symbol': 'PCT', 'format': {'datasets': 7, 'type': 0, 'figures': 3, 'decimals': 0}, 'capability': b'@@\x00\x00\x04\x84'   , 'map_out':   0, 'name': 'CALIB', 'pct': (0.0, 100.0), 'map_in':   0, 'si': (0.0,   255.0), 'raw': (0.0, 255.0)}
+speed= 115200
+hw_version= 268435456
+combi_modes= ()
+type= 62
+```
+
+
+When I connect the touch (force) sensor, this is the output
+
+```text
+fw_version= 268435456
+modes[0]= {'symbol': 'N'  , 'format': {'datasets': 1, 'type': 0, 'figures': 4, 'decimals': 1}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'FORCE', 'pct': (0.0, 100.0), 'map_in': 112, 'si': (0.0,   10.0), 'raw': (0.0, 100.0)}
+modes[1]= {'symbol': 'ST' , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'TOUCH', 'pct': (0.0, 100.0), 'map_in':   4, 'si': (0.0,    1.0), 'raw': (0.0, 1.0)}
+modes[2]= {'symbol': 'TEV', 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b'\x00\x80\x00\x00\x04\x84', 'map_out': 0, 'name': 'TAP'  , 'pct': (0.0, 100.0), 'map_in':   4, 'si': (0.0,    3.0), 'raw': (0.0, 3.0)}
+modes[3]= {'symbol': 'N'  , 'format': {'datasets': 1, 'type': 0, 'figures': 4, 'decimals': 1}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'FPEAK', 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0,   10.0), 'raw': (0.0, 100.0)}
+modes[4]= {'symbol': 'RAW', 'format': {'datasets': 1, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'FRAW' , 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0, 1023.0), 'raw': (0.0, 1023.0)}
+modes[5]= {'symbol': 'RAW', 'format': {'datasets': 1, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'FPRAW', 'pct': (0.0, 100.0), 'map_in':  16, 'si': (0.0, 1023.0), 'raw': (0.0, 1023.0)}
+modes[6]= {'symbol': ''   , 'format': {'datasets': 8, 'type': 1, 'figures': 4, 'decimals': 0}, 'capability': b'\x00@\x00\x00\x04\x84'   , 'map_out': 0, 'name': 'CALIB', 'pct': (0.0, 100.0), 'map_in':   0, 'si': (0.0, 1023.0), 'raw': (0.0, 1023.0)}
+speed= 115200
+hw_version= 268435456
+combi_modes= (63,)
+type= 63
+```
+
+When I connect a (small) motor, this is the output
+
+```text
+fw_version= 4096
+modes[0]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0},   'capability': b'\x10\x00\x00\x00\x01\x04', 'map_out': 16, 'name': 'POWER', 'pct': (-100.0, 100.0)       , 'map_in': 0, 'si': (-100.0, 100.0)   , 'raw': (-100.0, 100.0)}
+modes[1]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 4, 'decimals': 0},   'capability': b'!\x00\x00\x00\x01\x04'   , 'map_out': 16, 'name': 'SPEED', 'pct': (-100.0, 100.0)       , 'map_in': 16, 'si': (-100.0, 100.0)  , 'raw': (-100.0, 100.0)}
+modes[2]= {'symbol': 'DEG'         , 'format': {'datasets': 1, 'type': 2, 'figures': 4, 'decimals': 0},   'capability': b'$\x00\x00\x00\x01\x04'   , 'map_out':  8, 'name': 'POS'  , 'pct': (-100.0, 100.0)       , 'map_in': 8, 'si': (-360.0, 360.0)   , 'raw': (-360.0, 360.0)}
+modes[3]= {'symbol': 'DEG'         , 'format': {'datasets': 1, 'type': 1, 'figures': 3, 'decimals': 0},   'capability': b'"\x00\x00\x00\x01\x04'   , 'map_out':  8, 'name': 'APOS' , 'pct': (-200.0, 200.0)       , 'map_in': 8, 'si': (-180.0, 179.0)   , 'raw': (-180.0, 179.0)}
+modes[4]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0},   'capability': b' @\x00\x00\x01\x04'      , 'map_out':  8, 'name': 'LOAD' , 'pct': (0.0, 100.0)          , 'map_in': 8, 'si': (0.0, 127.0)      , 'raw': (0.0, 127.0)}
+modes[5]= {'symbol': '\x01\x04\x01', 'format': {'datasets': 0, 'type': 0, 'figures': 0, 'decimals': 194}, 'capability': b'\x00\x00\x00\x00\x00\x00', 'map_out':  0, 'name': '1'    , 'pct': (3444.96, 1.12104e-43), 'map_in': 0, 'si': (0.0, 2.24208e-44), 'raw': (5.73972e-42, 5.73972e-42)}
+speed= 115200
+hw_version= 4096
+combi_modes= (14, 15)
+type= 75
+```
+
+I guess `type=75` denotes a motor. An important aspect of the modes is the `name`: POWER, SPEED, POS, APOS, LOAD, 1.
+
+Here is a small overview.
+
+| sensor   |  type  | names                                                            |
+|:--------:|:------:|:----------------------------------------------------------------:|
+| light    |    61  | COLOR, REFLT, AMBI, LIGHT, RREFL, RGB I, HSV, SHSV, DEBUG, CALIB |
+| distance |    62  | DISTL, DISTS, SINGL, LISTN, TRAW, LIGHT, PING, ADRAW, CALIB      |
+| force    |    63  | FORCE, TOUCH, TAP, FPEAK, FRAW, FPRAW, CALIB                     |
+| motor(s) |    75  | POWER, SPEED, POS, APOS, LOAD, 1                                 |
+
+
+
 ## How can I do data logging?
 
 Since the MicroPython environment has a filesystem, we can log data to a file.
