@@ -1203,7 +1203,8 @@ The Python API has a `motor.get()`. It returns 4 numbers what are those?
 
 The first number is the speed, and the last (forth) number is power.
 You can check that by executing `hub_runtime.hub.port.B.motor.run_at_speed(30)`, and the do a `get()`.
-The first number returned is 30. If you slow the motor with your hand, you see the first number stay at 30, but the last number goes up: you need more power to keep speed.
+The first number returned is 30. 
+If you slow the motor with your hand, you see the first number stay at 30, but the last number goes up: you need more power to keep speed.
 
 ```python
 >>> hub_runtime.hub.port.B.motor.run_at_speed(30)
@@ -1214,8 +1215,10 @@ The first number returned is 30. If you slow the motor with your hand, you see t
 >>> hub_runtime.hub.port.B.motor.run_at_speed(0)
 ```
 
-If on the other hand, you issue `hub_runtime.hub.port.B.motor.pwm(40)` and then do `get()`s, this changes.
-The first number returned is 40. If you slow the motor with your hand, you see the first number drop, but the last number stays at 40: with constant power, the speed reduces with friction.
+If on the other hand, you issue `hub_runtime.hub.port.B.motor.pwm(40)` and then do `get()`s, 
+this changes (note that PWM is a frm of power control).
+The first number returned is ~40. 
+If you slow the motor with your hand, you see the first number drop, but the last number stays at 40: with constant power, the speed reduces with friction.
 
 ```python
 >>> hub_runtime.hub.port.B.motor.pwm(40)
@@ -1230,22 +1233,23 @@ The middle two numbers are the relative and absolute position.
 
 In the image below, I first aligned the motor on the O (actually just over it) - and then I powered it (plugged it in).
 Notice that the absolute position is indeed a bit positive (18). The relative position is a software position, initialized to 0 on power up.
-So, first photo shows 0,18 
+So, first photo shows 0, 18 
 
-The I turned it clockwise by 61 degrees.
-Second photo confirms that relative position is no 61 and the absolute 79
+The I (manually) turned the motor clockwise by 61 degrees.
+Second photo confirms that the relative position is now 61 and the absolute 79.
 
 I hand rotated about 80 more clockwise, with 139, 158 as result. Still makes sense.
 
 ![Motor position](images/rotate-A.jpg)
 
 A small surprise comes after rotating another 50 degrees clockwise.
-The relative position 139 increases to 139, which makes sense.
-The absolute position changes from 158 to -149. So here we see that absolute positions are in the range -180..+180.
+The relative position 139 increases to 193, which makes sense.
+The absolute position changes from 158 to -149. 
+So here we see that absolute positions are in the range -180..+180.
 
-Turning some more clockwise goes to 308, -33, so relative still grows and absolute gets closer t0 0.
+Turning some more clockwise goes to 308, -33, so relative still grows and absolute gets closer to 0.
 
-Turning even more clockwise, the relative keeps on counting even beyond 360 (377), and relative starts increasing from 0 again.
+Turning even more clockwise, the relative keeps on counting even beyond 360 (377), and absolute starts increasing from 0 again.
 
 
 ## My motor O position is not 0?
@@ -1288,6 +1292,8 @@ We can also test it the other way around: tell the motors to go to position 0 an
 As we see in the photo, none of the motors is at position O.
 
 ![Motor errors](images/motor-error.jpg)
+
+**NOTE** In the mean time, the Lego app has a feature to calibrate the zero position of the motors, fixing this issue.
 
 
 ## Why are there so many ways to do ... in Python?
