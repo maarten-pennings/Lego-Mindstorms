@@ -354,10 +354,10 @@ print(sys.version)
 ### Per 2020 nov 30
 
 - The app version 10.0.3  
-  Now has a "Getting started"  
-  Now has motor calibration (that O is 0 degrees)
-  Now has robot (extensions) from the community  
-- The Hub OS version is 2.1.4.10
+  Now has a "Getting started".  
+  Now has motor calibration (that O is 0 degrees).  
+  Now has robot (extensions) from the community.
+- The Hub OS version is 2.1.4.13
 - Micro Python 1.11.0
 - The "sys version" 3.4.0
 
@@ -497,7 +497,8 @@ can not be opened while programming. Grr.
 
 
 ## How to stop my Word block program?
-Good question: if you program doesn't stop, the hub will not power down, so stopping is important.
+Good question: if you 
+n't stop, the hub will not power down, so stopping is important.
 
 In Word block, there is an explicit stop block.
 
@@ -713,7 +714,7 @@ Can be open during programming (pfeew).
 
 
 ## How to stop my Python program?
-Good question: if you program doesn't stop, the hub will not power down, so stopping is important.
+Good question: if your program doesn't stop, the hub will not power down, so stopping is important.
 
 In Word block, there is an explicit stop block. 
 In Python, I haven't found a good method yet. I did find `sys.exit(0)` (don't forget the `import sys`).
@@ -1464,7 +1465,7 @@ Notes
  - I passed just a filename in the example, but you can specify a full path.
  - The file `data.log` has no path, so it is written to the current directory.
    As it turns out, that is the root. 
- - How do I find my file.
+ - How do I find my file?
    In the question "Which files are in the Python filesystem?" you'll find an `ls()` command, which works in REPL.
    If you run that, we get the following file list (abridged). At the end we find our `data.log`.
    
@@ -1479,7 +1480,7 @@ Notes
    data.log 41
    ```
 
- - How do I "get teh contents" of my file?
+ - How do I "get the contents" of my file?
    In the question "Which files are in the Python filesystem?" you'll find a `cat()` command, which works in REPL.
    If you run that, we get the following content.
    
