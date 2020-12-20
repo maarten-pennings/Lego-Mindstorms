@@ -82,11 +82,15 @@ is largely the same as Mindstorms Robot Inventor.
 Of course, there are the five robots that come with the box.
 Building instructions are digital only, you can find them in the app via Help > Settings > Building instructions.
 Or you can click the robot in the home screen, and go from there in smaller steps.
+Alternatively you can download them as [pdf](https://www.lego.com/en-us/service/buildinginstructions/51515).
+
 Do note that the robots come with add-ons, which are really great,
 for example [Charly drum master](https://youtu.be/EAHvnpIGu1U)
 or [Tricky chain reaction](https://youtu.be/szFxBSRUh7c?t=167)
 
-If you like more, or simpler builds, you could have a look at [Spike prime instructions](https://education.lego.com/en-us/support/spike-prime/building-instructions)
+If you like more, or simpler builds, you could have a look at 
+[Spike prime instructions](https://education.lego.com/en-us/support/spike-prime/building-instructions)
+or [alternative link](https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions).
 
 
 ## Where are my recent projects?
