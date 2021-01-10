@@ -1,14 +1,16 @@
 # Radar car
 
+![Radar car](steps/step15.jpg)
+
 ## Introduction
 
 This car has a "radar" (ultrasonic distance sensor).
-It drives straight, until it sees an obstacle close by.
-Then it stops driving, it uses it sensor to see if either left or right has the most free space.
+It drives straight, until it sees an obstacle.
+Then it stops driving, it rotates its radar to check if either left or right has the most free space.
 It makes a turn that way, and continues to drive straight again.
 
 There is one more peculiarity: this car only makes "exact" 90 degree turns (using the built-in yaw sensor).
-When driving straight, it also uses the yaw sensor to keep it direction.
+When driving straight, it also uses the yaw sensor to keep its direction.
 
 Here is a [short video](https://youtu.be/--oO_Eg1EDk) with a close-up of the car.
 
