@@ -100,7 +100,7 @@ There are several nice community builds:
  - [Robot arm](https://youtu.be/uxm7qhLNYyw)
  - [F1 race car](https://rebrickable.com/mocs/MOC-60947/ninoguba/f1-race-car-robot-inventor)
  - [Tic tac too](https://youtu.be/9Qm_rJGbT8U)
- - [Clock]Khttps://youtu.be/XmRcth8nZUA)
+ - [Clock](https://youtu.be/XmRcth8nZUA)
  - [Steam lococomotive](https://youtu.be/D6fnY4Q5w9c)
  - [Airplane](https://youtu.be/yfcK1Wd1Xm8)
  - [Scooter](https://youtu.be/oLr_ScaK5Nk)
