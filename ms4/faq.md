@@ -92,6 +92,19 @@ If you like more, or simpler builds, you could have a look at
 [Spike prime instructions](https://education.lego.com/en-us/support/spike-prime/building-instructions)
 or [alternative link](https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions).
 
+There are several nice community builds:
+ - [Hotrod](https://sites.google.com/view/devbots/free-ebooks/hot-rod)
+ - [Ox](https://youtu.be/ZYQG9EfIw28)
+ - [Bike](https://youtu.be/MCVW2Uqanlw)
+ - [Rock paper scissors](https://youtu.be/MwoE_gScDd8)
+ - [Robot arm](https://youtu.be/uxm7qhLNYyw)
+ - [F1 race car](https://rebrickable.com/mocs/MOC-60947/ninoguba/f1-race-car-robot-inventor)
+ - [Tic tac too](https://youtu.be/9Qm_rJGbT8U)
+ - [Clock]Khttps://youtu.be/XmRcth8nZUA)
+ - [Steam lococomotive](https://youtu.be/D6fnY4Q5w9c)
+ - [Airplane](https://youtu.be/yfcK1Wd1Xm8)
+ - [Scooter](https://youtu.be/oLr_ScaK5Nk)
+
 
 ## Where are my recent projects?
 When you start the Lego Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
