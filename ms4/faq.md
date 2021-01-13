@@ -104,6 +104,7 @@ There are several nice community builds:
  - [Steam lococomotive](https://youtu.be/D6fnY4Q5w9c)
  - [Airplane](https://youtu.be/yfcK1Wd1Xm8)
  - [Scooter](https://youtu.be/oLr_ScaK5Nk)
+ - [Balancing Robot](https://youtu.be/XXEp5R3kDNg)
 
 
 ## Where are my recent projects?
