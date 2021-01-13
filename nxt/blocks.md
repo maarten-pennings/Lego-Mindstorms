@@ -45,9 +45,9 @@ Download the [code](My%20Blocks/divmod.rbt).
 For fancy "rocking" motor movement, a sinus is useful. Unlike EV3, NXT-G doesn't provide that function.
 The indian mathematician Bhaskara 1 devised a relatively simple 
 [formula](https://en.wikipedia.org/wiki/Bhaskara_I%27s_sine_approximation_formula) to approximate 
-the first half period of the sinus function.
+the first half period of the sinus function. I named it `sin1h(x)`.
 
-This formula is accurate to about 0.2% in the range 0<=x<=180.
+This formula is accurate to about 0.2% in the range 0<=x<=180, when compared to the real `sin(x)`.
 
 |   x  | sin1h(x) |  sin(x) |  error |
 |-----:|---------:|--------:|-------:|
