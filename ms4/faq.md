@@ -106,7 +106,7 @@ There are several nice community builds:
  - [Scooter](https://youtu.be/oLr_ScaK5Nk)
  - [Balancing Robot](https://youtu.be/XXEp5R3kDNg)
  - [Cube solver](https://youtu.be/e2EDLIPwlSM)
-
+ - [Writing machine](https://rebrickable.com/mocs/MOC-61225/Bundy/inventor-writer-based-on-one-set-51515-mindstorms-inventor)
 
 ## Where are my recent projects?
 When you start the Lego Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
