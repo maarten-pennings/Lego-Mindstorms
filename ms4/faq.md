@@ -105,6 +105,7 @@ There are several nice community builds:
  - [Airplane](https://youtu.be/yfcK1Wd1Xm8)
  - [Scooter](https://youtu.be/oLr_ScaK5Nk)
  - [Balancing Robot](https://youtu.be/XXEp5R3kDNg)
+ - [Cube solver](https://youtu.be/e2EDLIPwlSM)
 
 
 ## Where are my recent projects?
