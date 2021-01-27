@@ -105,6 +105,7 @@ There are several nice community builds:
  - [Airplane](https://youtu.be/yfcK1Wd1Xm8)
  - [Scooter](https://youtu.be/oLr_ScaK5Nk)
  - [Balancing Robot](https://youtu.be/XXEp5R3kDNg)
+ - [Balancing Trike](https://legostudiovives.be/balancing_lego_robots/)
  - [Cube solver](https://youtu.be/e2EDLIPwlSM)
  - [Writing machine](https://rebrickable.com/mocs/MOC-61225/Bundy/inventor-writer-based-on-one-set-51515-mindstorms-inventor)
 
