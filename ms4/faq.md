@@ -98,7 +98,7 @@ There are several nice community builds:
  - [Bike](https://youtu.be/MCVW2Uqanlw)
  - [Rock paper scissors](https://youtu.be/MwoE_gScDd8)
  - [Robot arm](https://youtu.be/uxm7qhLNYyw)
- - [F1 race car](https://rebrickable.com/mocs/MOC-60947/ninoguba/f1-race-car-robot-inventor)
+ - [F1 race car](https://rebrickable.com/mocs/MOC-62452/ninoguba/premier-f1-race-car-robot-inventor)
  - [Tic tac too](https://youtu.be/9Qm_rJGbT8U)
  - [Clock](https://youtu.be/XmRcth8nZUA)
  - [Steam lococomotive](https://youtu.be/D6fnY4Q5w9c)
@@ -243,6 +243,14 @@ For Python, it is the Python text wrapped in json, below freely formatted by me 
    \n
 "}
 ```
+
+
+## What is an llsp file?
+
+An `llsp` file is presumably the same as an `lms` file.
+The only difference seems tobe that an `lms` is for Robot Inventors app and the `llsp` is for the Lego Spike Prime app.
+
+Like the `lms` file, it is an archive with an icon, manifest and code file.
 
 
 ## Can I "remote control" my robot?
