@@ -47,6 +47,8 @@ The indian mathematician Bhaskara 1 devised a relatively simple
 [formula](https://en.wikipedia.org/wiki/Bhaskara_I%27s_sine_approximation_formula) to approximate 
 the first half period of the sinus function. I named it `sin1h(x)`.
 
+![sin1h(x)](https://wikimedia.org/api/rest_v1/media/math/render/svg/87e0009ba1d0b0f7fa6057e07febf65d455aeefd)
+
 This formula is accurate to about 0.2% in the range 0<=x<=180, when compared to the real `sin(x)`.
 
 |   x  | sin1h(x) |  sin(x) |  error |
