@@ -108,6 +108,8 @@ There are several nice community builds:
  - [Balancing Trike](https://legostudiovives.be/balancing_lego_robots/)
  - [Cube solver](https://youtu.be/e2EDLIPwlSM)
  - [Writing machine](https://rebrickable.com/mocs/MOC-61225/Bundy/inventor-writer-based-on-one-set-51515-mindstorms-inventor)
+ - [R5D1 robot](https://m.facebook.com/download/338474627340404/R5D1%20Instructions.pdf)
+
 
 ## Where are my recent projects?
 When you start the Lego Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
