@@ -430,7 +430,7 @@ But I ordered a second [one](https://www.bricklink.com/v2/catalog/catalogitem.pa
 If I plug it in the hub, it is sometimes recognized, and sometimes not.
 Recognized means that it lights up, appears in the  "triangle" test app, and is listed in the lego app under the port.
 For my second sensor none of these happen (in "half" the time).
-I contacted Lego support and they are fabulous, they send me a new one.
+I contacted Lego support and they claim that with the latest firmware this is resolved.
 
 The second issue is less of a problem: the O positions of the motors have a deviation.
 I found it [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/399918451021115/?comment_id=399946571018303).
