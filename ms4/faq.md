@@ -384,6 +384,18 @@ print(sys.implementation)
 print(sys.version)
 ```
 
+### Per 2021 May 16
+
+- The app version 10.1.0  
+  In main menu, SETTING is replaced by COMMUNITY, which lists five robots: Exploration Rover, Sea Turtle, Melody Maker, 
+  and two that were previously extensions: Pet Gelo and Tricky Flippin'.
+  Some [users](https://www.facebook.com/legomindstorms/posts/3704825206290085) report three more: Salamoot, Wreckin' Bot, Print and Scan.
+- The Hub OS version is 3.1.7.2
+- Micro Python 1.12.0, mpy 517
+- The "sys version" 3.4.0
+
+![App and OS version](images/version10.1.0.png)
+
 
 ### Per 2020 nov 30
 
