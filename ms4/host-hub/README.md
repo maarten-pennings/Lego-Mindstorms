@@ -30,28 +30,30 @@ With the hub powered and connected via USB, we start the Lego IDE in Python mode
 
 This is the communication script that we upload via USB to slot 1.
 
+You can copy-and-paste it, or download and open the [lms file](host-hub.lms).
+
 ```python
 import hub
 import time
 
 # Connect to virtual com port over bluetooth
-com = hub.BT_VCP(0)
+vcp = hub.BT_VCP(0)
 # Show hint on the hub, console and host
 hub.display.show( hub.Image("90090:90090:99099:99090:99099") )
-print("Welcome to BT echo")  # Host needs string
-com.write( b"Send a char\r\n" ) # Host needs bytes
+print("Welcome to host-hub (BT)")  # Host needs string
+vcp.write( b"Send a char\r\n" ) # Host needs bytes
 # Last time the wait-for-key hint was shown
 prev = time.time()
 while True:
     # Listen to port
     now = time.time()
-    raw = com.readline()
+    raw = vcp.readline()
     if raw == None : # There is no message from host
         if now-prev >= 10 : # hint every 10 sec
             # Show hint on the hub, console and host
             hub.display.show("?")
             print("nothing ...")
-            com.write(b"waiting ...\r\n")
+            vcp.write(b"waiting ...\r\n")
             # Clear hub
             time.sleep(0.2)
             hub.display.show(" ")
@@ -60,7 +62,7 @@ while True:
         msg= raw.decode("UTF-8") # decode bytes to string
         hub.display.show(msg)
         print("received '"+msg+"'")
-        com.write( b"ack '"+raw+"'\r\n" )
+        vcp.write( b"ack '"+raw+"'\r\n" )
         prev = now
 ```
 
