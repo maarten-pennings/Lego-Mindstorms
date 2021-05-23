@@ -139,7 +139,7 @@ That is all.
 See the complete source of [study1](study1.py) for details.
 Let's see it in action.
 
-First we call the methods we implement, just to check they are working
+First we call the methods we implemented, just to check they are working
 
 ```python
 print("  study1 - low-level")
@@ -175,7 +175,8 @@ StopIteration
 
 ### Study 1 - Python way
 
-Instead of calling the low level methods `__iter__()` and `__next__()` we should call the wrapper.
+Instead of calling the low level methods `__iter__()` and `__next__()` 
+we should call the Python wrappers `iter()` and `next()`.
 
 ```python
 print("  study1 - python-way")
@@ -203,7 +204,7 @@ This produces the same output
 ### Study 1 - for-in (iterator)
 
 The real Pythonic way to do this is the for-in loop.
-The for loop uses the iterator.
+The for-in loop uses the iterator.
 
 ```python
 iterable = Perm(4)
@@ -223,12 +224,13 @@ which produces the same output
     2
 ```
 
-and even handles the `StopIteration`.
+and even handles the `StopIteration`. 
+A definite improvement.
 
 ### Study 1 - for-in (iterable)
 
-But the real real Pythonic way to do this is to use the _iterable_ in the for-in loop, not the _iterator_.
-The for-in then first gets the iterator itself, and then uses it.
+But the real real Pythonic way to do this, is to use the _iterable_ in the for-in loop, not the _iterator_.
+The for-in first gets the iterator itself, and then uses it.
 
 ```python
 # Looping using an iterable: for-in
@@ -287,13 +289,14 @@ In study 1 we implemented an iterator without creating a second class.
 The iterable _is_ its own iterator.
 Since the iterable had only one cursor (`iter_index`), we can not have two iterators active at one time.
 
-In [study 2](study2.py) we fix that: `__iter__()`` creates a fresh iterator, which is an object of a new class `PermIterator`.
+In this [study 2](study2.py) we fix that: `__iter__()` creates a fresh iterator, 
+which is an object of a new class `PermIterator`.
 
 ### Study 2 - the iterable
 
 We have the same iterable as before `Perm`.
 This time, its `__iter__()` method returns a new fresh iterable `PermIterator`.
-That also means, the `Perm` no longer needs `__next__()` (the `PermIterator` class needs it).
+That also means, the `Perm` class no longer needs `__next__()` (it moves to the `PermIterator` class).
 
 ```python
 import random
@@ -333,7 +336,7 @@ class PermIterator :
     # Since this is an iterator, it must have __next__().
     # __next__() must return all elements of the iterable, 
     # one per call, and end by raising StopIteration
-	# We know the internal structure of Perm (e.g. that it has a `nums`).
+    # We know the internal structure of Perm (e.g. that it has a `nums`).
     def __next__(self) :
         if self.index == len(self.perm.nums ) :
             raise StopIteration
@@ -374,7 +377,7 @@ for elm1 in iterable :
         print( "   ",elm1,elm2)
 ```
 
-Yes. The iterators are no longer aliases, they run dependently.
+Yes. The iterators are no longer aliases, they run independently.
 
 ```text
   study2 - two iterators: does now work
@@ -404,7 +407,7 @@ That is possible if we can _compute_ the elements instead of actually _storing_ 
 In [study 3](study3.py) we give an example using the Fibonacci sequence.
 
 To keep the source short, we fall back on an iterable that has itself as iterator 
-(with the know downside we can not have two iterators).
+(with the know downside we can not have two iterators active).
 
 ```python
 # This class is an container of _all_ Fibonacci numbers.
@@ -456,7 +459,7 @@ So we get this as result
 In study 3 we give an example of an iterator that computes the elements on the fly.
 This is such a common pattern that Python has syntactic sugar for that.
 
-There are special functions (still defined with `def`, but they have `yield` somewhere in their body). 
+There are special functions - still defined with `def`, but they have `yield` somewhere in their body. 
 When you call them, they are not executed.
 Instead, some magic Python code is run, and that converts the function body into an iterator.
 That iterator is returned.
@@ -476,8 +479,10 @@ Instead a generator-iterator is returned.
 The generator-iterator object conforms to the iterator protocol, i.e. it has a `next()`.
 The value returned by `next()` is the expression passed to `yield`.
 
-The generator function may have multiple `yield` statements, each `next()` runs until `yield` (and starts from previous `yield`).
-If the function returns (with an explicit `return` statement, or implicitly at the end of the function), the iterator stops.
+The generator function may have multiple `yield` statements, each `next()` runs until `yield` 
+(and starts where the previous `yield` stopped).
+If the function returns (with an explicit `return` statement, or implicitly at the end of the function), 
+the iterator stops.
 
 ```python
 def fib() :
@@ -488,7 +493,7 @@ def fib() :
       a,b = b,a+b
 ```
 
-As we see, this [study 4](study4.py) code is shorter than the `Fibonacci` in study 3.
+As we see, this [study 4](study4.py) code is shorter than the `Fibonacci` in [study 3](study3.py).
 
 ### Study 4 - for-in
 
@@ -520,10 +525,10 @@ with the expected result
 
 In [study 5](study5.py) we push generators to the limit.
 
-A container could contain say two sub containers. 
+A container can contain, say, two sub containers. 
 Is it possible that a generator contains two sub generators?
 
-Of course the iterator of the container would iterator the first sub container, and then the second.
+Of course the iterator of the container would iterate the first sub container, and then the second.
 Likewise, the generator would first generate the first sub generator, and then the second.
 
 And yes, Python supports this.
@@ -539,16 +544,18 @@ def pow(base) :
         yield base ** exp
 ```
 
-If we call that for base 10
+If we call that for base 10,
 
 ```text
+print("  study5 - pow")
 for element in pow(10) :
     print( "   ", element )
 ```
 
-it generates the first 5 powers of 10
+it generates the first 5 powers of 10.
 
 ```text
+  study5 - pow
     1
     10
     100
@@ -678,12 +685,12 @@ returns 25 elements
 
 ## Study 6 generator types
 
-[Study 6](study6.py) is the last study. We look at the types yielded by generators.
+[Study 6](study6.py) is the last study. We look at the _types_ yielded by generators.
 
 ### Study 6 - multiple types
 
 Syntactically, a generator looks like a function, with `return expr` replaced by `yield expr`.
-For each `next()` the generator returns the computed `expr`.
+For each `next()` the generator yields the computed `expr`.
 Python is dynamically typed: a generator body may contain multiple `yield`s, 
 each `yield` has its own expression, and each of those can potentially have a different type.
 
@@ -708,7 +715,7 @@ for element in gentypes() :
     print( "   ", element, "-", type(element).__name__ )
 ```
 
-Actually, no surprises
+Actually, no surprises with Python's dynamic typing.
 
 ```text
   study6 - multiple types
@@ -725,12 +732,13 @@ Note that like `return` the expression of `yield` may be absent, this means that
 ### Study 6 - side effect
 
 Is it useful that a (plain) function has no `return` statement, or only "empty" ones?
-No, because the function does not compute any value.
-But yes, it is useful if the function has side effects.
-In the good old days of the Pascal language, the former where called _function_ and the latter _procedues_.
+Maybe no, because the function does not compute any value.
+But yes, it is useful if the function has _side effects_.
+In the good old days of the Pascal language, 
+functions returning a value were declared as _function_ and functions returning nothing/None/void as  _procedues_.
 
-The same holds for generators.
-The `yield` may be expression-less, but then the generator should have a side-effect.
+The same usefulness considerations hold for generators.
+The `yield` may be without an expression, but then the generator should have a side-effect.
 
 ```python
 # Generator that only has side effects
@@ -747,7 +755,7 @@ for element in sideeffect(6) :
     print( "   ", element)
 ```
 
-But 6 lines are printed as side effect.
+Twelve lines are printed, 6 in the for-in and 6 as side effect.
 ```text
   study6 - side effect
     0
@@ -772,8 +780,8 @@ for element in sideeffect(6) :
 
 ## Conclusion
 
-- We have studied _iterables_, they have an `__iter__()` member function returning an _iterator_.
-- An _iterator_ has a member function `__next__()`, which returns the next value (or raises `StopIteration`).
+- We have studied _iterables_, data structures that have an `__iter__()` member function, which returns an _iterator_.
+- An _iterator_ has a member function `__next__()`, which returns the next value (or raises `StopIteration`) from the iterable.
 - The iterable can be its own iterator, but that blocks using two iterators at the same time.
 - An iterator can exist without iterable (container), if it _computes_ the elements instead of producing the one from the container.
 - A generator is a function with `yield` in the body; it is a compact way to write a computing iterator.

@@ -1,16 +1,16 @@
-# Cooperative multi tasking study
+# Cooperative multi-tasking study
 
-This directory contains some python projects with the aim to develop cooperative multi tasking in Lego Mindstorms 4 Robot inventor.
-However, this study is Python (on a PC) only.
+This directory contains some python projects with the aim to develop cooperative multi-tasking in Lego Mindstorms 4 Robot inventor.
+However, this study is Python (on a PC) only. We do not yet make the step to Lego.
 
-The core of the mechanism is _generators_.
+The core of the multi-tasking mechanism is _generators_.
 
 To understand those, see the precursory [study](../iteratorstudy) for details.
 
 
 ## Introduction
 
-The crux of a generator is that it runs from `yield` to `yield` on every call to `next()`.
+The crux of a Python generator is that it runs from `yield` to `yield` on every call to `next()`.
 
 So we can write a function with all kinds of "normal processing" (a sequence of statements, even with `if`s or `while`s)
 and intersperse a `yield` now and then. Each time `next()` is called the function progresses to the next `yield`.
@@ -18,38 +18,37 @@ The `yield`s themselves have no expression, so the only thing that matters are t
 
 Now we take a mental context switch.
 
-Consider a multi tasking environment.
+Consider a multi-tasking environment.
 Multiple _tasks_ are running in parallel.
 Each task has its own _task function_ - the function that is run for that task.
 Typically that function is a never ending loop.
 
 In a _preemptive_ system, the tasks (their task functions) run in parallel and can be stopped and continued by the kernel
-at more or less arbitrary moments. Exceptions as critical sections made with e.g. mutexes.
+at more or less arbitrary moments. Exception to this rule are the critical sections, made with e.g. mutexes.
 
-However, also _cooperative_ multi tasking systems exist.
+However, also _cooperative_ multi-tasking systems exist.
 Here, the tasks must voluntarily give up the cpu and allow another task to become computable.
-There is an api of the kernel that contains functions to (may) cause a task switch.
+There is an api of the kernel that contains functions that (may) cause a task switch.
 
 The down side of cooperative kernels is that a run-away task "kills" the system.
 If a task never gives up the cpu, others will never run. bad.
-On the up side, it is much easier to write a program for a cooperative kernel, since there is task switching at arbitrary moments.
+On the up side, it is much easier to write a program for a cooperative kernel, since there is no task switching at arbitrary moments.
 Every sequence of statements is a non-preemptable section ("critial section") until an explicit "switch task" call.
 
 Another down side of preemptive kernels is that they are harder to implement.
 Lego Mindstorms 4 Robot Inventor does not yet support it.
-The underlying micro python does support this at [experimental level](https://docs.micropython.org/en/latest/library/_thread.html).
+The underlying micro python does support this at
+[experimental level](https://docs.micropython.org/en/latest/library/_thread.html) only.
 
 > This module is highly experimental and its API is not yet fully settled and not yet described in this documentation.
 
-Now take a mental step.
-
-Think of generators again. Sequence of statements running from yield to yield. 
+Think of generators again. Sequence of statements running from yield to yield.
 Thinks of those yields as the "give up cpu" call to the kernel.
-And we have our free cooperative multi tasking system.
+And we have our free cooperative multi-tasking system.
 
 This is very close to a main loop calling fragments of code.
-But generators is better, because a long fragment of code (taking 5x the time it is deemed good for responsiveness or deadline)
-does not need to be cut in fragments; we can just keep the one big fragment and have yields at appropriate places.
+But generators are better, because a long fragment of code (taking more time than is deemed good for responsiveness or deadline)
+does not need to be cut in fragments; we can just keep the one big fragment and have yields at appropriate places to cut it in shorter time intervals.
 
 ## Setup
 
@@ -72,7 +71,7 @@ def task_main(lbl="label",start=0) :
     while True:
         print( f"  {lbl} {counter}")
         step += 1
-        yield 
+        yield
 ```
 
 Next, we create two tasks.
@@ -110,11 +109,11 @@ prog1 - tick tock
 ## Program 2 - writer reader
 
 The previous program is named after Intels tick/tock strategy.
-The first task makes one step (tick) then the other task makes one (tock), 
+The first task makes one step (tick) then the other task makes one (tock),
 and so on (tick, tock, tick, ...).
 
 The next example, [program 2](prog2.py) is a bit more realistic.
-We have one task (writer) that adds numbers to a global queue, 
+We have one task (writer) that adds numbers to a global queue,
 and another task (reader) that removes those numbers from the queue.
 
 ```python
@@ -122,11 +121,12 @@ queue = []
 ```
 
 In the real world, the writer is maybe handling incoming bytes of the serial port.
-To make it somewhat realistic, the writer in this example acts randomly, 
-it has a 1 in 100 change to write numbers, the count of bytes being written is random 
+To make it somewhat realistic, the writer in this example acts randomly,
+it has a 1 in 100 change to write numbers, the count of bytes being written is random
 between 1 and 5.
 
 For debugging the writer `print`s how many bytes were added to the `queue`.
+For simplicity, the values written (`val`) are sequential starting at 100.
 
 ```python
 def task_writer() :
@@ -140,7 +140,7 @@ def task_writer() :
             for _ in range(count) :
                 queue.append(val)
                 val += 1
-        yield 
+        yield
 ```
 
 Note that the writer has two `yield`s (more are possible).
@@ -156,12 +156,12 @@ def task_reader() :
         while len(queue)>0 :
             elem = queue.pop(0)
             print( f"  r: {elem}" )
-        yield 
+        yield
 ```
 
 This completes the task functions.
 We create the two tasks, a writer and a reader, and start the kernel.
-The kernel is limited to run 1000 cycles, we should expect 10 writes.
+The kernel is limited to run 1000 cycles, we should expect 10 writes (1 in 100).
 
 ```python
 # Create the two tasks (with label and start value).
@@ -175,7 +175,7 @@ for _ in range(1000):
 ```
 
 My run happens to be shorter: only 6 writes.
-But we see that if _n_ bytes are written, the reader takes all _n_ in one go.
+But we see that if _n_ bytes are written, the reader pops all _n_ in one go.
 
 ```text
 prog2 - writer reader
@@ -207,12 +207,13 @@ prog2 - writer reader
 
 Most embedded programs use time heavily.
 
-In [program 3](prog3.py), we have two tasks that each control a LED, 
+In [program 3](prog3.py), we have two tasks that each control a LED,
 one with a 2 sec toggle period, the other with a 3 second toggle period.
 
 To make timing easier, we have defined a `Timer` class.
 
 ```python
+import time
 class Timer():
     def __init__(self):
         """Creates a Timer and resets it."""
@@ -226,8 +227,7 @@ class Timer():
 ```
 
 Each timer that is created has its own reset moment.
-
-So we can use that have a `clock` that is reset at program startup, and from then one we can use 
+We can use that to have a `clock` that is reset at program startup, and from then on we can use
 `clock.now()` to check how long our program has run. We use this for time stamping log messages.
 
 ```python
@@ -235,7 +235,7 @@ So we can use that have a `clock` that is reset at program startup, and from the
 clock = Timer()
 ```
 
-Both tasks have their own `t=Timer()` to control their LED. Each time the LED toggles,
+In addition, both tasks have their own `t=Timer()` to control their LED. Each time the LED toggles,
 the timer is reset. Both tasks use the same task function. Upon task creation we pass
 which LED to toggle (`lbl` parameter) and how fast (`sec` parameter).
 
@@ -270,7 +270,7 @@ for _ in range(500_000_00):
 ```
 
 Note that each task only does one check `t.now() >= sec`, then yields.
-On my PC, python can do that ~20 million times in 1 second.
+On my PC, Python can do that ~20 million times in 1 second.
 So, 500 million cycles gives a runtime of ~25 seconds.
 
 ``` text
@@ -297,31 +297,31 @@ prog3 - time
   22: a=11
 ```
 
-Observer that indeed "a" is toggled every 2 seconds (at 0, 2, 4, 6, ...)
+Observe from this log, that indeed "a" is toggled every 2 seconds (at 0, 2, 4, 6, ...)
 and "b" is toggled every 3 seconds (at 0, 3, 6, 9, ...).
 
 ## Program 4 - no break up
 
 Remember the promise from the introduction?
 
-> But generators is better, because a long fragment of code 
-> does not need to be cut in fragments; 
+> But generators are better, because a long fragment of code
+> does not need to be cut in fragments;
 > we can just keep the one big fragment and have yields at appropriate places.
 
-But what we actually see in program 2 is that we did break up the program.
+But what we actually see in program 3 is that we did break up the program.
 The while loop has a timer, and each time the timer triggers we take one small action.
 
-In [program 3](prog3.py), we will investigate not breaking up the program.
-We have one task that controls LED "a" to switch on for 2 and off for 5.
+In [program 4](prog4.py), we will investigate not breaking up the program.
+We have one task that controls LED "a" to switch on for 2 and off for 5 seconds.
 
 We do not want "time event handlers":
 
 ```python
-if t.now() >= onsec  : 
+if t.now() >= onsec  :
     led_off()
     t.reset()
-  
-if t.now() >= offsec : 
+
+if t.now() >= offsec :
     led_on()
     t.reset()
 ```
@@ -331,9 +331,9 @@ Rather, we want one simple sequential program
 ```python
 while True:
     led_on()
-	wait(onsec)
+    wait(onsec)
     led_off()
-	wait(offsec)
+    wait(offsec)
 ```
 
 We have the same `Timer` class (and `clock`) as before, but we make a `wait` generator.
@@ -349,11 +349,11 @@ This generator keeps on yielding until `sec` has elapsed. That is the side effec
 
 The task that controls the LED can now indeed be written without breaking up.
 The crux here is the `yield` delegation to `wait()`.
-Every cycle (every `next()` to `led_main()`) that `wait()` yields (instead of raising `StopIteration`) is yielded by `led_main()`.
-As soon as `wait(0` raises `StopIteration`, the `yield from` terminates, and `led_main()` continues with the next `print()`.
+Every cycle (every `next()` to `led_main()`) that the `wait()` function yields instead of raising `StopIteration`) is yielded by `led_main()`.
+As soon as `wait()` raises `StopIteration`, the `yield from` terminates, and `led_main()` continues with the next `print()`.
 
 ```python
-# Implements an infinite loop, which switches on LED `lbl` for `onsec` seconds, 
+# Implements an infinite loop, which switches on LED `lbl` for `onsec` seconds,
 # then switches it off for `offsec` seconds.
 # This propagates the yields from the sub-generator `wait()` to the main loop.
 def led_main(lbl, onsec, offsec) :
@@ -401,7 +401,7 @@ prog4 - no break up
 It is closer to real embedded software; the LED is now a global variable.
 
 ```python
-led_a = 0  
+led_a = 0
 def led_a_main(onsec, offsec) :
     global led_a
     while True:
@@ -503,10 +503,11 @@ prog5 - globals
 ## Conclusions
 
 We have seen how
-- to write "event" handlers.
-- we can use `yield` to skip time.
+- to write "event" handlers;
+- to write a `Timer` helper class;
+- we can use `yield` to skip time;
 - we can use `yield from` to delegate waiting to a sub generator `wait()`, allowing us to prevent "break up".
 
-Time to switch to lego Mindstorms 4 Robot Inventor and try this out.
+Time to switch to Lego Mindstorms 4 Robot Inventor and try this out.
 
 (end)
