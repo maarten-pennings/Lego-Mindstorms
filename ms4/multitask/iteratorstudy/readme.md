@@ -675,4 +675,110 @@ returns 25 elements
     1
 ```
 
+
+## Study 6 generator types
+
+[Study 6](study6.py) is the last study. We look at the types yielded by generators.
+
+### Study 6 - multiple types
+
+Syntactically, a generator looks like a function, with `return expr` replaced by `yield expr`.
+For each `next()` the generator returns the computed `expr`.
+Python is dynamically typed: a generator body may contain multiple `yield`s, 
+each `yield` has its own expression, and each of those can potentially have a different type.
+
+Is that allowed? yes. Is that useful? probably not.
+
+Let's go for the extreme,
+
+```python
+def gentypes() :
+    yield 1
+    yield "two"
+    yield True
+    yield None
+    yield
+    yield 6
+```
+
+and see what this yields
+
+```python
+for element in gentypes() :
+    print( "   ", element, "-", type(element).__name__ )
+```
+
+Actually, no surprises
+
+```text
+  study6 - multiple types
+    1 - int
+    two - str
+    True - bool
+    None - NoneType
+    None - NoneType
+    6 - int
+```
+
+Note that like `return` the expression of `yield` may be absent, this means that `None` is yielded, as shown in the test above.
+
+### Study 6 - side effect
+
+Is it useful that a (plain) function has no `return` statement, or only "empty" ones?
+No, because the function does not compute any value.
+But yes, it is useful if the function has side effects.
+In the good old days of the Pascal language, the former where called _function_ and the latter _procedues_.
+
+The same holds for generators.
+The `yield` may be expression-less, but then the generator should have a side-effect.
+
+```python
+# Generator that only has side effects
+def sideeffect(n) :
+    for i in range(n) :
+        print( "   ", i, "!" )
+        yield
+```
+
+We can now loop over the elements, but all elements are `None`. So we have an empty body.
+
+```python        
+for element in sideeffect(6) :
+    print( "   ", element)
+```
+
+But 6 lines are printed as side effect.
+```text
+  study6 - side effect
+    0
+    None
+    1
+    None
+    2
+    None
+    3
+    None
+    4
+    None
+    5
+    None
+```
+
+Maybe this for-in loop is more appropriate
+```python
+for element in sideeffect(6) :
+    pass
+```
+
+## Conclusion
+
+- We have studied _iterables_, they have an `__iter__()` member function returning an _iterator_.
+- An _iterator_ has a member function `__next__()`, which returns the next value (or raises `StopIteration`).
+- The iterable can be its own iterator, but that blocks using two iterators at the same time.
+- An iterator can exist without iterable (container), if it _computes_ the elements instead of producing the one from the container.
+- A generator is a function with `yield` in the body; it is a compact way to write a computing iterator.
+- Generators may yield `None` in which case the generator needs to have a side effect.
+
+The last conclusion is the basis for cooperative multitasking. See the next [study](../tasksstudy/readme.md) for details.
+
 (end)
