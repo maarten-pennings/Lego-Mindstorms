@@ -104,8 +104,8 @@ The object is a container (of the elements in the permutation - see `self.nums`)
 This means we want to call `iter()`. 
 What you should know is that `iter(obj)` calls `obj.__iter__()`, so that is what we need to add to our class.
 
-A common approach (in Python) is that an iterable (Perm) implements its own iterator. Let's give that a try.
-We add the `__iter__()` method to our `Perm` class, and set the cursor to 0.
+A common approach (in Python) is that an iterable (`Perm`) implements its own iterator. Let's give that a try.
+We add the `__iter__()` method to our `Perm` class, and set the cursor `iter_index` to 0.
 
 ```python    # Having __iter__ makes an object iterable.
     # Having __iter__ makes an object iterable.
@@ -117,8 +117,8 @@ We add the `__iter__()` method to our `Perm` class, and set the cursor to 0.
 ```
 
 The `__iter__()` returns an object, which must be an iterator. That means, the object must have a "next".
-Since the `__iter__()` returns the Perm object itself, the Perm class must have the "next" method.
-Similarly to `iter`, `next(obj)` calls `obj.__next__()`, so that is what we need to add to our Perm class.
+Since the `__iter__()` returns the `Perm` object itself, the `Perm` class must have the "next" method.
+Similarly to `iter`, `next(obj)` calls `obj.__next__()`, so that is what we need to add to our `Perm` class.
 
 ```python
     # The __iter__() function shall return an object that has a __next__().
@@ -162,7 +162,7 @@ This produces
     2
 ```
 
-If the last line was not commented out, the StopIterator would kick in.
+If the last line was not commented out, the `StopIterator` would kick in.
 
 ```text
 Traceback (most recent call last):
@@ -227,7 +227,7 @@ and even handles the `StopIteration`.
 
 ### Study 1 - for-in (iterable)
 
-But the real real Pythonic way to do this is to use the iterable in the for-in loop (not the iterator).
+But the real real Pythonic way to do this is to use the _iterable_ in the for-in loop, not the _iterator_.
 The for-in then first gets the iterator itself, and then uses it.
 
 ```python
@@ -253,8 +253,8 @@ this produces the same output
 
 So, is everything fine? No.
 
-Since the object is its own iterator (`__iter__()` returns `self`), every Perm object has exactly one cursor.
-Suppose that we want to print a table of all combinations.
+Since the object is its own iterator (`__iter__()` returns `self`), every `Perm` object has exactly one cursor.
+Suppose that we want to print a table of all element combinations.
 We might expect the following to work.
 
 ```python
@@ -275,8 +275,8 @@ But it doesn't, we get this as output.
     0 2
 ```
 
-The reason is that the iterators in the two for-in loops are aliases, so when the second loop ends
-(after iterating 0, 1, 3, 2), also the first loops ends (its an alias).
+The reason is that the iterators in the two for-in loops are _aliases_, so when the second loop ends
+(after iterating 0, 1, 3, 2), also the first loops ends (it's an alias).
 
 In study 2 we will fix this.
 
@@ -287,13 +287,13 @@ In study 1 we implemented an iterator without creating a second class.
 The iterable _is_ its own iterator.
 Since the iterable had only one cursor (`iter_index`), we can not have two iterators active at one time.
 
-In [study 2](study2.py) we fix that: we create a fresh iterator, which is an object of a new class `PermIterator`.
+In [study 2](study2.py) we fix that: `__iter__()`` creates a fresh iterator, which is an object of a new class `PermIterator`.
 
 ### Study 2 - the iterable
 
 We have the same iterable as before `Perm`.
 This time, its `__iter__()` method returns a new fresh iterable `PermIterator`.
-That also means, the `Perm` class does not need `__next__()`, the `PermIterator` needs it.
+That also means, the `Perm` no longer needs `__next__()` (the `PermIterator` class needs it).
 
 ```python
 import random
@@ -315,7 +315,7 @@ class Perm :
         return PermIterator(self)
 ```
 
-Note that a `PermIterator` is created, and that it has a ref to the iterable:
+Note that a `PermIterator` is created, and that it has a reference to the iterable:
 the iterator must know which permutation to iterate.
 
 ### Study 2 - the iterator
@@ -333,6 +333,7 @@ class PermIterator :
     # Since this is an iterator, it must have __next__().
     # __next__() must return all elements of the iterable, 
     # one per call, and end by raising StopIteration
+	# We know the internal structure of Perm (e.g. that it has a `nums`).
     def __next__(self) :
         if self.index == len(self.perm.nums ) :
             raise StopIteration
@@ -373,7 +374,7 @@ for elm1 in iterable :
         print( "   ",elm1,elm2)
 ```
 
-Yes. The iterators are no longer aliases, the run idendepently
+Yes. The iterators are no longer aliases, they run dependently.
 
 ```text
   study2 - two iterators: does now work
@@ -398,7 +399,7 @@ Yes. The iterators are no longer aliases, the run idendepently
 ## Study 3 indefinite iterator
 
 One of the tricks we can do is to make an iterable with an indefinite amount of elements.
-That is possible if we can compute the elements instead of actually storing them.
+That is possible if we can _compute_ the elements instead of actually _storing_ them.
 
 In [study 3](study3.py) we give an example using the Fibonacci sequence.
 
@@ -453,11 +454,11 @@ So we get this as result
 ## Study 4 special iterator: generator
 
 In study 3 we give an example of an iterator that computes the elements on the fly.
-This is such a common pattern that python has syntactic sugar for that.
+This is such a common pattern that Python has syntactic sugar for that.
 
 There are special functions (still defined with `def`, but they have `yield` somewhere in their body). 
 When you call them, they are not executed.
-Instead, some magic Python code is run, and that converts the function body to an iterator.
+Instead, some magic Python code is run, and that converts the function body into an iterator.
 That iterator is returned.
 
 Sounds complex, [study 4](study4.py) shows an example, using the Fibonacci sequence we also studied in study 3.
@@ -476,7 +477,7 @@ The generator-iterator object conforms to the iterator protocol, i.e. it has a `
 The value returned by `next()` is the expression passed to `yield`.
 
 The generator function may have multiple `yield` statements, each `next()` runs until `yield` (and starts from previous `yield`).
-If the function `return`s (with an explicit return statement, or implicitly at the end of the function), the iterator stops.
+If the function returns (with an explicit `return` statement, or implicitly at the end of the function), the iterator stops.
 
 ```python
 def fib() :
@@ -487,11 +488,12 @@ def fib() :
       a,b = b,a+b
 ```
 
-As we see this [study 4](study4.py) code is shorter than the `Fibonacci` in study 3.
+As we see, this [study 4](study4.py) code is shorter than the `Fibonacci` in study 3.
 
 ### Study 4 - for-in
 
 We can now call the function `fib()`. It returns an iterator, so it can be used in a for-in loop.
+The iterator never stops by itself, so again we have an emergency break.
 
 ```python        
 for element in fib() :
@@ -524,7 +526,7 @@ Is it possible that a generator contains two sub generators?
 Of course the iterator of the container would iterator the first sub container, and then the second.
 Likewise, the generator would first generate the first sub generator, and then the second.
 
-Python supports this.
+And yes, Python supports this.
 
 ### Study 5 - power
 
@@ -621,7 +623,7 @@ which gives the same results:
 
 Just to stretch the limits.
 A generator is a function (that returns an iterator).
-Functions can be recursive. Can generators also be recursive.
+Functions can be recursive. Can generators also be recursive?
 
 Yes they can.
 

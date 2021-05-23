@@ -29,6 +29,7 @@ class PermIterator :
     # Since this is an iterator, it must have __next__().
     # __next__() must return all elements of the iterable, 
     # one per call, and end by raising StopIteration
+	# We know the internal structure of Perm (e.g. that it has a `nums`).
     def __next__(self) :
         if self.index == len(self.perm.nums ) :
             raise StopIteration
