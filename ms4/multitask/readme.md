@@ -14,6 +14,7 @@ I took these steps
    This uses sub generators to wait.
    See the [tasks study](tasksstudy).
  
- - Todo: in Lego
+ - Last step was to make a [traffic light](trafficlight.md).
+   This closely follows the task study, but now really runs on the brick.
 
 (end)

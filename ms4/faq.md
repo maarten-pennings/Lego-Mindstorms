@@ -125,9 +125,12 @@ You have to click PROJECTS at the bottom of the app's home screen.
 Unfortunately, the list of projects starts with the standard lego ones, and not with e.g. the most recent ones.
 You have to scroll all the way down.
 
-The Lego app is very limited in using _keys_. The DownArrow doesn't work. Fortunately PageDown does work.
-So does the scroll wheel. The scroll bar itself is too thin to easily grab with the mouse. Grr.
+The mouse scroll wheel does work, but the scroll bar itself is too thin to easily grab with the mouse. Grr.
 
+The Lego app is very limited in using _keys_. 
+The DownArrow (or UpArrow) don't work. 
+Fortunately PageDown and PageUp do work, best is probably End (or Home).
+Unfortunately, you first have to click the project list (to give it focus) and make the keys work. Grr.
 
 ## How should I name my projects?
 Most projects end up with a name like `Project 17`, because the Lego app does not ask for a name.
@@ -355,7 +358,7 @@ It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/short
   - **^#P issues a play**.
   - ^#D issues a download.
   - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
-  - **You can only walk up (arrow-up, page-up) in the console, not down, and the scroll bar sucks - grr**.
+  - **You can only walk up (arrow-up, page-up, home) in the console, not down (arrow-down, page-down and end all jump to end), and the scroll bar sucks - grr**.
   - Fancy line commenting: ^K^C add line comment, ^K^U delete line comment, ^/ toggle line comment.
   - #@A to toggle block comment.
   - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
