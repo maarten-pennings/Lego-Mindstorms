@@ -501,6 +501,96 @@ with the expected result
     13
 ```
 
+### Study 4 - life-cycle
+
+I was wondering about the life-cycle of the generator. What is what and when :-).
+
+I made this generator-function; it yields 1 and 2, but prints A, B and C around those yields.
+
+```python
+def lifecycle():
+    print("    A")
+    yield 1
+    print("    B")
+    yield 2
+    print("    C")
+```
+
+Let's first check the types.
+
+```python
+print( "   ", lifecycle )
+lc = lifecycle();
+print( "   ", lc )
+it = iter(lc)
+print( "   ", it )
+```
+
+The first output is not really a surprise, `lifecycle` is a _function_.
+Then we call that function, and store the result in `lc`.
+The next print, of `lc`, matches the Python documentation. The `lifecycle` body is not run, 
+which is confirmed by not getting any output, not even "A". Instead, what is returned
+is a _generator_.
+
+Then comes a bit of a surprise. The generator is an _iterable_. 
+This follows form the fact that we are able to call `iter()` on `lc`. 
+
+```text    
+    <function lifecycle at 0x000001687714E310>
+    <generator object lifecycle at 0x000001687713F9E0>
+    <generator object lifecycle at 0x000001687713F9E0>
+```
+
+This is a bit contradicting the documentation, which says 
+
+> When a generator function is called [...] no code in the body of the function is executed. 
+> Instead a generator-iterator object is returned
+
+So it clearly says an _iterator_ is returned.
+What we see is that an iterable is returned, because it allows `iter()`.
+Note however that the returned iterator is the _same_ object as the iterable (same address).
+So the iterable is its own iterator - just as we had in study 1.
+Since a for-in loop needs an iterable, it is very convenient that the returned generator object is both.
+
+Let's now use the generator: three discrete steps to get a `next()` value - trapping `StopIteration`.
+
+```python
+print("    --------")
+try :
+    print( "   ", next(lc) )
+except StopIteration:
+    print( "    StopIteration" )
+print("    --------")
+try :
+    print( "   ", next(lc) )
+except StopIteration:
+    print( "    StopIteration" )
+print("    --------")
+try :
+    print( "   ", next(lc) )
+except StopIteration:
+    print( "    StopIteration" )
+print("    --------")
+```
+
+We see that only now the first "A" comes out. So the generator body is only run once we call
+the first `next()`; it prints "A" and yields 1. 
+The "B" prints in the second `next()` which yields 2.
+The third next prints "C", does not yield, but instead raises `StopIteration`.
+
+```text    
+    --------
+    A
+    1
+    --------
+    B
+    2
+    --------
+    C
+    StopIteration
+    --------
+```
+
 ## Study 5 nested generators
 
 In [study 5](study5.py) we push generators to the limit.

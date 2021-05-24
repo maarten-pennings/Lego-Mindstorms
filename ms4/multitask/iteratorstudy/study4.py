@@ -27,6 +27,41 @@ for element in fib() :
     if element==13 :
         break # Emergency break
 
+
+# This generator is made to show what happens when in its lifecycle.
+def lifecycle():
+    print("    A")
+    yield 1
+    print("    B")
+    yield 2
+    print("    C")
+
+print("  study4 - life-cycle")
+
+print( "   ", lifecycle )
+lc = lifecycle();
+print( "   ", lc )
+it = iter(lc)
+print( "   ", it )
+
+print("    --------")
+try :
+    print( "   ", next(lc) )
+except StopIteration:
+    print( "    StopIteration" )
+print("    --------")
+try :
+    print( "   ", next(lc) )
+except StopIteration:
+    print( "    StopIteration" )
+print("    --------")
+try :
+    print( "   ", next(lc) )
+except StopIteration:
+    print( "    StopIteration" )
+print("    --------")
+
+   
 # study4 - special iterator: generator
 #   study4 - for-in
 #     0
@@ -37,3 +72,17 @@ for element in fib() :
 #     5
 #     8
 #     13
+#   study4 - life-cycle
+#     <function lifecycle at 0x000001133CDEE280>
+#     <generator object lifecycle at 0x000001133C93FAC0>
+#     <generator object lifecycle at 0x000001133C93FAC0>
+#     --------
+#     A
+#     1
+#     --------
+#     B
+#     2
+#     --------
+#     C
+#     StopIteration
+#     --------
