@@ -695,6 +695,21 @@ which gives the same results:
     81
 ```
 
+I agree that `yield from xxx` is a bit shorter than `for elm in xxx: yield elm`, but not that much shorter.
+Why does Python have this new construct?
+
+As [PEP380](https://www.python.org/dev/peps/pep-0380/) explains
+
+> However, if the subgenerator is to interact properly with the caller in the case of calls to 
+> send(), throw() and close(), things become considerably more difficult. 
+> As will be seen later, the necessary code is very complicated, and it is tricky to handle all the corner cases correctly.
+
+We did not yet study `send()`, and we won't for now. But in a nutshell
+- `next(gen)` returns val, assuming `gen` hits the statement `yield val`.
+- `gen.send(val)` makes `x=yield` in `gen` assign `val` to `x`.
+- If `gen` has `x=yield y`, the value of `y` is yielded by `next` and a value `send` is assigned to `x`.
+
+Let's forget about `send()`.
 
 ### Study 5 - recursion
 
