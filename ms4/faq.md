@@ -78,6 +78,20 @@ is largely the same as Mindstorms Robot Inventor.
   **rotation sensor**: 360 ticks per revolution, 3 degrees accuracy, 100 Hz sampling
 
 
+## Is there help from Lego?
+
+Yes, Lego is publishing intruction videos on YouTube. Unfortunately not on a separate channel or in a playlist.
+These I found (top-most is oldest):
+
+ - [Robot Inventor Explained!](https://www.youtube.com/watch?v=ntBkg2x3EJ0)
+ - [How to Connect Your Hub](https://www.youtube.com/watch?v=MEj1_pS3esw)
+ - [How to Code Your First Program](https://www.youtube.com/watch?v=sIfAlu29YyA)
+ - [How to Navigate Your Hub](https://www.youtube.com/watch?v=dWR8ucYlzjQ)
+ - [How to Turn a Smartphone, Tablet/ Laptop Into a Remote Control](https://www.youtube.com/watch?v=qJ3cr-LKnEM)
+ - [How to Create Cool Animations](https://www.youtube.com/watch?v=_lQs_HE9Soc)
+ - [How to Edit Your Programs](https://www.youtube.com/watch?v=WeECsUD6TQs)
+
+
 ## Which projects can I build?
 Of course, there are the five robots that come with the box.
 Building instructions are digital only, you can find them in the app via Help > Settings > Building instructions.
