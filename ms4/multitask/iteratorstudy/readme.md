@@ -38,6 +38,7 @@ Let's look into the details.
 
 To follow the study, you need Python on you machine. 
 I got mine at [python.org](https://www.python.org/downloads/).
+If Python is not in your search `PATH`, edit the line that defines `PYTHONDIR` in `setup.bat`.
 
 I use a standard setup with a virtual environment.
 If you download this directory `iteratorstudy`, open command prompt and run `setup`.
