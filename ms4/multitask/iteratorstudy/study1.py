@@ -53,14 +53,8 @@ print( "   ", next(iterator2) )
 print( "   ", next(iterator2) )
 #print("   ", next(iterator2) ) # Raises exception
 
-# Looping using an iterator: for-in
-iterator3 = iter(iterable)
-print("  study1 - for-in (iterator)")
-for element in iterator3 :
-    print( "   ", element )
-
 # Looping using an iterable: for-in
-print("  study1 - for-in (iterable)")
+print("  study1 - for-in")
 for element in iterable :
     print( "   ", element )
 
@@ -82,12 +76,7 @@ for elm1 in iterable :
 #     0
 #     1
 #     3
-#   study1 - for-in (iterator)
-#     2
-#     0
-#     1
-#     3
-#   study1 - for-in (iterable)
+#   study1 - for-in
 #     2
 #     0
 #     1

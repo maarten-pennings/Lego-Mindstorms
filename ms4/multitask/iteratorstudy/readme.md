@@ -202,36 +202,10 @@ This produces the same output
 
 (and the same exception if the last line was not commented out).
 
-### Study 1 - for-in (iterator)
+### Study 1 - for-in
 
-The real Pythonic way to do this is the for-in loop.
-The for-in loop uses the iterator.
-
-```python
-iterable = Perm(4)
-iterator3 = iter(iterable)
-print("  study1 - for-in (iterator)")
-for element in iterator3 :
-    print( "   ", element )
-```
-
-which produces the same output
-
-```text
-  study1 - for-in (iterator)
-    0
-    1
-    3
-    2
-```
-
-and even handles the `StopIteration`. 
-A definite improvement.
-
-### Study 1 - for-in (iterable)
-
-But the real real Pythonic way to do this, is to use the _iterable_ in the for-in loop, not the _iterator_.
-The for-in first gets the iterator itself, and then uses it.
+The real Pythonic way to do this is to use a for-in loop on an iterable.
+The for-in first gets the iterator (`iter()`), and then uses it (`next()`).
 
 ```python
 # Looping using an iterable: for-in
@@ -251,6 +225,11 @@ this produces the same output
     2
 ```
 
+and even handles the `StopIteration`. 
+A definite improvement.
+
+Note that in general a for-in operates on an _iterable_, not on an _iterator_.
+But in study 1, that happens to be one and the same object.
 
 ### Study 1 - two iterators
 
