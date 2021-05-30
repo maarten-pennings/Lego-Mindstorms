@@ -591,6 +591,55 @@ The third next prints "C", does not yield, but instead raises `StopIteration`.
     --------
 ```
 
+
+### Study 4 - observations
+
+Iterators and general and generators specifically have a prominent role in Python.
+
+For example, they exist in generator comprehensions
+
+```python
+>>> g = (i*i for i in [1,2,3,4,5])
+>>> print(g)
+<generator object <genexpr> at 0x0000022FF2829510>
+>>> print( list(g) )
+[1, 4, 9, 16, 25]
+```
+
+They have even special syntax features (drop parenthesis) for iterator eating functions
+
+```python
+>>> sum( (i*i for i in [1,2,3,4,5]) )
+55
+>>> sum( i*i for i in [1,2,3,4,5] )
+55
+```
+
+They also seem to be the basis of the `range` function.
+That is a bit harder to proof because that object is a specialty anyhow
+
+```python
+>>> r = range(6)
+>>> print(r)
+range(0, 6)
+>>> type(r)
+<class 'range'>
+```
+
+but its implementation size does not grow with the range it spans.
+
+```python
+>>> sys.getsizeof(range(1))
+48
+>>> sys.getsizeof(range(1000))
+48
+>>> sys.getsizeof([1])
+64
+>>> sys.getsizeof([1,2,3,4,5,6,7,8,9,10])
+152
+```
+
+
 ## Study 5 nested generators
 
 In [study 5](study5.py) we push generators to the limit.
