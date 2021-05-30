@@ -11,26 +11,31 @@ Prime examples are a list of integers, or a tree of identifiers.
 One operation that is typically required from a container it to loop over all elements.
 Such a container is than called _iterable_.
 
-In python, if an object `iterable` (a container) is iterable we can ask it for an _iterator_ by calling `iter(iterable)`.
+In python, if an object `iterable` (a container) is iterable we can ask it for an _iterator_ 
+by calling `iter(iterable)`.
+
 ```python
   iterator = iter(iterable)
 ```
-This returns a (new) object `iterator` that allows iterating over all elements in `iterable`.
 
-Internally, the iterator maintains a "cursor". 
-Initially, when the iterator is created, the cursor points to the first element of `iterable`.
-By calling `next(iterator)`, the element that the cursor points to is returned, and the cursor moves to the next element.
+This returns a (new) object `iterator`, which allows iterating over all elements in `iterable`.
+
+Internally, the iterator maintains a "cursor". Initially, when the iterator is created, 
+the cursor points to the first element of `iterable`. By calling `next(iterator)`, 
+the element that the cursor points to is returned, and the cursor moves to the next element.
 When `next()` is called and there is no (more) element the exception `StopIteration` is raised.
 
 That is all.
 
-Well, maybe one more thing: Python's for-in does all of this behind the scenes. So you can just type
+Well, maybe one more thing: Python's `for in` does all of this behind the scenes. So you can just type
+
 ```python
 for element in iterable :
     print( element )
 ```
-and the for loop takes care of calling `iter()` on the `iterable`, calling `next()` on the returned iterator,
-and stopping on `StopIteration`.
+
+and the for loop takes care of calling `iter()` on the `iterable`, repeatedly calling `next()` 
+on the returned iterator, and stopping on `StopIteration`.
 
 Let's look into the details.
 
@@ -100,13 +105,16 @@ class Perm :
             self.nums[i1],self.nums[i2] = self.nums[i2],self.nums[i1]
 ```
 
-The object is a container (of the elements in the permutation - see `self.nums`), and we want it to be iterable.
+The object is a container of the elements in the permutation (field `self.nums`), and we want it to be iterable.
 
 This means we want to call `iter()`. 
 What you should know is that `iter(obj)` calls `obj.__iter__()`, so that is what we need to add to our class.
 
-A common approach (in Python) is that an iterable (`Perm`) implements its own iterator. Let's give that a try.
-We add the `__iter__()` method to our `Perm` class, and set the cursor `iter_index` to 0.
+A common approach (in Python) is that an iterable (`Perm`) implements its own iterator. 
+Personally, I think this is a bad approach (see [two iterators](#study-1---two-iterators)) 
+but you find it a lot in the wild. So, let's give that a try.
+
+We add the `__iter__()` method to our `Perm` class, and set the iterator cursor `iter_index` to 0.
 
 ```python    # Having __iter__ makes an object iterable.
     # Having __iter__ makes an object iterable.
@@ -451,18 +459,18 @@ Sounds complex, [study 4](study4.py) shows an example, using the Fibonacci seque
 This below function is a _generator_ of all Fibonacci numbers.
 The function body has the keyword `yield`, a trigger for the Python interpreter that this is a special function.
 
-A function that contains a `yield` statement is called a "generator function", see [PEP 0255](https://www.python.org/dev/peps/pep-0255/).
+A function that contains a `yield` statement is called a _generator function_, see [PEP 0255](https://www.python.org/dev/peps/pep-0255/).
 A generator function is an ordinary function object in all respects, 
 but when a generator function is called, no code in the body of the function is executed. 
 
-Instead a generator-iterator is returned.
+Instead a _generator-iterator_ is returned.
 The generator-iterator object conforms to the iterator protocol, i.e. it has a `next()`.
 The value returned by `next()` is the expression passed to `yield`.
 
 The generator function may have multiple `yield` statements, each `next()` runs until `yield` 
 (and starts where the previous `yield` stopped).
-If the function returns (with an explicit `return` statement, or implicitly at the end of the function), 
-the iterator stops.
+If the body of the generator function "returns" (with an explicit `return` statement, or implicitly at the end of the function), 
+the iterator stops, i.e. raises `StopIteration`.
 
 ```python
 def fib() :
@@ -594,7 +602,7 @@ The third next prints "C", does not yield, but instead raises `StopIteration`.
 
 ### Study 4 - observations
 
-Iterators and general and generators specifically have a prominent role in Python.
+Iterators and general and generators specifically, have a prominent role in Python.
 
 For example, they exist in generator comprehensions
 
@@ -615,8 +623,8 @@ They have even special syntax features (drop parenthesis) for iterator eating fu
 55
 ```
 
-They also seem to be the basis of the `range` function.
-That is a bit harder to proof because that object is a specialty anyhow
+They also seem to be the basis of the `range()` function.
+That is a bit hard to proof because `range()` is a specialty anyhow
 
 ```python
 >>> r = range(6)
