@@ -404,15 +404,23 @@ print(sys.implementation)
 print(sys.version)
 ```
 
+### Per 2021 June 6
+
+All version are the same as per May 16, but there are now eight community fan inventions: 
+Exploration Rover, Sea Turtle, Melody Maker, 
+**Melody Maker**, **Salamoot**, **Print and Scan**, **Wrecking Bot**, Pet Gelo and Tricky Flippin'.
+
 ### Per 2021 May 16
 
 - The app version 10.1.0  
-  In main menu, SETTING is replaced by COMMUNITY, which lists five robots: Exploration Rover, Sea Turtle, Melody Maker, 
+  In main menu, SETTING is replaced by COMMUNITY, which lists five robots: 
+  **Exploration Rover**, **Sea Turtle**, **Melody Maker**, 
   and two that were previously extensions: Pet Gelo and Tricky Flippin'.
-  Some [users](https://www.facebook.com/legomindstorms/posts/3704825206290085) report three more: Salamoot, Wreckin' Bot, Print and Scan.
+  Some [users](https://www.facebook.com/legomindstorms/posts/3704825206290085) 
+  report three more: Salamoot, Wreckin' Bot, Print and Scan.
 - The Hub OS version is 3.1.7.2
-- Micro Python 1.12.0, mpy 517
-- The "sys version" 3.4.0
+- The `sys.implementation` micropython 1.12.0, mpy 517
+- The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.1.0.png)
 
@@ -424,8 +432,8 @@ print(sys.version)
   Now has motor calibration (that O is 0 degrees).  
   Now has robot (extensions) from the community.
 - The Hub OS version is 2.1.4.13
-- Micro Python 1.11.0
-- The "sys version" 3.4.0
+- The `sys.implementation` micropython 1.11.0
+- The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.0.3.png)
 
@@ -434,8 +442,8 @@ print(sys.version)
 
 - The app version 10.0.2
 - The Hub OS version is 2.1.4.10
-- Micro Python 1.11.0
-- The "sys version" 3.4.0
+- The `sys.implementation` micropython 1.11.0
+- The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.0.2.png)
 
@@ -443,8 +451,8 @@ print(sys.version)
 ### Per 2020 oct 27
 - The app version is 4.0.4-dev.99999
 - The Hub OS version is 2.1.4.10
-- Micro Python 1.11.0
-- The "sys version" 3.4.0
+- The `sys.implementation` micropython 1.11.0
+- The `sys.version` 3.4.0
 
 ![App and OS Version](images/version.png)
 
