@@ -80,16 +80,19 @@ is largely the same as Mindstorms Robot Inventor.
 
 ## Is there help from Lego?
 
-Yes, Lego is publishing intruction videos on YouTube. Unfortunately not on a separate channel or in a playlist.
+Yes, Lego is publishing intruction videos on YouTube. Unfortunately not on a separate channel or in a playlist (grr).
 These I found (top-most is oldest):
 
  - [Robot Inventor Explained!](https://www.youtube.com/watch?v=ntBkg2x3EJ0)
- - [How to Connect Your Hub](https://www.youtube.com/watch?v=MEj1_pS3esw)
- - [How to Code Your First Program](https://www.youtube.com/watch?v=sIfAlu29YyA)
- - [How to Navigate Your Hub](https://www.youtube.com/watch?v=dWR8ucYlzjQ)
- - [How to Turn a Smartphone, Tablet/ Laptop Into a Remote Control](https://www.youtube.com/watch?v=qJ3cr-LKnEM)
- - [How to Create Cool Animations](https://www.youtube.com/watch?v=_lQs_HE9Soc)
- - [How to Edit Your Programs](https://www.youtube.com/watch?v=WeECsUD6TQs)
+ - [Connect Your Hub](https://www.youtube.com/watch?v=MEj1_pS3esw)
+ - [Your First Program](https://www.youtube.com/watch?v=sIfAlu29YyA)
+ - [Navigate Your Hub](https://www.youtube.com/watch?v=dWR8ucYlzjQ)
+ - [Turn your Devices Into a Remote Control](https://www.youtube.com/watch?v=qJ3cr-LKnEM)
+ - [Create Animations](https://www.youtube.com/watch?v=_lQs_HE9Soc)
+ - [Edit Your Programs](https://www.youtube.com/watch?v=WeECsUD6TQs)
+ - [Connect a Game Controller](https://www.youtube.com/watch?v=g9M9WgwFbZE)
+ - [Make Your Models Come Alive](https://www.youtube.com/watch?v=OLMGm7gV370)
+ - [Program Your Sensors](https://www.youtube.com/watch?v=avhgnYp5CzQ)
 
 
 ## Which projects can I build?
