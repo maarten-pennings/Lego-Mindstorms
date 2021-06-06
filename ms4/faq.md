@@ -416,6 +416,9 @@ All version are the same as per May 16, but there are now eight community fan in
 Exploration Rover, Sea Turtle, Melody Maker, 
 **Melody Maker**, **Salamoot**, **Print and Scan**, **Wrecking Bot**, Pet Gelo and Tricky Flippin'.
 
+![Community](images/community8.jpg)
+
+
 ### Per 2021 May 16
 
 - The app version 10.1.0  
