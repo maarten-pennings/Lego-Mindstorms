@@ -95,6 +95,12 @@ These I found (top-most is oldest):
  - [Program Your Sensors](https://www.youtube.com/watch?v=avhgnYp5CzQ)
 
 
+## Are there other good resources?
+
+ - [python readthedocs](https://hubmodule.readthedocs.io/en/latest/) from Nard Strijbosch
+ - [python API](https://lego.github.io/MINDSTORMS-Robot-Inventor-hub-API/) from Lego
+ 
+
 ## Which projects can I build?
 Of course, there are the five robots that come with the box.
 Building instructions are digital only, you can find them in the app via Help > Settings > Building instructions.
@@ -1574,11 +1580,9 @@ Notes
    ```
 
 
-## Why is there a wait-until helper in Python?
-
-
 ## How can I do parallel tasks in Python?
 
+Use `uasyncio`? or check out my [multitask](multitask) project.
 
 (end)
 

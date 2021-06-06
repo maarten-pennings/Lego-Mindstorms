@@ -8,6 +8,9 @@ I have written a [Mindstorms robot inventor FAQ](faq.md).
 
 I have documented
 
+ - Using another (self-written "slotted") python module from a (slotted) Python module.
+   See the [importfromslot](importfromslot).
+   
  - A trial for [cooperative multi-tasking](multitask).
  
  - A proof of concept for [host-hub](host-hub) communication (over bluetooth).
