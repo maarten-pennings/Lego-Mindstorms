@@ -11,14 +11,14 @@ How does this work?
 If you write a python program in the Lego IDE, and you upload and/or run it, it gets stored in a so-called slot.
 What this means in practice is that the IDE generates a random id xxx, 
 and saves your (pre-compiled) Python file under `/projects/xxx/__init__.mpy`.
+It also updates the "index". This a a text file `/projects/.slots` with 20 entries (the slots).
 
-It also updates the "index", that is a the file `/projects/.slots`.
-
-As you might know, you can make one Python `mmm.py` with "library" functions 
+As you might know, you can make one Python file `mmm.py` with "library" functions 
 and then use those functions in another Python file via an `import mmm`.
 
-Can we import slotted Python file in another slotted Python file.
-Yes, that is what the above post is about.
+The question the facebook post answer is:
+can we import a slotted Python file into another slotted Python file?
+Yes, that is what the post is about.
 
 ## Setup
 
@@ -63,11 +63,11 @@ hear _two_ beeps, and see an "m with two dots" on the hub display.
 
 ![m2](m2.jpg)
 
-This module publishes the function `f2()` that we need in the main program. 
+This module publishes the function `f2()` that we will use in the main program. 
 
 ### Main program slot1module
 
-The main program is very similar. In this case, save as `slot1module` and run it from **slot 1** 
+The main program is very similar to the library. In this case, save as `slot1module` and run it from **slot 1** 
 (does not really matter, as long as it is not slot 2).
 
 Here is the [py source](slot1module.py) or [lms source](slot1module.lms).
@@ -111,11 +111,18 @@ loaded slot2module
 running f2
 ```
 
-We see `loaded slot1module`, hear one beep, and see an "m with one dots" on the hub display.
+We see `loaded slot1module`, hear one beep, and see an "m with one dot" on the hub display.
 After one second, we see `loaded slot2module`, hear two beep, and see an "m with two dots" on the hub display.
-Again one second later, we see `running f2`, hear two beep, and see an "f with two dots" on the hub display.
+Again one second later, we see `running f2`, hear two beeps, and see an "f with two dots" on the hub display.
 
 ![m1](m1.jpg) ![m2](m2.jpg) ![f2](f2.jpg)
+
+### Conclusion
+
+We see that `slot1module` indeed loads `slot2module` and is able to call `f2`.
+The loaded module is identified by the slot number in `import_from_slot()`.
+Also note that `import_from_slot()` returns a handle to the module, which must be used to find `f2()`.
+
 
 ## Save file
 

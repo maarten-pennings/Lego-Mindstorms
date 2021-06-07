@@ -34,6 +34,6 @@ See the subdirectories for details on each of these.
 - [RCX](rcx)
 - [NXT](nxt)
 - [EV3](ev3)
-- [Robot Inventor](ms4)
+- [MS4](ms4) "Robot Inventor"
 
 (end)
