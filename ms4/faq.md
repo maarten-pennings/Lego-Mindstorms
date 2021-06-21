@@ -124,6 +124,7 @@ There are several nice community builds:
    [Instructions](https://m.facebook.com/download/865529984270200/arm.pdf)
    [Version 2](https://m.facebook.com/groups/mindstormsrobotinventor/permalink/478705086475784/)
  - [Canadarm](https://youtu.be/3sKHHaLFzY8)
+   [gripper hint](https://education.lego.com/en-us/lessons/prime-invention-squad/super-cleanup)
  - [Candy sorter](https://m.facebook.com/groups/mindstormsrobotinventor/permalink/478354733177486/)
  - [F1 race car](https://rebrickable.com/mocs/MOC-62452/ninoguba/premier-f1-race-car-robot-inventor)
  - [Tic tac too](https://youtu.be/9Qm_rJGbT8U)
