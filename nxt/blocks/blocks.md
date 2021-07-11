@@ -27,7 +27,7 @@ By the way, all installed blocks can be found here `C:\Program Files (x86)\LEGO 
 
 Found this tip [here](http://linearactuator.blogspot.com/2009/08/interger-blocks-in-nxt-g-20.html).
 
-As an alternative, just copy [engine_EditorVIs_BlockRegistry](../install/engine_EditorVIs_BlockRegistry).
+As an alternative, just copy [../install/engine_EditorVIs_BlockRegistry](../install/engine_EditorVIs_BlockRegistry).
 
 ## Div and mod
 
@@ -38,7 +38,7 @@ This My Block uses the Integer Math block above, as can be seen in the diagram b
 
 ![divmod](images/divmod.png)
 
-Download the [divmod.rbt](divmod.rbt).
+Download the [divmod.rbt](divmod.rbt) My Block.
 
 ## Sinus (half period)
 
@@ -96,7 +96,7 @@ I converted this formula to a My Block with the following diagram.
 
 ![sin1h(x)](images/sin1h(x).png)
 
-Download the [sin1h(x).rbt](sin1h(x).rbt). 
+Download the [sin1h(x).rbt](sin1h(x).rbt) My Block. 
 The `1h` suffix indicates this formula only works for 1 half of the period (0..180).
 
 
@@ -106,7 +106,7 @@ The `sin1h(x)` is only accurate in the range 0..180. To make it periodic, I used
 
 ![sin(x)](images/sin(x).png)
 
-Download the [sin(x).rbt](sin(x).rbt).
+Download the [sin(x).rbt](sin(x).rbt) My Block.
 
 
 ## Sinus application: test
@@ -120,7 +120,7 @@ This is an example output
 
 ![Lissajous](images/lissajous.jpg)
 
-Download the [../progs/lissajous.rbt](../progs/lissajous.rbt).
+Download the [../progs/lissajous.rbt](../progs/lissajous.rbt) program.
 
 
 ## Sinus application: motor control
@@ -134,21 +134,22 @@ The second task is a P(ID) controller: it computes the error between the actual 
 
 ![wiper](images/wiper.png)
 
-Download the [../progs/wiper.rbt](../progs/wiper.rbt).
+Download the [../progs/wiper.rbt](../progs/wiper.rbt) program.
 
 
 ## Sinus application: synchronized motors
 
 A key aspect of the timer-target setup, is that a second motor can be incorporated - meaning that the two motors run in sync!
 
-That is demoed by this parent pushing its child on a swing [swing](https://www.youtube.com/watch?v=0GbMUhZlRqk).
+That is demoed by this video of a parent pushing its child on a [swing](https://www.youtube.com/watch?v=0GbMUhZlRqk).
 
-Download the [../progs/swing.rbt](../progs/swing.rbt).
+Download the [../progs/swing.rbt](../progs/swing.rbt) program.
 
 
 ## Create your own native blocks
-Never tried it, but it seems you can make your own native block using [labview](ftp://ftp.ni.com/evaluation/mindstorms/NXT_Creating_MINDSTORMS_Blocks.pdf).
 
+Never tried it, but it seems you can make your own native block 
+using [labview](ftp://ftp.ni.com/evaluation/mindstorms/NXT_Creating_MINDSTORMS_Blocks.pdf).
 
 
 (end)
