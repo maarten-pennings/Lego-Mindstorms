@@ -3,10 +3,10 @@
 Hints, tips, and tricks for the LEGO NXT Mindstorms robotics system.
 
 
-## The Lego NXT-G IDE
+## IDE
 
-NXT-G is the IDE (integrated development environment); it does have its quirks.
-See [ide](ide/ide.md) for some tips.
+NXT-G is the IDE (integrated development environment) of Lego Minstorms NXT.
+It does have its quirks. See [ide](ide/ide.md) for some tips.
 
 
 ## Blocks 

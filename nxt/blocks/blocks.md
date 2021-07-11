@@ -38,7 +38,7 @@ This My Block uses the Integer Math block above, as can be seen in the diagram b
 
 ![divmod](images/divmod.png)
 
-Download the [code](My%20Blocks/divmod.rbt).
+Download the [code divmod.rbt](divmod.rbt).
 
 ## Sinus (half period)
 
@@ -96,7 +96,7 @@ I converted this formula to a My Block with the following diagram.
 
 ![sin1h(x)](images/sin1h(x).png)
 
-Download the [code](My%20Blocks/sin1h(1).rbt).
+Download the [code sin1h(x).rbt](sin1h(x).rbt).
 
 
 ## Sinus (positive angles)
@@ -105,7 +105,7 @@ The `sin1h(x)` is only accurate in the range 0..180. To make it periodic, I used
 
 ![sin(x)](images/sin(x).png)
 
-Download the [code](My%20Blocks/sin1h.rbt).
+Download the [code sin1h.rbt(x)](sin1h(x).rbt).
 
 
 ## Sinus application: test
@@ -119,7 +119,7 @@ This is an example output
 
 ![Lissajous](images/lissajous.jpg)
 
-Download the [code](progs/lissajous.rbt).
+Download the [code](../progs/lissajous.rbt).
 
 
 ## Sinus application: motor control
@@ -142,7 +142,7 @@ A key aspect of the timer-target setup, is that a second motor can be incorporat
 
 That is demoed by this parent pushing its child on a swing [swing](https://www.youtube.com/watch?v=0GbMUhZlRqk).
 
-Download the [code](progs/swing.rbt).
+Download the [code](../progs/swing.rbt).
 
 
 ## Create your own native blocks
