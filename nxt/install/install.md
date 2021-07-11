@@ -16,8 +16,10 @@ My NXT-G IDE reports
 
 See [lego](https://www.lego.com/en-us/themes/mindstorms/downloads) for the latest 
 - [firmware](https://www.lego.com/cdn/cs/set/assets/blt3502cca1438605b8/Firmware131_Download1.zip)
-- the [IDE](https://www.lego.com/assets/franchisesites/mindstorms/mac-window-installers/nxt-g-installer-v2.0f6-windows.zip#nourlrewrite)
+  or local [copy](bins/Firmware131_Download1.zip).
+- the [IDE](https://www.lego.com/assets/franchisesites/mindstorms/mac-window-installers/nxt-g-installer-v2.0f6-windows.zip#nourlrewrite).
 - or the [USB driver](https://www.lego.com/cdn/cs/set/assets/bltea140e66e32fadf0/NXT_Fantom_Drivers_v120.zip)
+  or local [copy](bins/NXT_Fantom_Drivers_v120.zip).
 
 
 ## NEXT-G IDE install on WIN10
