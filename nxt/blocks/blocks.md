@@ -9,8 +9,9 @@ NXT-G is the IDE (integrated development environment).
 It comes with several "blocks" (subroutines, library functions).
 But you can also make your own.
 
+## Standard blocks
 
-## Integer math
+### Integer math
 
 NXT 1.0 uses integer math, but NXT 2.0 uses floating point. However the _Integer Math_ block is also installed but not published in the LEGO IDE.
 To add the Integer Math Block, create an empty file `Numeric Operations.txt` in the `Data` directory in
@@ -29,7 +30,15 @@ Found this tip [here](http://linearactuator.blogspot.com/2009/08/interger-blocks
 
 As an alternative, just copy [../install/engine_EditorVIs_BlockRegistry](../install/engine_EditorVIs_BlockRegistry).
 
-## Div and mod
+## My Blocks
+
+You can also make your own blocks.
+This can be done in the IDE, but you can also copy them from other developers.
+
+On my PC, the My Blocks are stored here
+`C:\Users\maarten\Documents\LEGO Creations\MINDSTORMS Projects\Profiles\Default\Blocks\My Blocks`.
+
+### Div and mod
 
 One of the math operations I'm missing is `mod`. So I made my own My Block called `divmod`: 
 it computes the mod and the div: 21 div 4 = 5 and 21 mod 4 = 1.
@@ -40,7 +49,8 @@ This My Block uses the Integer Math block above, as can be seen in the diagram b
 
 Download the [divmod.rbt](divmod.rbt) My Block.
 
-## Sinus (half period)
+
+### Sinus (half period)
 
 For fancy "rocking" motor movement, a sinus is useful. Unlike EV3, NXT-G doesn't provide that function.
 The indian mathematician Bhaskara 1 devised a relatively simple 
@@ -100,7 +110,7 @@ Download the [sin1h(x).rbt](sin1h(x).rbt) My Block.
 The `1h` suffix indicates this formula only works for 1 half of the period (0..180).
 
 
-## Sinus (positive angles)
+### Sinus (positive angles)
 
 The `sin1h(x)` is only accurate in the range 0..180. To make it periodic, I used the `divmod` from above.
 
@@ -109,7 +119,7 @@ The `sin1h(x)` is only accurate in the range 0..180. To make it periodic, I used
 Download the [sin(x).rbt](sin(x).rbt) My Block.
 
 
-## Sinus application: test
+### Sinus application: test
 
 To test the sinus, I wrote the following program; it draws
 [Lissajous](https://en.wikipedia.org/wiki/Lissajous_curve) figures.
@@ -123,7 +133,7 @@ This is an example output
 Download the [progs/lissajous.rbt](progs/lissajous.rbt) program.
 
 
-## Sinus application: motor control
+### Sinus application: motor control
 
 The real application of the sinus block is "swinging" motion, e.g. wind shield wipers, swing, etc.
 See [AntonsMindstorms](https://antonsmindstorms.com/2019/01/24/how-to-program-two-synchronised-ev3-motors/) for an explanation.
@@ -137,7 +147,7 @@ The second task is a P(ID) controller: it computes the error between the actual 
 Download the [progs/wiper.rbt](progs/wiper.rbt) program.
 
 
-## Sinus application: synchronized motors
+### Sinus application: synchronized motors
 
 A key aspect of the timer-target setup, is that a second motor can be incorporated - meaning that the two motors run in sync!
 
@@ -146,7 +156,7 @@ That is demoed by this video of a parent pushing its child on a [swing](https://
 Download the [progs/swing.rbt](progs/swing.rbt) program.
 
 
-## Create your own native blocks
+## Native blocks
 
 Never tried it, but it seems you can make your own native block 
 using [labview](ftp://ftp.ni.com/evaluation/mindstorms/NXT_Creating_MINDSTORMS_Blocks.pdf).

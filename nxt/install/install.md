@@ -31,17 +31,16 @@ I found a [work around](https://www.reddit.com/r/mindstorms/comments/fn2vdh/fix_
 - Run this batch
 
 
-## IDE goodies
+## Extra pictures
 
+In [engine_pictures](engine_pictures) you find some big arrows and big digits to copy to the pictures directory of your NXT installation. Here is an overview.
 
-In [engine_pictures](engine_pictures) you find some big arrows and big digits to copy to the pictures directory of your NXT installation.
+![Extra pictures](engine_pictures/all.png)
 
-In [engine_EditorVIs_BlockRegistry](engine_EditorVIs_BlockRegistry) you find a "block" that performs integer math. For some more detail, see [blocks](../blocks.md#).
-
-On my machine these directories need to be copied here `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine`.
-
+On my machine these directories need to be copied here `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine\Pictures`.
 
 ## Resetting the NXT
+
 If the running icon stops spinning, the NXT has frozen and you must reset it. Follow these steps to reset the NXT:
 1. Make sure that the NXT is turned on.
 2. Press the reset button that is located on the back of your NXT in the Technic hole in the upper left corner. 
@@ -49,6 +48,7 @@ If the running icon stops spinning, the NXT has frozen and you must reset it. Fo
 
 
 ## Clicking brick
+
 The NXT firmware has either been deleted or is corrupty. But the brick and its bootloader is still working.
 See [here](http://www.legoengineering.com/clicking-brick-syndrome/) for details.
 
