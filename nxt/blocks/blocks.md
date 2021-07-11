@@ -120,7 +120,7 @@ This is an example output
 
 ![Lissajous](images/lissajous.jpg)
 
-Download the [../progs/lissajous.rbt](../progs/lissajous.rbt) program.
+Download the [progs/lissajous.rbt](progs/lissajous.rbt) program.
 
 
 ## Sinus application: motor control
@@ -134,7 +134,7 @@ The second task is a P(ID) controller: it computes the error between the actual 
 
 ![wiper](images/wiper.png)
 
-Download the [../progs/wiper.rbt](../progs/wiper.rbt) program.
+Download the [progs/wiper.rbt](progs/wiper.rbt) program.
 
 
 ## Sinus application: synchronized motors
@@ -143,7 +143,7 @@ A key aspect of the timer-target setup, is that a second motor can be incorporat
 
 That is demoed by this video of a parent pushing its child on a [swing](https://www.youtube.com/watch?v=0GbMUhZlRqk).
 
-Download the [../progs/swing.rbt](../progs/swing.rbt) program.
+Download the [progs/swing.rbt](progs/swing.rbt) program.
 
 
 ## Create your own native blocks
