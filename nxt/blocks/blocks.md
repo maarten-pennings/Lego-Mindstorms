@@ -27,7 +27,7 @@ By the way, all installed blocks can be found here `C:\Program Files (x86)\LEGO 
 
 Found this tip [here](http://linearactuator.blogspot.com/2009/08/interger-blocks-in-nxt-g-20.html).
 
-As an alternative, just copy [engine_EditorVIs_BlockRegistry](engine_EditorVIs_BlockRegistry).
+As an alternative, just copy [engine_EditorVIs_BlockRegistry](../install/engine_EditorVIs_BlockRegistry).
 
 ## Div and mod
 
@@ -133,7 +133,7 @@ The second task is a P(ID) controller: it computes the error between the actual 
 
 ![wiper](images/wiper.png)
 
-Download the [code](progs/wiper.rbt).
+Download the [code](../progs/wiper.rbt).
 
 
 ## Sinus application: synchronized motors
