@@ -9,7 +9,18 @@ NXT-G is the IDE (integrated development environment).
 It comes with several "blocks" (subroutines, library functions).
 But you can also make your own.
 
+
+
+## Native blocks
+
+Never tried it, but it seems you can make your own native block 
+using [labview](ftp://ftp.ni.com/evaluation/mindstorms/NXT_Creating_MINDSTORMS_Blocks.pdf).
+
+
+
 ## Standard blocks
+
+Some blocks are installed but are not enabled by default in the IDE.
 
 ### Integer math
 
@@ -30,6 +41,8 @@ Found this tip [here](http://linearactuator.blogspot.com/2009/08/interger-blocks
 
 As an alternative, just copy [../install/engine_EditorVIs_BlockRegistry](../install/engine_EditorVIs_BlockRegistry).
 
+
+
 ## My Blocks
 
 You can also make your own blocks.
@@ -37,6 +50,7 @@ This can be done in the IDE, but you can also copy them from other developers.
 
 On my PC, the My Blocks are stored here
 `C:\Users\maarten\Documents\LEGO Creations\MINDSTORMS Projects\Profiles\Default\Blocks\My Blocks`.
+
 
 ### Div and mod
 
@@ -119,6 +133,10 @@ The `sin1h(x)` is only accurate in the range 0..180. To make it periodic, I used
 Download the [sin(x).rbt](sin(x).rbt) My Block.
 
 
+
+## Demo applications for My Blocks
+
+
 ### Sinus application: test
 
 To test the sinus, I wrote the following program; it draws
@@ -154,12 +172,6 @@ A key aspect of the timer-target setup, is that a second motor can be incorporat
 That is demoed by this video of a parent pushing its child on a [swing](https://www.youtube.com/watch?v=0GbMUhZlRqk).
 
 Download the [progs/swing.rbt](progs/swing.rbt) program.
-
-
-## Native blocks
-
-Never tried it, but it seems you can make your own native block 
-using [labview](ftp://ftp.ni.com/evaluation/mindstorms/NXT_Creating_MINDSTORMS_Blocks.pdf).
 
 
 (end)
