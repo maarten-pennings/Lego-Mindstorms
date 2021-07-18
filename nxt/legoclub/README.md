@@ -1,4 +1,4 @@
-# Lego club De Pracht
+# Lego Club de Pracht
 
 ![logo](logo/LegoClubDePracht180x150.png)
 
