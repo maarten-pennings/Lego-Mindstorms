@@ -138,7 +138,7 @@ There are several nice community builds:
  - [Cube solver from MindCuber](http://mindcuber.com/mindcuberri/mindcuberri.html)
  - [Writing machine](https://rebrickable.com/mocs/MOC-61225/Bundy/inventor-writer-based-on-one-set-51515-mindstorms-inventor)
  - [R5D1 robot](https://m.facebook.com/download/338474627340404/R5D1%20Instructions.pdf)
-
+ - [HugBot](https://youtu.be/j0IdLnO3k3M)
 
 ## Where are my recent projects?
 When you start the Lego Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
