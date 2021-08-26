@@ -80,7 +80,7 @@ is largely the same as Mindstorms Robot Inventor.
 
 ## Is there help from Lego?
 
-Yes, Lego is publishing intruction videos on YouTube. Unfortunately not on a separate channel or in a playlist (grr).
+Yes, Lego is publishing instruction videos on YouTube. Unfortunately not on a separate channel or in a playlist (grr).
 These I found (top-most is oldest):
 
  - [Robot Inventor Explained!](https://www.youtube.com/watch?v=ntBkg2x3EJ0)
@@ -148,7 +148,7 @@ At first this is nice, but after a while you want to continue with your own proj
 
 You have to click PROJECTS at the bottom of the app's home screen.
 Unfortunately, the list of projects starts with the standard lego ones, and not with e.g. the most recent ones.
-You have to scroll all the way down.
+You have to scroll all the way down. This is much improved since version 10.2.0!
 
 The mouse scroll wheel does work, but the scroll bar itself is too thin to easily grab with the mouse. Grr.
 
@@ -195,7 +195,8 @@ Non-standard windows behavior. Grr.
 You can however Save As and _select_ the existing `xxx 1.lms`.
 That pops up an "are you sure you want to overwrite" dialogue.
 
-It also means you can't call your program `beep3`, because the lego app gets confused by the 3, strips it and appends a space and another number. grr.
+It also means you can't call your program `beep3`, because the lego app gets confused by the 3, 
+strips it and appends a space and another number. grr.
 
 
 ## What is an lms file?
@@ -412,9 +413,22 @@ print(sys.implementation)
 print(sys.version)
 ```
 
+### Per 2021 August 26
+
+- The app version 10.2.0  
+   - I now asks for age and consent to collect data.
+   - Help Center is updated
+   - My projects is now easier to work with
+   - It seems there is hub-to-hub communication (see Tips & Tricks in the Help Center)
+- The Hub OS version is 3.1.29 (no fourth number)
+- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.version` 3.4.0
+
+![App and OS version](images/version10.2.0.png)
+
 ### Per 2021 June 6
 
-All version are the same as per May 16, but there are now eight community fan inventions: 
+All version numbers are the same as per May 16, but there are now eight community fan inventions: 
 Exploration Rover, Sea Turtle, Melody Maker, 
 **Melody Maker**, **Salamoot**, **Print and Scan**, **Wrecking Bot**, Pet Gelo and Tricky Flippin'.
 
