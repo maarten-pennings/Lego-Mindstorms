@@ -139,6 +139,7 @@ There are several nice community builds:
  - [Writing machine](https://rebrickable.com/mocs/MOC-61225/Bundy/inventor-writer-based-on-one-set-51515-mindstorms-inventor)
  - [R5D1 robot](https://m.facebook.com/download/338474627340404/R5D1%20Instructions.pdf)
  - [HugBot](https://youtu.be/j0IdLnO3k3M)
+ - [AI brick sorter](https://robotics.benedettelli.com/lego-mindstorms-learning-brick-sorter-bird/)
 
 ## Where are my recent projects?
 When you start the Lego Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
