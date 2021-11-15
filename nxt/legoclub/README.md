@@ -7,7 +7,7 @@ I run a club in the village, were 8-12 year old children make robots using LEGO 
 The exercises [pdf](LegoClub.pdf) or [word](LegoClub.docx) are in Dutch only.
 
 ## Videos
-Each time a lego robot is finished I put it on YouTube playlist 
+Each time a LEGO robot is finished I put it on YouTube playlist 
 [Maarten Pennings - LEGO club](http://www.youtube.com/playlist?list=PLrlJSwck1Q0iv_t6WtuNv7dbaEXJX42nd).
 
 Unfortunately, Google made YouTube less friendly for kid's channels, so I created a new one
