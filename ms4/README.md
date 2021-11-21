@@ -6,7 +6,22 @@ I have written a [Mindstorms robot inventor FAQ](faq.md).
 
 ## Projects
 
-I have documented
+ - My first project, a 
+   [Radar car](radarcar).
+
+ - My submission to a [LEGO ideas contest](https://ideas.lego.com/challenges/339f0029-37b3-4dad-9dd2-6bcec3b93349/application/8fa605db-a571-4760-836f-4616419a571f), the
+   [Sea transfer platform](seatransferplatform).
+   
+ - My second submission to LEGO ideas contest
+   [Sunflower](https://www.youtube.com/watch?v=XszTeDV3ixE&t=5s).
+   
+ - I made the [Rubik's Cube solving robot](https://www.youtube.com/watch?v=Neqbsy9W6p0) 
+   designed by [Mike Dobson and David Gilday](http://mindcuber.com/mindcuberri/mindcuberri.html).
+
+ - Made my own image recognition sensor for a
+   [Rock, paper, scissors](https://github.com/maarten-pennings/TFLcam) robot (in a separate github project).
+
+## Software only prjects
 
  - Using another (self-written "slotted") python module from a (slotted) Python module.
    See the [importfromslot](importfromslot).
@@ -15,10 +30,5 @@ I have documented
  
  - A proof of concept for [host-hub](host-hub) communication (over bluetooth).
  
- - My submission to a [lego ideas contest](https://ideas.lego.com/challenges/339f0029-37b3-4dad-9dd2-6bcec3b93349/application/8fa605db-a571-4760-836f-4616419a571f), the
-   [Sea transfer platform](seatransferplatform).
-
- - My first project, a 
-   [Radar car](radarcar).
-
+   
 (end)
