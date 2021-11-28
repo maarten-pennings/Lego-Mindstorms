@@ -1,6 +1,6 @@
 # LEGOclub de Pracht
-![logo](logo/LegoClubDePracht180x150.png)
 
+[![exercises](exercises.png)](LegoClub.pdf)         ![logo](logo/LegoClubDePracht180x150.png) 
 
 ## Exercises LEGOclub de Pracht
 I run a club in the village, were 8-12 year old children make robots using LEGO Mindstorms NXT.
