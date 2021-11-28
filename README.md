@@ -2,9 +2,18 @@
 
 Hints, tips, and tricks for the LEGO Mindstorms products (RCX, NXT, EV3, Robot Inventor).
 
-## Introduction
+## Details
 
-Lego [Mindstorms](https://www.lego.com/en-us/themes/mindstorms/about) is a line of hardware, software and plastic bricks, which is produced by [Lego](lego.com) for building programmable robots.
+See the subdirectories for details on each of the generations.
+
+- [RCX](rcx)
+- [NXT](nxt)
+- [EV3](ev3)
+- [MS4](ms4) "Robot Inventor"
+
+## Background
+
+Lego [Mindstorms](https://www.lego.com/en-us/themes/mindstorms/about) is a line of hardware, software and bricks, which is produced by [Lego](lego.com) for building robots.
 
 There have been four generations of the Mindstorms [wiki](https://en.wikipedia.org/wiki/Lego_Mindstorms): 
 
@@ -26,14 +35,5 @@ There have been four generations of the Mindstorms [wiki](https://en.wikipedia.o
 - **Robot Inventor**  
   2020: v1.0 [51515](https://www.bricklink.com/v2/catalog/catalogitem.page?S=51515-1)  
   100MHz ARM M4, 1MBflash, 32 MB RAM, 5x5 LED, Bluetooth, USB micro, beeper, MicroPython
-
-## Details
-
-See the subdirectories for details on each of these.
-
-- [RCX](rcx)
-- [NXT](nxt)
-- [EV3](ev3)
-- [MS4](ms4) "Robot Inventor"
 
 (end)
