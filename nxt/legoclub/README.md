@@ -8,10 +8,10 @@ The exercises are in Dutch only: [pdf](LegoClub.pdf) or [word](LegoClub.docx).
 
 ## Videos
 Each time a LEGO robot is finished I put it on YouTube playlist 
-[Maarten Pennings - LEGO club](http://www.youtube.com/playlist?list=PLrlJSwck1Q0iv_t6WtuNv7dbaEXJX42nd).
+[Maarten Pennings - LEGOclub](http://www.youtube.com/playlist?list=PLrlJSwck1Q0iv_t6WtuNv7dbaEXJX42nd).
 
 Unfortunately, Google made YouTube less friendly for kid's channels, so I created a new one 
-[De Pracht LEGO club](https://www.youtube.com/channel/UCxKt3LKH9oVT_rLr5mPyQkg).
+[LEGOclub de Pracht](https://www.youtube.com/channel/UCxKt3LKH9oVT_rLr5mPyQkg).
 
 
 ## Primary school tech-week
