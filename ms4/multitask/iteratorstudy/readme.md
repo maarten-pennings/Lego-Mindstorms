@@ -8,10 +8,10 @@ However, this study is Python (on a PC) only.
 
 In software, a _container_ is a data-structure that stores a multitude of elements.
 Prime examples are a list of integers, or a tree of identifiers.
-One operation that is typically required from a container it to loop over all elements.
+One operation that is typically required from a container, is to loop over all elements.
 Such a container is than called _iterable_.
 
-In python, if an object `iterable` (a container) is iterable we can ask it for an _iterator_ 
+In python, if an object `iterable` (a container) is iterable, we can ask it for an _iterator_ 
 by calling `iter(iterable)`.
 
 ```python
@@ -125,7 +125,7 @@ We add the `__iter__()` method to our `Perm` class, and set the iterator cursor 
         return self
 ```
 
-The `__iter__()` returns an object, which must be an iterator. That means, the object must have a "next".
+The `__iter__()` returns an object, which must be an iterator. That means, the iterator object must have a "next".
 Since the `__iter__()` returns the `Perm` object itself, the `Perm` class must have the "next" method.
 Similarly to `iter`, `next(obj)` calls `obj.__next__()`, so that is what we need to add to our `Perm` class.
 
@@ -283,7 +283,7 @@ which is an object of a new class `PermIterator`.
 ### Study 2 - the iterable
 
 We have the same iterable as before `Perm`.
-This time, its `__iter__()` method returns a new fresh iterable `PermIterator`.
+This time, its `__iter__()` method returns a new fresh iterator object `PermIterator`.
 That also means, the `Perm` class no longer needs `__next__()` (it moves to the `PermIterator` class).
 
 ```python
@@ -395,7 +395,7 @@ That is possible if we can _compute_ the elements instead of actually _storing_ 
 In [study 3](study3.py) we give an example using the Fibonacci sequence.
 
 To keep the source short, we fall back on an iterable that has itself as iterator 
-(with the know downside we can not have two iterators active).
+(with the known downside that we can not have two iterators active).
 
 ```python
 # This class is an container of _all_ Fibonacci numbers.
@@ -444,7 +444,7 @@ So we get this as result
 
 ## Study 4 special iterator: generator
 
-In study 3 we give an example of an iterator that computes the elements on the fly.
+In study 3 we gave an example of an iterator that computes the elements on the fly.
 This is such a common pattern that Python has syntactic sugar for that.
 
 There are special functions - still defined with `def`, but they have `yield` somewhere in their body. 
@@ -602,9 +602,9 @@ The third next prints "C", does not yield, but instead raises `StopIteration`.
 
 ### Study 4 - observations
 
-Iterators and general and generators specifically, have a prominent role in Python.
+Iterators in general and generators specifically, have a prominent role in Python.
 
-For example, they exist in generator comprehensions
+For example, there are _generator comprehensions_:
 
 ```python
 >>> g = (i*i for i in [1,2,3,4,5])
@@ -614,7 +614,7 @@ For example, they exist in generator comprehensions
 [1, 4, 9, 16, 25]
 ```
 
-They have even special syntax features (drop parenthesis) for iterator eating functions
+Generator comprehensions have a special syntax featurev we may drop parenthesis (for iterator-eating-functions like sum):
 
 ```python
 >>> sum( (i*i for i in [1,2,3,4,5]) )
@@ -634,7 +634,7 @@ range(0, 6)
 <class 'range'>
 ```
 
-but its implementation size does not grow with the range it spans.
+but the implementation size of `range` does not grow with the range it spans.
 
 ```python
 >>> sys.getsizeof(range(1))
@@ -652,7 +652,7 @@ but its implementation size does not grow with the range it spans.
 
 In [study 5](study5.py) we push generators to the limit.
 
-A container can contain, say, two sub containers. 
+A container can contain two sub containers. 
 Is it possible that a generator contains two sub generators?
 
 Of course the iterator of the container would iterate the first sub container, and then the second.
