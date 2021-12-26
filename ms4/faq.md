@@ -414,10 +414,24 @@ print(sys.implementation)
 print(sys.version)
 ```
 
+### Per 2021 December 26
+
+- The app version is 10.3.0
+  - Getting started on home page
+    ![app 10.3.0 home](images/version10.3.0-home.png)
+  - Bluetooth auto connect
+    ![app 10.3.0 auto BT](images/version10.3.0-autobt.png)
+- The Hub OS version is 3.1.43 (no fourth number)
+- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.version` 3.4.0
+
+![App and OS version](images/version10.3.0.png)
+
+
 ### Per 2021 August 26
 
 - The app version 10.2.0  
-   - I now asks for age and consent to collect data.
+   - It now asks for age and consent to collect data.
    - Help Center is updated
    - My projects is now easier to work with
    - It seems there is hub-to-hub communication (see Tips & Tricks in the Help Center)
