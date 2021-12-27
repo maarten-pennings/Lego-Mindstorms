@@ -1,10 +1,10 @@
-# Lego Mindstorms Robot Inventor "Mindstorms 4" 51515 FAQ
+# LEGO Mindstorms Robot Inventor "Mindstorms 4" 51515 FAQ
 
 This FAQ has been written from the perspective of using a _Windows PC_ as host, not e.g. a tablet.
 
 The FAQ is currently split in three sections: 
 [general](#general-questions), 
-[Word block specific](#word-block-specific-questions) and 
+[Word Blocks specific](#word-blocks-specific-questions) and 
 [Python specific](#python-specific-questions) questions.
 
 
@@ -17,7 +17,7 @@ The FAQ is currently split in three sections:
 I opened the box, and one of the first things I did was to power on the brick.
 However, I could not figure out how to switch it off.
 
-You have to first download the lego app (next question) on your PC and then upgrade the Hub OS. 
+You have to first download the LEGO app (next question) on your PC and then upgrade the Hub OS. 
 Only then I was able to switch the hub off.
 Upgrading OS only works from PC (probably MAC also works, but phone and iPad probably don't) .
 
@@ -27,7 +27,7 @@ In some cases (Python program running instead of a Word Block) I do not hear the
 Here is a demo on [YouTube](https://youtu.be/CQVBp5e3tng)
 
 
-## Where is the Lego app?
+## Where is the LEGO app?
 The booklet in the mindstorms box tells you to visit [https://www.lego.com/devicecheck](https://www.lego.com/devicecheck).
 I skipped that, because I have a brand new PC and a brand new Android device, so no need to check... But then I wondered where should I _download_ the Mindstorms app?
 
@@ -41,14 +41,14 @@ It seems identical, and it has support for the force sensor, which is missing in
 
 This "app" is what is normally known as an IDE (integrated development environment).
 It is an editor, compiler, uploader, debugger and help system in one.
-But lego calls  "the app".
+But LEGO calls  "the app".
 
 I have the feeling that the app updates itself, because sometimes the version number in the titlebar changes.
 However, you not always have the latest-greatest, the update is "slow".
-To force an update goto the Windows Store, search for the Lego Mindstorms app, and press update.
+To force an update goto the Windows Store, search for the LEGO Mindstorms app, and press update.
 
 
-## How to make a shortcut to the Lego app on my Windows Desktop?
+## How to make a shortcut to the LEGO app on my Windows Desktop?
 I don't like "apps" from the Windows store. They are special in all kind of ways.
 For example how do you create a shortcut on your desktop?
 
@@ -62,11 +62,11 @@ Found [here](https://winaero.com/desktop-shortcut-store-app-windows-10/).
 
 ## Can I redo the getting started?
 
-In the Lego app, goto to Help > Settings > General and click the "Welcome Robot Inventors!".
+In the LEGO app, goto to Help > Settings > General and click the "Welcome Robot Inventors!".
 
 
 ## What are the technical specs?
-Lego has leaflets on [Spike prime](https://education.lego.com/en-gb/product-resources/spike-prime/downloads/technical-specifications), which
+LEGO has leaflets on [Spike prime](https://education.lego.com/en-gb/product-resources/spike-prime/downloads/technical-specifications), which
 is largely the same as Mindstorms Robot Inventor.
 
 - **hub**: 5x5 LEDs, 6 ports, Gyro, 3 buttons, one with RGB LED, beeper, Bluetooth, USB, MicroPython  
@@ -78,9 +78,9 @@ is largely the same as Mindstorms Robot Inventor.
   **rotation sensor**: 360 ticks per revolution, 3 degrees accuracy, 100 Hz sampling
 
 
-## Is there help from Lego?
+## Is there help from LEGO?
 
-Yes, Lego is publishing instruction videos on YouTube. Unfortunately not on a separate channel or in a playlist (grr).
+Yes, LEGO is publishing instruction videos on YouTube. Unfortunately not on a separate channel or in a playlist (grr).
 These I found (top-most is oldest):
 
  - [Robot Inventor Explained!](https://www.youtube.com/watch?v=ntBkg2x3EJ0)
@@ -98,7 +98,7 @@ These I found (top-most is oldest):
 ## Are there other good resources?
 
  - [python readthedocs](https://hubmodule.readthedocs.io/en/latest/) from Nard Strijbosch
- - [python API](https://lego.github.io/MINDSTORMS-Robot-Inventor-hub-API/) from Lego
+ - [python API](https://lego.github.io/MINDSTORMS-Robot-Inventor-hub-API/) from LEGO
  
 
 ## Which projects can I build?
@@ -142,24 +142,24 @@ There are several nice community builds:
  - [AI brick sorter](https://robotics.benedettelli.com/lego-mindstorms-learning-brick-sorter-bird/)
 
 ## Where are my recent projects?
-When you start the Lego Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
+When you start the LEGO Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
 At first this is nice, but after a while you want to continue with your own projects.
 
 ![Projects](images/projects.png)
 
 You have to click PROJECTS at the bottom of the app's home screen.
-Unfortunately, the list of projects starts with the standard lego ones, and not with e.g. the most recent ones.
+Unfortunately, the list of projects starts with the standard LEGO ones, and not with e.g. the most recent ones.
 You have to scroll all the way down. This is much improved since version 10.2.0!
 
 The mouse scroll wheel does work, but the scroll bar itself is too thin to easily grab with the mouse. Grr.
 
-The Lego app is very limited in using _keys_. 
+The LEGO app is very limited in using _keys_. 
 The DownArrow (or UpArrow) don't work. 
 Fortunately PageDown and PageUp do work, best is probably End (or Home).
 Unfortunately, you first have to click the project list (to give it focus) and make the keys work. Grr.
 
 ## How should I name my projects?
-Most projects end up with a name like `Project 17`, because the Lego app does not ask for a name.
+Most projects end up with a name like `Project 17`, because the LEGO app does not ask for a name.
 By default it just numbers them, using the lowest free number.
 
 You have to explicitly remember to press File > Save As (preferably right after you create a new project). Grr.
@@ -186,31 +186,31 @@ So, only an empty project that is not yet renamed does not get saved, which make
 
 
 ## Where are my projects saved?
-The lego app made a directory `C:\Users\maarten\Documents\LEGO MINDSTORMS` for my (Maarten's) projects.
+The LEGO app made a directory `C:\Users\maarten\Documents\LEGO MINDSTORMS` for my (Maarten's) projects.
 If you Save As `xxx`, the file ends up there, as `xxx 1.lms`.
 
-The extension lms probably refers to Lego MindStorms. The "space-one" suffix is automatically appended.
+The extension lms probably refers to LEGO MindStorms. The "space-one" suffix is automatically appended.
 The next time you Save As a project and _type_ `xxx` it gets the name `xxx 2.lms` (note the `2`).
 Non-standard windows behavior. Grr.
 
 You can however Save As and _select_ the existing `xxx 1.lms`.
 That pops up an "are you sure you want to overwrite" dialogue.
 
-It also means you can't call your program `beep3`, because the lego app gets confused by the 3, 
+It also means you can't call your program `beep3`, because the LEGO app gets confused by the 3, 
 strips it and appends a space and another number. grr.
 
 
 ## What is an lms file?
-The Lego app saves Mindstorms projects as files with the extension `.lms` (Lego MindStorms presumably).
+The LEGO app saves Mindstorms projects as files with the extension `.lms` (LEGO MindStorms presumably).
 This is a binary file format, which is a pity for Python programs.
 
 However, and lms file turns out to be an archive. If you have, e.g. [7zip](https://www.7-zip.org/) you can unzip lms files.
 
 ![Inside the lms file](images/lms.png)
 
-This `icon.svg` is the icon displayed on the projects page. For a Python program it is a fixed one, for a Word block program it is a "picture" of the program.
+This `icon.svg` is the icon displayed on the projects page. For a Python program it is a fixed one, for a Word Blocks program it is a "picture" of the program.
 
-The `manifest.json` contains unknown details. I have freely formatted it for readability (e.g. removed all details of the `frames` field for the word block, added whitespace).
+The `manifest.json` contains unknown details. I have freely formatted it for readability (e.g. removed all details of the `frames` field for the Word Blocks, added whitespace).
 
 ```text
 {                                                                {
@@ -260,7 +260,7 @@ The `manifest.json` contains unknown details. I have freely formatted it for rea
 }
 ```
 
-The third file is the actual program. For Word blocks, some format, unknown to me.
+The third file is the actual program. For Word Blocks, some format, unknown to me.
 For Python, it is the Python text wrapped in json, below freely formatted by me for readability.
 
 ```json
@@ -322,7 +322,7 @@ It is pity that Python does not have a Bluetooth package so that we can directly
 
 ## How to get my game controller to work?
 I ordered a [replica DualShock4](https://www.aliexpress.com/item/1005001493670700.html) of which the rumours tell it is working.
-In the mean time, I can confirm it works with Lego mindstorms.
+In the mean time, I can confirm it works with LEGO mindstorms.
 
 It took me some time to get it connected to the (Windows) PC. This is what I did.
  - Your PC must have Bluetooth. Laptops typically have that, desktops typically must use a Bluetooth dongle 
@@ -362,8 +362,8 @@ What I do is to power cycle (switch off and on) Bluetooth in "action center".
 
 
 ## Are there any hotkeys?
-I think Lego did a bad job here. Many functions are not operatable by key.
-Probably lego aims at touch screens.
+I think LEGO did a bad job here. Many functions are not operatable by key.
+Probably LEGO aims at touch screens.
 
 Note #=shift, ^=ctrl, @=alt
 
@@ -375,7 +375,7 @@ Word blocks is horrible, there are basically no hotkeys.
   - I found no hotkey for Run or Download.
   - Cursor keys (panning) do nothing.
 
-Python is a better. But not due to Lego, but because they took a standard control for the editor.
+Python is a better. But not due to LEGO, but because they took a standard control for the editor.
 It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
   - ^C, ^V, ^X for copy, paste, cut.
   - ^Z, ^Y for undo, redo.
@@ -395,11 +395,11 @@ It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/short
 ## How to update the hub firmware?
 I see people talk about hub firmware updates, but the Mindstorms app does not have a feature for that - at least I couldn't find it. Maybe the Spike prime app allows explicit firmware updates (downgrades, alternatives...).
 
-However, when lego releases a new version, you will get a message in the app. If you accept it the hub will be updated.
+However, when LEGO releases a new version, you will get a message in the app. If you accept it the hub will be updated.
 This updates the hub’s OS, not the user data (saved projects).
 
 By the way, if you open a serial port to the Python REPL (see other question), and press ^C you stop the run-time (?).
-If you then close REPL and start the Lego mindstorms app, it believes the hub firmware is broken and suggest to flash it again.
+If you then close REPL and start the LEGO mindstorms app, it believes the hub firmware is broken and suggest to flash it again.
 You could do that. You could also just powercycle the hub (or press ^D for soft reset while still in REPL).
 
 
@@ -509,9 +509,9 @@ later [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/4
 The one that came with the 51515 box is fine. 
 But I ordered a second [one](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45605).
 If I plug it in the hub, it is sometimes recognized, and sometimes not.
-Recognized means that it lights up, appears in the  "triangle" test app, and is listed in the lego app under the port.
+Recognized means that it lights up, appears in the  "triangle" test app, and is listed in the LEGO app under the port.
 For my second sensor none of these happen (in "half" the time).
-I contacted Lego support and they claim that with the latest firmware this is resolved.
+I contacted LEGO support and they claim that with the latest firmware this is resolved.
 
 The second issue is less of a problem: the O positions of the motors have a deviation.
 I found it [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/399918451021115/?comment_id=399946571018303).
@@ -520,9 +520,9 @@ If you tell the motor to go to position 0, it is not at O, but some degrees off.
 Most motors have a deviation within ±5°, but one of mine has an offset of nearly 15°.
 The good news is that it is structural, so you can compensate in software.
 
-**Update:** the Lego app version 10.0.3 has a calibration procedure that presumably programs the O correction in the motors.
+**Update:** the LEGO app version 10.0.3 has a calibration procedure that presumably programs the O correction in the motors.
 
-To force a motor update, goto the Hub connection, and find the "Update motors" in the overflow menu. You need the Lego app version 10.0.3 or higher.
+To force a motor update, goto the Hub connection, and find the "Update motors" in the overflow menu. You need the LEGO app version 10.0.3 or higher.
 
 ![Motor update](images/updatemotors.png)
 
@@ -537,7 +537,7 @@ This startup bypasses `main.py` and the hub should connect as a new COM port on 
 
 
 
-# Word block specific questions
+# Word Blocks specific questions
 
 
 ## How can I debug my Word Block program?
@@ -602,21 +602,21 @@ So if you do not do "integer increments on the PC" but need "sensor or actuator 
 
 ## Is there help (API documentation) for Word Blocks?
 Yes, sort off. If you press Settings in the home screen, or Help > Setting, you can pick _Help and Support_ and then
-_Word block description_. This has a two or three lines of help per block.
+_Word Blocks description_. This has a two or three lines of help per block.
 
 It has a very bad document structure (hard to see sections), does not support copy and paste, and worst of all,
 can not be opened while programming. Grr.
 
-![Word block help](images/wordblockhelp.png)
+![Word Blocks help](images/wordblockhelp.png)
 
 
-## How to stop my Word block program?
+## How to stop my Word Blocks program?
 Good question: if you 
 n't stop, the hub will not power down, so stopping is important.
 
-In Word block, there is an explicit stop block.
+In Word Blocks, there is an explicit stop block.
 
-![Stopping in Word block](images/wordblockstop.png)
+![Stopping in Word Blocks](images/wordblockstop.png)
 
 In Python, I haven't found a good one yet. 
 
@@ -645,13 +645,26 @@ In the screenshot below, the motor moved (by hand actually) nearly 1.3 rotation.
 ![Position versus relative position](images/position-vs-rel.png)
 
 For me the term _relative position_ is a bit confusing, I expected something like "cumulative degrees".
-But it is clear the _position_ is actually "absolute position" (lego just dropped the "absolute"), so the other one is "relative" :-)
+But it is clear the _position_ is actually "absolute position" (LEGO just dropped the "absolute"), so the other one is "relative" :-)
 
 The _position_ sensor is located in the "Motors" section of the Word blocks palette,
 but for the _relative position_ sensor you need to enable the extension "More Motors".
 
 One last word, some of my motors seem to be ~10 degrees off with respect to their "zero mark".
 It is structural, so that is easily fixed by adding a correction of 10.
+
+
+## What is the mapping from integer to colors?
+
+There are two places where colors play a role.
+
+The most obvious is the color sensor. It returns the detected color.
+Secondly, the center button can emit a chosen color.
+In both cases, the Word Block has a color picker, but sometimes, you might want to store or manipulate the value.
+
+![Color chart](images/color-chart.png)
+
+The "mint" color is the color of Robot Inventor (e.g. the hub bottom). I believe LEGO calls this "dark turquoise".
 
 
 ## What are all those (blue) Motor blocks?
@@ -675,7 +688,7 @@ The first block tells the _selected motor_ to move, either in _rotations_, _degr
 You can specify the _amount_ and the _direction_ (clockwise or counter clockwise).
 Note that if the amount is negative, the motor reverse the direction.
 
-The only thing that is missing in this command is _speed_. Lego decided to exclude speed from the motor blocks.
+The only thing that is missing in this command is _speed_. LEGO decided to exclude speed from the motor blocks.
 Instead they have a separate set-speed block (5th in the figure above); it sets the default speed for that motor.
 We will see that some blocks do have a speed parameter, this takes precedence over the default speed.
 If there is no set-speed block, the defaults is 75%.
@@ -780,7 +793,7 @@ And I have the not yet understood stop, stall or acceleration blocks.
 
 ## How do I add an extension?
 
-The Word block has a full palet of blocks to chose from.
+The Word Blocks has a full palet of blocks to chose from.
 But you can add even more blocks, from so-called extensions.
 Example are
 
@@ -830,7 +843,7 @@ Can be open during programming (pfeew).
 ## How to stop my Python program?
 Good question: if your program doesn't stop, the hub will not power down, so stopping is important.
 
-In Word block, there is an explicit stop block. 
+In Word Blocks, there is an explicit stop block. 
 In Python, I haven't found a good method yet. I did find `sys.exit(0)` (don't forget the `import sys`).
 It does stop the program, but with a sort-of error.
 You can see this in the console (red message), but also the center LED on the hub flashes red 3 times.
@@ -1010,7 +1023,7 @@ The `.`TAB trick made us find the beep command, which works!
 ## Which modules are available in Python?
 
 The REPL help suggests to use the `hub` module.
-However, the Lego app suggest to use `mindstorms.MSHub`.
+However, the LEGO app suggest to use `mindstorms.MSHub`.
 And a `dir` of both shows they are different.
 This is very confusing.
 
@@ -1057,7 +1070,7 @@ We even see the string `MSHub` in the `__init__.mpy`. Let's try to import and ge
 
 Success.
 
-We can now do in REPL what we do in the lego app.
+We can now do in REPL what we do in the LEGO app.
 
 Still confused about the difference between `import hub` and `from mindstorms import MSHub`.
 See the question "Why are there so many ways to do ... in Python?"
@@ -1175,8 +1188,8 @@ the left motor keeps its speed and right goes slower.
 So far so good. But at 100, suddenly the right motor reverses.
 Can we graph this?
 
-Unfortunately, there is no console in Word block, so I wrote a script in Python.
-My assumption is that `MotorPair.move()` in Python maps to the pink blocks in Word block.
+Unfortunately, there is no console in Word Blocks, so I wrote a script in Python.
+My assumption is that `MotorPair.move()` in Python maps to the pink blocks in Word Blocks.
 
 The script loops over all steering values, lets the motors run for 1 second, and then checks how far they got (in degrees).
 Here is the code.
@@ -1198,7 +1211,7 @@ for steering in range(-110,111):
     measurements.append( measurement )
 ```
 
-If you run this is in REPL, you can copy the output - I don't know how to copy console output in the lego app :-(.
+If you run this is in REPL, you can copy the output - I don't know how to copy console output in the LEGO app :-(.
 The first few lines look like this (steering, left motor degrees, right motor degrees):
 
 ```text
@@ -1391,7 +1404,7 @@ I did the handpositioning 5 times (with a reset of the hub) and tabulated that.
 |   C   |    0   |    5   |    5   |    5   |    4   |    3.8  |
 |   D   |    3   |    6   |    4   |    7   |    9   |    5.8  |
 
-My conclusion is that the sensor offset is structural (as in "Lego mounted the sensor a couple of degrees rotated").
+My conclusion is that the sensor offset is structural (as in "LEGO mounted the sensor a couple of degrees rotated").
 Especially the motor connected to port A has a large deviation.
 
 We can also test it the other way around: tell the motors to go to position 0 and look at it.
@@ -1408,11 +1421,11 @@ As we see in the photo, none of the motors is at position O.
 
 ![Motor errors](images/motor-error.jpg)
 
-**NOTE** In the mean time, the Lego app has a feature to calibrate the zero position of the motors, fixing this issue.
+**NOTE** In the mean time, the LEGO app has a feature to calibrate the zero position of the motors, fixing this issue.
 
 
 ## Why are there so many ways to do ... in Python?
-The lego app wants us to use 
+The LEGO app wants us to use 
 
 ```python
 >>> from mindstorms import MSHub
