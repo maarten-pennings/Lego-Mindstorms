@@ -284,112 +284,9 @@ For Python, it is the Python text wrapped in json, below freely formatted by me 
 ## What is an llsp file?
 
 An `llsp` file is presumably the same as an `lms` file.
-The only difference seems tobe that an `lms` is for Robot Inventors app and the `llsp` is for the Lego Spike Prime app.
+The only difference seems to be that an `lms` is for Robot Inventors app and the `llsp` is for the Lego Spike Prime app.
 
 Like the `lms` file, it is an archive with an icon, manifest and code file.
-
-
-## Can I "remote control" my robot?
-A bit hidden feature in the Word Block editor are the two icons on the right hand side.
-
-The top one (Remote Control) allows you to create a "Remote Control" pane in the environment, with _widgets_.
-The widgets on the PC pane communicate via Bluetooth (and presumably also USB) to the Hub.
-On the hub they trigger events that can be used in your program.
-
-Great feature! Missing are widgets that _output_ content; most _input_ events in you program.
-For example a virtual LED would be nice, or a string box, or a string list (dare I say "console").
-
-There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in _streaming_ mode (i.e. live connection to the PC). 
-
-The remote control is not present in Python - probably because it has no streaming mode.
-
-![Remote Control](images/remotecontrol.png)
-
-
-## Can I remote control my robot with a game controller?
-At this moment in beta, there is the option to add support for game controllers (Sony, XBox).
-
-Click the Block Extension button and then either enable the DualShock or XBox One controller.
-New blocks will pop-up in your palette (left).
-
-There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in streaming mode (ie live connection to the PC). Another drawback is the latency, lingo for "slow": the button press goes from controller, via Bluetooth link, to the PC; the PC streams actions to the hub. 
-
-The game control is not present in Python - probably because it has no streaming mode.
-It is pity that Python does not have a Bluetooth package so that we can directly hookup Bluetooth devices.
-
-![game controller](images/btcontroller.png)
-
-
-## How to get my game controller to work?
-I ordered a [replica DualShock4](https://www.aliexpress.com/item/1005001493670700.html) of which the rumours tell it is working.
-In the mean time, I can confirm it works with LEGO mindstorms.
-
-It took me some time to get it connected to the (Windows) PC. This is what I did.
- - Your PC must have Bluetooth. Laptops typically have that, desktops typically must use a Bluetooth dongle 
-   (e.g. something like [this](https://nl.aliexpress.com/item/4000558398862.html) - note did not test this one myself!)
- - You must have enabled bluetooth in Windows.
-   Open the "action center" (the speech bubble right to the clock in the system tray) and make sure Bluetooth is "blue".  
-   ![Enable Bluetooth](images/bluetooth1.png)
- - Only the first time, _right-click_ on the blue Bluetooth button and select "Goto Settings".
- - In "Bluetooth & other devices" settings, press "Add Bluetooth or other device".  
-   ![Add Bluetooth device](images/bluetooth2.png)
- - In the window that pops up, click "Bluetooth".  
-   ![Add Bluetooth device](images/bluetooth3.png)
- - Now, bring the game controller in pairing mode. 
-   To do that, press the SHARE button, and while that is kept pressed, also press center POWER button.  
-   ![Pairing mode](images/dualshock.png)  
-   Keep them both pressed for around 5 seconds, until pairing mode is entered.
-   When pairing mode is entered, the colored light on the game controller starts flashing blue.
- - The game controller should appear in the "Add a device" list.
-   Click it. "Connecting" apears, and after a while you can click "Done".  
-   ![Add Bluetooth device](images/bluetooth4.png)
-
-
-## How can I test my game controller?
-I wrote a [test](blocks/DualShockTest.lms), which test all buttons, except SHARE, OPTIONS, or POWER.
-
-![DualShockTest](images/DualShockTest.png)
-
-
-## How can I switch off my game controller?
-Good question. Don't know myself.
-
-I think that on Playstation 4 devices, you can click OPTIONS, then you get a menu and chose "power off" of the Playstation 4.
-Or you press the power button on the Playstation 4 - this likely also switches off it "keyboard" - the game controller.
-
-But we don't have a Playstation 4 to switch off.
-What I do is to power cycle (switch off and on) Bluetooth in "action center".
-
-
-## Are there any hotkeys?
-I think LEGO did a bad job here. Many functions are not operatable by key.
-Probably LEGO aims at touch screens.
-
-Note #=shift, ^=ctrl, @=alt
-
-Word blocks is horrible, there are basically no hotkeys.
-  - ^Z for undo is working, but ^Y for redo isn't (it is available in bottom menu or right click menu)
-  - @F4 stops aplication.
-  - @F or @H (for file or help menu) is _not_ working.
-  - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.
-  - I found no hotkey for Run or Download.
-  - Cursor keys (panning) do nothing.
-
-Python is a better. But not due to LEGO, but because they took a standard control for the editor.
-It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
-  - ^C, ^V, ^X for copy, paste, cut.
-  - ^Z, ^Y for undo, redo.
-  - Cursor movement with arrow or page keys, optionally in combination with ^.
-  - Select by pressing # while moving cursor.
-  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar).
-  - **^#P issues a play**.
-  - ^#D issues a download.
-  - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
-  - **You can only walk up (arrow-up, page-up, home) in the console, not down (arrow-down, page-down and end all jump to end), and the scroll bar sucks - grr**.
-  - Fancy line commenting: ^K^C add line comment, ^K^U delete line comment, ^/ toggle line comment.
-  - #@A to toggle block comment.
-  - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
-  - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
 
 
 ## How to update the hub firmware?
@@ -417,9 +314,9 @@ print(sys.version)
 ### Per 2021 December 26
 
 - The app version is 10.3.0
-  - Getting started on home page
+  - Getting started on home page  
     ![app 10.3.0 home](images/version10.3.0-home.png)
-  - Bluetooth auto connect
+  - Bluetooth auto connect  
     ![app 10.3.0 auto BT](images/version10.3.0-autobt.png)
 - The Hub OS version is 3.1.43 (no fourth number)
 - The `sys.implementation` micropython 1.14.0, mpy 517
@@ -529,8 +426,16 @@ To force a motor update, goto the Hub connection, and find the "Update motors" i
 
 ## Are there special startup features?
 
-Press and hold the left button, and press the center button. This turns on the hub; release both buttons. 
-This startup bypasses `main.py` and the hub should connect as a new COM port on your computer via USB.
+
+1) Turn off the hub and unplug the USB cable.
+   Press and hold the Bluetooth button on the hub while reconnecting the USB cable. 
+   Release the Bluetooth button when it starts to flashing colors (purple, red, blue). 
+2) Connect the hub to a computer via USB, turn off the hub.
+   Press and hold the left button and press the center button. This turns on the hub; release both buttons when completely on. 
+   When you press connect in the LEGO app, the hub OS is updated.
+
+
+
 
 
 
@@ -548,7 +453,7 @@ The bottom one (Show/Hide Monitor) allows you to show (hide) a pane with a live 
 Great feature! Not present in Python, but Python has a better feature: the console!
 A downside is that the monitor updates periodically (timed), so you do not see all changes.
 
-The monitor feature does work in "download mode", you  do not have to use "streaming mode". I did expect that...
+The monitor feature does work in "download mode", you  do not have to use "streaming mode". I did not expect that...
 
 ![Monitor](images/monitor.png)
 
@@ -578,13 +483,18 @@ I'm not entirely sure of all the details of [streaming mode](https://www.lego.co
 
 - The program you’re creating is not stored in a slot on the hub as it is with download mode.
 - Instead, the PC maintains a connection with the hub, and the instructions will stream to the hub as they are executed.
-- You can make "live" changes in your program (see figure).
 - Remote control (pane in Mindstorms app, or Game controller) requires streaming mode.
+- You can make "live" changes in your program (see figure).  
+  ![Streaming](images/streaming.png)
+- You can single click any block (even in the left-hand side toolbar) to execute it immediately. It highlights yellow.  
+  ![Execute single statement](images/execsingle.png)
+- You can even click a variable in the toolbar to see its value. It highlights yellow and shows speech bubble with current value.  
+  ![Execute variable](images/execvar.png)
+
+However,
 - Somehow, showing the monitor does not require streaming mode.
 - Also, sound via PC does not require streaming mode.
-- I don't know yet if e.g. the "weather" extension needs streaming.
-
-![Streaming](images/streaming.png)
+- The "weather" extension does not need streaming either (but the project must be open in the LEGO app).
 
 
 ## Isn't streaming mode slow?
@@ -619,6 +529,63 @@ In Word Blocks, there is an explicit stop block.
 ![Stopping in Word Blocks](images/wordblockstop.png)
 
 In Python, I haven't found a good one yet. 
+
+
+## Can I show two digits on the screen
+
+The screen is a bit small, but we can make a 2x5 font for digits that is sort-of readable 
+(especially the 0 and 8 are a bit hard to read).
+
+![Show99](images/show99.png)
+
+I was inspired by [Anton's mindstorms hacks](https://antonsmindstorms.com/2021/02/08/how-to-display-two-digit-numbers-on-a-5x5-led-matrix-with-lego-spike-prime-or-robot-inventor/)
+but made it a bit simpler. See the Word Blocks [Example](blocks/Show99.lms).
+
+The python version is even simpler:
+
+```python
+font = [ "99999:99999", "90090:99999", "99909:90999", "90909:99999", "00990:99999", "90999:99909", "99999:99909", "99909:00099", "99099:99099", "90999:99999" ]
+def turn_on_digits(num) :
+    hub.light_matrix.show( font[num//10] + ":00000:" + font[num%10] )
+
+hub = MSHub()
+hub.speaker.beep()
+for ix in range(100) :
+    turn_on_digits(ix)
+    wait_for_seconds(0.2)
+```
+
+
+## Are there any hotkeys?
+I think LEGO did a bad job here. Many functions are not operatable by key.
+Probably LEGO aims at touch screens.
+
+Note #=shift, ^=ctrl, @=alt
+
+Word blocks is horrible, there are basically no hotkeys.
+  - ^Z for undo is working, but ^Y for redo isn't (it is available in bottom menu or right click menu)
+  - @F4 stops application.
+  - @F or @H (for file or help menu) is _not_ working.
+  - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.  
+    **Update** in 10.3.0 (but maybe earlier, copy and paste seems to work, even across projects! 
+  - I found no hotkey for Run or Download.
+  - Cursor keys (panning) do nothing.
+
+Python is a better. But not due to LEGO, but because they took a standard control for the editor.
+It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+  - ^C, ^V, ^X for copy, paste, cut.
+  - ^Z, ^Y for undo, redo.
+  - Cursor movement with arrow or page keys, optionally in combination with ^.
+  - Select by pressing # while moving cursor.
+  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar).
+  - **^#P issues a play**.
+  - ^#D issues a download.
+  - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
+  - **You can only walk up (arrow-up, page-up, home) in the console, not down (arrow-down, page-down and end all jump to end), and the scroll bar sucks - grr**.
+  - Fancy line commenting: ^K ^C add line comment, ^K ^U delete line comment, ^/ toggle line comment.
+  - #@A to toggle block comment.
+  - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
+  - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
 
 
 ## What is degrees, position and relative position?
@@ -805,11 +772,109 @@ Example are
 ![Extensions](images/extensions.png)
 
 
+## Can I "remote control" my robot?
+A bit hidden feature in the Word Block editor are the two icons on the right hand side.
+
+The top one (Remote Control) allows you to create a "Remote Control" pane in the environment, with _widgets_.
+The widgets on the PC pane communicate via Bluetooth (and presumably also USB) to the Hub.
+On the hub they trigger events that can be used in your program.
+
+Great feature! Missing are widgets that _output_ content; most _input_ events in you program.
+For example a virtual LED would be nice, or a string box, or a string list (dare I say "console").
+
+There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in _streaming_ mode (i.e. live connection to the PC). 
+
+The remote control is not present in Python - probably because it has no streaming mode.
+
+![Remote Control](images/remotecontrol.png)
 
 
+## Can I remote control my robot with a game controller?
+At this moment in beta, there is the option to add support for game controllers (Sony, XBox).
+
+Click the Block Extension button and then either enable the DualShock or XBox One controller.
+New blocks will pop-up in your palette (left).
+
+There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in streaming mode (ie live connection to the PC). Another drawback is the latency, lingo for "slow": the button press goes from controller, via Bluetooth link, to the PC; the PC streams actions to the hub. 
+
+The game control is not present in Python - probably because it has no streaming mode.
+It is pity that Python does not have a Bluetooth package so that we can directly hookup Bluetooth devices.
+
+![game controller](images/btcontroller.png)
 
 
+## How to get my game controller to work?
+I ordered a [replica DualShock4](https://www.aliexpress.com/item/1005001493670700.html) of which the rumours tell it is working.
+In the mean time, I can confirm it works with LEGO mindstorms.
 
+It took me some time to get it connected to the (Windows) PC. This is what I did.
+ - Your PC must have Bluetooth. Laptops typically have that, desktops typically must use a Bluetooth dongle 
+   (e.g. something like [this](https://nl.aliexpress.com/item/4000558398862.html) - note did not test this one myself!)
+ - You must have enabled bluetooth in Windows.
+   Open the "action center" (the speech bubble right to the clock in the system tray) and make sure Bluetooth is "blue".  
+   ![Enable Bluetooth](images/bluetooth1.png)
+ - Only the first time, _right-click_ on the blue Bluetooth button and select "Goto Settings".
+ - In "Bluetooth & other devices" settings, press "Add Bluetooth or other device".  
+   ![Add Bluetooth device](images/bluetooth2.png)
+ - In the window that pops up, click "Bluetooth".  
+   ![Add Bluetooth device](images/bluetooth3.png)
+ - Now, bring the game controller in pairing mode. 
+   To do that, press the SHARE button, and while that is kept pressed, also press center POWER button.  
+   ![Pairing mode](images/dualshock.png)  
+   Keep them both pressed for around 5 seconds, until pairing mode is entered.
+   When pairing mode is entered, the colored light on the game controller starts flashing blue.
+ - The game controller should appear in the "Add a device" list.
+   Click it. "Connecting" apears, and after a while you can click "Done".  
+   ![Add Bluetooth device](images/bluetooth4.png)
+
+
+## How can I test my game controller?
+I wrote a [test](blocks/DualShockTest.lms), which test all buttons, except SHARE, OPTIONS, or POWER.
+
+![DualShockTest](images/DualShockTest.png)
+
+
+## How can I switch off my game controller?
+Good question. Don't know myself.
+
+I think that on Playstation 4 devices, you can click OPTIONS, then you get a menu and chose "power off" of the Playstation 4.
+Or you press the power button on the Playstation 4 - this likely also switches off it "keyboard" - the game controller.
+
+But we don't have a Playstation 4 to switch off.
+What I do is to power cycle (switch off and on) Bluetooth in "action center".
+
+
+# Can I use the large angular motor with Robot Inventor?
+
+![Large angular motor](images/large-angular-motor-88017.png)
+
+Yes, I have the angular motor, and it is automatically recognized as a motor.
+The LEGO app does not make a difference with the standard motors.
+
+
+# Can I use the touch/force sensor with Robot Inventor?
+
+![Force sensor](images/Education-SPIKE-Prime-Force-Sensor-45678.png)
+
+The LEGO Robot Inventor does not ship with a "touch" sensor.
+Spike prime does, and you can order it separately. I did.
+
+After adding the standard extension "More Sensors" we get Word Blocks for the force sensor.
+
+![More sensors](more-sensor.png)
+
+
+# Can I use the 3x3 color matrix with Robot Inventor?
+
+![Color matrix](images/Technic-3x3-Color-Light-Matrix-45608.png)
+
+When you use the Robot Inventor in the "test mode" 
+(pressing the middle button when the screen shows the "play" slot)
+we can press the left or right button to change the speed of a motor.
+When we hook up the color matrix the test mode sort of works as for a motor: 
+when we change the "speed" with the left and right button, the matrix changes color (all 9 LEDs in one go).
+
+I did not yet succeed in controlling it from Word Blocks :-(
 
 
 # Python specific questions
