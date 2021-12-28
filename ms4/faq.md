@@ -861,7 +861,7 @@ Spike prime does, and you can order it separately. I did.
 
 After adding the standard extension "More Sensors" we get Word Blocks for the force sensor.
 
-![More sensors](more-sensor.png)
+![More sensors](images/more-sensor.png)
 
 
 # Can I use the 3x3 color matrix with Robot Inventor?
