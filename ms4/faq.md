@@ -864,7 +864,7 @@ After adding the standard extension "More Sensors" we get Word Blocks for the fo
 ![More sensors](images/more-sensor.png)
 
 
-# Can I use the 3x3 color matrix with Robot Inventor?
+# Can I use the 3x3 LED color matrix with Robot Inventor?
 
 ![Color matrix](images/Technic-3x3-Color-Light-Matrix-45608.png)
 
@@ -874,7 +874,13 @@ we can press the left or right button to change the speed of a motor.
 When we hook up the color matrix the test mode sort of works as for a motor: 
 when we change the "speed" with the left and right button, the matrix changes color (all 9 LEDs in one go).
 
-I did not yet succeed in controlling it from Word Blocks :-(
+I did not yet succeed in controlling it from Word Blocks, but I do have a Python solution (see other question).
+ 
+
+
+
+
+
 
 
 # Python specific questions
@@ -963,6 +969,63 @@ I hear you ask what images are. Well, images are objects created from the class 
 ```
 
 ![low level display control](images/display.jpg)
+
+
+# Can I use the 3x3 LED color matrix with Robot Inventor?
+
+![Color matrix](images/Technic-3x3-Color-Light-Matrix-45608.png)
+
+I did not yet succeed in controlling it from Word Blocks, but I do have a Python solution:
+ 
+```python
+import hub,  time
+
+matrix = hub.port.A.device
+matrix.mode(2)
+
+while True:
+    matrix.mode(2,b"III@@@@@@")
+    time.sleep(4)
+    matrix.mode(2,b"@@@@@@FFF")
+    time.sleep(2)
+    matrix.mode(2,b"@@@HHH@@@")
+    time.sleep(1)
+```
+
+Notes
+ - We use the `device` of a `port`.
+ - We must first select `mode(2)`.
+ - Next we must send exactly 9 bytes to configure the LED matrix - note that we use a byte string `b'...'`. 
+ - The byte at position `i` in the string controls LED `i`.
+ - The value `v` of each byte shall be `v=b*16+c`, where `b` is the brightness, and `c` the color.
+ - Legal values for `b` are 1..10, and legal values for `c` are 0..10.
+ - b=1 is most dim, b=10 is most bright.
+ - c is the standard LEGO color scheme.
+
+   |  0  |   1   |   2  | 3  |    4    |  5 |  6  |   7  |   8  | 9 |  10 |
+   |-----|-------|------|----|---------|----|-----|------|------|---|-----|
+   | off |magenta|violet|blue|turquoise|mint|green|yellow|orange|red|white|
+   
+ - If we write `v` in hex it looks like `bc`: e.g. most dim blue is \x13 and the most bright red is \xA9.
+ - Note that the brightness level 3 colors are in the range `\x30`, .. `\x39`, `\x3A`,  
+   which happens to match the characters `'0'`, .. `'9'`, `':'`
+ - Similarly, brightness level 4 colors are in the range `\x40`, `\x41`, .. `\x4A`, 
+   which happens to match the characters `'@'`, `'A'`, .. `'J'`,
+   (brightness 5 would be `'P'`, .. `Z`).
+ - Next, brightness level 6 colors are in the range `\x50`, `\x51`, .. `\x5A`, 
+   which happens to match the characters ``'`'``, `'a'`, .. `'j'`,
+   (brightness 7 would be `'p'`, .. `z`).
+
+This leads to the following "shortcut" table.
+
+   |brightness|   0   |   1   |   2  |  3  |    4    |  5  |  6  |   7  |   8  |  9  |  10 |
+   |----------|-------|-------|------|-----|---------|-----|-----|------|------|-----|-----|
+   |          |  off  |magenta|violet|blue |turquoise|mint |green|yellow|orange| red |white|
+   |       3  | `'0'` | `'1'` |`'2'` |`'3'`|  `'4'`  |`'5'`|`'6'`|`'7'` |`'8'` |`'9'`|`':'`|
+   |       4  | `'@'` | `'A'` |`'B'` |`'C'`|  `'D'`  |`'E'`|`'F'`|`'G'` |`'H'` |`'I'`|`'J'`|
+   |       5  | `'P'` | `'Q'` |`'R'` |`'S'`|  `'T'`  |`'U'`|`'V'`|`'W'` |`'X'` |`'Y'`|`'Z'`|
+   |       6  |``'`'``| `'a'` |`'b'` |`'c'`|  `'d'`  |`'e'`|`'f'`|`'g'` |`'h'` |`'i'`|`'j'`|
+   |       7  | `'p'` | `'q'` |`'r'` |`'s'`|  `'t'`  |`'u'`|`'v'`|`'w'` |`'x'` |`'y'`|`'z'`|
 
 
 ## Can I connect to REPL - interactive Python?
