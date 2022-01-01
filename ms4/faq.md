@@ -790,9 +790,9 @@ The remote control is not present in Python - probably because it has no streami
 
 
 ## Can I remote control my robot with a game controller?
-At this moment in beta, there is the option to add support for game controllers (Sony, XBox).
+At this moment in beta, there is the option to add support for game controllers (Sony, Microsoft).
 
-Click the Block Extension button and then either enable the DualShock or XBox One controller.
+Click the Block Extension button and then either enable the Playstation DualShock or XBox One controller.
 New blocks will pop-up in your palette (left).
 
 There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in streaming mode (ie live connection to the PC). Another drawback is the latency, lingo for "slow": the button press goes from controller, via Bluetooth link, to the PC; the PC streams actions to the hub. 
@@ -804,28 +804,31 @@ It is pity that Python does not have a Bluetooth package so that we can directly
 
 
 ## How to get my game controller to work?
-I ordered a [replica DualShock4](https://www.aliexpress.com/item/1005001493670700.html) of which the rumours tell it is working.
-In the mean time, I can confirm it works with LEGO mindstorms.
+I ordered a [replica DualShock4](https://www.aliexpress.com/item/1005001493670700.html) of which the rumors tell it is working.
+In the mean time, I can confirm it works with LEGO Mindstorms.
 
 It took me some time to get it connected to the (Windows) PC. This is what I did.
  - Your PC must have Bluetooth. Laptops typically have that, desktops typically must use a Bluetooth dongle 
    (e.g. something like [this](https://nl.aliexpress.com/item/4000558398862.html) - note did not test this one myself!)
- - You must have enabled bluetooth in Windows.
+ - You must have enabled Bluetooth in Windows.
    Open the "action center" (the speech bubble right to the clock in the system tray) and make sure Bluetooth is "blue".  
    ![Enable Bluetooth](images/bluetooth1.png)
  - Only the first time, _right-click_ on the blue Bluetooth button and select "Goto Settings".
  - In "Bluetooth & other devices" settings, press "Add Bluetooth or other device".  
    ![Add Bluetooth device](images/bluetooth2.png)
- - In the window that pops up, click "Bluetooth".  
+ - In the window that pops up, click "Bluetooth" (top) - I did not use "Everything else" (bottom) although it is mentioning Xbox controllers.  
    ![Add Bluetooth device](images/bluetooth3.png)
  - Now, bring the game controller in pairing mode. 
    To do that, press the SHARE button, and while that is kept pressed, also press center POWER button.  
    ![Pairing mode](images/dualshock.png)  
    Keep them both pressed for around 5 seconds, until pairing mode is entered.
-   When pairing mode is entered, the colored light on the game controller starts flashing blue.
+   When pairing mode is entered, the colored light on the game controller starts flashing blue (two flashes then a wait).
  - The game controller should appear in the "Add a device" list.
-   Click it. "Connecting" apears, and after a while you can click "Done".  
-   ![Add Bluetooth device](images/bluetooth4.png)
+   Click it. "Connecting" appears, and after a while you can click "Done".  
+   ![Add Bluetooth device](images/bluetooth4.png)  
+   Once connected, the colored light on the game controller is permanently on (blue).
+ - The LEGO app should now also show that a controller is connected.  
+   ![Bluetooth controller connected](images/bluetooth5.png)  
 
 
 ## How can I test my game controller?
