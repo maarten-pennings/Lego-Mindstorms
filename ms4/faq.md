@@ -873,14 +873,28 @@ After adding the standard extension "More Sensors" we get Word Blocks for the fo
 
 When you use the Robot Inventor in the "test mode" 
 (pressing the middle button when the screen shows the "play" slot)
-we can press the left or right button to change the speed of a motor.
+we can press the left or right button to change the speed of a connected motor.
 When we hook up the color matrix the test mode sort of works as for a motor: 
 when we change the "speed" with the left and right button, the matrix changes color (all 9 LEDs in one go).
 
-I did not yet succeed in controlling it from Word Blocks, but I do have a Python solution (see other question).
- 
+I did not yet succeed in controlling it from _plain_ Word Blocks, but I do have a Python solution (see other question and answer below).
 
+After extensive study in Python (see afore mentioned question below), I learned how to control the matrix.
+It appears to be sort-of-possible, but tricky
+ - you must enable the [debug mode](https://digitalbrick.home.blog/2021/09/20/experiments-with-the-spike-advanced-mode-debug-mode/) of the LEGO app
+    - switch off LEGO app
+    - navigate in explorer to `C:\Users\<user>\AppData\Local\Packages\TheLEGOGroup.LEGOMINDSTORMSInventor_m36angppq0g76\LocalCache\Roaming\MINDSTORMS_ROBOTINVENTOR\`
+    - open `settings.json` (suggest to back-up that file first)
+    - add the line `"ui.debug": true,` (at the top) assuming it is not there yet, otherwise change `false` to `true`).
+    - Start app, it has a warning at the bottom `Debug Mode (Click to expand)` (don't click).
+    - Start a new WordBlocks project
+    - Press the "Show block extensions" on the left bottom; at the bottom of the extensions press the debug tab. This adds a dark blue group of debug extensions.
+ - Now enter below program
+    - It tests mode 1 and 3, 0 is useless, 2 is there but does not work. That is bad, because **mode 2 is the most important one**.
+    
+![Debug mode](images/Matrix-Debug-WordBlocks.png)
 
+See the result on [YouTube](https://www.youtube.com/watch?v=tcQDFgmpieU).
 
 
 
@@ -1029,6 +1043,96 @@ This leads to the following "shortcut" table.
    |       5  | `'P'` | `'Q'` |`'R'` |`'S'`|  `'T'`  |`'U'`|`'V'`|`'W'` |`'X'` |`'Y'`|`'Z'`|
    |       6  |``'`'``| `'a'` |`'b'` |`'c'`|  `'d'`  |`'e'`|`'f'`|`'g'` |`'h'` |`'i'`|`'j'`|
    |       7  | `'p'` | `'q'` |`'r'` |`'s'`|  `'t'`  |`'u'`|`'v'`|`'w'` |`'x'` |`'y'`|`'z'`|
+
+
+I learned that each device has a "mode".
+A mode is sort of a register that determines the state of the device.
+The LED matrix has four modes, see
+[readthedocs](https://buildhat.readthedocs.io/en/latest/buildhat/matrix.html) or
+[pdf](https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf) about
+the Raspberry pi Hat.
+
+ - **mode 0 = M0 = "LEV O" = level output**  
+   Mode 0 has an argument 0..9 that enables some green bands. Silly mode for debugging?
+
+ - **mode 1 = M1 = "COL O" = color output**  
+   Mode 1 has an argument from 0 to 10, and all LEDs will light up brightly in that color (see table above).
+   
+ - **mode 2 = M2 = "PIX O" = pixel output**  
+   Mode 2 has nine arguments: b*16+c, where b is brightness (0..9) and c is color (0..10) 
+ 
+ - **mode 3 = M3 = "TRANS" = transitions** 
+   Mode 3 has one argument the transition effect: 0 is none (default), 1 is row-by-row, and 2 fade-down-fade-up.
+
+The below script tests all modes.
+ 
+```python
+# Testing the LEGO Spike Prime Essentials 3x3 LED matrix
+# see eg https://buildhat.readthedocs.io/en/latest/buildhat/matrix.html
+# see eg https://datasheets.raspberrypi.com/build-hat/build-hat-serial-protocol.pdf
+
+import hub,time
+matrix = hub.port.F.device
+
+# mode 0 = M0 = "LEV O" = level output
+# select 0 ; write1 c0 p -- where p is a number from 0 to 9, will light the matrix in bar-graph style according to the value of p.
+# Maarten:  Silly mode with bands of green in different brightness
+matrix.mode(0)
+matrix.mode(0,b"\x07") # do not yet understand coding
+time.sleep(1)
+
+# mode 1 = M1 = "COL O" = color output
+# select 1 ; write1 c1 p -- where p is a hexadecimal number from 0 to 0x0a will light the matrix in a solid colour according to the value of p.
+# Maarten: all nine leds bright in color p 
+matrix.mode(1)
+matrix.mode(1,b"\x08") # 8 is orange
+time.sleep(1)
+
+# mode 2 = M2 = "PIX O" = pixel output
+# write1 c2 67 72 78 82 89 92 9a a4 aa -- The first hex digit (from 0 to a) specifies the brightness and the second hex digit (from 0 to a) the basic colour.
+# Maarten: nine leds set, each to \xbc: brightness b and color c
+matrix.mode(2)
+matrix.mode(2,b"\x67\x72\x78\x82\x89\x92\x9a\xa4\xaa")
+time.sleep(1)
+matrix.mode(2,"cccfffggg") # normal strings (not explicitly byte strings) work
+time.sleep(1)
+matrix.mode(2,"ddd") # Too short does not work
+time.sleep(1)
+matrix.mode(2,"iiiiiiiijjjjjjjjjjjjjjjjjjjjjjjjjjj") # Too long works
+time.sleep(1)
+
+# mode 3 = M3 = "TRANS" = transitions
+# write1 c3 1 -- enables row-by-row animated transitions
+matrix.mode(3)
+matrix.mode(3,b"\x01")
+
+matrix.mode(2)
+matrix.mode(2,b"\x67\x72\x78\x82\x89\x92\x9a\xa4\xaa")
+time.sleep(5)
+matrix.mode(2,b"\x99\x99\x99\x9A\x9A\x9A\x93\x93\x93")
+time.sleep(5)
+matrix.mode(2,b"\x91\x97\x93\x94\x95\x99\x9A\x92\x96")
+time.sleep(5)
+
+# write1 c3 2 -- enables a fade to black and fade back up.
+matrix.mode(3)
+matrix.mode(3,b"\x02")
+
+matrix.mode(2)
+matrix.mode(2,b"\x67\x72\x78\x82\x89\x92\x9a\xa4\xaa")
+time.sleep(5)
+matrix.mode(2,b"\x99\x99\x99\x9A\x9A\x9A\x93\x93\x93")
+time.sleep(5)
+matrix.mode(2,b"\x91\x97\x93\x94\x95\x99\x9A\x92\x96")
+time.sleep(5)
+
+# Mode 0: No transition, immediate pixel drawing
+matrix.mode(3)
+matrix.mode(3,b"\x00")
+```
+
+There is a [video](https://www.youtube.com/watch?v=krTXmznwOUY) on the result.
+
 
 
 ## Can I connect to REPL - interactive Python?
