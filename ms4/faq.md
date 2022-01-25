@@ -1061,7 +1061,7 @@ The LED matrix has four modes, see
 the Raspberry pi Hat.
 
  - **mode 0 = M0 = "LEV O" = level output**  
-   Mode 0 has an argument 0..9 that enables some green bands. Silly mode for debugging?
+   Mode 0 has an argument 0..9 that enables green bands showing a sort of battery level form 0=empty to 9=full
 
  - **mode 1 = M1 = "COL O" = color output**  
    Mode 1 has an argument from 0 to 10, and all LEDs will light up brightly in that color (see table above).
@@ -1084,7 +1084,7 @@ matrix = hub.port.F.device
 
 # mode 0 = M0 = "LEV O" = level output
 # select 0 ; write1 c0 p -- where p is a number from 0 to 9, will light the matrix in bar-graph style according to the value of p.
-# Maarten:  Silly mode with bands of green in different brightness
+# Maarten:  rows of green in increasing brightness: 0=000, 1=001, 2=002, 3=003, 4=013, 5=023, 6=033, 7=133, 8=233, 9=333 useful as battery level
 matrix.mode(0)
 matrix.mode(0,b"\x07") # do not yet understand coding
 time.sleep(1)
@@ -1111,7 +1111,7 @@ time.sleep(1)
 
 # mode 3 = M3 = "TRANS" = transitions
 # write1 c3 1 -- enables row-by-row animated transitions
-matrix.mode(3)
+matrix.mode(3) # late insight: this line is not needed for mode 3 (it is not a mode but a parameter)
 matrix.mode(3,b"\x01")
 
 matrix.mode(2)
@@ -1123,7 +1123,7 @@ matrix.mode(2,b"\x91\x97\x93\x94\x95\x99\x9A\x92\x96")
 time.sleep(5)
 
 # write1 c3 2 -- enables a fade to black and fade back up.
-matrix.mode(3)
+matrix.mode(3) # late insight: this line is not needed
 matrix.mode(3,b"\x02")
 
 matrix.mode(2)
@@ -1135,11 +1135,13 @@ matrix.mode(2,b"\x91\x97\x93\x94\x95\x99\x9A\x92\x96")
 time.sleep(5)
 
 # Mode 0: No transition, immediate pixel drawing
-matrix.mode(3)
+matrix.mode(3) # late insight: this line is not needed
 matrix.mode(3,b"\x00")
 ```
 
 There is a [video](https://www.youtube.com/watch?v=krTXmznwOUY) on the result.
+
+See also the question on "port info" below.
 
 
 
@@ -1773,12 +1775,28 @@ combi_modes= (63,)
 type= 63
 ```
 
+When I connect the 3x3 LED matrix (bought separately), this is the output
+
+```text
+combi_modes= ()
+fw_version= 285212672
+speed= 115200
+modes[0]= {'symbol': 'PCT', 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b'\x80\x00\x00\x00\x05\x04', 'map_out': 80, 'name': 'LEV O', 'pct': (-100.0, 100.0), 'map_in': 0, 'si': (-9.0, 9.0), 'raw': (-9.0, 9.0)}
+modes[1]= {'symbol': 'PCT', 'format': {'datasets': 1, 'type': 0, 'figures': 2, 'decimals': 0}, 'capability': b'\x80\x00\x00\x00\x05\x04', 'map_out': 68, 'name': 'COL O', 'pct': (0.0, 100.0), 'map_in': 0, 'si': (0.0, 10.0), 'raw': (0.0, 10.0)}
+modes[2]= {'symbol': '   ', 'format': {'datasets': 9, 'type': 0, 'figures': 3, 'decimals': 0}, 'capability': b'\x80\x00\x00\x00\x05\x04', 'map_out': 16, 'name': 'PIX O', 'pct': (0.0, 100.0), 'map_in': 0, 'si': (0.0, 170.0), 'raw': (0.0, 170.0)}
+modes[3]= {'symbol': '   ', 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b'\x80\x00\x00\x00\x05\x04', 'map_out': 16, 'name': 'TRANS', 'pct': (0.0, 100.0), 'map_in': 0, 'si': (0.0, 2.0), 'raw': (0.0, 2.0)}
+uid= bytearray(b'\x00k\x000\x18G033798\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+type= 64
+hw_version= 4
+>>>
+```
+
 When I connect a (small) motor, this is the output
 
 ```text
 fw_version= 4096
 modes[0]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0},   'capability': b'\x10\x00\x00\x00\x01\x04', 'map_out': 16, 'name': 'POWER', 'pct': (-100.0, 100.0)       , 'map_in': 0, 'si': (-100.0, 100.0)   , 'raw': (-100.0, 100.0)}
-modes[1]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 4, 'decimals': 0},   'capability': b'!\x00\x00\x00\x01\x04'   , 'map_out': 16, 'name': 'SPEED', 'pct': (-100.0, 100.0)       , 'map_in': 16, 'si': (-100.0, 100.0)  , 'raw': (-100.0, 100.0)}
+modes[1]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 4, 'decimals': 0},   'capability': b'!\x00\x00\x00\x01\x04'   , 'map_out': 16, 'name': 'SPEED', 'pct': (-100.0, 100.0)       , 'map_in':16, 'si': (-100.0, 100.0)  , 'raw': (-100.0, 100.0)}
 modes[2]= {'symbol': 'DEG'         , 'format': {'datasets': 1, 'type': 2, 'figures': 4, 'decimals': 0},   'capability': b'$\x00\x00\x00\x01\x04'   , 'map_out':  8, 'name': 'POS'  , 'pct': (-100.0, 100.0)       , 'map_in': 8, 'si': (-360.0, 360.0)   , 'raw': (-360.0, 360.0)}
 modes[3]= {'symbol': 'DEG'         , 'format': {'datasets': 1, 'type': 1, 'figures': 3, 'decimals': 0},   'capability': b'"\x00\x00\x00\x01\x04'   , 'map_out':  8, 'name': 'APOS' , 'pct': (-200.0, 200.0)       , 'map_in': 8, 'si': (-180.0, 179.0)   , 'raw': (-180.0, 179.0)}
 modes[4]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0},   'capability': b' @\x00\x00\x01\x04'      , 'map_out':  8, 'name': 'LOAD' , 'pct': (0.0, 100.0)          , 'map_in': 8, 'si': (0.0, 127.0)      , 'raw': (0.0, 127.0)}
@@ -1798,7 +1816,22 @@ Here is a small overview.
 | light    |    61  | COLOR, REFLT, AMBI, LIGHT, RREFL, RGB I, HSV, SHSV, DEBUG, CALIB |
 | distance |    62  | DISTL, DISTS, SINGL, LISTN, TRAW, LIGHT, PING, ADRAW, CALIB      |
 | force    |    63  | FORCE, TOUCH, TAP, FPEAK, FRAW, FPRAW, CALIB                     |
+| 3x3 LED  |    64  | LEV O, COL O, PIX O, TRANS                                       |
 | motor (S)|    75  | POWER, SPEED, POS, APOS, LOAD, 1                                 |
+
+I do not fully understand the modes. Some hints
+ - `name` gives the name of the mode such as `TRANS` or `POWER`.
+ - `symbol` gives the unit, such as `PCT` (percent), `DEG` (degree), `N` (newton).
+ - `format` describes the data associated with the mode
+   - `datasets` gives the number of values in the mode (e.g. 1 for `COL O` but 9 for `PIX O`) 
+   - `type` gives the datatype of each value (0=char=8bits, 1=short=16bits, 2=int=32bits, 3=float=32bits)
+   - `figures` gives the number of characters needed to display the value
+   - `decimals` gives the number of decimal places needed to display the value
+ - `capability` do not understand
+ - `map_out` do not understand
+ - `map_in` do not understand
+ - `pct`, `si`, `raw` somehow gives the ranges of the values in this mode in various units (percent, signed int (?), raw)
+
 
 
 ## How can I do data logging?
