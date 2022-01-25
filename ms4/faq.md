@@ -567,7 +567,7 @@ Word blocks is horrible, there are basically no hotkeys.
   - @F4 stops application.
   - @F or @H (for file or help menu) is _not_ working.
   - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.  
-    **Update** in 10.3.0 (but maybe earlier, copy and paste seems to work, even across projects! 
+    **Update** in 10.3.0 (but maybe earlier), copy and paste seems to work, even across projects! 
   - I found no hotkey for Run or Download.
   - Cursor keys (panning) do nothing.
 
@@ -577,7 +577,7 @@ It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/short
   - ^Z, ^Y for undo, redo.
   - Cursor movement with arrow or page keys, optionally in combination with ^.
   - Select by pressing # while moving cursor.
-  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar).
+  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar, bigger grr: paste does not work in the search bar).
   - **^#P issues a play**.
   - ^#D issues a download.
   - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
@@ -617,21 +617,24 @@ But it is clear the _position_ is actually "absolute position" (LEGO just droppe
 The _position_ sensor is located in the "Motors" section of the Word blocks palette,
 but for the _relative position_ sensor you need to enable the extension "More Motors".
 
-One last word, some of my motors seem to be ~10 degrees off with respect to their "zero mark".
-It is structural, so that is easily fixed by adding a correction of 10.
+One last word, some of my motors were ~10 degrees off with respect to their "zero mark".
+It is structural, so that was easy to fix by adding a correction of 10.
+However in later releases of the LEGO app, the motors were calibrated solving this problem.
 
 
 ## What is the mapping from integer to colors?
 
-There are two places where colors play a role.
+There are several places where colors play a role.
 
 The most obvious is the color sensor. It returns the detected color.
 Secondly, the center button can emit a chosen color.
-In both cases, the Word Block has a color picker, but sometimes, you might want to store or manipulate the value.
+Also the 3x3 LED matrix from Spike Essential uses color.
+
+The Word Block has a color picker, but sometimes, you might want to store or manipulate the numerical color value.
 
 ![Color chart](images/color-chart.png)
 
-The "mint" color is the color of Robot Inventor (e.g. the hub bottom). I believe LEGO calls this "dark turquoise".
+The "turquoise" color is the color of Robot Inventor (e.g. the hub bottom).
 
 
 ## What are all those (blue) Motor blocks?
@@ -900,6 +903,11 @@ See the result on [YouTube](https://www.youtube.com/watch?v=tcQDFgmpieU).
 
 
 
+
+
+
+
+
 # Python specific questions
 
 
@@ -1061,7 +1069,7 @@ the Raspberry pi Hat.
  - **mode 2 = M2 = "PIX O" = pixel output**  
    Mode 2 has nine arguments: b*16+c, where b is brightness (0..9) and c is color (0..10) 
  
- - **mode 3 = M3 = "TRANS" = transitions** 
+ - **mode 3 = M3 = "TRANS" = transitions**  
    Mode 3 has one argument the transition effect: 0 is none (default), 1 is row-by-row, and 2 fade-down-fade-up.
 
 The below script tests all modes.
