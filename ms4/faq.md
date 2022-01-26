@@ -961,7 +961,7 @@ And the good news is: that works ... except for bright colors.
 Later I found out that the list is not needed, we can simply enter a list in the WordBlock,
 we just need to separate the integers with spaces.
 
-![mode 2](images/Matrix-Debug-WordBlocks-Mode2-simple.png)
+![mode 2](images/Matrix-Debug-WordBlocks-Mode2-Simple.png)
 
 Both the above WordBlock programs work exactly the same.
 They make 4 times a pattern, and this is how they look (no video this time :-).
