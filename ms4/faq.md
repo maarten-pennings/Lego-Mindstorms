@@ -850,6 +850,41 @@ But we don't have a Playstation 4 to switch off.
 What I do is to power cycle (switch off and on) Bluetooth in "action center".
 
 
+# Can I have a peek under the hood (Debug mode)?
+Yes we can. The LEGO app can be switched to Debug mode, and this gives use several peeks.
+You must have some software background to do this.
+
+The process to switch the LEGO app to Debug mode is described by 
+[attilafarago](https://digitalbrick.home.blog/2021/09/20/experiments-with-the-spike-advanced-mode-debug-mode/).
+In a nutshell, take these steps:
+ - Exit the LEGO app.
+ - Navigate in explorer to `C:\Users\<user>\AppData\Local\Packages\TheLEGOGroup.LEGOMINDSTORMSInventor_m36angppq0g76\LocalCache\Roaming\MINDSTORMS_ROBOTINVENTOR\`.
+ - Open `settings.json` (suggest to back-up that file first).
+ - Add the line `"ui.debug": true,` (at the top) assuming it is not there yet, otherwise change `false` to `true`).
+ - Restart LEGO app, it has a warning at the bottom `Debug Mode (Click to expand)`.
+
+Read the post of attilafarago for details, but for me the most important aspects of the Debug mode are these:
+ - When we click the `Debug Mode (Click to expand)` we get an extra side panel with debug options.
+   Will not discuss that in this FAQ.
+ - The menu bar at the top has an extra "Debug" entry.
+   With this we can see how the WordBlocks are compiled to Python code just before they are send to the hub.
+   See question below.
+ - We get an extra extension: WordBlock for advanced usage.
+   For an example see the question on the 3x3 LED matrix.
+
+
+# Is WordBlock compiled to Python?
+Yes it seems so.
+ - Enable Debug mode (see other question).
+ - Create a WordBlock program.
+ - Press the new menu entry `Toggle Developer Tools`, this pops up an extra window.
+ - Select the `console` tab.
+ - Compile/upload the program to the hub (as you normally would).
+ - On the console you see the generated Python code.
+
+![Generated python](images/WordBlock2Python.png)
+
+
 # Can I use the large angular motor with Robot Inventor?
 
 ![Large angular motor](images/large-angular-motor-88017.png)
@@ -882,29 +917,106 @@ when we change the "speed" with the left and right button, the matrix changes co
 
 I did not yet succeed in controlling it from _plain_ Word Blocks, but I do have a Python solution (see other question and answer below).
 
-After extensive study in Python (see afore mentioned question below), I learned how to control the matrix.
-It appears to be sort-of-possible, but tricky
- - you must enable the [debug mode](https://digitalbrick.home.blog/2021/09/20/experiments-with-the-spike-advanced-mode-debug-mode/) of the LEGO app
-    - switch off LEGO app
-    - navigate in explorer to `C:\Users\<user>\AppData\Local\Packages\TheLEGOGroup.LEGOMINDSTORMSInventor_m36angppq0g76\LocalCache\Roaming\MINDSTORMS_ROBOTINVENTOR\`
-    - open `settings.json` (suggest to back-up that file first)
-    - add the line `"ui.debug": true,` (at the top) assuming it is not there yet, otherwise change `false` to `true`).
-    - Start app, it has a warning at the bottom `Debug Mode (Click to expand)` (don't click).
-    - Start a new WordBlocks project
-    - Press the "Show block extensions" on the left bottom; at the bottom of the extensions press the debug tab. This adds a dark blue group of debug extensions.
+
+# Can I use the 3x3 LED color matrix with Robot Inventor Debug mode?
+
+After study in Python (see question below), I learned how to control the matrix.
+
+Mode 0 uses the matrix as a "battery level", will not use that here.
+Mode 1 switches the whole matrix to one uniform color at one high brightness level.
+Mode 2 allows individual LEDs in the matrix to be controlled qua color and brightness.
+That does not work, but see below.
+Mode 3 configures transitions between matrix mode switches.
+
+The LED matrix does (not yet) have WordBlock, but the Debug mode 
+offers WordBlocks that we can use.
+
+ - Enable the Debug mode (see a question above).
+ - Start a new WordBlocks project
+ - Press the "Show block extensions" on the left bottom
+ - At the bottom of the extensions press the "debug" button. 
+   This adds a dark blue group of debug extensions.
  - Now enter below program
-    - It tests mode 1 and 3, 0 is useless, 2 is there but does not work. That is bad, because **mode 2 is the most important one**.
     
 ![Debug mode](images/Matrix-Debug-WordBlocks.png)
 
-See the result on [YouTube](https://www.youtube.com/watch?v=tcQDFgmpieU).
+As we can see in the [YouTube video](https://www.youtube.com/watch?v=tcQDFgmpieU), 
+mode 1 and 3 work, but 2 doesn't.
+
+That is bad, because **mode 2 is the most important mode of the matrix**.
+
+See below for the question on a bug in the Debug blocks.
 
 
+# Bug in Robot Inventor debug blocks?
 
+For mode 2, we need to send 9 bytes to the matrix. 
+In Python we can just send a string of 9 characters and that is what I tried in our 
+first experiment: send a string. In a second try, I decided to send a list of 9 integers.
 
+![mode 2](images/Matrix-Debug-WordBlocks-Mode2.png)
 
+And the good news is: that works ... except for bright colors.
 
+Later I found out that the list is not needed, we can simply enter a list in the WordBlock,
+we just need to separate the integers with spaces.
 
+![mode 2](images/Matrix-Debug-WordBlocks-Mode2-simple.png)
+
+Both the above WordBlock programs work exactly the same.
+They make 4 times a pattern, and this is how they look (no video this time :-).
+
+![mode 2 result](images/Matrix-Debug-WordBlocks-Mode2-result.png)
+
+Below each pattern we find the 9 (decimal) values that are in `lst` and are send to the
+matrix. Below that, we see the same numbers in hex (the first nibble encodes the brightness, 
+the second nibble encodes the color - an enumeration red=7, white=10, blue=3, see another question).
+
+Behind the scenes, the WordBlock is translated to python, and it converts the
+the series of 9 numbers to a byte array. That is depicted on the third row.
+
+However, there is a bug in code; it uses UTF-8 to form the byte array,
+and that makes LED values above 127 to be encoded in _two_ bytes.
+The byte that is prepended is the first UTF "escape" character 0xC2.
+
+On the last line we see what that means for the brightest pattern, instead of 9 bytes
+we send 18 bytes to the matrix (which only looks at the first 9). Every odd byte is C2 
+which renders as purple, as we can see above.
+
+I had a peek at the generated code, and I believe it is wrong.
+
+This is the offending line, here in action, using LED values below 128.
+
+```python
+>>> bytes("".join([chr(math.floor(clamp(to_number(p_1), 0, 255) + 0.5)) for p_1 in " 89  89  89   90  90  90   83  83  83".split()]),"utf-8")
+b'YYYZZZSSS'
+```
+
+Nicely nine bytes. When using LED values above 128, we get this
+
+```python
+>>> bytes("".join([chr(math.floor(clamp(to_number(p_1), 0, 255) + 0.5)) for p_1 in "153 153 153  154 154 154  147 147 147".split()]), "utf-8")
+b'\xc2\x99\xc2\x99\xc2\x99\xc2\x9a\xc2\x9a\xc2\x9a\xc2\x93\xc2\x93\xc2\x93'
+```
+
+Oops, 18 bytes.
+
+The fix is simple, the code should not go from int-array _via char-array_ to byte-array. 
+It should directly go from int-array to byte-array.
+
+With the values below 128 we get the same result.
+
+```python
+>>> bytes([math.floor(clamp(to_number(p_1), 0, 255) + 0.5) for p_1 in " 89  89  89   90  90  90   83  83  83".split()])
+b'YYYZZZSSS'
+```
+
+With the high values it would now also work.
+
+```python
+>>> bytes([math.floor(clamp(to_number(p_1), 0, 255) + 0.5) for p_1 in "153 153 153  154 154 154  147 147 147".split()])
+b'\x99\x99\x99\x9a\x9a\x9a\x93\x93\x93'
+```
 
 
 
@@ -1902,6 +2014,11 @@ Notes
    os.remove('data.log')
    ```
 
+## Which functions are hidden in Python modules?
+
+Somebody made a [dump](https://github.com/gpdaniels/spike-prime/issues/7).
+
+Similar in [pdf](https://micropython-lego-ri5.readthedocs.io/_/downloads/en/latest/pdf/).
 
 ## How can I do parallel tasks in Python?
 
