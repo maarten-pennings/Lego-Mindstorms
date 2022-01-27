@@ -435,6 +435,38 @@ To force a motor update, goto the Hub connection, and find the "Update motors" i
    When you press connect in the LEGO app, the hub OS is updated.
 
 
+## Are there any hotkeys?
+I think LEGO did a bad job here. Many functions are not operatable by key.
+Probably LEGO aims at touch screens.
+
+Note #=shift, ^=ctrl, @=alt
+
+Word blocks is horrible, there are basically no hotkeys.
+  - ^Z for undo is working, but ^Y for redo isn't (it is available in bottom menu or right click menu)
+  - @F4 stops application.
+  - @F or @H (for file or help menu) is _not_ working.
+  - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.  
+    **Update** in 10.3.0 (but maybe earlier), copy and paste seems to work, even across projects! 
+  - I found no hotkey for Run or Download.
+  - Cursor keys (panning) do nothing.
+
+Python is a better. But not due to LEGO, but because they took a standard control for the editor.
+It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+  - ^C, ^V, ^X for copy, paste, cut.
+  - ^Z, ^Y for undo, redo.
+  - Cursor movement with arrow or page keys, optionally in combination with ^.
+  - Select by pressing # while moving cursor.
+  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar, bigger grr: paste does not work in the search bar).
+  - **^#P issues a play**.
+  - ^#D issues a download.
+  - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
+  - **You can only walk up (arrow-up, page-up, home) in the console, not down (arrow-down, page-down and end all jump to end), and the scroll bar sucks - grr**.
+  - Fancy line commenting: ^K ^C add line comment, ^K ^U delete line comment, ^/ toggle line comment.
+  - #@A to toggle block comment.
+  - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
+  - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
+
+
 
 
 
@@ -554,38 +586,6 @@ for ix in range(100) :
     turn_on_digits(ix)
     wait_for_seconds(0.2)
 ```
-
-
-## Are there any hotkeys?
-I think LEGO did a bad job here. Many functions are not operatable by key.
-Probably LEGO aims at touch screens.
-
-Note #=shift, ^=ctrl, @=alt
-
-Word blocks is horrible, there are basically no hotkeys.
-  - ^Z for undo is working, but ^Y for redo isn't (it is available in bottom menu or right click menu)
-  - @F4 stops application.
-  - @F or @H (for file or help menu) is _not_ working.
-  - Cut and paste (^C, ^V) is _not_ working. You can right-click and Duplicate, but this duplicates the whole stack.  
-    **Update** in 10.3.0 (but maybe earlier), copy and paste seems to work, even across projects! 
-  - I found no hotkey for Run or Download.
-  - Cursor keys (panning) do nothing.
-
-Python is a better. But not due to LEGO, but because they took a standard control for the editor.
-It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
-  - ^C, ^V, ^X for copy, paste, cut.
-  - ^Z, ^Y for undo, redo.
-  - Cursor movement with arrow or page keys, optionally in combination with ^.
-  - Select by pressing # while moving cursor.
-  - ^F, ^H for find and replace (grr: the hub bar overlaps with the find bar, bigger grr: paste does not work in the search bar).
-  - **^#P issues a play**.
-  - ^#D issues a download.
-  - **There is no way to clear the console other than to restart the whole mindstorms app - grr**.
-  - **You can only walk up (arrow-up, page-up, home) in the console, not down (arrow-down, page-down and end all jump to end), and the scroll bar sucks - grr**.
-  - Fancy line commenting: ^K ^C add line comment, ^K ^U delete line comment, ^/ toggle line comment.
-  - #@A to toggle block comment.
-  - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
-  - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
 
 
 ## What is degrees, position and relative position?
@@ -983,7 +983,7 @@ It turned out that the error is the string we send; we should not pass a string 
 See below for details - and a bug in the Debug blocks.
 
 
-## Bug in Robot Inventor debug blocks?
+## Bug in Robot Inventor Debug blocks?
 
 For mode 2, we need to send 9 bytes to the matrix. 
 In Python we can just send a string of 9 characters and that is what I tried in our 
