@@ -9,7 +9,7 @@ The FAQ is currently split in three sections:
 
 
 
-
+![next chapter](images/chapter-next.png)
 # General Questions
 
 
@@ -204,7 +204,7 @@ strips it and appends a space and another number. grr.
 The LEGO app saves Mindstorms projects as files with the extension `.lms` (LEGO MindStorms presumably).
 This is a binary file format, which is a pity for Python programs.
 
-However, and lms file turns out to be an archive. If you have, e.g. [7zip](https://www.7-zip.org/) you can unzip lms files.
+However, an lms file turns out to be an archive. If you have, e.g. [7zip](https://www.7-zip.org/) you can unzip lms files.
 
 ![Inside the lms file](images/lms.png)
 
@@ -441,7 +441,7 @@ To force a motor update, goto the Hub connection, and find the "Update motors" i
 
 
 
-
+![next chapter](images/chapter-next.png)
 # Word Blocks specific questions
 
 
@@ -850,7 +850,7 @@ But we don't have a Playstation 4 to switch off.
 What I do is to power cycle (switch off and on) Bluetooth in "action center".
 
 
-# Can I have a peek under the hood (Debug mode)?
+## Can I have a peek under the hood (Debug mode)?
 Yes we can. The LEGO app can be switched to Debug mode, and this gives us several peeks.
 You must have some software background to do this.
 
@@ -868,16 +868,16 @@ Read the post of attilafarago for details, but for me the most important aspects
  - When we click the `Debug Mode (Click to expand)` we get an extra side panel with debug options.
    Will not discuss that in this FAQ.
  - The menu bar at the top has an extra "Debug" entry.
-   With this we can see how the WordBlocks are compiled to Python code just before they are send to the hub.
+   With this we can see how the Word Blocks are compiled to Python code just before they are send to the hub.
    See question below.
- - We get an extra extension: WordBlock for advanced usage.
+ - We get an extra extension: Word Block for advanced usage.
    For an example see the question on the 3x3 LED matrix.
 
 
-# Is WordBlock compiled to Python?
+## Is Word Block compiled to Python?
 Yes it seems so.
  - Enable Debug mode (see other question).
- - Create a WordBlock program.
+ - Create a Word Block program.
  - Press the new menu entry `Toggle Developer Tools`, this pops up an extra window.
  - Select the `console` tab.
  - Compile/upload the program to the hub (as you normally would, e.g. press the play button).
@@ -885,8 +885,40 @@ Yes it seems so.
 
 ![Generated python](images/WordBlock2Python.png)
 
+```python
+import hub
+from runtime import VirtualMachine
 
-# Can I use the large angular motor with Robot Inventor?
+# When program starts
+async def stack_1(vm, stack):
+    # Control forever
+    while True:
+        # Beep for time
+        await vm.system.sound.beep_async(60, 200)
+        # Control wait until
+        while True:
+            if hub.button.right.is_pressed():
+                break
+            yield 0
+        # Beep for time
+        await vm.system.sound.beep_async(72, 200)
+        # Control wait until
+        while True:
+            if hub.button.left.is_pressed():
+                break
+            yield 0
+        yield
+
+def setup(rpc, system, stop):
+    vm = VirtualMachine(rpc, system, stop, "DoQxmpFih88L1GjKB3fI")
+
+    vm.register_on_start("EnSC-Bz3km2eRaiY5isv", stack_1)
+
+    return vm
+```
+
+
+## Can I use the large angular motor with Robot Inventor?
 
 ![Large angular motor](images/large-angular-motor-88017.png)
 
@@ -894,7 +926,7 @@ Yes, I have the angular motor, and it is automatically recognized as a motor.
 The LEGO app does not make a difference with the standard motors.
 
 
-# Can I use the touch/force sensor with Robot Inventor?
+## Can I use the touch/force sensor with Robot Inventor?
 
 ![Force sensor](images/Education-SPIKE-Prime-Force-Sensor-45678.png)
 
@@ -906,7 +938,7 @@ After adding the standard extension "More Sensors" we get Word Blocks for the fo
 ![More sensors](images/more-sensor.png)
 
 
-# Can I use the 3x3 LED color matrix with Robot Inventor?
+## Can I use the 3x3 LED color matrix with Robot Inventor?
 
 ![Color matrix](images/Technic-3x3-Color-Light-Matrix-45608.png)
 
@@ -916,12 +948,12 @@ we can press the left or right button to change the speed of a connected motor.
 When we hook up the color matrix the test mode sort of works as for a motor: 
 when we change the "speed" with the left and right button, the matrix changes color (all 9 LEDs in one go).
 
-I did not yet succeed in controlling it from _plain_ WordBlocks.
+I did not yet succeed in controlling it from _plain_ Word Blocks.
 I do have a Python solution (see other question and answer below).
-And there is a WordBlocks solution if you are willing to use the Debug blocks you get in the Debug mode (see other question).
+And there is a Word Blocks solution if you are willing to use the Debug blocks you get in the Debug mode (see other question).
 
 
-# Can I use the 3x3 LED color matrix with Robot Inventor Debug mode?
+## Can I use the 3x3 LED color matrix with Robot Inventor Debug mode?
 
 After a study in Python (see question below), I learned how to control the matrix.
 
@@ -930,11 +962,11 @@ Mode 1 switches the whole matrix to one uniform color at one high brightness lev
 Mode 2 allows individual LEDs in the matrix to be controlled qua color and brightness. That does sort-of work.
 Mode 3 configures transitions between matrix mode switches.
 
-The LED matrix does (not yet) have a WordBlock, but the Debug mode 
-offers WordBlocks that we can use.
+The LED matrix does (not yet) have a Word Block, but the Debug mode 
+offers Word Blocks that we can use.
 
  - Enable the Debug mode (see a question above).
- - Start a new WordBlocks project
+ - Start a new Word Blocks project
  - Press the "Show block extensions" on the left bottom.
  - At the bottom of the extensions press the "debug" button. 
    This adds a dark blue group of debug extensions.
@@ -951,7 +983,7 @@ It turned out that the error is the string we send; we should not pass a string 
 See below for details - and a bug in the Debug blocks.
 
 
-# Bug in Robot Inventor debug blocks?
+## Bug in Robot Inventor debug blocks?
 
 For mode 2, we need to send 9 bytes to the matrix. 
 In Python we can just send a string of 9 characters and that is what I tried in our 
@@ -963,13 +995,14 @@ Didn't work. I decided to send a list of 9 integers (`lst` filled with nine inte
 
 And the good news is: that works ... except for bright colors.
 
-Later I found out that the list variable (`lst`) is not needed, we can simply enter a list of numbers in the WordBlock,
+Later I found out that the list variable (`lst`) is not needed, we can simply enter a list of numbers in the Word Block,
 we just need to separate the numbers with spaces.
 
 ![mode 2](images/Matrix-Debug-WordBlocks-Mode2-Simple.png)
 
-Both the above WordBlock programs work exactly the same.
+Both the above Word Block programs work exactly the same.
 They make 4 times a pattern (the Dutch National Flag), and this is how they look (no video this time :-).
+Note that the last one is wrong - see below why.
 
 ![mode 2 result](images/Matrix-Debug-WordBlocks-Mode2-result.png)
 
@@ -978,10 +1011,10 @@ matrix. Below that, we see the same numbers in hexadecimal. This makes it easier
 because the first nibble encodes the brightness, and the second nibble encodes the color 
 (an enumeration: red=9, white=10, blue=3, see another question).
 
-Behind the scenes, the WordBlock is translated to Python, and it converts the
+Behind the scenes, the Word Block is translated to Python, and it converts the
 the series of 9 numbers to a byte array. That array is depicted on the third row.
 
-However, there is a bug in the WordBlock compiler; it uses UTF-8 to form the byte array,
+However, there is a bug in the Word Block compiler; it uses UTF-8 to form the byte array,
 and that makes LED values above 127 (above 0x7F) to be encoded in _two_ bytes.
 The byte that is prepended is the first UTF "escape" character 0xC2.
 
@@ -992,7 +1025,7 @@ which renders as purple, as we can see in the fourth flag above.
 I had a peek at the generated code, and I believe it really is a compiler bug.
 
 This is the offending line, here in action using LED values below 128.
-We see that it produces a byte array of nine bytes, with the bytes we expect (e.g. ASCII value of `Y` is 89, `Z` is 90 and `S` h3).
+We see that it produces a byte array of nine bytes, with the bytes we expect (e.g. ASCII value of `Y` is 89, `Z` is 90 and `S` 83).
 
 ```python
 >>> bytes("".join([chr(math.floor(clamp(to_number(p_1), 0, 255) + 0.5)) for p_1 in " 89  89  89   90  90  90   83  83  83".split()]),"utf-8")
@@ -1025,10 +1058,15 @@ b'\x99\x99\x99\x9a\x9a\x9a\x93\x93\x93'
 ```
 
 Would be nice if LEGO would fix this.
-Would also be nice of the Debug WordBlocks would be a normal extension, and that you don't need to switch the app to Debug mode.
+Would also be nice of the Debug Word Blocks would be a normal extension, and that you don't need to switch the app to Debug mode.
 Finally, it would be nice if the `to_number()` would also accept numbers of the form 0x9A, that would make the LED settings easier to read (for the nerds).
 
 
+
+
+
+
+![next chapter](images/chapter-next.png)
 # Python specific questions
 
 
@@ -1117,7 +1155,7 @@ I hear you ask what images are. Well, images are objects created from the class 
 ![low level display control](images/display.jpg)
 
 
-# Can I use the 3x3 LED color matrix with Robot Inventor?
+## Can I use the 3x3 LED color matrix with Robot Inventor?
 
 ![Color matrix](images/Technic-3x3-Color-Light-Matrix-45608.png)
 
