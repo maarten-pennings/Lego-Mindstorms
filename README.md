@@ -9,7 +9,7 @@ See the subdirectories for details on each of the generations.
 - [RCX](rcx)
 - [NXT](nxt)
 - [EV3](ev3)
-- [MS4](ms4) "Robot Inventor"
+- [MS4](ms4) ("Mindstorms gen 4", but the world seems to settle on RI5 "Robot Inventor gen 5")
 
 ## Background
 

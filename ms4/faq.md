@@ -305,7 +305,7 @@ The app version is in the title bar.
 The Hub has an OS, its version is shown in the Hub Connection window.
 For Python we use a script 
 
-```
+```python
 import sys
 print(sys.implementation)
 print(sys.version)
@@ -573,19 +573,7 @@ The screen is a bit small, but we can make a 2x5 font for digits that is sort-of
 I was inspired by [Anton's mindstorms hacks](https://antonsmindstorms.com/2021/02/08/how-to-display-two-digit-numbers-on-a-5x5-led-matrix-with-lego-spike-prime-or-robot-inventor/)
 but made it a bit simpler. See the Word Blocks [Example](blocks/Show99.lms).
 
-The python version is even simpler:
-
-```python
-font = [ "99999:99999", "90090:99999", "99909:90999", "90909:99999", "00990:99999", "90999:99909", "99999:99909", "99909:00099", "99099:99099", "90999:99999" ]
-def turn_on_digits(num) :
-    hub.light_matrix.show( font[num//10] + ":00000:" + font[num%10] )
-
-hub = MSHub()
-hub.speaker.beep()
-for ix in range(100) :
-    turn_on_digits(ix)
-    wait_for_seconds(0.2)
-```
+The python version is even simpler, see question below.
 
 
 ## What is degrees, position and relative position?
@@ -1066,6 +1054,20 @@ Finally, it would be nice if the `to_number()` would also accept numbers of the 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ![next chapter](images/chapter-next.png)
 # Python specific questions
 
@@ -1155,6 +1157,44 @@ I hear you ask what images are. Well, images are objects created from the class 
 ![low level display control](images/display.jpg)
 
 
+## Can I show (hex) digits on the screen
+
+The screen is a bit small, but we can make a 2x5 font for digits that is sort-of readable 
+(especially the 0 and 8 are a bit hard to read).
+
+![Show99](images/show99.png)
+
+This version uses the high level `MSHub` module.
+The function `decdigits(num)` shows a number between 0 and 99 on the screen.
+
+```python
+font = [ "99999:99999", "90090:99999", "99909:90999", "90909:99999", "00990:99999", "90999:99909", "99999:99909", "99909:00099", "99099:99099", "90999:99999" ]
+def decdigits(num) :
+    hub.light_matrix.show( font[num//10] + ":00000:" + font[num%10] )
+
+hub = MSHub()
+hub.speaker.beep()
+for ix in range(100) :
+    decdigits(ix)
+    wait_for_seconds(0.2)
+```
+
+This version uses the low level `hub` module.
+The function `hexdigits(num)` shows a hexadecimal number between 0 and ff on the screen.
+
+
+```python
+import hub,time
+font = [ "99999:99999", "90090:99999", "99909:90999", "90909:99999", "00990:99999", "90999:99909", "99999:99909", "99909:00099", "99099:99099", "90999:99999" 
+       , "99909:99999", "99999:99900", "99999:90009", "99900:99999", "99999:90909", "99999:00909" ]
+def hexdigits(num) :
+    img = hub.Image( font[num//16] + ":00000:" + font[num%16] )
+    hub.display.show(img)
+hub.display.align(5)
+hexdigits(0xAf)
+```
+
+
 ## Can I use the 3x3 LED color matrix with Robot Inventor?
 
 ![Color matrix](images/Technic-3x3-Color-Light-Matrix-45608.png)
@@ -1202,15 +1242,7 @@ Notes
 
 This leads to the following "shortcut" table.
 
-   |brightness|   0   |   1   |   2  |  3  |    4    |  5  |  6  |   7  |   8  |  9  |  10 |
-   |----------|-------|-------|------|-----|---------|-----|-----|------|------|-----|-----|
-   |          |  off  |magenta|violet|blue |turquoise|mint |green|yellow|orange| red |white|
-   |       3  | `'0'` | `'1'` |`'2'` |`'3'`|  `'4'`  |`'5'`|`'6'`|`'7'` |`'8'` |`'9'`|`':'`|
-   |       4  | `'@'` | `'A'` |`'B'` |`'C'`|  `'D'`  |`'E'`|`'F'`|`'G'` |`'H'` |`'I'`|`'J'`|
-   |       5  | `'P'` | `'Q'` |`'R'` |`'S'`|  `'T'`  |`'U'`|`'V'`|`'W'` |`'X'` |`'Y'`|`'Z'`|
-   |       6  |``'`'``| `'a'` |`'b'` |`'c'`|  `'d'`  |`'e'`|`'f'`|`'g'` |`'h'` |`'i'`|`'j'`|
-   |       7  | `'p'` | `'q'` |`'r'` |`'s'`|  `'t'`  |`'u'`|`'v'`|`'w'` |`'x'` |`'y'`|`'z'`|
-
+![color codes](color-table/table.png)
 
 I learned that each device has a "mode".
 A mode is sort of a register that determines the state of the device.
@@ -1327,7 +1359,7 @@ We get a prompt from `MicroPython v1.11-1139-gf7407e5a0 on 2020-06-19; LEGO Tech
 
 A good start is the trusted `dir()` command.
 
-```text
+```python
 >>> dir()
 ['hub_runtime', 'gc', '__name__', 'micropython']
 ```
@@ -1341,7 +1373,7 @@ If you want to know what such an object offers, use `dir` again (`dir(hub_runtim
 Even better, this REPL offers command completion with the TAB key.
 For example, after type `hu`TAB, we get `hub_runtime`, if we then type `.`TAB we get
 
-```text
+```python
 >>> hub_runtime.
 __class__       __name__        start           __file__
 BT_VCP          Timer           USB_VCP         hub
@@ -1359,7 +1391,7 @@ After some searching, we can get the current yaw via a call to the `position`.
 We called twice, rotating the hub in between.
 First number looks like the yaw.
 
-```
+```python
 >>> hub_runtime.hub.motion.position()
 (25, -1, 0)
 >>> hub_runtime.hub.motion.position()
@@ -1369,7 +1401,7 @@ First number looks like the yaw.
 
 The `help()` command, as suggested when we pressed ^C, is _not_ very useful.
 
-```text
+```python
 >>> help()
 Welcome to MicroPython!
 
@@ -1396,7 +1428,7 @@ The `hub.info()` does not work: `name 'hub' isn't defined` (we already knew that
 The "Control commands" seem a bit advanced now - see [here](https://docs.micropython.org/en/latest/reference/repl.html) for some help.
 There is one good hint though: `help("modules")`.
 
-```text
+```python
 >>> help("modules")
 __main__          math              uerrno            urandom
 _onewire          micropython       uhashlib          ure
@@ -1410,7 +1442,7 @@ Plus any modules on the filesystem
 
 This lists the module `hub`! Let's try to import it, and give the status command.
 
-```text
+```python
 >>> import hub
 >>> hub.status()
 {'gyroscope': (2, 8, 3), 'position': (51, 0, 0), 'accelerometer': (15, -8, 1026)
@@ -1436,7 +1468,7 @@ But it also gave the hint `Plus any modules on the filesystem`.
 And we see there is a module `uos` for [basic "operating system" services](https://docs.micropython.org/en/latest/library/uos.html).
 This micro-OS includes a filesystem!
 
-```text
+```python
 >>> import uos
 >>> uos.listdir('/')
 ['projects', 'runtime', 'system', '_api', 'commands', 'event_loop', 'mindstorms'
@@ -1462,7 +1494,7 @@ But its presence is important: we have a directory `mindstorms` with a file `__i
 
 We even see the string `MSHub` in the `__init__.mpy`. Let's try to import and get the yaw.
 
-```text
+```python
 >>> from mindstorms import MSHub
 >>> h=MSHub()
 >>> h.motion_sensor.get_yaw_angle()
@@ -1516,7 +1548,7 @@ How do I get that on the hub?
 
 The whole session looks like this, but I have removed large chunks to keep the overview
 
-```text
+```python
 MicroPython v1.11-1139-gf7407e5a0 on 2020-06-19; LEGO Technic Large Hub with STM32F413xx
 Type "help()" for more information.
 >>>  
@@ -1705,7 +1737,7 @@ def do_count():
 
 This is a demo run.
 
-```text
+```python
 >>> do_count()
 0
 1
@@ -1879,7 +1911,7 @@ def infoA():
 
 When I connect the light sensor, this is the output of `infoA()`
 
-```text
+```python
 fw_version= 268435456
 modes[0]= {'symbol': 'IDX', 'format': {'datasets': 1, 'type': 0, 'figures': 2, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'COLOR', 'pct': (0.0, 100.0), 'map_in': 228, 'si': (0.0,    10.0), 'raw': (0.0, 10.0)}
 modes[1]= {'symbol': 'PCT', 'format': {'datasets': 1, 'type': 0, 'figures': 3, 'decimals': 0}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':  0, 'name': 'REFLT', 'pct': (0.0, 100.0), 'map_in':  48, 'si': (0.0,   100.0), 'raw': (0.0, 100.0)}
@@ -1899,7 +1931,7 @@ type= 61
 
 When I connect the distance sensor, this is the output
 
-```text
+```python
 fw_version= 268435456
 modes[0]= {'symbol': 'CM' , 'format': {'datasets': 1, 'type': 1, 'figures': 5, 'decimals': 1}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'DISTL', 'pct': (0.0, 100.0), 'map_in': 145, 'si': (0.0,   250.0), 'raw': (0.0, 2500.0)}
 modes[1]= {'symbol': 'CM' , 'format': {'datasets': 1, 'type': 1, 'figures': 4, 'decimals': 1}, 'capability': b'@\x00\x00\x00\x04\x84', 'map_out':   0, 'name': 'DISTS', 'pct': (0.0, 100.0), 'map_in': 241, 'si': (0.0,    32.0), 'raw': (0.0, 320.0)}
@@ -1919,7 +1951,7 @@ type= 62
 
 When I connect the touch (force) sensor, this is the output
 
-```text
+```python
 fw_version= 268435456
 modes[0]= {'symbol': 'N'  , 'format': {'datasets': 1, 'type': 0, 'figures': 4, 'decimals': 1}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'FORCE', 'pct': (0.0, 100.0), 'map_in': 112, 'si': (0.0,   10.0), 'raw': (0.0, 100.0)}
 modes[1]= {'symbol': 'ST' , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0}, 'capability': b'\x00\x00\x00\x00\x04\x84', 'map_out': 0, 'name': 'TOUCH', 'pct': (0.0, 100.0), 'map_in':   4, 'si': (0.0,    1.0), 'raw': (0.0, 1.0)}
@@ -1936,7 +1968,7 @@ type= 63
 
 When I connect the 3x3 LED matrix (bought separately), this is the output
 
-```text
+```python
 combi_modes= ()
 fw_version= 285212672
 speed= 115200
@@ -1952,7 +1984,7 @@ hw_version= 4
 
 When I connect a (small) motor, this is the output
 
-```text
+```python
 fw_version= 4096
 modes[0]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 1, 'decimals': 0},   'capability': b'\x10\x00\x00\x00\x01\x04', 'map_out': 16, 'name': 'POWER', 'pct': (-100.0, 100.0)       , 'map_in': 0, 'si': (-100.0, 100.0)   , 'raw': (-100.0, 100.0)}
 modes[1]= {'symbol': 'PCT'         , 'format': {'datasets': 1, 'type': 0, 'figures': 4, 'decimals': 0},   'capability': b'!\x00\x00\x00\x01\x04'   , 'map_out': 16, 'name': 'SPEED', 'pct': (-100.0, 100.0)       , 'map_in':16, 'si': (-100.0, 100.0)  , 'raw': (-100.0, 100.0)}
@@ -2031,7 +2063,7 @@ Notes
    In the question "Which files are in the Python filesystem?" you'll find an `ls()` command, which works in REPL.
    If you run that, we get the following file list (abridged). At the end we find our `data.log`.
    
-   ```text
+   ```python
    >>> ls()
    projects/
    ...
@@ -2046,7 +2078,7 @@ Notes
    In the question "Which files are in the Python filesystem?" you'll find a `cat()` command, which works in REPL.
    If you run that, we get the following content.
    
-   ```text
+   ```python
    >>> cat('data.log')
    '0 1\n1 12\n2 7\n3 7\n4 5\n5 4\n6 6\n7 5\n8 4\n9 4\n'
    ```

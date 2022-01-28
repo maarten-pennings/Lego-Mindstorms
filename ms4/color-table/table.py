@@ -2,8 +2,9 @@
 
 
 # table.py - Script creating a color table for a LEGO 3x3 color LED matrix
+# 2022 jan 28  v2  Maarten Pennings  Optical match of div_palette
 # 2022 jan 28  v1  Maarten Pennings  Created
-version = "v1"
+version = "v2"
 
 
 import os
@@ -42,36 +43,38 @@ def hex2(val) :
 
 # Convert integer ascii value to character (but makes some unprintable ones readable)
 def chrr(ascii) :
-  if   ascii <0x20 : return f"\{ascii:02X}";
+  if   ascii <0x20 : return f"\\x{ascii:02X}"
   elif ascii==0x20 : return "□"
-  elif ascii>=0x7F : return f"\{ascii:02X}";
+  elif ascii>=0x7F : return f"\\x{ascii:02X}"
   return chr(ascii)
 
 
 div_palette = [
- (0,0,0), #  0 black
- (215,0,154), #  1 magenta
- (163,74,198), #  2 violet
- (24,145,242), #  3 blue
- (21,180,160), #  4 turquoise
- (32,189,124), #  5 mint
- (15,168,73), #  6 green
- (249,212,84), #  7 yellow
- (253,162,51), #  8 orange
- (253,0,30), #  9 red
- (255,255,255), # 10 white
+ (  0,  0,  0), # (  0,  0,  0), #  0 black
+ (225, 75,115), # (215,  0,154), #  1 magenta
+ (215,135,220), # (163, 74,198), #  2 violet
+ ( 85,115,240), # ( 24,145,242), #  3 blue
+ (105,205,220), # ( 21,180,160), #  4 turquoise
+ (115,210,170), # ( 32,189,124), #  5 mint
+ (135,235, 90), # ( 15,168, 73), #  6 green
+ (230,230, 90), # (249,212, 84), #  7 yellow
+ (250,165, 80), # (253,162, 51), #  8 orange
+ (255, 70, 70), # (253,  0, 30), #  9 red
+ (255,255,255), # (255,255,255), # 10 white
 ]
 
-def palette_scaleup() :
-  palette = []
-  for r,g,b in div_palette :
-    m = max(r,g,b)
-    f = 255/m if m>0 else 1
-    n = ( int(r*f), int(g*f), int(b*f) )
-    palette.append(n) 
-  return palette
+#def palette_scaleup() :
+#  palette = []
+#  for r,g,b in div_palette :
+#    m = max(r,g,b)
+#    f = 255/m if m>0 else 1
+#    n = ( int(r*f), int(g*f), int(b*f) )
+#    palette.append(n) 
+#  return palette
+#
+#full_palette = palette_scaleup()
 
-full_palette = palette_scaleup()
+full_palette = div_palette
 
 def darken( color, percent ) :
   r,g,b = color
