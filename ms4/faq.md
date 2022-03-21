@@ -201,6 +201,64 @@ It also means you can't call your program `beep3`, because the LEGO app gets con
 strips it and appends a space and another number. grr.
 
 
+## How do I charge the hub?
+To charge the hub, use a USB charger (not supplied by LEGO) and the 
+provided USB cable (standard-A to micro-B).
+
+LEGO recommends using a so-called DVP (dedicated charging port) or CDP (charging downstream port) charger.
+Standalone chargers from a known brand (Samsung, Apple) or USB ports from new laptops
+typically have that type. Charging from these ports takes about 2 hours.
+
+Cheaper chargers have type SDP (Standard Downstream Port) and then charging takes 5 hours.
+
+While charging, the LED next to the micro USB port is red. 
+Once the battery is fully charged, that LED turns green.
+
+You can check the battery status also in the app. 
+When the hub is connected click the "Open Hub connection" icon in the upper right corner.
+The top-left then shows the battery status.
+
+![battery](images/version10.0.3.png)
+
+It seems that reported battery levels are 100%, 80%, 60%, 40%, 20% and 10%.
+
+
+## Can I rename the hub?
+You can rename your Hub. 
+When the hub is connected click the "Open Hub connection" icon in the upper right corner.
+A new pane pops up, and the upper right corner has a hub menu (three dots)
+
+![hubmenu](images/hubmenu.png)
+
+There click `Rename Hub`.
+
+It seems that if you use the hub via Bluetooth, you must unpair it (to clear the Bluetooth cache of named devices). 
+
+
+## What is the meaning of the color center button on the hub?
+
+When you start the hub, the center button has a **dim gray**.
+This means the hub is idle, and the user (you) can interact by pressing the left, right to select a program
+(or even the built-in "play" program). A click on the center button starts the selected program (it starts running).
+
+When a program is running, the center button is **bright white**.
+When the program stops, either by executing "stop [and exit program]" or by a press on the center button,
+the center button is dim gray again.
+
+When the program encounters a bug (e.g. "sqrt of -5"), the center buttons **flashes red**.
+Normally such errors can be fixed easily, if not restart the hub by holding the center button 3 seconds.
+
+If the center button turns **orange**, the battery is low.
+Charge the hub.
+
+It seems that the center button can turn **green** - probably a lost connection.
+
+It seems that **blue** means the hub requires a firmware update.
+
+See [spike prime faq](https://education.lego.com/en-gb/product-resources/spike-prime/troubleshooting/faqs#:~:text=What%20do%20the%20Hub%27s%20color%2Dcoded%20error%20messages%20mean%3F).
+
+
+
 ## What is an lms file?
 The LEGO app saves Mindstorms projects as files with the extension `.lms` (LEGO MindStorms presumably).
 This is a binary file format, which is a pity for Python programs.
@@ -291,28 +349,51 @@ Like the `lms` file, it is an archive with an icon, manifest and code file.
 
 
 ## How to update the hub firmware?
+
 I see people talk about hub firmware updates, but the Mindstorms app does not have a feature for that - at least I couldn't find it. Maybe the Spike prime app allows explicit firmware updates (downgrades, alternatives...).
 
 However, when LEGO releases a new version, you will get a message in the app. If you accept it the hub will be updated.
 This updates the hub’s OS, not the user data (saved projects).
+
+You can also reset the hub; I believe it removes all user data, but leaves the firmware as-is. 
+When the hub is connected click the "Open Hub connection" icon in the upper right corner.
+A new pane pops up, and the upper right corner has a hub menu (three dots)
+
+![hubmenu](images/hubmenu.png)
+
+There click `Reset Hub`.
 
 By the way, if you open a serial port to the Python REPL (see other question), and press ^C you stop the run-time (?).
 If you then close REPL and start the LEGO mindstorms app, it believes the hub firmware is broken and suggest to flash it again.
 You could do that. You could also just powercycle the hub (or press ^D for soft reset while still in REPL).
 
 
+
 ## What software version is current?
-The app version is in the title bar.
-The Hub has an OS, its version is shown in the Hub Connection window.
-For Python we use a script 
 
-```python
-import sys
-print(sys.implementation)
-print(sys.version)
-```
+There are multiple versions
+- The app version is in the title bar.
+- The Hub has an OS, its version is shown in the Hub Connection window.
+- For Python we use a script 
+  ```python
+  import sys
+  print(sys.implementation)
+  print(sys.version)
+  ```
 
-### Per 2021 December 26
+The following sections say "Per", that is the date I recorded the version, 
+not they date that version was released (between brackets, my guess).
+
+### Per 2022 March 31 (released 2nd?)
+
+- The app version is 10.3.1
+  - I did not notice any changes
+- The Hub OS version is 3.1.43
+- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.version` 3.4.0
+
+
+### Per 2021 December 26 (released 16th?)
 
 - The app version is 10.3.0
   - Getting started on home page  
@@ -326,7 +407,7 @@ print(sys.version)
 ![App and OS version](images/version10.3.0.png)
 
 
-### Per 2021 August 26
+### Per 2021 August 26  (released 19th?)
 
 - The app version 10.2.0  
    - It now asks for age and consent to collect data.
@@ -348,7 +429,7 @@ Exploration Rover, Sea Turtle, Melody Maker,
 ![Community](images/community8.jpg)
 
 
-### Per 2021 May 16
+### Per 2021 May 16  (released 5th?)
 
 - The app version 10.1.0  
   In main menu, SETTING is replaced by COMMUNITY, which lists five robots: 
@@ -862,6 +943,8 @@ Read the post of attilafarago for details, but for me the most important aspects
  - We get an extra extension: Word Block for advanced usage.
    For an example see the question on the 3x3 LED matrix.
 
+It seems that for OSX, the file is `~/Library/Containers/com.lego.retail.mindstorms.robotinventor/Data/Library/Application\ Support/MINDSTORMS_ROBOTINVENTOR/userSettings.json`.
+
 
 ## Is Word Block compiled to Python?
 Yes it seems so.
@@ -1054,8 +1137,21 @@ Finally, it would be nice if the `to_number()` would also accept numbers of the 
 
 
 
+## Are there hidden language features?
 
+In some cases the Word Blocks have a parameter that is human friendly.
+As an example, in the Light section we find a Word Block to set the 4 LEDs around the ultrasonic distance sensor.
 
+![ultrasonic light](images/WordBlock-ultrasonic-light.png)
+
+It is not obvious, but it is possible to use an _expression_ for the argument.
+For example, here I have a variable `value` that is a list of four integers, setting the brightness of the 4 LEDs.
+
+![list values](images/list-values.png)
+
+As a fan of strong typing, I now wonder what the type of variable `value` is. 
+I guess, it is string, sinve Word Blocks does not put quotes around strings (see eg Light > Write).
+What we learn here is that some arguments that look like needing an integer, are actually capable of parsing a string.
 
 
 
@@ -2099,6 +2195,19 @@ Notes
 Somebody made a [dump](https://github.com/gpdaniels/spike-prime/issues/7).
 
 Similar in [pdf](https://micropython-lego-ri5.readthedocs.io/_/downloads/en/latest/pdf/).
+
+## Are there other Python IDEs?
+
+A very light Python IDE is [https://github.com/harbaum/upide](https://github.com/harbaum/upide).
+Seems to work out-of-the-box with Spike, but it did not recognize my Robot Inventor hub.
+
+There seems to be a VS code extension. Have not tried it.
+[https://github.com/PeterStaev/lego-spikeprime-mindstorms-vscode](https://github.com/PeterStaev/lego-spikeprime-mindstorms-vscode)
+with some [documentation](https://marketplace.visualstudio.com/items?itemName=PeterStaev.lego-spikeprime-mindstorms-vscode).
+
+
+
+
 
 ## How can I do parallel tasks in Python?
 
