@@ -2199,7 +2199,7 @@ Similar in [pdf](https://micropython-lego-ri5.readthedocs.io/_/downloads/en/late
 ## Are there other Python IDEs?
 
 A very light Python IDE is [https://github.com/harbaum/upide](https://github.com/harbaum/upide).
-Seems to work out-of-the-box with Spike, but it did not recognize my Robot Inventor hub.
+Works out-of-the-box with Spike and Robot Inventor. Have not yet tried it.
 
 There seems to be a VS code extension. Have not tried it.
 [https://github.com/PeterStaev/lego-spikeprime-mindstorms-vscode](https://github.com/PeterStaev/lego-spikeprime-mindstorms-vscode)
