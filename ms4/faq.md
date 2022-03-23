@@ -9,11 +9,16 @@ The FAQ is currently split in three sections:
 
 
 
+
+
+
+
 ![next chapter](images/chapter-next.png)
 # General Questions
 
 
 ## How to switch off the brick?
+
 I opened the box, and one of the first things I did was to power on the brick.
 However, I could not figure out how to switch it off.
 
@@ -28,6 +33,7 @@ Here is a demo on [YouTube](https://youtu.be/CQVBp5e3tng)
 
 
 ## Where is the LEGO app?
+
 The booklet in the mindstorms box tells you to visit [https://www.lego.com/devicecheck](https://www.lego.com/devicecheck).
 I skipped that, because I have a brand new PC and a brand new Android device, so no need to check... But then I wondered where should I _download_ the Mindstorms app?
 
@@ -49,6 +55,7 @@ To force an update goto the Windows Store, search for the LEGO Mindstorms app, a
 
 
 ## How to make a shortcut to the LEGO app on my Windows Desktop?
+
 I don't like "apps" from the Windows store. They are special in all kind of ways.
 For example how do you create a shortcut on your desktop?
 
@@ -66,6 +73,7 @@ In the LEGO app, goto to Help > Settings > General and click the "Welcome Robot 
 
 
 ## What are the technical specs?
+
 LEGO has leaflets on [Spike prime](https://education.lego.com/en-gb/product-resources/spike-prime/downloads/technical-specifications), which
 is largely the same as Mindstorms Robot Inventor.
 
@@ -102,6 +110,7 @@ These I found (top-most is oldest):
  
 
 ## Which projects can I build?
+
 Of course, there are the five robots that come with the box.
 Building instructions are digital only, you can find them in the app via Help > Settings > Building instructions.
 Or you can click the robot in the home screen, and go from there in smaller steps.
@@ -115,16 +124,16 @@ If you like more, or simpler builds, you could have a look at
 [Spike prime instructions](https://education.lego.com/en-us/support/spike-prime/building-instructions)
 or [alternative link](https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions).
 
-There are several nice community builds:
- - [Hotrod](https://sites.google.com/view/devbots/free-ebooks/hot-rod)
+There are several nice community builds.
+ - [Over 50 robots](https://www.onekitprojects.com/)
  - [Ox](https://youtu.be/ZYQG9EfIw28)
- - [Bike](https://youtu.be/MCVW2Uqanlw)
+ - [Self balancing bike](https://youtu.be/MCVW2Uqanlw)
  - [Rock paper scissors](https://youtu.be/MwoE_gScDd8)
  - [Robot arm](https://youtu.be/uxm7qhLNYyw)  
    [Instructions](https://m.facebook.com/download/865529984270200/arm.pdf)
    [Version 2](https://m.facebook.com/groups/mindstormsrobotinventor/permalink/478705086475784/)
  - [Canadarm](https://youtu.be/3sKHHaLFzY8)
-   [gripper hint](https://education.lego.com/en-us/lessons/prime-invention-squad/super-cleanup)
+   ([gripper hint](https://education.lego.com/en-us/lessons/prime-invention-squad/super-cleanup))
  - [Candy sorter](https://m.facebook.com/groups/mindstormsrobotinventor/permalink/478354733177486/)
  - [F1 race car](https://rebrickable.com/mocs/MOC-62452/ninoguba/premier-f1-race-car-robot-inventor)
  - [Tic tac too](https://youtu.be/9Qm_rJGbT8U)
@@ -133,7 +142,7 @@ There are several nice community builds:
  - [Airplane](https://youtu.be/yfcK1Wd1Xm8)
  - [Scooter](https://youtu.be/oLr_ScaK5Nk)
  - [Balancing Robot](https://youtu.be/XXEp5R3kDNg)
- - [Balancing Trike](https://legostudiovives.be/balancing_lego_robots/)
+ - [Self uprightinh balancing robot](https://legostudiovives.be/balancing_lego_robots/)
  - [Cube solver](https://youtu.be/e2EDLIPwlSM)
  - [Cube solver from MindCuber](http://mindcuber.com/mindcuberri/mindcuberri.html)
  - [Writing machine](https://rebrickable.com/mocs/MOC-61225/Bundy/inventor-writer-based-on-one-set-51515-mindstorms-inventor)
@@ -142,7 +151,9 @@ There are several nice community builds:
  - [AI brick sorter](https://robotics.benedettelli.com/lego-mindstorms-learning-brick-sorter-bird/)
  - [4 legged walker](https://youtu.be/pM3Hx4ajv4c)
 
+
 ## Where are my recent projects?
+
 When you start the LEGO Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
 At first this is nice, but after a while you want to continue with your own projects.
 
@@ -159,7 +170,9 @@ The DownArrow (or UpArrow) don't work.
 Fortunately PageDown and PageUp do work, best is probably End (or Home).
 Unfortunately, you first have to click the project list (to give it focus) and make the keys work. Grr.
 
+
 ## How should I name my projects?
+
 Most projects end up with a name like `Project 17`, because the LEGO app does not ask for a name.
 By default it just numbers them, using the lowest free number.
 
@@ -167,6 +180,7 @@ You have to explicitly remember to press File > Save As (preferably right after 
 
 
 ## How do I start a new project?
+
 Want to start a new project? Press CODE at the bottom of the home screen. You get an empty new Word Block program. 
 Rather have a Python program? In the Word Block editor (top) create a new tab.
 Or, in the home screen click File > New Project.
@@ -177,6 +191,7 @@ After creating the project I suggest to immediately rename with File > Save As.
 
 
 ## How to save my project?
+
 There is no Save button.
 
 It seems the project is saved constantly when you interact with it (clicking the tab is enough).
@@ -187,6 +202,7 @@ So, only an empty project that is not yet renamed does not get saved, which make
 
 
 ## Where are my projects saved?
+
 The LEGO app made a directory `C:\Users\maarten\Documents\LEGO MINDSTORMS` for my (Maarten's) projects.
 If you Save As `xxx`, the file ends up there, as `xxx 1.lms`.
 
@@ -202,6 +218,7 @@ strips it and appends a space and another number. grr.
 
 
 ## How do I charge the hub?
+
 To charge the hub, use a USB charger (not supplied by LEGO) and the 
 provided USB cable (standard-A to micro-B).
 
@@ -224,6 +241,7 @@ It seems that reported battery levels are 100%, 80%, 60%, 40%, 20% and 10%.
 
 
 ## Can I rename the hub?
+
 You can rename your Hub. 
 When the hub is connected click the "Open Hub connection" icon in the upper right corner.
 A new pane pops up, and the upper right corner has a hub menu (three dots)
@@ -260,6 +278,7 @@ See [spike prime faq](https://education.lego.com/en-gb/product-resources/spike-p
 
 
 ## What is an lms file?
+
 The LEGO app saves Mindstorms projects as files with the extension `.lms` (LEGO MindStorms presumably).
 This is a binary file format, which is a pity for Python programs.
 
@@ -323,7 +342,8 @@ The third file is the actual program. For Word Blocks, some format, unknown to m
 For Python, it is the Python text wrapped in json, below freely formatted by me for readability.
 
 ```json
-{"program":"
+{"program":
+"
    import sys\n
    \n
    # print( dir(sys) )\n
@@ -346,6 +366,100 @@ An `llsp` file is presumably the same as an `lms` file.
 The only difference seems to be that an `lms` is for Robot Inventors app and the `llsp` is for the Lego Spike Prime app.
 
 Like the `lms` file, it is an archive with an icon, manifest and code file.
+
+
+## Can I share a PC project with my mobile?
+
+Yes you can. 
+Here I show it for Windows to Android.
+
+Suppose we have a program in the Windows app. We give it a clear name, e.g. `UltrasonicLedtest`.
+
+![win-ide-save](images/w2m-win-ide-save.png)
+
+You could use File>Share>Email, but let's go the old style.
+Close the LEGO application and browse to your project directory.
+For me that is `C:\Users\maarten\Documents\LEGO MINDSTORMS`.
+Here we find `UltrasonicLedtest.lms`.
+
+![win-file](images/w2m-win-file.png)
+
+Fire up the mail program, attach the file `UltrasonicLedtest.lms`, e.g. by dragging it to the mail, type a subject and maybe a body.
+Most importantly, in the To: field enter an email address that you can open on your mobile.
+
+![win-mail](images/w2m-win-mail.png)
+
+Hit send. We now switch from PC to the mobile.
+
+On the mobile open the mail program and open the mail we just send.
+Note the attached `UltrasonicLedtest.lms`.
+
+![mob-mail](images/w2m-mob-mail.jpg)
+
+Press the download botton. After the download open the downloaded file.
+On my phone a downloaded file is shown in the notification area, and I can just tap it there.
+Alternatively, use a download or file manager to go to the download folder and open it there.
+When you try to open it, Android asks which app to use.
+
+![mob-open](images/w2m-mob-open.jpg)
+
+We select MINDSTORMS. In the LEGO app, on the home page select PROJECTS.
+We find our shared `UltrasonicLedtest.lms`.
+
+![mob-proj](images/w2m-mob-proj.jpg)
+
+When we open it, it is ready to run or be edited.
+
+![mob-transferred](images/w2m-mob-transferred.jpg)
+
+
+## Can I share a mobile project with my PC?
+
+Yes you can. 
+Here I show it for Android to Windows.
+
+Suppose we have a program, e.g. `TwoBlocks.lms` open in the mobile app.
+
+![m2w-mob-ide](images/m2w-mob-ide.jpg)
+
+We go to the home page (press home icon in upper left corner) and then go to the PROJECTS.
+We search for `TwoBlocks.lms` and long press it.
+
+![m2w-mob-share](images/m2w-mob-share.jpg)
+
+A context menu pops up, and we select `Share`.
+
+![m2w-mob-selmail](images/m2w-mob-selmail.jpg)
+
+A share menu pops up and we select mail.
+The `TwoBlocks.lms` file is attached. 
+Enter a subject and maybe a body. 
+Most importantly, in the To: field enter an email address that you can open on your PC.
+
+![m2w-mob-mail](images/m2w-mob-mail.jpg)
+
+Hit send. We now switch from the mobile to the PC.
+
+On the PC open the mail program and open the mail we just send.
+Note the attached `TwoBlocks.lms`.
+
+![m2w-win-mail](images/m2w-win-mail.png)
+
+Open a file explorer and drag the attachment `TwoBlocks.lms`. to the mindstorms directory.
+For me that is `C:\Users\maarten\Documents\LEGO MINDSTORMS`.
+
+![m2w-win-file](images/m2w-win-file.png)
+
+Fire up the LEGO Mindstorms application on your PC.
+You will not yet find the `TwoBlocks.lms` in PROJECTS. Rather chose File > Open.
+
+![m2w-win-open](images/m2w-win-open.png)
+
+Select `TwoBlocks.lms` and press open.
+
+![m2w-win-ide](images/m2w-win-ide.png)
+
+After we opened it, it is ready to run or be edited.
 
 
 ## How to update the hub firmware?
@@ -420,6 +534,7 @@ not they date that version was released (between brackets, my guess).
 
 ![App and OS version](images/version10.2.0.png)
 
+
 ### Per 2021 June 6
 
 All version numbers are the same as per May 16, but there are now eight community fan inventions: 
@@ -468,6 +583,7 @@ Exploration Rover, Sea Turtle, Melody Maker,
 
 
 ### Per 2020 oct 27
+
 - The app version is 4.0.4-dev.99999
 - The Hub OS version is 2.1.4.10
 - The `sys.implementation` micropython 1.11.0
@@ -480,6 +596,7 @@ Exploration Rover, Sea Turtle, Melody Maker,
 
 
 ## Are there any quality issues?
+
 I have picked up two from social media, and later found I suffer from both.
 
 The first is the worst: some color sensors are broken.
@@ -518,6 +635,7 @@ To force a motor update, goto the Hub connection, and find the "Update motors" i
 
 
 ## Are there any hotkeys?
+
 I think LEGO did a bad job here. Many functions are not operatable by key.
 Probably LEGO aims at touch screens.
 
@@ -560,6 +678,7 @@ It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/short
 
 
 ## How can I debug my Word Block program?
+
 A bit hidden feature in the Word Block editor are the two icons on the right hand side.
 
 The bottom one (Show/Hide Monitor) allows you to show (hide) a pane with a live view of the variables.
@@ -573,6 +692,7 @@ The monitor feature does work in "download mode", you  do not have to use "strea
 
 
 ## How to send my project to the Hub?
+
 There are actually three ways to do that.
 
 - The most straighforward way is to press the Play button.
@@ -593,6 +713,7 @@ There are actually three ways to do that.
 
 
 ## What is streaming?
+
 I'm not entirely sure of all the details of [streaming mode](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946).
 
 - The program you’re creating is not stored in a slot on the hub as it is with download mode.
@@ -612,6 +733,7 @@ However,
 
 
 ## Isn't streaming mode slow?
+
 In streaming mode, the code is streamed from the PC to the hub, while the program is executed.
 This sounds a bit like an interpreter, and thus it sounds slow.
 
@@ -625,6 +747,7 @@ So if you do not do "integer increments on the PC" but need "sensor or actuator 
 
 
 ## Is there help (API documentation) for Word Blocks?
+
 Yes, sort off. If you press Settings in the home screen, or Help > Setting, you can pick _Help and Support_ and then
 _Word Blocks description_. This has a two or three lines of help per block.
 
@@ -635,8 +758,8 @@ can not be opened while programming. Grr.
 
 
 ## How to stop my Word Blocks program?
-Good question: if you 
-n't stop, the hub will not power down, so stopping is important.
+
+Good question: if your program doesn't stop, the hub will not power down, so stopping is important.
 
 In Word Blocks, there is an explicit stop block.
 
@@ -788,6 +911,7 @@ Note that set-motor-stop, set-stall-detection, and set-acceleration, are setting
 
 
 ## What are all those (pink) Movement blocks?
+
 Why are there pink Movement blocks next to the blue Motor blocks?
 
 The pink Movement blocks control _two_ motors and _keeps them in sync_. If one stops (break it with your hand), the other stops as well.
@@ -846,6 +970,7 @@ Example are
 
 
 ## Can I "remote control" my robot?
+
 A bit hidden feature in the Word Block editor are the two icons on the right hand side.
 
 The top one (Remote Control) allows you to create a "Remote Control" pane in the environment, with _widgets_.
@@ -863,6 +988,7 @@ The remote control is not present in Python - probably because it has no streami
 
 
 ## Can I remote control my robot with a game controller?
+
 At this moment in beta, there is the option to add support for game controllers (Sony, Microsoft).
 
 Click the Block Extension button and then either enable the Playstation DualShock or XBox One controller.
@@ -877,6 +1003,7 @@ It is pity that Python does not have a Bluetooth package so that we can directly
 
 
 ## How to get my game controller to work?
+
 I ordered a [replica DualShock4](https://www.aliexpress.com/item/1005001493670700.html) of which the rumors tell it is working.
 In the mean time, I can confirm it works with LEGO Mindstorms.
 
@@ -905,12 +1032,14 @@ It took me some time to get it connected to the (Windows) PC. This is what I did
 
 
 ## How can I test my game controller?
+
 I wrote a [test](blocks/DualShockTest.lms), which test all buttons, except SHARE, OPTIONS, or POWER.
 
 ![DualShockTest](images/DualShockTest.png)
 
 
 ## How can I switch off my game controller?
+
 Good question. Don't know myself.
 
 I think that on Playstation 4 devices, you can click OPTIONS, then you get a menu and chose "power off" of the Playstation 4.
@@ -921,6 +1050,7 @@ What I do is to power cycle (switch off and on) Bluetooth in "action center".
 
 
 ## Can I have a peek under the hood (Debug mode)?
+
 Yes we can. The LEGO app can be switched to Debug mode, and this gives us several peeks.
 You must have some software background to do this.
 
@@ -947,6 +1077,7 @@ It seems that for OSX, the file is `~/Library/Containers/com.lego.retail.mindsto
 
 
 ## Is Word Block compiled to Python?
+
 Yes it seems so.
  - Enable Debug mode (see other question).
  - Create a Word Block program.
@@ -1170,6 +1301,7 @@ What we learn here is that some arguments that look like needing an integer, are
 
 
 ## How can I debug my Python program?
+
 Python lacks the monitor feature. Bummer!
 But it does have something better: a console.
 
@@ -1185,6 +1317,7 @@ Finally, I have not found keys to scroll down the console.
 
 
 ## Is there help (API documentation) for Python?
+
 The help for Python is found on the right had side in the Python editor.
 
 It is better than the help for Word Blocks. Document structure is better but not good.
@@ -1195,6 +1328,7 @@ Can be open during programming (pfeew).
 
 
 ## How to stop my Python program?
+
 Good question: if your program doesn't stop, the hub will not power down, so stopping is important.
 
 In Word Blocks, there is an explicit stop block. 
@@ -1210,6 +1344,7 @@ It also suffers from the same problem: red message in console and red flashes on
 
 
 ## How can I set the 5x5 matrix in Python?
+
 There is no easy way in Python to put an image in the 5x5 matrix, other then the list of standard ones.
 There is the `hub.light_matrix.set_pixel(x,y,bright)` API, setting one pixel at a time.
 I made my own helper.
@@ -1434,6 +1569,7 @@ See also the question on "port info" below.
 
 
 ## Can I connect to REPL - interactive Python?
+
 Yes you can ([instructable](https://www.instructables.com/MicroPython-on-SPIKE-Prime/)).
 The Python interpreter in the Hub has an interactive command shell that executes a so-called read-eval-print loop (REPL).
 The Hub has two serial links, one over Bluetooth and one over USB. Both are enabled for REPL.
@@ -1958,6 +2094,7 @@ As we see in the photo, none of the motors is at position O.
 
 
 ## Why are there so many ways to do ... in Python?
+
 The LEGO app wants us to use 
 
 ```python
@@ -2196,6 +2333,7 @@ Somebody made a [dump](https://github.com/gpdaniels/spike-prime/issues/7).
 
 Similar in [pdf](https://micropython-lego-ri5.readthedocs.io/_/downloads/en/latest/pdf/).
 
+
 ## Are there other Python IDEs?
 
 A very light Python IDE is [https://github.com/harbaum/upide](https://github.com/harbaum/upide).
@@ -2206,12 +2344,10 @@ There seems to be a VS code extension. Have not tried it.
 with some [documentation](https://marketplace.visualstudio.com/items?itemName=PeterStaev.lego-spikeprime-mindstorms-vscode).
 
 
-
-
-
 ## How can I do parallel tasks in Python?
 
 Use `uasyncio`? or check out my [multitask](multitask) project.
 
-(end)
 
+
+(end)
