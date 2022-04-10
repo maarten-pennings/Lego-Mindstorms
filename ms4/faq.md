@@ -109,6 +109,66 @@ These I found (top-most is oldest):
  - [python API](https://lego.github.io/MINDSTORMS-Robot-Inventor-hub-API/) from LEGO
  
 
+## What are the differences with Spike Prime?
+
+The differences between Mindstorms Robot Inventor and 
+[Spike Prime](https://education.lego.com/en-us/products/lego-education-spike-prime-set/45678#in-the-box) 
+are big and small, depending on what is relevant for you
+
+ - Spike Prime is for education, Robot inventor is consumer oriented. 
+ 
+ - Spike comes in a sturdy classrom-safe plastic storage box, Inventor in a carton box.
+ 
+ - Also the set of bricks reflects the different target markets: 
+   Spike Prime is colorful and easy to use (read: more LEGO system instead of LEGO technic) 
+   [520 parts](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45678-1)
+   whereas Robot Inventor has black/white/greenish technic parts 
+   [949](https://www.bricklink.com/v2/catalog/catalogitem.page?S=51515-1).
+   Spike does have some creative parts
+    - [system bricks with technic holes](https://www.bricklink.com/v2/catalog/catalogitem.page?P=39789)
+    - [castor wheel](https://www.bricklink.com/v2/catalog/catalogitem.page?P=39370)
+    - two minifigs
+    
+ - There are more but simpler models for Spike Prime (need to be done in class in an hour).
+ 
+ - Selection of motors is different: 
+   Spike has 2 [medium motors](https://www.bricklink.com/v2/catalog/catalogitem.page?P=54696c01) 
+   and 1 [Large motor](https://www.bricklink.com/v2/catalog/catalogitem.page?P=54675c01), 
+   Inventor has 4 medium motors.
+   
+   [![medium motor](https://img.bricklink.com/P/156/54696c01.jpg)](https://www.bricklink.com/PL/54696c01.jpg)
+   [![large motor ](https://img.bricklink.com/P/156/54675c01.jpg)](https://www.bricklink.com/PL/54675c01.jpg)
+   
+ - Selection of sensors is different: both have 
+   an [ultrasonic distance sensor](https://www.bricklink.com/v2/catalog/catalogitem.page?P=37316c01) 
+   and a [color](https://www.bricklink.com/v2/catalog/catalogitem.page?P=37308c01),
+   Spike has an additional [touch sensor](https://www.bricklink.com/v2/catalog/catalogitem.page?P=37312c01) 
+   (which is force sensitive).
+   
+   [![color sensor](https://img.bricklink.com/P/11/37308c01.jpg)](https://www.bricklink.com/PL/37308c01.jpg)
+   [![ultrasonic distance sensor](https://img.bricklink.com/P/11/37316c01.jpg)](https://www.bricklink.com/PL/37316c01.jpg)
+   [![touch sensor](https://img.bricklink.com/P/11/37312c01.jpg)](https://www.bricklink.com/PL/37312c01.jpg)
+
+ - Both support Word Blocks and Python to program your robots. Spike also supports Icon Blocks.
+ 
+   ![Word Blocks](images/example-wordblocks.png)
+   ![Python](images/example-python.png)
+   ![Icon Blocks](images/example-iconblocks.png)
+
+
+This looks like a lot of differences, so why would you say Spike is not different from Robot Inventor?
+
+ - They use the same [hub](https://www.bricklink.com/v2/catalog/catalogitem.page?P=bb1142c01).
+ - They have the same electrical system ("electrical plug"). 
+   It was originally known as "LEGO Power Functions 2.0", but was later renamed to "LEGO Powered Up".
+   It is also used in "LEGO WeDo 2.0", "LEGO BOOST", "LEGO City and Duplo Trains".
+ - The Robot Inventor hub can be changed into a Spike hub by flashing it with the Spike firmware.
+   Just install the [SPIKE LEGO Education app](https://www.microsoft.com/en-us/p/spike-lego-education/9nfqz9rdnd2q),
+   connect the hub, and you are asked to replace the firmware (this does take over a minute).
+   
+   ![Update](images/update-spike.png)
+
+
 ## Which projects can I build?
 
 Of course, there are the five robots that come with the box.
@@ -2337,7 +2397,8 @@ Similar in [pdf](https://micropython-lego-ri5.readthedocs.io/_/downloads/en/late
 ## Are there other Python IDEs?
 
 A very light Python IDE is [https://github.com/harbaum/upide](https://github.com/harbaum/upide).
-Works out-of-the-box with Spike and Robot Inventor. Have not yet tried it.
+Works out-of-the-box with Spike and Robot Inventor. 
+I like it: simple, yet gives full acess to file system and REPL.
 
 There seems to be a VS code extension. Have not tried it.
 [https://github.com/PeterStaev/lego-spikeprime-mindstorms-vscode](https://github.com/PeterStaev/lego-spikeprime-mindstorms-vscode)
