@@ -90,18 +90,31 @@ is largely the same as Mindstorms Robot Inventor.
 ## Is there help from LEGO?
 
 Yes, LEGO is publishing instruction videos on YouTube. Unfortunately not on a separate channel or in a playlist (grr).
-These I found (top-most is oldest):
+These I found (top-most is oldest).
+First, a teaser and later the introduction
 
- - [Robot Inventor Explained!](https://www.youtube.com/watch?v=ntBkg2x3EJ0)
- - [Connect Your Hub](https://www.youtube.com/watch?v=MEj1_pS3esw)
- - [Your First Program](https://www.youtube.com/watch?v=sIfAlu29YyA)
- - [Navigate Your Hub](https://www.youtube.com/watch?v=dWR8ucYlzjQ)
- - [Turn your Devices Into a Remote Control](https://www.youtube.com/watch?v=qJ3cr-LKnEM)
- - [Create Animations](https://www.youtube.com/watch?v=_lQs_HE9Soc)
- - [Edit Your Programs](https://www.youtube.com/watch?v=WeECsUD6TQs)
- - [Connect a Game Controller](https://www.youtube.com/watch?v=g9M9WgwFbZE)
- - [Make Your Models Come Alive](https://www.youtube.com/watch?v=OLMGm7gV370)
- - [Program Your Sensors](https://www.youtube.com/watch?v=avhgnYp5CzQ)
+ - [Designer Video](https://www.youtube.com/watch?v=5Fa4m1XzlCA) 2020 Oct 17
+ - [Robot Inventor Explained!](https://www.youtube.com/watch?v=ntBkg2x3EJ0) 2021 Feb 3
+ 
+Next, several instruction videos.
+
+ - [Connect Your Hub](https://www.youtube.com/watch?v=MEj1_pS3esw) 2021 May 18
+ - [Your First Program](https://www.youtube.com/watch?v=sIfAlu29YyA) 2021 May 19
+ - [Navigate Your Hub](https://www.youtube.com/watch?v=dWR8ucYlzjQ) 2021 May 20
+ - [Turn your Devices Into a Remote Control](https://www.youtube.com/watch?v=qJ3cr-LKnEM) 2021 May 21
+ - [Create Animations](https://www.youtube.com/watch?v=_lQs_HE9Soc) 2021 May 22
+ - [Edit Your Programs](https://www.youtube.com/watch?v=WeECsUD6TQs) 2021 May 23
+ - [Connect a Game Controller](https://www.youtube.com/watch?v=g9M9WgwFbZE) 2021 May 24
+ - [Make Your Models Come Alive](https://www.youtube.com/watch?v=OLMGm7gV370) 2021 May 25
+ - [Program Your Sensors](https://www.youtube.com/watch?v=avhgnYp5CzQ) 2021 May 26
+ 
+Then, more than a year later more (advanced) videos.
+
+ - [Hub to Hub](https://www.youtube.com/watch?v=-BOVQlK4_6E) 2022 Aug 14
+ - [Machine Learning – Audio](https://www.youtube.com/watch?v=JdgSHBjH3qc) 2022 Aug 14
+ - [Machine Learning – Image](https://www.youtube.com/watch?v=xnxv1vuKoSs) 2022 Aug 14
+ - [Virtual Remote](https://www.youtube.com/watch?v=maqpQq3iOcs) 2022 Aug 14
+ - [Python](https://www.youtube.com/watch?v=tvLhI2XX9Vs) 2022 Aug 14
 
 
 ## Are there other good resources?
@@ -186,7 +199,7 @@ If you like more, or simpler builds, you could have a look at
 or [alternative link](https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions).
 
 There are several nice community builds.
- - [Over 50 robots](https://www.onekitprojects.com/)
+ - [Over 75 robots](https://www.onekitprojects.com/)
  - [Ox](https://youtu.be/ZYQG9EfIw28)
  - [Self balancing bike](https://youtu.be/MCVW2Uqanlw)
  - [Rock paper scissors](https://youtu.be/MwoE_gScDd8)
@@ -211,7 +224,7 @@ There are several nice community builds.
  - [HugBot](https://youtu.be/j0IdLnO3k3M)
  - [AI brick sorter](https://robotics.benedettelli.com/lego-mindstorms-learning-brick-sorter-bird/)
  - [4 legged walker](https://youtu.be/pM3Hx4ajv4c)
-
+ - [Several Technic MOCs using robot inventor](https://www.youtube.com/channel/UCRVFzDDPGEFWdvDn_RQDdYg)
 
 ## Where are my recent projects?
 
@@ -400,7 +413,7 @@ Suppose we have a program, e.g. `TwoBlocks.lms` open in the mobile app.
 
 ![m2w-mob-ide](images/m2w-mob-ide.jpg)
 
-We go to the home page (press home icon in upper left corner) and then go to the PROJECTS.
+We go to the home page (press "home" icon in upper left corner) and then go to the PROJECTS.
 We search for `TwoBlocks.lms` and long press it.
 
 ![m2w-mob-share](images/m2w-mob-share.jpg)
@@ -476,6 +489,30 @@ There are multiple versions
 The following sections say "Per", that is the date I recorded the version, 
 not they date that version was released (between brackets, my guess).
 
+### Per 2022 August 18 (released 5th?)
+
+- The app version is 10.4.0
+   - Help Center now has the instruction videos (from Youtube) [is that new?]
+   - Help Center now has topics 'The App' and 'The Hub' [is that new?]
+   - There are many (13) new community contributions (note that some require two sets):
+     **LightPlane**, **Course Bot**, **Lilly**,  
+     **Swipe it**, **Neptunian**, **Dance Class I**,  
+     **Dance Class II**, **Balancing Bot I**, **Balancing Bot II**,  
+     **Color Catcher I**, **Color Catcher II**, **Shuttle Simulator I**,  
+     **Shuttle Simulator II**, Exploration Rover, Sea Turtle,  
+     Melody Maker, Pet Gelo, Tricky Flippin',  
+     Salamoot, Print and Scan, Wrecking Bot
+   - New Word Block extensions
+     - More sensors is extended
+       ![More Sensors](images/more-sensor2.png)
+     - LEGO powered up
+     - Two new Experimental: **Machine Learning** and **Hub to Hub Communication**
+   - The "Bug in Robot Inventor Debug blocks" (see question below) is not fixed :-(
+- The Hub OS version is 3.2.29
+- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.version` 3.4.0
+
+  
 ### Per 2022 March 31 (released 2nd?)
 
 - The app version is 10.3.1
@@ -517,7 +554,7 @@ not they date that version was released (between brackets, my guess).
 
 All version numbers are the same as per May 16, but there are now eight community fan inventions: 
 Exploration Rover, Sea Turtle, Melody Maker, 
-**Melody Maker**, **Salamoot**, **Print and Scan**, **Wrecking Bot**, Pet Gelo and Tricky Flippin'.
+**Salamoot**, **Print and Scan**, **Wrecking Bot**, Pet Gelo and Tricky Flippin'.
 
 ![Community](images/community8.jpg)
 
@@ -673,7 +710,7 @@ The monitor feature does work in "download mode", you  do not have to use "strea
 
 There are actually three ways to do that.
 
-- The most straighforward way is to press the Play button.
+- The most straightforward way is to press the Play button.
   Your program is compiled, uploaded and run. If a program was running on the hub, it is stopped.
   Note that the Hub has 20 slots (0..19), the app calls them "storage positions".
   By default your program goes to slot 0, but if you click one of the two "slot select buttons" (the arrows), you can specify another slot.
@@ -1973,7 +2010,7 @@ Note that the last one is wrong - see below why.
 Below each pattern (flag) we find the 9 (decimal) values that are in `lst` and are send to the
 matrix. Below that, we see the same numbers in hexadecimal. This makes it easier to interpret
 because the first nibble encodes the brightness, and the second nibble encodes the color 
-(an enumeration: red=9, white=10, blue=3, see another question).
+(an enumeration: red=0x9, white=0xA, blue=0x3, see another question).
 
 Behind the scenes, the Word Block is translated to Python, and it converts the
 the series of 9 numbers to a byte array. That array is depicted on the third row.
@@ -1984,19 +2021,22 @@ The byte that is prepended is the first UTF "escape" character 0xC2.
 
 On the last line we see what that means for the brightest pattern, instead of 9 bytes
 we send 18 bytes to the matrix (which only looks at the first 9). Every odd byte is C2 
-which renders as purple, as we can see in the fourth flag above.
+which renders as purple, as we can see in the fourth flag above. 
+The even LEDs are indeed three times red, then (one) white, and then we run out of LEDs.
 
 I had a peek at the generated code, and I believe it really is a compiler bug.
 
-This is the offending line, here in action using LED values below 128.
-We see that it produces a byte array of nine bytes, with the bytes we expect (e.g. ASCII value of `Y` is 89, `Z` is 90 and `S` 83).
+The line below is from the generated code.
+Here in action using LED values below 128.
+We see that it produces a byte array of nine bytes, 
+with the bytes we expect (e.g. ASCII value of `Y` is 89, `Z` is 90 and `S` 83).
 
 ```python
 >>> bytes("".join([chr(math.floor(clamp(to_number(p_1), 0, 255) + 0.5)) for p_1 in " 89  89  89   90  90  90   83  83  83".split()]),"utf-8")
 b'YYYZZZSSS'
 ```
 
-When using LED values above 128, we get a wrong result: an byte array of 18 bytes.
+When using LED values above 128, we get a wrong result: a byte array of 18 bytes.
 The even bytes are all wrong (0xC2), the odd bytes are correct.
 
 ```python
