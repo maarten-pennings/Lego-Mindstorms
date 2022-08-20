@@ -36,4 +36,8 @@ There have been four generations of the Mindstorms [wiki](https://en.wikipedia.o
   2020: v1.0 [51515](https://www.bricklink.com/v2/catalog/catalogitem.page?S=51515-1)  
   100MHz ARM M4, 1MBflash, 32 MB RAM, 5x5 LED, Bluetooth, USB micro, beeper, MicroPython
 
+## Miscellaneous
+
+Some [miscellaneous](misc) content, not specific for one Mindstorms generation.
+
 (end)
