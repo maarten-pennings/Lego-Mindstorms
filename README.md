@@ -1,4 +1,4 @@
-# Lego Mindstorms
+# LEGO Mindstorms
 
 Hints, tips, and tricks for the LEGO Mindstorms products (RCX, NXT, EV3, Robot Inventor).
 
@@ -13,7 +13,7 @@ See the subdirectories for details on each of the generations.
 
 ## Background
 
-Lego [Mindstorms](https://www.lego.com/en-us/themes/mindstorms/about) is a line of hardware, software and bricks, which is produced by [Lego](lego.com) for building robots.
+LEGO [Mindstorms](https://www.lego.com/en-us/themes/mindstorms/about) is a line of hardware, software and bricks, which is produced by [LEGO](lego.com) for building robots.
 
 There have been four generations of the Mindstorms [wiki](https://en.wikipedia.org/wiki/Lego_Mindstorms): 
 
