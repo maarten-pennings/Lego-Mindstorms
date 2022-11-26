@@ -5,8 +5,9 @@ I run a club in the village, were 8-12 year old children make robots using LEGO 
 ## Logo
 The club has a new logo, showing technic beams (reference to LEGO technic), 
 a gear (reference to machines/robots), a motor (actuator) and button (sensor).
+See [logo](logo) for multiple sizes.
 
-[![logo](logo/LegoClubDePracht0180x0150.png)](logo)
+![logo](logo/LegoClubDePracht0180x0150.png)
 
 
 ## Exercises LEGOclub de Pracht
@@ -76,9 +77,9 @@ Extra steps we take
    - Wall paper with correct resolution and label, see [this repo](labels/man-6-extendedbottom-calibri150-1366x768.jpg)
 
 ### Step 2 - Install mindstorms IDE
-See [elsewhere](https://github.com/maarten-pennings/Lego-Mindstorms/blob/main/nxt/install/install.md) for details.
+See [elsewhere in this repo](../install/install.md) for details.
 For older Windows (XP, Vista, Windows 7) that works fine,
-for the newer see the [install on Win 10](https://github.com/maarten-pennings/Lego-Mindstorms/blob/main/nxt/install/install.md#next-g-ide-install-on-win10)
+for the newer see the [install on Win 10](../install/install.md#next-g-ide-install-on-win10)
 section for a possible workaround.
 
 We typically add shortcuts to the NXT-G IDE on the desktop, start menu, 
@@ -87,25 +88,25 @@ and we add it to startup folder.
 - create shortcut on the Desktop to the projects directory.
   - Win XP: `C:\Documents and Settings\Legoclub 3\My Documents\LEGO Creations\MINDSTORMS Projects\Profiles\Default`
   - Win 7: `C:\Users\maarten\Documents\LEGO Creations\MINDSTORMS Projects\Profiles\Default`
-- Add extra pictures (for -, digits, and arrows) from [elsewher](https://github.com/maarten-pennings/Lego-Mindstorms/blob/main/nxt/install/install.md#extra-pictures).
+- Add extra pictures (for -, digits, and arrows) from [elsewhere](../install/install.md#extra-pictures) in this repo.
   - Win XP: `C:\Program Files\LEGO Software\LEGO MINDSTORMS NXT\engine\Pictures`
   - Win 7: `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine\Pictures`
-- Add integer arithmatic from [elsewhere](https://github.com/maarten-pennings/Lego-Mindstorms/blob/main/nxt/blocks/blocks.md#integer-math)
+- Add integer arithmatic block, see [elsewhere](../nxt/blocks/blocks.md#integer-math) in this repo.
   - Win XP: `C:\Program Files\LEGO Software\LEGO MINDSTORMS NXT\engine\EditorVIs\BlockRegistry\Data\Numeric Operations.txt`
   - Win 7: `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine\EditorVIs\BlockRegistry\Data\Numeric Operations.txt`
 - Disable warning in Help (pressing F1 in IDE pops up IE with warning)
-  In IE go to Tools|Internet Options|tab Advanced|section Security, check Allow active content... (or another)
+  In IE go to `Tools|Internet Options|tab Advanced|section Security`, check `Allow active content...`.
       
 ### Step 3 - Stickering      
 We label all laptops in the club, so that next week the children get the same
 laptop with the program as the left off last week.
-Example stickers for [1-5](labels/stickers12345-calibri-275.png) or [6 till 10](labels/stickers67890-calibri-bold-275.png) 
+Example stickers for [1-5](labels/stickers12345-calibri-275.png) or [6-10](labels/stickers67890-calibri-bold-275.png) 
 are in this repo.
 - Put sticker with [123456] on laptop cover
 - Put sticker with [123456] on laptop keyboard 
 - Put sticker with [123456] on laptop power supply
 
-### Final test
+### Step 4 - Final test
 Test if NXT sw is working and if NXT driver is there.
 Optionally test the Bluetooth connection.
 
