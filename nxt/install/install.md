@@ -13,12 +13,15 @@ My NXT brick (Settings > NXT Version) reports
 
 My NXT-G IDE reports
 - v2.0.f4
+- the one on the LEGO site is even v2.0f6
 
 See [lego](https://www.lego.com/en-us/themes/mindstorms/downloads) for the latest 
-- [firmware](https://www.lego.com/cdn/cs/set/assets/blt3502cca1438605b8/Firmware131_Download1.zip)
-  or local [copy](bins/Firmware131_Download1.zip).
-- the [IDE](https://www.lego.com/assets/franchisesites/mindstorms/mac-window-installers/nxt-g-installer-v2.0f6-windows.zip#nourlrewrite).
-- or the [USB driver](https://www.lego.com/cdn/cs/set/assets/bltea140e66e32fadf0/NXT_Fantom_Drivers_v120.zip)
+- [Firmware](https://www.lego.com/cdn/cs/set/assets/blt3502cca1438605b8/Firmware131_Download1.zip)
+  for the NXT brick, or local [copy](bins/Firmware131_Download1.zip).
+- The PC [IDE](https://www.lego.com/assets/franchisesites/mindstorms/mac-window-installers/nxt-g-installer-v2.0f6-windows.zip#nourlrewrite)
+  known as NXT-G.
+  Use autorun (not setup!)
+- The [USB driver](https://www.lego.com/cdn/cs/set/assets/bltea140e66e32fadf0/NXT_Fantom_Drivers_v120.zip)
   or local [copy](bins/NXT_Fantom_Drivers_v120.zip).
 
 
