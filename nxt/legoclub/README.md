@@ -74,7 +74,7 @@ Extra steps we take
    - Legoclub[123456] (as computer name)
    - Legoclub (as admin password)
    - Legoclub [123456] (as username - note the space)
-   - Wall paper with correct resolution and label, see [this repo](labels/man-6-extendedbottom-calibri150-1366x768.jpg)
+   - Wallpaper with correct resolution and label, see [labels](labels) for examples.
 
 ### Step 2 - Install mindstorms IDE
 See [elsewhere in this repo](../install/install.md) for details.
