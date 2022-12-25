@@ -496,7 +496,7 @@ not they date that version was released (between brackets, my guess).
    - New firmware for the hub
    - Create new project allows to enter a project name
    
-     ![New Project](NewProject.png)
+     ![New Project](images/NewProject.png)
      
    - Python is no longer tagged as "beta"
 - The Hub OS version is 3.2.36 (1.5.6.0)
