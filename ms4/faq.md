@@ -490,6 +490,26 @@ There are multiple versions
 The following sections say "Per", that is the date I recorded the version, 
 not they date that version was released (between brackets, my guess).
 
+### Per 2022 December (released Oct 8)
+
+- The app version is 10.5.0
+   - New firmware for the hub
+   - Create new project allows to enter a project name
+   
+     ![New Project](NewProject.png)
+     
+   - Python is no longer tagged as "beta"
+- The Hub OS version is 3.2.36 (1.5.6.0)
+- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.version` 3.4.0
+
+![App and OS version](images/version10.5.0.png)
+
+- I have no idea why it says spprime (did I do that when trying spike prime?)
+- The menu has "debug" because I switched that on (see "Can I have a peek under the hood")
+- There is suddenly a new version number (1.5.6.0).
+
+
 ### Per 2022 August 18 (released 5th?)
 
 - The app version is 10.4.0
