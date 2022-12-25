@@ -1704,6 +1704,11 @@ that it may not play well with the rest of the systems running on the hub.
 
 ## Are there other Python IDEs?
 
+There is the complete overhaul [pybricks](https://pybricks.com/).
+It replaces the IDE (by a browser app), it replaces the firmware (no worries, you can always 
+put the official LEGO one back), it supports Robot Inventor (Spike Prime) but also
+other LEGO bricks (like the technic hubs).
+
 A very light Python IDE is [https://github.com/harbaum/upide](https://github.com/harbaum/upide).
 Works out-of-the-box with Spike and Robot Inventor. 
 I like it: simple, yet gives full acess to file system and REPL.
@@ -1717,7 +1722,9 @@ with some [documentation](https://marketplace.visualstudio.com/items?itemName=Pe
 
 Use `uasyncio` (?) or check out my [multitask](multitask) project.
 
-
+You might also check out [azzieg's github](https://github.com/azzieg/mindstorms-inventor/blob/main/README.md)
+where he explains how WorkBlocks are translated to python, using a virtual machine - that you can 
+also deploy yourself if you want advanced python features like parallel tasks.
 
 
 
