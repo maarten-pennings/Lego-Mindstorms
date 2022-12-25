@@ -78,10 +78,10 @@ In the LEGO app, goto to Help > Settings > General and click the "Welcome Robot 
 LEGO has leaflets on [Spike prime](https://education.lego.com/en-gb/product-resources/spike-prime/downloads/technical-specifications), which
 is largely the same as Mindstorms Robot Inventor.
 
-- **hub**: 5x5 LEDs, 6 ports, Gyro, 3 buttons, one with RGB LED, beeper, Bluetooth, USB, MicroPython  
+- **hub**: 5x5 LEDs, 6 ports, gyro, 3 buttons, one with RGB LED, beeper, Bluetooth, USB, MicroPython  
   **cpu:** 100MHz M4, 320 kB RAM, 1M FLASH; 32MB RAM extern  
   **battery**:  2100 mAh @ 7.3 V  >500 cycles
-- **color sensor**: 100 Hz sample rate,  color sensing (RGB/HSV), reflectivity sensing, ambient sensing, white led emission
+- **color sensor**: 100 Hz sample rate,  color sensing (RGB/HSV), reflectivity sensing, ambient sensing, white LED emission
 - **distance sensor**: 100 Hz sample rate, range 50..2000 mm, resolution 1 mm, 4 LEDs for decoration
 - **motor**: torque 0..18 Ncm, speed 0..185 RPM, current 110..800 mA;  
   **rotation sensor**: 360 ticks per revolution, 3 degrees accuracy, 100 Hz sampling
@@ -131,13 +131,13 @@ are big and small, depending on what is relevant for you
 
  - Spike Prime is for education, Robot inventor is consumer oriented. 
  
- - Spike comes in a sturdy classrom-safe plastic storage box, Inventor in a carton box.
+ - Spike comes in a sturdy classroom-safe plastic storage box, Inventor in a carton box.
  
  - Also the set of bricks reflects the different target markets: 
-   Spike Prime is colorful and easy to use (read: more LEGO system instead of LEGO technic) 
-   [520 parts](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45678-1)
-   whereas Robot Inventor has black/white/greenish technic parts 
-   [949](https://www.bricklink.com/v2/catalog/catalogitem.page?S=51515-1).
+   Spike Prime has 520 colorful and easy to use (read: more LEGO system instead of LEGO technic) 
+   [parts](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45678-1)
+   whereas Robot Inventor has 949 black/white/greenish technic 
+   [parts](https://www.bricklink.com/v2/catalog/catalogitem.page?S=51515-1).
    Spike does have some creative parts
     - [system bricks with technic holes](https://www.bricklink.com/v2/catalog/catalogitem.page?P=39789)
     - [castor wheel](https://www.bricklink.com/v2/catalog/catalogitem.page?P=39370)
@@ -159,8 +159,8 @@ are big and small, depending on what is relevant for you
    Spike has an additional [touch sensor](https://www.bricklink.com/v2/catalog/catalogitem.page?P=37312c01) 
    (which is force sensitive).
    
-   [![color sensor](https://img.bricklink.com/P/11/37308c01.jpg)](https://www.bricklink.com/PL/37308c01.jpg)
    [![ultrasonic distance sensor](https://img.bricklink.com/P/11/37316c01.jpg)](https://www.bricklink.com/PL/37316c01.jpg)
+   [![color sensor](https://img.bricklink.com/P/11/37308c01.jpg)](https://www.bricklink.com/PL/37308c01.jpg)
    [![touch sensor](https://img.bricklink.com/P/11/37312c01.jpg)](https://www.bricklink.com/PL/37312c01.jpg)
 
  - Both support Word Blocks and Python to program your robots. Spike also supports Icon Blocks.
@@ -1188,7 +1188,7 @@ from mindstorms import MSHub
 hub = MSHub()
 
 # Lights up 5x5 matrix.
-# Parameter `bits` is a 25 bits vector: a 1 switches on that led.
+# Parameter `bits` is a 25 bits vector: a 1 switches on that LED.
 # Bit 24 is upper left, bit 0 is lower right.
 def set_image(bits):
     hub.light_matrix.off()
