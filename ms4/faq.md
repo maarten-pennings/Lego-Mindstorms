@@ -327,23 +327,24 @@ There click `Rename Hub`.
 It seems that if you use the hub via Bluetooth, you must unpair it (to clear the Bluetooth cache of named devices). 
 
 
-## What is the meaning of the color center button on the hub?
+## What is the meaning of the color center button/LED on the hub?
 
-When you start the hub, the center button has a **dim gray**.
-This means the hub is idle, and the user (you) can interact by pressing the left, right to select a program
-(or even the built-in "play" program). A click on the center button starts the selected program (it starts running).
+When you start the hub, the center button/LED is a **dim gray** (on, but "dark white").
+This means the hub is idle, and the user (you) can interact by pressing the left or right button to select a program
+(one of twenty of your own, or the built-in "play" program). 
+A click on the center button starts the selected program (it starts running).
 
 When a program is running, the center button is **bright white**.
 When the program stops, either by executing "stop [and exit program]" or by a press on the center button,
 the center button is dim gray again.
 
 When the program encounters a bug (e.g. "sqrt of -5"), the center buttons **flashes red**.
-Normally such errors can be fixed easily, if not restart the hub by holding the center button 3 seconds.
+Normally such errors can be fixed easily in your program, if not restart the hub by holding the center button 3 seconds.
 
-If the center button turns **orange**, the battery is low.
+If the center button flashes **orange**, the battery is nearly empty (low charge).
 Charge the hub.
 
-It seems that the center button can turn **green** - probably a lost connection.
+It seems that the center button can turn **green** - probably a lost connection (restart by holding the center button for 3 seconds).
 
 It seems that **blue** means the hub requires a firmware update.
 
