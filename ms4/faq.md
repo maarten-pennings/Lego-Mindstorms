@@ -93,34 +93,25 @@ The standard Robot Inventor firmware for the hub has slots for 21 programs.
 Slots 0..19 store user programs (either WordBlock or Python).
 There is one special slot, it is reserved for a (fixed) test program.
 The left and right buttons on the hub "walk" throught these slots.
-The user slots show the number 0..19 on the display,
+The user slots show the number 0..19 on the hub's display,
 the test slot shows a play symbol (triangle).
-The Spike Prime shows a Heart instead of a Play symbol.
+The Spike Prime shows a heart instead of a play symbol.
 
-![the slots](slots.png)
+![the slots](images/slots.png)
 
 The program in a slot is activated by pressing the center button 
-(its LED switches from gray to white).
+(center button LED switches from gray to white).
 
-Whe the test program is running, we see a LED light up for each of the six ports.
-
-When we plug in an "actuator" (e.g. motor, or 3x3 LED matrix),
-an animation shows up "pushing data out of the port".
-
-When we plug in a "sensor" (light, distance, force),
-an animation shows up "pulling data from the port".
-
-When we have one (or more) actuator(s) plugged in, the left and right buttons on the hub
-decrease respectively increase the power for the actuator(s). 
-For the LED matrix the power levels translate to different colors.
-This allows testing actuators.
-
-When we have one (or more) sensors(s) plugged in the more the sensor is "excited" the longer
-the aninated bar on the hub. This allows testing sensors.
-
-There is one more feature: we can connect a sensor and an actuator on opposite ports (A and B, or C and D or E and F).
-In this case, the test firmware maps the sensor excitation level to the actuator driver level:
-the harder you press the force sensor the faster the motor rotates.
+- When the test program is running, we see a LED light up for each of the six ports.
+- When we plug in an "actuator" (e.g. motor, or 3x3 LED matrix), an animation shows up "pushing data out of the port".
+- When we plug in a "sensor" (light, distance, force), an animation shows up "pulling data from the port".
+- When we have one (or more) actuator(s) plugged in, the left and right buttons on the hub
+  decrease respectively increase the drive level (power) for the actuator(s) - this allows testing actuators.
+- When we have one (or more) sensors(s) plugged in, the more the sensor is "excited" the longer
+  the aninated bar on the hub - this allows testing sensors.
+- There is one more feature: we can connect a sensor and an actuator on opposite ports (A and B, or C and D or E and F).
+  In this case, the test firmware maps the sensor excitation level to the actuator drive level:
+  the harder you press the force sensor the faster the motor rotates.
 
 ![LED matrix via Force sensor](images/LEDmatrix-test.jpg)
 
@@ -238,6 +229,7 @@ or [alternative link](https://education.lego.com/en-us/product-resources/spike-p
 
 There are several nice community builds.
  - [Over 75 robots](https://www.onekitprojects.com/)
+ - [MOCs at rebrickable](https://rebrickable.com/mocs/?q=51515)
  - [Ox](https://youtu.be/ZYQG9EfIw28)
  - [Self balancing bike](https://youtu.be/MCVW2Uqanlw)
  - [Rock paper scissors](https://youtu.be/MwoE_gScDd8)
@@ -758,6 +750,35 @@ It behaves much like [Microsoft Studio Code](https://code.visualstudio.com/short
   - #@A to toggle block comment.
   - Very fancy multi cursor (bit over the top) with @click, or ^#@ with cursor movement.
   - **There is no rich languages editing, ^SPC appears to work but it doesn't know the object, it just shows all occuring strings.**
+
+
+## What is the expected lifespan of Robot Inventor?
+
+LEGO started with the Mindstorms line in 1998 with the RCX (updated to v1.5 in 1999 and V2.0 in 2001).
+The next generation, known as NXT appeared in 2006 (and V2.0 in 2009).
+The third generation, EV3 appeared in 2013.
+I personally see Robot inventor as generation 4, but LEGO confusingly identifies the kit as 51515.
+It came out in 2020. So roughly every 7 years a new generation.
+
+One of the problems is that these LEGO kits come with software, which is much earlier outdated than the hardware.
+As of now (jan 2023), the Robot Inventor software is fully supported, EV3 still installs (on windows), NXT requires some tweaks,
+and RCX PC software is hard to get running. In general, you are better of with community supported software 
+(e.g. [BricxCC](https://bricxcc.sourceforge.net/).
+
+As mentioned, the hardware is less troublesome, but certaunly not without worries.
+Especially the RCX generation cables start to crumble.
+
+On 26 Oct 2022, the LEGO group had bad [news](https://brickset.com/article/84219/lego-mindstorms-to-be-discontinued).
+It decided to stop Mindstorms retail: "Robot Inventor ... to exit our portfolio from the end of 2022, 
+whilst digital platforms – such as the LEGO Mindstorms Robot Inventor App – will remain live until at least the end of 2024."
+LEGO "will continue to support it [Build and Code - Maarten] through platforms such as SPIKE Prime".
+
+
+
+
+
+
+
 
 
 
@@ -1414,16 +1435,16 @@ The LED matrix has four modes, see
 the Raspberry pi Hat.
 
  - **mode 0 = M0 = "LEV O" = level output**  
-   Mode 0 has an argument 0..9 that enables green bands showing a sort of battery level form 0=empty to 9=full
+   Mode 0 has an argument 0..9 that enables green bands showing a sort of battery **level** form 0=empty to 9=full
 
  - **mode 1 = M1 = "COL O" = color output**  
-   Mode 1 has an argument from 0 to 10, and all LEDs will light up brightly in that color (see table above).
+   Mode 1 has an argument from 0 to 10, and all LEDs will light up brightly in that **color** (see table above).
    
  - **mode 2 = M2 = "PIX O" = pixel output**  
-   Mode 2 has nine arguments: b*16+c, where b is brightness (0..9) and c is color (0..10) 
+   Mode 2 has nine arguments: b*16+c, where b is brightness (0..9) and c is color (0..10) for each of the nine **pixels**
  
  - **mode 3 = M3 = "TRANS" = transitions**  
-   Mode 3 has one argument the transition effect: 0 is none (default), 1 is row-by-row, and 2 fade-down-fade-up.
+   Mode 3 has one argument the **transition** effect: 0 is none (default), 1 is row-by-row, and 2 fade-down-fade-up.
 
 The below script tests all modes.
  
@@ -1900,7 +1921,7 @@ The icon looks like two triangles, likely indication input and output.
 
 ![port icons](images/port-icons.jpg)
 
-A closer look has a surprise for use: port E and F have an extra "slash" in the icon.
+A closer look has a surprise for us: port E and F have an extra "slash" in the icon.
 
 On [lego education website](https://education.lego.com/en-us/product-resources/spike-prime/downloads/technical-specifications), we find
 the [datasheet](https://education.lego.com/v3/assets/blt293eea581807678a/bltf512a371e82f6420/5f8801baf4f4cf0fa39d2feb/techspecs_techniclargehub.pdf)
