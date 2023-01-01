@@ -1208,7 +1208,7 @@ In this the case LED matrix does not show different colors but a sort of battery
 
 For the nerds that understand the inner API of the LED matrix,
 in the first test setup, the hub drives LED matrix in mode 1 (color output),
-in the second test setup, the hub drivers the LES matrix in mode 0 (level output).
+in the second test setup, the hub drives the LED matrix in mode 0 (level output).
 The most fancy mode (mode 2, different color/brightness per LED pixel) is not
 supported by the standard test firmware ("play" slot).
 
