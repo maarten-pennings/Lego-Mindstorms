@@ -762,14 +762,14 @@ It came out in 2020. So roughly every 7 years a new generation.
 
 One of the problems is that these LEGO kits come with software, which is much earlier outdated than the hardware.
 As of now (jan 2023), the Robot Inventor software is fully supported, EV3 still installs (on windows), NXT requires some tweaks,
-and RCX PC software is hard to get running. In general, you are better of with community supported software 
-(e.g. [BricxCC](https://bricxcc.sourceforge.net/).
+and RCX PC software is hard to get running. In general, on the long run you are better of with community supported software 
+(e.g. [BricxCC](https://bricxcc.sourceforge.net/) or [pybricks](https://pybricks.com/)).
 
 As mentioned, the hardware is less troublesome, but certaunly not without worries.
 Especially the RCX generation cables start to crumble.
 
 On 26 Oct 2022, the LEGO group had bad [news](https://brickset.com/article/84219/lego-mindstorms-to-be-discontinued).
-It decided to stop Mindstorms retail: "Robot Inventor ... to exit our portfolio from the end of 2022, 
+**LEGO decided to stop Mindstorms** retail: "Robot Inventor ... to exit our portfolio from the end of 2022, 
 whilst digital platforms – such as the LEGO Mindstorms Robot Inventor App – will remain live until at least the end of 2024."
 LEGO "will continue to support it [Build and Code - Maarten] through platforms such as SPIKE Prime".
 
