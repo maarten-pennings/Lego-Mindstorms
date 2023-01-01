@@ -110,9 +110,11 @@ The program in a slot is activated by pressing the center button
 - When we have one (or more) sensors(s) plugged in, the more the sensor is "excited" the longer
   the aninated bar on the hub - this allows testing sensors.
 - There is one more feature: we can connect a sensor and an actuator on opposite ports (A and B, or C and D or E and F).
-  In this case, the test firmware maps the sensor excitation level to the actuator drive level:
-  the harder you press the force sensor the faster the motor rotates.
-
+  In this case, the test firmware maps the sensor input to actuator output.
+   - The harder you press the force sensor the faster the motor rotates.
+   - The shorter the distance measured by the distance sensor, the faster the motor goes.
+   - If color _c_ is detected by the color sensor, the motor is switched to speed _10×c_.
+  
 ![LED matrix via Force sensor](images/LEDmatrix-test.jpg)
 
 
@@ -1211,6 +1213,10 @@ in the first test setup, the hub drives LED matrix in mode 1 (color output),
 in the second test setup, the hub drives the LED matrix in mode 0 (level output).
 The most fancy mode (mode 2, different color/brightness per LED pixel) is not
 supported by the standard test firmware ("play" slot).
+
+Even cooler: if - in test mode - we pair a color sensor with the 3x3 LED matrix, 
+the hub drives the matrix in mode 1: the color sensed by the color sensor is
+send to the LED matrix - a color copier.
 
 I did not yet succeed in controlling the LED matrix from _plain_ Word Blocks.
 I do have a Python solution (see other question and answer below).
