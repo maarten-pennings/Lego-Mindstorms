@@ -87,6 +87,44 @@ is largely the same as Mindstorms Robot Inventor.
   **rotation sensor**: 360 ticks per revolution, 3 degrees accuracy, 100 Hz sampling
 
 
+## Can I test my motors and sensors?
+
+The standard Robot Inventor firmware for the hub has slots for 21 programs.
+Slots 0..19 store user programs (either WordBlock or Python).
+There is one special slot, it is reserved for a (fixed) test program.
+The left and right buttons on the hub "walk" throught these slots.
+The user slots show the number 0..19 on the display,
+the test slot shows a play symbol (triangle).
+The Spike Prime shows a Heart instead of a Play symbol.
+
+![the slots](slots.png)
+
+The program in a slot is activated by pressing the center button 
+(its LED switches from gray to white).
+
+Whe the test program is running, we see a LED light up for each of the six ports.
+
+When we plug in an "actuator" (e.g. motor, or 3x3 LED matrix),
+an animation shows up "pushing data out of the port".
+
+When we plug in a "sensor" (light, distance, force),
+an animation shows up "pulling data from the port".
+
+When we have one (or more) actuator(s) plugged in, the left and right buttons on the hub
+decrease respectively increase the power for the actuator(s). 
+For the LED matrix the power levels translate to different colors.
+This allows testing actuators.
+
+When we have one (or more) sensors(s) plugged in the more the sensor is "excited" the longer
+the aninated bar on the hub. This allows testing sensors.
+
+There is one more feature: we can connect a sensor and an actuator on opposite ports (A and B, or C and D or E and F).
+In this case, the test firmware maps the sensor excitation level to the actuator driver level:
+the harder you press the force sensor the faster the motor rotates.
+
+![LED matrix via Force sensor](images/LEDmatrix-test.jpg)
+
+
 ## Is there help from LEGO?
 
 Yes, LEGO is publishing instruction videos on YouTube. Unfortunately not on a separate channel or in a playlist (grr).
@@ -226,6 +264,7 @@ There are several nice community builds.
  - [4 legged walker](https://youtu.be/pM3Hx4ajv4c)
  - [Several Technic MOCs using robot inventor](https://www.youtube.com/channel/UCRVFzDDPGEFWdvDn_RQDdYg)
 
+
 ## Where are my recent projects?
 
 When you start the LEGO Mindstorms Robot inventor app, you get a screen with pictures (links) to the 5 robots.
@@ -250,7 +289,11 @@ Unfortunately, you first have to click the project list (to give it focus) and m
 Most projects end up with a name like `Project 17`, because the LEGO app does not ask for a name.
 By default it just numbers them, using the lowest free number.
 
-You have to explicitly remember to press File > Save As (preferably right after you create a new project). Grr.
+You have to explicitly remember to press File > Save As (preferably right after you create a new project). 
+
+**Update:** When starting a new project, you can now edit the name in the dialog.
+
+![Edit name](images/NewProject.png)
 
 
 ## How do I start a new project?
@@ -641,9 +684,11 @@ later [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/4
 The one that came with the 51515 box is fine. 
 But I ordered a second [one](https://www.bricklink.com/v2/catalog/catalogitem.page?S=45605).
 If I plug it in the hub, it is sometimes recognized, and sometimes not.
-Recognized means that it lights up, appears in the  "triangle" test app, and is listed in the LEGO app under the port.
+Recognized means that it lights up, appears in the play (triangle) test app, 
+and is listed in the LEGO app under the port.
 For my second sensor none of these happen (in "half" the time).
-I contacted LEGO support and they claim that with the latest firmware this is resolved.
+
+**Update:** I contacted LEGO support and they claim that with the latest firmware this is resolved.
 
 The second issue is less of a problem: the O positions of the motors have a deviation.
 I found it [here](https://www.facebook.com/groups/mindstormsrobotinventor/permalink/399918451021115/?comment_id=399946571018303).
@@ -661,13 +706,25 @@ To force a motor update, goto the Hub connection, and find the "Update motors" i
 
 ## Are there special startup features?
 
+I know of one that forces the hub in Device Firmware Update (DFU) mode:
 
-1) Turn off the hub and unplug the USB cable.
-   Press and hold the Bluetooth button on the hub while reconnecting the USB cable. 
-   Release the Bluetooth button when it starts to flashing colors (purple, red, blue). 
-2) Connect the hub to a computer via USB, turn off the hub.
-   Press and hold the left button and press the center button. This turns on the hub; release both buttons when completely on. 
-   When you press connect in the LEGO app, the hub OS is updated.
+1) Connect hub with USB to PC.
+2) Turn off the hub by keeping the center button pressed (~3sec).
+3) Unplug the USB cable from the hub (leave PC side connected).
+4) Press and hold the Bluetooth button on the hub 
+5) While holding the button, reconnect the USB cable. 
+6) Wait till center button starts flashing colors (purple, green, blue). 
+
+However, the LEGO app does not recognize this DFU mode but eg [pybrick](https://pybricks.com/) does
+(don't worry, just switch off the hub to get it out of DFU mode).
+
+It seems that a lighter approach does work with the LEGO app:
+
+1) Connect hub with USB to PC.
+2) Turn off the hub by keeping the center button pressed (~3sec).
+3) Press and hold the left button and press the center button. 
+4) Release both buttons when the hub is powered on.  
+5) When you press connect in the LEGO app, the hub OS will be updated.
 
 
 ## Are there any hotkeys?
@@ -1112,15 +1169,32 @@ After adding the standard extension "More Sensors" we get Word Blocks for the fo
 
 ![Color matrix](images/Technic-3x3-Color-Light-Matrix-45608.png)
 
-When you use the Robot Inventor in the "test mode" 
+Recall: when you use the Robot Inventor in the "test mode" 
 (pressing the middle button when the screen shows the "play" slot)
 we can press the left or right button to change the speed of a connected motor.
-When we hook up the color matrix the test mode sort of works as for a motor: 
-when we change the "speed" with the left and right button, the matrix changes color (all 9 LEDs in one go).
 
-I did not yet succeed in controlling it from _plain_ Word Blocks.
+When we hook up the _color matrix_ in this test mode, it sort of works the same as for a motor: 
+when we change the "speed" with the left and right button, the matrix changes color (all 9 LEDs in one go).
+This is a simple test to see different colors.
+
+Recall: when you use the Robot Inventor in the "test mode" and 
+hook a sensor on the port opposite to the port of the LED matrix
+(eg a force sensor on port A and the LED matrix on port B),
+the sensor controls the power level of the LED matrix.
+In this the case LED matrix does not show different colors but a sort of battery gauge.
+
+![LED matrix via Force sensor](images/LEDmatrix-test.jpg)
+
+For the nerds that understand the inner API of the LED matrix,
+in the first test setup, the hub drives LED matrix in mode 1 (color output),
+in the second test setup, the hub drivers the LES matrix in mode 0 (level output).
+The most fancy mode (mode 2, different color/brightness per LED pixel) is not
+supported by the standard test firmware ("play" slot).
+
+I did not yet succeed in controlling the LED matrix from _plain_ Word Blocks.
 I do have a Python solution (see other question and answer below).
-And there is a Word Blocks solution if you are willing to use the Debug blocks you get in the Debug mode (see other question).
+And there is a Word Blocks solution if you are willing to use 
+the _debug blocks_ you get in the debug mode (see other question).
 
 
 
