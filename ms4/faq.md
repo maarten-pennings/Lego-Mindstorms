@@ -1420,6 +1420,7 @@ Steps
    sox stop.wav --bits 16 --channels 1 --encoding signed-integer --endian little --rate 16000 stop.raw vol 0.0625 dcshift 0.0625
    ```
    Note that the output file name `stop.raw` - the extension `raw` is a simple way to tell sox not to add headers to the output file (just like LEGO hub wants).
+   Also note the volume reduction factor (`vol` 0.0625 for 65536 to 4096) and the shift(`dcshift` 2048 on 32768).
    The resulting file is 22950 bytes, so well below the average of the 6 standard sound files.
  - Upload the `stop.raw` to the hub.
    I used [μPIDE](https://github.com/harbaum/upide/releases) (download just exe, does not need installation, plug in hub via USB, make sure LEGO IDE does not use the hub COM port).
