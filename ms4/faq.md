@@ -14,6 +14,17 @@ The last section is on [advanced topics](#advanced-topics).
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ![next chapter](images/chapter-next.png)
 # General Questions
 
@@ -789,6 +800,9 @@ LEGO "will continue to support it [Build and Code - Maarten] through platforms s
 
 
 
+
+
+
 ![next chapter](images/chapter-next.png)
 # Word Blocks specific questions
 
@@ -1253,6 +1267,9 @@ What we learn here is that some arguments that look like needing an integer, are
 
 
 
+
+
+
 ![next chapter](images/chapter-next.png)
 # Python specific questions
 
@@ -1345,6 +1362,74 @@ I hear you ask what images are. Well, images are objects created from the class 
 
 ![low level display control](images/display.jpg)
 
+
+## Can I make sound from the hub?
+
+Yes. This is already clear when we power-up or shut-down the hub: we hear a sound.
+These sounds are thus stored on the hub, and are playable.
+Some investigations reveal the sounds are stored as files in the directory `sounds` on the hub.
+With the following Python program we can list them.
+
+```python
+import uos
+
+dir = '/sounds'
+for sound in uos.listdir(dir) :
+    path = dir+'/'+sound
+    stat = uos.stat(path)
+    print( '{:-32} {}'.format(path,stat[6]) )
+```
+
+This results in 6 files, with sizes 13k to 66k bytes.
+
+```text
+/sounds/menu_click               13632
+/sounds/menu_fastback            17584
+/sounds/menu_program_start       15832
+/sounds/menu_program_stop        34000
+/sounds/menu_shutdown            65706
+/sounds/startup                  39682
+```
+
+We can play these (in Python, but not, as far as I know, in Word Blocks).
+
+```python
+import hub
+hub.sound.play('/sounds/startup')
+```
+
+
+## Can I make my own sound from the hub?
+
+Anton from [Anton's MINSTROMS hacks](https://antonsmindstorms.com/2021/01/14/advanced-undocumented-python-in-spike-prime-and-mindstorms-hubs/#sound)
+explains the file format for sound files on the hub: 16bit signed integers, but use only 12 bits positive numbers. 
+So, when we convert an audio file to 16 bit signed, we do need to map the input values to 0 (from -32768), and 4096 (from +32767). 
+
+![sound mapping](images/sound-mapping.svg)
+
+Steps
+ - Get a sound file, e.g. via the standard Windows app _Voice Recorder_.
+   I recorded [stop.m4a](images/stop.m4a).
+ - Crop the part you want and maximize ("normalize") volume.
+   I used the online [twistedwave](https://twistedwave.com/online) editor 
+   to obtain [stop.wav](images/stop.wav).
+ - Perform the remapping from Anton.
+   I used [sox](https://sox.sourceforge.net/) (needs download, but does not need installation)
+   to obtain [stop.raw](images/stop.raw).
+   ```cmd
+   sox stop.wav --bits 16 --channels 1 --encoding signed-integer --endian little --rate 16000 stop.raw vol 0.0625 dcshift 0.0625
+   ```
+   The resulting file is 22950 bytes, so well below the average of the 6 standard sound files.
+ - Upload the `stop.raw` to the hub.
+   I used [μPIDE](https://github.com/harbaum/upide/releases) (download just exe, does not need installation, plug in hub via USB, make sure LEGO IDE does not use the hub COM port).
+   Just drag the file to the `/sounds/` directory
+   ![PIDE](images/uPIDE-sound.png)
+ - Give it a try (in μPIDE REPL or close μPIDE and start the LEGO app)
+   ```python
+   import hub
+   hub.sound.play('/sounds/stop.wav')
+   ```
+   
 
 ## Can I show (hex) digits on the screen
 
@@ -1827,6 +1912,19 @@ Use `uasyncio` (?) or check out my [multitask](multitask) project.
 You might also check out [azzieg's github](https://github.com/azzieg/mindstorms-inventor/blob/main/README.md)
 where he explains how WorkBlocks are translated to python, using a virtual machine - that you can 
 also deploy yourself if you want advanced python features like parallel tasks.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
