@@ -1263,10 +1263,11 @@ Robots can make sound, but some sounds come from the laptop
 (what LEGO confusingly calls _the device_, i.e. laptop, PC, tablet, phone)
 and others come from the _hub_ itself.
 
-![Add sound](images/sound-WordBlocks-add.png)
-
 If we add a "play sound" block, we can "Add sound".
 This gives us a dialog with several options
+
+![Add sound](images/sound-WordBlocks-add.png)
+
 
  - **Sounds on hub** ("Sounds library for on-hub")
  
@@ -1342,7 +1343,7 @@ We see that the variable uses `extensions["sound"].play()` instead of `sound.pla
 
 I have no idea how to force a WordBlock translation to use `sound.play_async()`.
 
-We did overwrite the `Zap` file in the file system (see question "Can I make my own sound from the hub?"), 
+We did overwrite the `Zap` file in the file system (see question "Can I make my own sound from the hub in Python?"), 
 and that plays our own sound.
 
 
@@ -1593,7 +1594,7 @@ hub.sound.play('/sounds/startup')
 
 
 
-## Can I make my own sound from the hub?
+## Can I make my own sound from the hub in Python?
 
 Anton from [Anton's MINSTROMS hacks](https://antonsmindstorms.com/2021/01/14/advanced-undocumented-python-in-spike-prime-and-mindstorms-hubs/#sound)
 explains the file format for sound files on the hub: 16bit signed integers, but use only 12 bits positive numbers. 
