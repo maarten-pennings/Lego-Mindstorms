@@ -1257,6 +1257,195 @@ What we learn here is that some arguments that look like needing an integer, are
 
 
 
+## Can I make sound from the hub?
+
+Robots can make sound, but some sounds come from the laptop 
+(what LEGO confusingly call _the device_, i.e. laptop, PC, tablet, phone)
+and others come from the hub itself.
+
+If you add a "play sound" block, we have to "Add sound".
+This gives us a dialog with several options
+
+ - **Sounds on hub** ("Sounds library for on-hub")
+ 
+   This gives a list of 86 files.
+   If such a file is used, the sound will be produced by the hub.
+   As we will see below, all these files are already stored on the hub (part of the standard firmware) 
+   and are part of the IDE on the laptop.
+   
+   Using such file does not take up any space, not when storing your lms file on your laptop's harddisk
+   (it is there already), nor when uploading your project to the hub (it is there already).
+   
+ - **Library**  ("Sounds library for on-laptop")
+ 
+   This gives a list of 193 files.
+   These files are part of the IDE. If such a file is used, the sound will be produced by the laptop.
+
+   Using such file does not take up any space, not when storing your lms file on your laptop's harddisk
+   (it is there already), nor when uploading your project to the hub (it is not used/stored there).
+   
+ - **Record** ("Record sound for on-laptop")
+
+   This pops up a simple dialog with which you can record a sound sample (with the built-in microphone).
+   The recorded file becomes part of your project. 
+   If such a file is used, the sound will be produced by the laptop.
+   
+   Using such file does take up space when storing your lms file on your laptop's harddisk.
+   It does not take up any space on the hub (it is not used/stored there).
+   
+ - **Editor** ("Edit sounds on-laptop")
+ 
+   This lists all the sound files _on-laptop_ previously added with "Library" or "Record".
+   Here they can be deleted (from the project - except teh first "Cat Meow 1"), amplified, cropped, reversed, etc.
+   
+   Using such file does take up space when storing your lms file on your laptop's harddisk.
+   It does not take up any space on the hub (it is not used/stored there).
+   
+We tested all flavours.
+Note that when selecting the sound, a purple buble folds open. 
+It shows a tiny hub icon right of the name, indicating that a sound is produced from the hub. 
+We have also explicitly labeled that via the comments.
+ 
+![Sound WordBlock](images/sound-WordBlocks.png)
+
+We found one surprise: when we select an on-hub sound via a variable 
+(see _Soundname_ set to _Bing_) it plays form the laptop and not from the hub.
+The generated code is really different; the below fragment is from the debug console (see other question for how-to).
+We see that the variable uses `extensions["sound"].play()` instead of `sound.play_async()`.
+
+```python
+    # Play sound until done
+    await vm.extensions["sound"].play("Cat Meow 1", vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
+    # Control wait
+    yield 1000
+    # Play sound until done
+    await vm.extensions["sound"].play("MyRecordedSound", vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
+    # Control wait
+    yield 1000
+    # Play sound until done
+    await vm.system.sound.play_async("/extra_files/Bing", freq=pitch_to_freq(vm.store.sound_pitch(), 12000, 16000, 20000))
+    # Control wait
+    yield 1000
+    # Data setvariableto
+    vm.vars["SoundName"] = (STRING, "Bing")
+    # Play sound until done
+    await vm.extensions["sound"].play(get_variable(vm, STRING, "SoundName"), vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
+    # Control wait
+    yield 1000
+    # Play sound until done
+    await vm.system.sound.play_async("/extra_files/Zap", freq=pitch_to_freq(vm.store.sound_pitch(), 12000, 16000, 20000))
+```
+
+I have no idea how to force a WordBlock translation to use `sound.play_async()`.
+
+We did overwrite the `Zap` file in the file system (see question "Can I make my own sound from the hub?"), 
+and that plays our own sound.
+
+
+## Where are the on-hub sound files?
+
+We need a bit of python, to list all the files in the directory `/extra_files`.
+
+```python
+import uos
+
+dir = '/extra_files'
+for sound in uos.listdir(dir) :
+    path = dir+'/'+sound
+    stat = uos.stat(path)
+    print( '{:-35} {}'.format(path,stat[6]) )
+```
+
+This results in the 86 files listed under "Sounds on hub" in WordBlocks.
+
+```text
+/extra_files/Affirmative            49108
+/extra_files/Damage                 30370
+/extra_files/Exterminate            35456
+/extra_files/Fire                   22328
+/extra_files/Grab                   36366
+/extra_files/Hammer                 30336
+/extra_files/Laser                  21894
+/extra_files/Laugh                  51744
+/extra_files/Mission Accomplished   54868
+/extra_files/Punch                  16052
+/extra_files/Scanning               58052
+/extra_files/Seek and Destroy       61052
+/extra_files/Shut Down              40052
+/extra_files/Target Acquired        56788
+/extra_files/Target Destroyed       50018
+/extra_files/Whirl                  20052
+/extra_files/1234                   58336
+/extra_files/Delivery               42784
+/extra_files/Dizzy                  44030
+/extra_files/Goodbye                22154
+/extra_files/Hello                  23068
+/extra_files/Hi                     15206
+/extra_files/Hi 5                   28992
+/extra_files/Humming                72348
+/extra_files/Chuckle                32052
+/extra_files/Like                   22902
+/extra_files/No                     25172
+/extra_files/Ouch                   26576
+/extra_files/Sad                    43636
+/extra_files/Scared                 23892
+/extra_files/Tadaa                  36534
+/extra_files/Wow                    29824
+/extra_files/Yes                    24654
+/extra_files/Yipee                  30454
+/extra_files/Yuck                   24590
+/extra_files/Activate               39670
+/extra_files/Kick                   28504
+/extra_files/Shake                  37182
+/extra_files/Deactivate             44006
+/extra_files/Initialize             43630
+/extra_files/Brick Eating           48052
+/extra_files/Horn                   25340
+/extra_files/Hydraulics Down        48052
+/extra_files/Hydraulics Up          48052
+/extra_files/Reverse                59990
+/extra_files/Revving                55772
+/extra_files/Shooting               27270
+/extra_files/Play                   19286
+/extra_files/Countdown              160052
+/extra_files/Countdown Tick         160052
+/extra_files/Error                  11470
+/extra_files/Ping                   32052
+/extra_files/Success Chime          21888
+/extra_files/Bowling                40052
+/extra_files/Celebrate              43620
+/extra_files/Explosion              42018
+/extra_files/Goal                   38940
+/extra_files/Hit                    28490
+/extra_files/Slam Dunk              23260
+/extra_files/Strike                 25182
+/extra_files/Bing                   34056
+/extra_files/Bumper                 26056
+/extra_files/Charging               88056
+/extra_files/Dial Down              38056
+/extra_files/Dial Up                34056
+/extra_files/Failure Chime          23056
+/extra_files/Flutter                48098
+/extra_files/Glitch                 16056
+/extra_files/Growl                  74540
+/extra_files/Ha Ha Ha               58056
+/extra_files/Ha Ha                  31056
+/extra_files/Ha                     15056
+/extra_files/Oh No                  65056
+/extra_files/Oh Oh                  24056
+/extra_files/Oh                     22056
+/extra_files/Power Down             44056
+/extra_files/Power Up               44056
+/extra_files/Slow Down              29056
+/extra_files/Sonic Explosion        56056
+/extra_files/Static                 45056
+/extra_files/Stomp                  38056
+/extra_files/Theremin               30734
+/extra_files/Tweet                  54056
+/extra_files/Void                   35056
+/extra_files/Warp Speed             104056
+/extra_files/Zap                    50056
+```
 
 
 
@@ -1377,18 +1566,18 @@ dir = '/sounds'
 for sound in uos.listdir(dir) :
     path = dir+'/'+sound
     stat = uos.stat(path)
-    print( '{:-32} {}'.format(path,stat[6]) )
+    print( '{:-35} {}'.format(path,stat[6]) )
 ```
 
 This results in 6 files, with sizes 13k to 66k bytes.
 
 ```text
-/sounds/menu_click               13632
-/sounds/menu_fastback            17584
-/sounds/menu_program_start       15832
-/sounds/menu_program_stop        34000
-/sounds/menu_shutdown            65706
-/sounds/startup                  39682
+/sounds/menu_click                  13632
+/sounds/menu_fastback               17584
+/sounds/menu_program_start          15832
+/sounds/menu_program_stop           34000
+/sounds/menu_shutdown               65706
+/sounds/startup                     39682
 ```
 
 We can play these (in Python, but not, as far as I know, in Word Blocks).
@@ -1397,6 +1586,7 @@ We can play these (in Python, but not, as far as I know, in Word Blocks).
 import hub
 hub.sound.play('/sounds/startup')
 ```
+
 
 
 ## Can I make my own sound from the hub?
