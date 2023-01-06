@@ -1403,6 +1403,7 @@ hub.sound.play('/sounds/startup')
 
 Anton from [Anton's MINSTROMS hacks](https://antonsmindstorms.com/2021/01/14/advanced-undocumented-python-in-spike-prime-and-mindstorms-hubs/#sound)
 explains the file format for sound files on the hub: 16bit signed integers, but use only 12 bits positive numbers. 
+I verified that, see [notebook](sound/sound.ipynb).
 So, when we convert an audio file to 16 bit signed, we do need to map the input values to 0 (from -32768), and 4096 (from +32767). 
 
 ![sound mapping](images/sound-mapping.svg)

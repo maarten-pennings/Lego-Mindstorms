@@ -4,6 +4,7 @@
 
 I have written a [Mindstorms robot inventor FAQ](faq.md).
 
+
 ## Projects
 
  - My first project, a 
@@ -21,7 +22,8 @@ I have written a [Mindstorms robot inventor FAQ](faq.md).
  - Made my own image recognition sensor for a
    [Rock, paper, scissors](https://github.com/maarten-pennings/TFLcam) robot (in a separate github project).
 
-## Software only prjects
+
+## Software only projects
 
  - Using another (self-written "slotted") python module from a (slotted) Python module.
    See the [importfromslot](importfromslot).
@@ -30,5 +32,9 @@ I have written a [Mindstorms robot inventor FAQ](faq.md).
  
  - A proof of concept for [host-hub](host-hub) communication (over bluetooth).
  
-   
+ - Did an analysis of the [sound](sound/sound.ipynb) files on the hub.
+
+ - Made a [script](color-table) to generate a png with all colors supported by the 3x3 LED matrix.
+
+
 (end)
