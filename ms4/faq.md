@@ -1319,26 +1319,26 @@ The generated code is really different; the below fragment is from the debug con
 We see that the variable uses `extensions["sound"].play()` instead of `sound.play_async()`.
 
 ```python
-    # Play sound until done
-    await vm.extensions["sound"].play("Cat Meow 1", vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
-    # Control wait
-    yield 1000
-    # Play sound until done
-    await vm.extensions["sound"].play("MyRecordedSound", vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
-    # Control wait
-    yield 1000
-    # Play sound until done
-    await vm.system.sound.play_async("/extra_files/Bing", freq=pitch_to_freq(vm.store.sound_pitch(), 12000, 16000, 20000))
-    # Control wait
-    yield 1000
-    # Data setvariableto
-    vm.vars["SoundName"] = (STRING, "Bing")
-    # Play sound until done
-    await vm.extensions["sound"].play(get_variable(vm, STRING, "SoundName"), vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
-    # Control wait
-    yield 1000
-    # Play sound until done
-    await vm.system.sound.play_async("/extra_files/Zap", freq=pitch_to_freq(vm.store.sound_pitch(), 12000, 16000, 20000))
+# Play sound until done
+await vm.extensions["sound"].play("Cat Meow 1", vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
+# Control wait
+yield 1000
+# Play sound until done
+await vm.extensions["sound"].play("MyRecordedSound", vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
+# Control wait
+yield 1000
+# Play sound until done
+await vm.system.sound.play_async("/extra_files/Bing", freq=pitch_to_freq(vm.store.sound_pitch(), 12000, 16000, 20000))
+# Control wait
+yield 1000
+# Data setvariableto
+vm.vars["SoundName"] = (STRING, "Bing")
+# Play sound until done
+await vm.extensions["sound"].play(get_variable(vm, STRING, "SoundName"), vm.store.sound_volume(), vm.store.sound_pitch(), vm.store.sound_pan(), wait=True)
+# Control wait
+yield 1000
+# Play sound until done
+await vm.system.sound.play_async("/extra_files/Zap", freq=pitch_to_freq(vm.store.sound_pitch(), 12000, 16000, 20000))
 ```
 
 I have no idea how to force a WordBlock translation to use `sound.play_async()`.
