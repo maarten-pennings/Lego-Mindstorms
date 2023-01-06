@@ -1260,29 +1260,32 @@ What we learn here is that some arguments that look like needing an integer, are
 ## Can I make sound from the hub?
 
 Robots can make sound, but some sounds come from the laptop 
-(what LEGO confusingly call _the device_, i.e. laptop, PC, tablet, phone)
-and others come from the hub itself.
+(what LEGO confusingly calls _the device_, i.e. laptop, PC, tablet, phone)
+and others come from the _hub_ itself.
 
-If you add a "play sound" block, we have to "Add sound".
+![Add sound](images/sound-WordBlocks-add.png)
+
+If we add a "play sound" block, we can "Add sound".
 This gives us a dialog with several options
 
  - **Sounds on hub** ("Sounds library for on-hub")
  
    This gives a list of 86 files.
    If such a file is used, the sound will be produced by the hub.
-   As we will see below, all these files are already stored on the hub (part of the standard firmware) 
+   As we see in the question "Where are the on-hub sound files?", 
+   all these files are already stored on the hub (part of the standard firmware) 
    and are part of the IDE on the laptop.
    
    Using such file does not take up any space, not when storing your lms file on your laptop's harddisk
-   (it is there already), nor when uploading your project to the hub (it is there already).
+   (it is already part of the IDE), nor when uploading your project to the hub (it is already part of the firmware).
    
  - **Library**  ("Sounds library for on-laptop")
  
    This gives a list of 193 files.
-   These files are part of the IDE. If such a file is used, the sound will be produced by the laptop.
+   These files are part of the LEGO IDE. If such a file is used, the sound will be produced by the laptop.
 
    Using such file does not take up any space, not when storing your lms file on your laptop's harddisk
-   (it is there already), nor when uploading your project to the hub (it is not used/stored there).
+   (it is already part of the IDE), nor when uploading your project to the hub (it is not used/stored there).
    
  - **Record** ("Record sound for on-laptop")
 
@@ -1296,9 +1299,9 @@ This gives us a dialog with several options
  - **Editor** ("Edit sounds on-laptop")
  
    This lists all the sound files _on-laptop_ previously added with "Library" or "Record".
-   Here they can be deleted (from the project - except teh first "Cat Meow 1"), amplified, cropped, reversed, etc.
+   Here they can be deleted (from the project - except the first "Cat Meow 1"), amplified, cropped, reversed, etc.
    
-   Using such file does take up space when storing your lms file on your laptop's harddisk.
+   Using edited file does take up space when storing your lms file on your laptop's harddisk.
    It does not take up any space on the hub (it is not used/stored there).
    
 We tested all flavours.
@@ -1310,7 +1313,8 @@ We have also explicitly labeled that via the comments.
 
 We found one surprise: when we select an on-hub sound via a variable 
 (see _Soundname_ set to _Bing_) it plays form the laptop and not from the hub.
-The generated code is really different; the below fragment is from the debug console (see other question for how-to).
+The generated code is really different; the below fragment is from the debug console 
+(see question "Is Word Block compiled to Python?").
 We see that the variable uses `extensions["sound"].play()` instead of `sound.play_async()`.
 
 ```python
