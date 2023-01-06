@@ -1415,22 +1415,41 @@ Steps
    I used the online [twistedwave](https://twistedwave.com/online) editor 
    to obtain [stop.wav](images/stop.wav).
  - Perform the remapping from Anton.
-   I used [sox](https://sox.sourceforge.net/) (needs download, but does not need installation)
+   Like him, I use [sox](https://sox.sourceforge.net/) (needs download, but does not need installation)
    to obtain [stop.raw](images/stop.raw).
-   ```cmd
+   ```text
    sox stop.wav --bits 16 --channels 1 --encoding signed-integer --endian little --rate 16000 stop.raw vol 0.0625 dcshift 0.0625
    ```
    Note that the output file name `stop.raw` - the extension `raw` is a simple way to tell sox not to add headers to the output file (just like LEGO hub wants).
    Also note the volume reduction factor (`vol` 0.0625 for 65536 to 4096) and the shift(`dcshift` 2048 on 32768).
-   The resulting file is 22950 bytes, so well below the average of the 6 standard sound files.
- - Upload the `stop.raw` to the hub.
+   The resulting file is 22950 bytes, so well below the average of the six standard sound files.
+   
+    - Anton suggests to append a `fade` directive to obtain [stopfade.raw](images/stopfade.raw).
+      ```text
+      sox stop.wav --bits 16 --channels 1 --encoding signed-integer --endian little --rate 16000 stopfade.raw vol 0.0625 dcshift 0.0625 fade h 0.05 -0.05
+      ```
+   
+    - If I play `stop.raw` on the hub (see next steps), I hear one "sound plop" (something not right in the samples?). 
+      If I play `stopfade.raw`, I hear three "sound plops". That suggests the original plop, plus maybe a plop at the start and the end.
+      I analyzed my files (see end of [notebook](sound/sound.ipynb)) and noticed that not only the fade gives artifacts
+      but also that there are (rounding?) errors leading to samples with values over 4095.
+      My suggestion therefore is to use a smaller volume reduction (0.0625 to 0.0624) and not using the fade.
+      ```text
+      sox stop.wav --bits 16 --channels 1 --encoding signed-integer --endian little --rate 16000 stop2.raw vol 0.0624 dcshift 0.0625 
+      ```
+      This results in our final [stop2.raw](images/stop2.raw)
+      
+    - One other remark: each time I run sox with the same command, I do get a different output file.
+      I have no idea why that happens.
+    
+ - Upload the `stop2.raw` to the hub.
    I used [μPIDE](https://github.com/harbaum/upide/releases) (download just exe, does not need installation, plug in hub via USB, make sure LEGO IDE does not use the hub COM port).
    Just drag the file to the `/sounds/` directory
    ![PIDE](images/uPIDE-sound.png)
  - Give it a try (in μPIDE REPL or close μPIDE and start the LEGO app) and play the raw file.
    ```python
    import hub
-   hub.sound.play('/sounds/stop.raw')
+   hub.sound.play('/sounds/stop2.raw')
    ```
    
 
