@@ -1346,6 +1346,31 @@ I have no idea how to force a WordBlock translation to use `sound.play_async()`.
 We did overwrite the `Zap` file in the file system (see question "Can I make my own sound from the hub in Python?"), 
 and that plays our own sound.
 
+It is quite complicated to understand which sounds play in which "connection scenario".
+
+ - When running the program by pressing _play in slot_ from the IDE, all sounds play, as shown in the image above on hub or laptop.
+ 
+ - When running the program by pressing play from the IDE in _streaming_ mode, all sounds play as shown in the image above, 
+   _except_ the one with the variable. That one actually _hangs_ the program.
+ 
+ - When running the program by pressing the center button on the hub, with the IDE connected (USB), and the program being open in the IDE,
+   the IDE actually behaves as if the play in slot command was given in the IDE. So all sounds play as shown in the image.
+   
+ - When running the program by pressing the center button on the hub, with the IDE connected (USB), and _another_ program being open in the IDE,
+   the on-hub sounds are played on-hub, and the known on-laptop sounds are played on the laptop (meow), 
+   but the MyRecordedSound and the Bing-via-variable don't play. They cause a wait of 25 seconds, but no hang.
+   
+ - When running the program by pressing the center button on the hub, while the hub is running stand alone (no connection to laptop),
+   the on-hub sounds are played on-hub (Bing and Zap/stop), and the on-laptop sounds are skipped (no wait, no hang).
+   
+**Conclusion**
+ - Variable trick is not portable.
+ - On-hub sounds are ok.
+ - Overwriting on-hub sounds works (but sound name no longer covers content - a hub aspects impacting all programs)
+ - On-laptop (library or created) are ok, but are skipped when running stand-alone.
+
+   
+   
 
 ## Where are the on-hub sound files?
 
