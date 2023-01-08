@@ -542,6 +542,12 @@ not they date that version was released (between brackets, my guess).
 
 - The app version is 10.5.0
    - New firmware for the hub
+   - The light sensor can be set to ambient (More Sensors)
+   - The "device type" of a plugged in device (e.g. 62 for Ultrasonic Sensor)
+   - The "Remote Control" via the IDE now allows displaying values
+   
+     ![ambient and RC print](images/ambient-rc-print.png)
+     
    - Create new project allows to enter a project name
    
      ![New Project](images/NewProject.png)
@@ -816,7 +822,7 @@ The bottom one (Show/Hide Monitor) allows you to show (hide) a pane with a live 
 Great feature! Not present in Python, but Python has a better feature: the console!
 A downside is that the monitor updates periodically (timed), so you do not see all changes.
 
-The monitor feature does work in "download mode", you  do not have to use "streaming mode". I did not expect that...
+The monitor feature does work in "download mode", you do not have to use "streaming mode". I did not expect that...
 
 ![Monitor](images/monitor.png)
 
@@ -1109,14 +1115,18 @@ The top one (Remote Control) allows you to create a "Remote Control" pane in the
 The widgets on the PC pane communicate via Bluetooth (and presumably also USB) to the Hub.
 On the hub they trigger events that can be used in your program.
 
-Great feature! Missing are widgets that _output_ content; most _input_ events in you program.
-For example a virtual LED would be nice, or a string box, or a string list (dare I say "console").
-
 There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in _streaming_ mode (i.e. live connection to the PC). 
 
 The remote control is not present in Python - probably because it has no streaming mode.
 
 ![Remote Control](images/remotecontrol.png)
+
+Great feature! Missing are widgets that _output_ content; most _input_ events in you program.
+For example a virtual LED would be nice, or a string box, or a string list (dare I say "console").
+
+**Update** there is now a widget to show output.
+
+![ambient and RC print](images/ambient-rc-print.png)
 
 
 ## Can I remote control my robot with a game controller?
