@@ -2,7 +2,7 @@
 
 ## Installation
 
-See [install] for RCX firmware files.
+See [install](install) for RCX firmware files.
 
 ## Projects
 
