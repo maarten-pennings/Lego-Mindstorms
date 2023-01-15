@@ -249,5 +249,16 @@ Press _Run_ again to stop the program.
 
 Todo
 
+We use a vitual machine in [VirtualBox](https://www.virtualbox.org/).
+
+See alse the [article](https://socket3.wordpress.com/2018/10/28/install-configure-windows-98-using-oracle-virtualbox/).
+This article has a driver for "bigger video cards" (VBEMP Universal VESA Video Driver Download).
+It also has an Win98 disc, if you don't have your own.
+
+With [infrarecorder](http://infrarecorder.org/) I ripped the LEGO and Win98SE CDs to an ISO file.
+I installed the "portable application" version (leaves no traces on your harddisc). Press Read Disc
+
+![InfraRecorder](images/InfraRecorder.png)
+
 
 (end)
