@@ -326,7 +326,7 @@ We now have a virtual PC, and we will install Windows 98.
   
   ![Mount Win98 ISO](images/win-1mountdisc.png)  
 
-  (I had several tries so you might see LegoWin98, V3Win98, Win98RIS as VM names)     
+  (I had several tries so you might see LegoWin98, V3Win98, Win98RIS, Win98RIS1.0 as VM names)     
   
 - Start ("plug in the power") of the virtual machine.
 
@@ -373,7 +373,8 @@ We now have a virtual PC, and we will install Windows 98.
   ![Reboot after MBR](images/win-8bootcd2.png)
 
 - Setup will no probably see the MBR has some markings, and behave differently.
-  After confirming Windows 98 Setup, it will format the harddisk. 
+  
+  After confirming Windows 98 Setup (again), it will format the harddisk. 
   This is done in a blink of the eye on our virtual machine.
 
   ![Format done](images/win-9install.png)
@@ -388,22 +389,23 @@ We now have a virtual PC, and we will install Windows 98.
   (6) "Establish your location" (I used United States), and (7) Start Copying Files.
   At the end of copying Setup will reboot. 
   
-- This time, boot from harddisk, Win98 is installed now.
+- This time, boot from **harddisk**, Win98 is installed now.
 
   (1) Enter some fancy Name and Company, (2) Accept the License Agreement, (3) Enter the License Key,
-  and (4) start the Wizard which will install drivers, and Windows will restart.
+  and (4) Start Wizard, which will install drivers, and Windows will restart.
   
   ![Wizard](images/win-11wizard.png)
   
 - Also now, boot from harddisk, Win98 is installed now.
-  Some final driver installs, and then "Windows is now settig up"...
-  It is probably wise to pick the correct Time Zone
+  Some final driver installs, and then "Windows is now setting up"...
+  
+  It is probably wise to pick the correct Time Zone.
   
   ![Final items](images/win-12items.png)
   
   And again a restart.
   
-- Also now, boot from harddisk, Win98 will finally start.
+- Also now, boot from harddisk (contains Win98).
   I entered an empty password.
   
   ![Empty password](images/win-13nopw.png)
@@ -445,7 +447,37 @@ To do that, we must first shutdown the virtual machine: press Start > Shutdown >
   The screenshot shows the tool tip help from Virtual box.
 
 - Now we can start the Win98 VM again.
+  We need to install a driver for the COM1 port.
+  Note that a COM port is _not_ plug and play.
+  So the "unknown" devices we find in the Device Manager (with a "?") are not our new COM port.
+  
+  Via Start > Settings > Control Panel
+  
+  ![Control Panel](images/serial-5controlpanel.png)
 
+  Start Add New Hardware.
+  
+- On the first page of the Add New Hardware Wizard click Next. Click Next again to start seraching.
+  Only the plug&Play devices are found, so we select "No, the device isn't in the list".
+
+  ![Not detected](images/serial-6notinlist.png)
+  
+- We let Windows search for the hardware.
+  
+  ![Not detected](images/serial-7Serach.png)
+
+- Windows found the Serial Port (click Details to see).
+
+  ![Not detected](images/serial-8found.png)
+  
+- It needs the driver, so browse to `C:\WINDOWS\SYSTEM`.
+
+  ![Not detected](images/serial-9path.png)
+
+- We open Device manager, for example by right-clicking on My Computer > Properties.
+  It confirms we have COM1 driver installed.
+
+  ![Not detected](images/serial-10installed.png)
   
 
 ### Step 5 - 16 bit colors
