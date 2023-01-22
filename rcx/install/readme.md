@@ -415,6 +415,11 @@ We now have a virtual PC, and we will install Windows 98.
   ![Windows running](images/win-14installed.png)
   
   (I would suggest to uncheck this Welcome screen at the bottom left).
+  
+- This might be a good moment to eject the virtual (Windows 98 Setup) CD.
+
+  ![Remove virtual CD](images/win-15unmount.png)
+  
  
 ### Step 4 - COM port
 
@@ -457,10 +462,11 @@ To do that, we must first shutdown the virtual machine: press Start > Shutdown >
 
   Start Add New Hardware.
   
-- On the first page of the Add New Hardware Wizard click Next. Click Next again to start seraching.
-  Only the plug&Play devices are found, so we select "No, the device isn't in the list".
+- On the first page of the Add New Hardware Wizard click Next. Click Next again to start searching.
 
   ![Not detected](images/serial-6notinlist.png)
+
+  Only the plug&Play devices are found, so we select "No, the device isn't in the list".
   
 - We let Windows search for the hardware.
   
@@ -484,7 +490,7 @@ To do that, we must first shutdown the virtual machine: press Start > Shutdown >
 
 If we right-click the Win98 desktop and select Display Properties, tab Settings,
 we cannot select the 256 colors mode. That is unfortunate, because the LEGO IDE needs that. 
-We need a better driver for the virtual video card.
+We need a better driver for the virtual video card. Fortunately, there is one.
 
 - Open Device manager, for example by right-clicking on My Computer > Properties
 
@@ -493,11 +499,64 @@ We need a better driver for the virtual video card.
 - We want to update the video card driver. 
   So in section Display Adapters, select the Standard PCI Graphics Adapter (VGA),
   click Properties > Driver > Update driver, and we get the first page of the driver wizard.
-  We click Next.
 
   ![Update driver](images/video-2update.png)
+
+  We click Next to get to the second page of the Wizard.
   
-- The driver is not on our 
+- The driver is not on our disc (CD nor harddisk) so we hand pick it.
+
+  ![Hand pick video driver](images/video-3handpick.png)
+  
+- The list of matching hardware is empty, but we need to select "Show all hardware".
+
+  ![Hand pick video driver](images/video-4allhw.png)
+  
+  We will now install a custom driver, therefore we say "Have Disk..."
+  
+- We found a better video driver in this 
+  [article](https://socket3.wordpress.com/2018/10/28/install-configure-windows-98-using-oracle-virtualbox/).
+  The driver is an "VBEMP Universal VESA Video Driver", I have copied it into this 
+  [repo](../driver/VBEMPWindows9xDrivers.iso).
+
+  We mount this ISO on the Virtual Machine.
+  
+  ![Mount driver CD](images/video-5CD.png)
+
+- Back in the Win98 VM, we browse to directory 032mb on this CD.
+
+  ![Browse to driver](images/video-6path.png)
+  
+- Based on this `INF` file, the Select Device list compatible hardware.
+  First, again, check "Show all devices".
+
+  ![Select device](images/video-7xga.png)
+
+  Then select the XGA driver. Click OK.
+  
+- Ignore the warning.
+
+  ![Ignore warning](images/video-8warn.png)
+  
+  Press Yes, Next, and Finish. WIndows restarts.
+  
+- On my machine, the reboot fails. So I switched power off. And then restarted it.
+
+  ![Switch off](images/video-9off.png)
+  
+- Windows reboots (with a disk repair).
+  We right click the background and select Properties, and open tab Settings.
+  
+  ![Higher viode settings](images/video-10hicol.png)
+
+  Select 256 colors. I also selected a higher resolution 
+  (but it must fit on my FHD screen of the host machine).
+
+- Just to be sure I rebooted.
+  A nice big screen, and persistent video settings.
+
+  ![Higher viode settings](images/video-11hivideo.png)
+
 
 
 ### Step 6 - LEGI IDE
