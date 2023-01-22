@@ -24,6 +24,7 @@ Both require firmware for the RCX. The RCX is the smart brick ("computer") in RI
 
 [Option 2: LEGO IDE](#option-2-lego-ide)
 
+Here is an [alternative](https://www.bartneck.de/2017/06/08/using-your-lego-mindstorms-rcx-on-a-modern-computer/) article.
 
 
 ## Introduction
@@ -486,7 +487,7 @@ To do that, we must first shutdown the virtual machine: press Start > Shutdown >
   ![Not detected](images/serial-10installed.png)
   
 
-### Step 5 - 16 bit colors
+### Step 5 - 256 colors
 
 If we right-click the Win98 desktop and select Display Properties, tab Settings,
 we cannot select the 256 colors mode. That is unfortunate, because the LEGO IDE needs that. 
@@ -562,12 +563,5 @@ We need a better driver for the virtual video card. Fortunately, there is one.
 ### Step 6 - LEGI IDE
 
 
-Todo
 
-
-
-This article has a driver for "bigger video cards" (VBEMP Universal VESA Video Driver Download).
-It also has an Win98 disc, if you don't have your own.
-
-[Alternative](https://www.bartneck.de/2017/06/08/using-your-lego-mindstorms-rcx-on-a-modern-computer/)
 (end)
