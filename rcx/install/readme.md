@@ -1,8 +1,9 @@
 # Install 
 
 This page describes installing an _IDE_, an integrated development environment for _RIS_, 
-the LEGO Mindstorms Robotics Invention System. The goal is to install the IDE on a modern (2023) PC. 
-Recall that RIS came out 25 years earlier, in 1998 (and I write this in 2023).
+the LEGO Mindstorms Robotics Invention System, version 1.0 or 1.5. 
+The goal is to install the IDE on a modern PC. 
+Recall that RIS came out 25 years ago, in 1998, and I write this in 2023.
 
 The first option is to use an Open Source IDE. That is relatively easy, because that still 
 runs on modern PCs/OSes.
@@ -10,26 +11,23 @@ runs on modern PCs/OSes.
 The second option is to use the original LEGO IDE. That is harder; I used a virtual machine 
 for that.
 
-Both require a bit of hardware to hookup the LEGO infra red tower: a DB9 serial connector.
+Both require a bit of hardware to hookup the LEGO infra red tower: a DB9 serial connector for the serial IR tower.
+I have not tried the RIS2.0 - that came with an USB IR tower.
 
 Both require firmware for the RCX. The RCX is the smart brick ("computer") in RIS.
 
-[Introduction](#introduction)
-
-[RCX firmware](#rcx-firmware)
-
-[DB9 connector](#db9-connector)
-
-[Option 1: Open Source IDE](#option-1-open-source-ide)
-
-[Option 2: LEGO IDE](#option-2-lego-ide)
+ - [Introduction](#introduction)
+ - [RCX firmware](#rcx-firmware)
+ - [DB9 connector](#db9-connector)
+ - [Option 1: Open Source IDE](#option-1-open-source-ide)
+ - [Option 2: LEGO IDE](#option-2-lego-ide)
 
 Here is an [alternative](https://www.bartneck.de/2017/06/08/using-your-lego-mindstorms-rcx-on-a-modern-computer/) article.
 
 
 ## Introduction
 
-The RCX (smart brick in RIS) contains two memories: ROM and RAM.
+The RCX (the smart brick in RIS) contains two memories: ROM and RAM.
 The ROM contains a **bootloader**, which starts running when the RCX is powered.
 The bootloader checks if there is a valid RAM image - with **(flex) firmware** -
 and if so runs that. The flex firmware controls the display and buttons. 
@@ -107,7 +105,7 @@ So I used the USB-to-IDE-adapter to connect a bare DVD reader to my laptop.
 ![USB to IDE](images/USB-to-IDE.jpg)
 
 This enabled me to copy the RCX firmware files from the LEGO RIS CDs 
-and store a copy [here](firmware). Copies can also be found on the 
+and store a copy [here](firmware). Copies can also be found on, e.g., the 
 [pbricks](https://pbrick.info/rcx-firmware/index.html) site.
 
 
@@ -121,8 +119,8 @@ Both have a DB9 serial connector (male).
 ![DB9 connector](images/DB9.jpg)
 
 I have no experience with the IR tower in mindstrorms robot invention 2.0.
-It has a USB connector. I suspect it comes with a driver, and that driver
-is for Windows 98, so useless for modern Windows or Linux.
+It has a USB connector. I suspect it comes with a driver, and that driver is likely
+for Windows 98, so useless for modern Windows or Linux.
 
 The mindstrorms robotics invention sets come with a female-to-female serial cable.
 I therefore decided to buy a USB-to-serial cable with a DB9 _male_ connector.
@@ -258,8 +256,10 @@ We need the following parts
  - A virtual machine, we will use VirtualBox, as a so-called hypervisor,
    it is available for [download](https://www.virtualbox.org/).
    
- - A Windows setup disc. I used Win98SE, but probably Win95, Win98 and Windows ME also work.
-   It could even be that Windows XP works, especially if you have Robotics Invention System 2.0.
+ - A Windows setup disc - with license key. 
+   I used Win98SE, but probably Win95, Win98 and Windows ME also work.
+   It could even be that Windows XP works, especially if you have Robotics Invention System 2.0,
+   but see [patch](https://www.philohome.com/sdk25/sdk25.htm).
    
    If you have a physical disc you can use it with e.g. an [external DVD drive](#rcx-firmware)
    and mount that in VirtualBox. But I would advise to convert ("rip") it to an ISO file, and later
@@ -293,7 +293,7 @@ Download and install as hypervisor [VirtualBox](https://www.virtualbox.org/).
 ### Step 2 - Create a virtual machine
 
 We create a virtual Windows98SE for our LEGO IDE.
-For a background see the [article](https://socket3.wordpress.com/2018/10/28/install-configure-windows-98-using-oracle-virtualbox/).
+For a background see [this article](https://socket3.wordpress.com/2018/10/28/install-configure-windows-98-using-oracle-virtualbox/).
    
 - Select New
 
@@ -333,36 +333,36 @@ We now have a virtual PC, and we will install Windows 98.
 
   ![Start the VM](images/win-2start.png)
  
-- Machine of that era could boot from CD. 
+- Machines of that generation could boot from CD (older PCs only from floppy or harddisk). 
   The BIOS of the VM will ask
   if you want to boot from harddisc or CD-ROM, select the latter with the keyboard.
   
   **Warning** if you click the VM window (so that it gets focus for the keyboard input),
   the Win98 virtual machine "locks" your mouse pointer to that window.
   To release the mouse pointer for the host machine (the hypervisor) you must
-  press a "secret key". It is listed in the lower right corner, by default it is the _right control key_.
+  press the "secret key" **host key**. 
+  It is listed in the lower right corner, by default it is the _right control key_.
 
   ![Boot from CD](images/win-3bootcd.png)
 
-- Software from the CD is loaded, and it pops-up a menu, 
-  select "Start Windows 98 Setup from CD-ROM".
+- The software from the CD is loaded, and it pops-up its main menu.
+  Select "Start Windows 98 Setup from CD-ROM".
   
   ![Select Windows 98 Setup](images/win-4setup.png)
 
-- Windows 98 Setup is now running from CD-ROM. 
-  You need to confirm (white letters on blue for windows, no longer white on black for BIOS) 
-  that you want to setup since it will wipe the harddisk (the virtual, still empty one in our case).
+- Windows 98 Setup is now running from CD-ROM (white letters on blue for windows, no longer white on black for BIOS). 
+  You need to confirm that you want to setup since it will wipe the harddisk (the virtual, still empty one in our case).
   So we confirm with ENTER.
   
   ![Confirm harddisk wipe](images/win-5wipehd.png)     
 
-- Windows 98 Setup asks permission to format ("Configure unallocated disk space")
+- Windows 98 Setup asks permission to partition ("Configure unallocated disk space")
   the (virtual Win98) harddisk.
 
   ![Boot from CD](images/win-6format.png)   
 
-- Windows 98 Setup has no probably written the master boot record (MBR) of the virtual harddisk.
-  That requires a reboot so that the BIOS can register this. We get an information screen for that,
+- Windows 98 Setup has now probably written the partition table to the master boot record (MBR) of the virtual harddisk.
+  That requires a reboot so that the BIOS can register this. We get below information screen for that,
   but it is confusing: it assumes that we have a boot-floppy in A: and a setup cd in D:.
   However, we are more modern, we have a CD from which we boot, and we do not need the A floppy (fortunately).
   Anyhow, this is a clue that, after the reboot, we need to continue from the setup.
@@ -373,7 +373,7 @@ We now have a virtual PC, and we will install Windows 98.
 
   ![Reboot after MBR](images/win-8bootcd2.png)
 
-- Setup will no probably see the MBR has some markings, and behave differently.
+- This time, Setup will probably see that the MBR has some markings, and behave differently.
   
   After confirming Windows 98 Setup (again), it will format the harddisk. 
   This is done in a blink of the eye on our virtual machine.
@@ -385,7 +385,7 @@ We now have a virtual PC, and we will install Windows 98.
   
   ![Win98 1 screen](images/win-10setup1.png)
 
-  After (1) Continue, (2) Install on `C:\WINDOWS`, (3) use `Typical`, 
+  After that several steps: (1) Continue, (2) Install on `C:\WINDOWS`, (3) use `Typical`, 
   (4) "Install the most common components", (5) enter some fancy `Computer Description` like `Win98RIS`,
   (6) "Establish your location" (I used United States), and (7) Start Copying Files.
   At the end of copying Setup will reboot. 
@@ -406,7 +406,7 @@ We now have a virtual PC, and we will install Windows 98.
   
   And again a restart.
   
-- Also now, boot from harddisk (contains Win98).
+- Also now, boot from harddisk (which contains Win98).
   I entered an empty password.
   
   ![Empty password](images/win-13nopw.png)
@@ -457,11 +457,10 @@ To do that, we must first shutdown the virtual machine: press Start > Shutdown >
   Note that a COM port is _not_ plug and play.
   So the "unknown" devices we find in the Device Manager (with a "?") are not our new COM port.
   
-  Via Start > Settings > Control Panel
+  Via Start > Settings > Control Panel > start Add New Hardware.
   
   ![Control Panel](images/serial-5controlpanel.png)
 
-  Start Add New Hardware.
   
 - On the first page of the Add New Hardware Wizard click Next. Click Next again to start searching.
 
@@ -473,15 +472,16 @@ To do that, we must first shutdown the virtual machine: press Start > Shutdown >
   
   ![Not detected](images/serial-7Serach.png)
 
-- Windows found the Serial Port (click Details to see).
+- Windows found the Serial Port (click Details if you want to check).
 
   ![Not detected](images/serial-8found.png)
   
-- It needs the driver, so browse to `C:\WINDOWS\SYSTEM`.
+- The wizard needs the driver, browse to `C:\WINDOWS\SYSTEM`, 
+  where a driver happens to be copied from the CD-ROM.
 
   ![Not detected](images/serial-9path.png)
 
-- We open Device manager, for example by right-clicking on My Computer > Properties.
+- Done. As a check, we open Device manager, for example by right-clicking on My Computer > Properties.
   It confirms we have COM1 driver installed.
 
   ![Not detected](images/serial-10installed.png)
@@ -509,7 +509,7 @@ We need a better driver for the virtual video card. Fortunately, there is one.
 
   ![Hand pick video driver](images/video-3handpick.png)
   
-- The list of matching hardware is empty, but we need to select "Show all hardware".
+- The list of matching hardware is empty, but we need to select "Show all hardware", so that we can select XGA.
 
   ![Hand pick video driver](images/video-4allhw.png)
   
@@ -528,7 +528,7 @@ We need a better driver for the virtual video card. Fortunately, there is one.
 
   ![Browse to driver](images/video-6path.png)
   
-- Based on this `INF` file, the Select Device list compatible hardware.
+- Based on this `INF` file, the Select Device lists compatible hardware.
   First, again, check "Show all devices".
 
   ![Select device](images/video-7xga.png)
@@ -541,7 +541,11 @@ We need a better driver for the virtual video card. Fortunately, there is one.
   
   Press Yes, Next, and Finish. WIndows restarts.
   
-- On my machine, the reboot fails. So I switched power off. And then restarted it.
+- On my machine, the reboot **fails**. 
+  So I switched power off the virtual machine, and then restarted it.
+
+  **Recall** The Win98 virtual machine "locks" your mouse pointer to its window (which is now crashed).
+  You need to release the mouse pointer by pressing the **host key**, by default it is the _right control key_.
 
   ![Switch off](images/video-9off.png)
   
@@ -560,8 +564,15 @@ We need a better driver for the virtual video card. Fortunately, there is one.
 
 
 
-### Step 6 - LEGI IDE
+### Step 6 - LEGO IDE
 
+You can skip Guided Mode by holding down the Control key and clicking the About button in the Main Menu.
+
+RIS2.0 training mission 1 https://www.youtube.com/watch?v=8yqhvVdOnM8
+
+program ris in gcc: https://brickos.sourceforge.net/
+
+coder shah building instructions 51515 https://www.youtube.com/playlist?list=PLEtUplstSD6ITLveHTp8oU7cC4j85teoR
 
 
 (end)
