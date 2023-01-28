@@ -242,6 +242,7 @@ or [alternative link](https://education.lego.com/en-us/product-resources/spike-p
 
 There are several nice community builds.
  - [Over 75 robots](https://www.onekitprojects.com/)
+ - [Over 35 videos of building instructions](https://www.youtube.com/playlist?list=PLEtUplstSD6ITLveHTp8oU7cC4j85teoR)
  - [MOCs at rebrickable](https://rebrickable.com/mocs/?q=51515)
  - [Ox](https://youtu.be/ZYQG9EfIw28)
  - [Self balancing bike](https://youtu.be/MCVW2Uqanlw)

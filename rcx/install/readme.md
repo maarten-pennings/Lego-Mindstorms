@@ -542,10 +542,11 @@ We need a better driver for the virtual video card. Fortunately, there is one.
   Press Yes, Next, and Finish. WIndows restarts.
   
 - On my machine, the reboot **fails**. 
-  So I switched power off the virtual machine, and then restarted it.
+  So I switched power off of the virtual machine, and then restarted it.
 
   **Recall** The Win98 virtual machine "locks" your mouse pointer to its window (which is now crashed).
   You need to release the mouse pointer by pressing the **host key**, by default it is the _right control key_.
+  Then we can click the window close cross and get:
 
   ![Switch off](images/video-9off.png)
   
@@ -572,7 +573,6 @@ RIS2.0 training mission 1 https://www.youtube.com/watch?v=8yqhvVdOnM8
 
 program ris in gcc: https://brickos.sourceforge.net/
 
-coder shah building instructions 51515 https://www.youtube.com/playlist?list=PLEtUplstSD6ITLveHTp8oU7cC4j85teoR
 
 
 (end)
