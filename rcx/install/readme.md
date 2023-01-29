@@ -9,7 +9,9 @@ The first option is to use an Open Source IDE. That is relatively easy, because 
 runs on modern PCs/OSes.
 
 The second option is to use the original LEGO IDE. That is harder; I used a virtual machine 
-for that.
+for that. It is not really working for me: the serial connection is unreliable.
+
+A third option is to try bare metal GCC.
 
 Both require a bit of hardware to hookup the LEGO infra red tower: a DB9 serial connector for the serial IR tower.
 I have not tried the RIS2.0 - that came with an USB IR tower.
@@ -17,12 +19,16 @@ I have not tried the RIS2.0 - that came with an USB IR tower.
 Both require firmware for the RCX. The RCX is the smart brick ("computer") in RIS.
 
  - [Introduction](#introduction)
+ - [Historic wear](#historicwear)
  - [RCX firmware](#rcx-firmware)
  - [DB9 connector](#db9-connector)
  - [Option 1: Open Source IDE](#option-1-open-source-ide)
  - [Option 2: LEGO IDE](#option-2-lego-ide)
+ - [Option 3: GCC](#option-3-gcc)
 
 Here is an [alternative](https://www.bartneck.de/2017/06/08/using-your-lego-mindstorms-rcx-on-a-modern-computer/) article.
+
+
 
 
 ## Introduction
@@ -89,6 +95,13 @@ or the [Constructopedia RIS2.0](https://www.lego.com/cdn/product-assets/product.
 for official LEGO documentation on the RIS, the RCX and the firmware behavior.
 
 
+## Historic wear
+
+The cables do not survive the 25 years; the insulation crumbles.
+This [video](https://www.youtube.com/watch?v=kXApTUbNzD0) has repair instructions.
+
+![Crumbling cables](images/crumbling-cables.jpg)
+
 
 ## RCX firmware
 
@@ -107,6 +120,18 @@ So I used the USB-to-IDE-adapter to connect a bare DVD reader to my laptop.
 This enabled me to copy the RCX firmware files from the LEGO RIS CDs 
 and store a copy [here](firmware). Copies can also be found on, e.g., the 
 [pbricks](https://pbrick.info/rcx-firmware/index.html) site.
+
+If you do not have a CD-ROM, but you do have an ISO of it, just mount it
+with the Windows file explorer.
+
+![Mount ISO](images/mount-iso.png)
+
+Once the CD-ROM is mounted, you can browse it as any directory.
+The screenshot below shows that I have an extra E: drive 
+(the mounted LEGO RIS 1.0 CD-ROM), and that I find the firmware file
+in `E:\FIRM\FIRM309.LGO`.
+
+![Mount ISO](images/mount-iso-fw.png)
 
 
 
@@ -249,6 +274,12 @@ Press _Run_ again to stop the program.
 
 In this chapter we discuss running the LEGO RIS IDE in a Win98 virtual machine (on a Win10 host).
 
+> **WARNING**
+>
+> The combination described in this chapter (VirtualBox, Windows98, RIS1.0 and a USB-to-serial cable) 
+> results in a very unreliable serial connection to the IR tower. I can upload tiny programs
+> but nothing a bit longer.
+
 ### Requirements
 
 We need the following parts
@@ -289,6 +320,7 @@ We need the following parts
 ### Step 1 - Hypervisor
 
 Download and install as hypervisor [VirtualBox](https://www.virtualbox.org/).
+I have version 7.0.
 
 ### Step 2 - Create a virtual machine
 
@@ -421,6 +453,14 @@ We now have a virtual PC, and we will install Windows 98.
 
   ![Remove virtual CD](images/win-15unmount.png)
   
+- It is possible to create a shortcut to a virtual machine.
+  In the VurtualBox hypervisor, right-click on the VM and select
+  "Create Shortcut on Desktop".
+
+  ![Create shortcut to VM](images/win-15shortcut.png)
+  
+  If you want, you can add a [![RIS icon](images/RIS.ICO)](images/RIS.ICO):
+  right-click the shortcut > Properties > tab Shortcut > button Change Icon.
  
 ### Step 4 - COM port
 
@@ -451,6 +491,10 @@ To do that, we must first shutdown the virtual machine: press Start > Shutdown >
   (3) configure the "source" as a host device, namely (4) COM7.
   
   The screenshot shows the tool tip help from Virtual box.
+  
+  Some source claim that instead of `COM7` we should use `COM7:`. I did not notice any difference.
+  If the host port has a number above 9, use the long notation, e.g., `\\.\COM10`.
+  
 
 - Now we can start the Win98 VM again.
   We need to install a driver for the COM1 port.
@@ -561,18 +605,63 @@ We need a better driver for the virtual video card. Fortunately, there is one.
 - Just to be sure I rebooted.
   A nice big screen, and persistent video settings.
 
-  ![Higher viode settings](images/video-11hivideo.png)
+  ![Higher video settings](images/video-11hivideo.png)
 
-
+- Tip: the 256 color mode is requested by LEGO IDE.
+  The resolution it needs is 640x480. If you big a larger resolution,
+  the LEGO IDE just will put a large border around its 640x480 area.
+  What I prefer is to set the VM to 640x480, and use Win98 VM > View > Scaled mode
+  then drag the VM screen to nearly full screen in my host machine.
 
 ### Step 6 - LEGO IDE
 
-You can skip Guided Mode by holding down the Control key and clicking the About button in the Main Menu.
+Steps
 
-RIS2.0 training mission 1 https://www.youtube.com/watch?v=8yqhvVdOnM8
+- Start the Vitual Win98 machine. 
+  Make sure the USB to Serial cable is plugged in, or you get an error.
 
-program ris in gcc: https://brickos.sourceforge.net/
+- Make sure the video card uses the 256 colors mode.
 
+- Mount the LEGO CD-ROM. Right click the disc in the virtual machine status bar,
+  then either point to the physical CD-ROm driver or the ripped ISO.
+
+  ![Mount CD-ROM](images/ris-1iso.png)
+  
+- This disc is typicaly "auto execute", if not open explorer, browse to
+  the CD-ROM and start `AUTORUN.EXE`.
+  
+- The setup program runs, chose INSTALL.
+
+- Follow the setup wizard (1) accept license, (2) accept install directory, (3) install
+  maximum (our disk is large enough) components, (3) accept start location.
+
+### Step 7 - Run LEGO IDE
+
+- Start the Vitual Win98 machine.
+  Make sure the USB to Serial cable is plugged in, or you get an error.
+
+- Start the "Robotics Invention System".
+  Make sure the LEGO CD-ROM (physical or ISO) is mounted,
+  the application needs it (for videos, I guess).
+  
+- When you run the IDE, you have to "logon", i.e. select (enter) a user name.
+
+- Every time a new user is enrolled, s/he must run the _Guide Mode_.
+  This takes a long time because you need to execute 6 training sessions.
+  Here is a video of the [RIS2.0 training mission](https://www.youtube.com/watch?v=8yqhvVdOnM8).
+
+  To bypass the the Guided Mode (enable all menus right away) hold down 
+  the Control key and click the About button in the Main Menu.
+
+- In the Main Menu > Getting Started > Setup Options, there are some
+  interesting settings: which COM port to use, force firmware download, 
+  which slots are locked, and some others.
+
+  ![RIS settings](images/ris-settings.png)
+
+## Option 3: GCC
+
+Program RIS in GCC with [brickos](https://brickos.sourceforge.net/).
 
 
 (end)
