@@ -608,19 +608,19 @@ We need a better driver for the virtual video card. Fortunately, there is one.
   ![Higher video settings](images/video-11hivideo.png)
 
 - Tip: the 256 color mode is requested by LEGO IDE.
-  The resolution it needs is 640x480. If you big a larger resolution,
-  the LEGO IDE just will put a large border around its 640x480 area.
+  The resolution it needs is 640x480. If you pick a larger resolution,
+  the LEGO IDE will just put a large border around its 640x480 area.
   What I prefer is to set the VM to 640x480, and use Win98 VM > View > Scaled mode
-  then drag the VM screen to nearly full screen in my host machine.
+  then drag the VM window to nearly full screen in my host machine.
 
-### Step 6 - LEGO IDE
+### Step 6 - Install LEGO IDE
 
 Steps
 
 - Start the Vitual Win98 machine. 
   Make sure the USB to Serial cable is plugged in, or you get an error.
 
-- Make sure the video card uses the 256 colors mode.
+- In the VM, make sure the video card uses the 256 colors mode.
 
 - Mount the LEGO CD-ROM. Right click the disc in the virtual machine status bar,
   then either point to the physical CD-ROm driver or the ripped ISO.
@@ -647,7 +647,7 @@ Steps
 - When you run the IDE, you have to "logon", i.e. select (enter) a user name.
 
 - Every time a new user is enrolled, s/he must run the _Guide Mode_.
-  This takes a long time because you need to execute 6 training sessions.
+  This takes a long time because you need to execute 6 training missions.
   Here is a video of the [RIS2.0 training mission](https://www.youtube.com/watch?v=8yqhvVdOnM8).
 
   To bypass the the Guided Mode (enable all menus right away) hold down 
