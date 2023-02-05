@@ -8,25 +8,27 @@ Recall that RIS came out 25 years ago, in 1998, and I write this in 2023.
 The first option is to use an Open Source IDE. That is relatively easy, because that still 
 runs on modern PCs/OSes.
 
-The second option is to use the original LEGO IDE. 
-That is harder; I used a virtual Win98 machine for that. 
+The second option is to use the original LEGO **IDE1.0**. 
+That is harder; I used a virtual **Win98** machine for that. 
 It is not really working for me: the serial connection is unreliable.
 
-So, I third option I used a virtual WinXP machine with RIS2.0.
+So, as third option I used a virtual **WinXP** machine with **RIS2.0**.
 That works reliable. It even works with the serial IR tower.
 
 A fourth option is to try bare metal GCC.
 
 All these options have a common problem: gettig your application into the RCX 
-(the programmable RIS brick). RIS comes with a so-called IR (infra red) tower for that,
-but the tower needs a DB9 serial connector on your PC. We will use a USB to DB9.
+(the programmable RIS brick). RIS comes with a so-called IR (infra red) tower,
+which is the link from the PC to the RCX. 
+The towers (from RIS1.0 or RIS1.5) need a DB9 serial connector on the PC,
+which is absent on modern PCs. We will use a USB to DB9 converter cable.
 I have not tried the RIS2.0 - that came with an USB IR tower.
 
-All these options also require old software, which was typically distributed on CD-ROMs.
+Furthermopre, all options also require old software, which was typically distributed on CD-ROMs.
 We have a look at how to rip these CD-ROMs.
 
  - [Introduction](#introduction)
- - [Historic wear](#historicwear)
+ - [Historic wear](#historic-wear)
  - [Old software](#old-software)
  - [Old hardware](#old-hardware)
  - [Option 1: Open Source IDE](#option-1-open-source-ide)
@@ -115,7 +117,7 @@ This [video](https://www.youtube.com/watch?v=kXApTUbNzD0) has repair instruction
 
 ## Old software
 
-Depending on the option you chose, you need old software.
+Depending on the option you chose, you need software from some old CD-ROM.
 If not the Win98 installation files, then probably the LEGO IDE setup disk, 
 and very likely the RCX (flex) firmware.
 
@@ -130,12 +132,11 @@ So I used the USB-to-IDE-adapter to connect a bare DVD reader to my laptop.
 
 ![USB to IDE](images/USB-to-IDE.jpg)
 
-This enabled me to read my old CD-ROMs.
-
-So, for example you could copy the RCX firmware files from the LEGO RIS CD-ROM.
+This setup enabled me to read my old CD-ROMs.
+For example I could copy the RCX firmware files from the LEGO RIS CD-ROM.
 
 If you need more files, say _all_ because it is a setup CD-ROM,
-I advise to convert ("rip") the disk to an ISO file. 
+I advise to convert ("rip") the entire disk to an ISO file. 
 
 ### ISO files
 
@@ -145,7 +146,7 @@ ISO files can be mounted in a Virtual machine, but also in Windows Explorer.
 
 For ripping, I suggest [infrarecorder](http://infrarecorder.org/).
 I installed it as a "portable application" (these leave no traces on your harddisc). 
-Sinply press Read Disc to start ripping to an ISO file.
+Simply press Read Disc to start ripping to an ISO file.
    
 ![InfraRecorder](images/InfraRecorder.png)
 
@@ -159,8 +160,7 @@ But it is fast and easy.
   has an Windows 98 Boot Disk ISO for download .
 
 - I have an RIS 1.0 (9719) and RIS 1.5 (9747).
-  They come with CD-ROMs, which contain firmware files,
-  which includes the (flex) firmware for the RCX.
+  They come with CD-ROMs, which contain firmware files; the (flex) firmware for the RCX.
   I have archieved these in this [repo](firmware). 
   Copies can also be found on, e.g., the 
   [pbricks](https://pbrick.info/rcx-firmware/index.html) site.
@@ -701,7 +701,7 @@ Steps
 ## Option 3: Win XP
 
 Option 2, using virtual Win98 with RIS1.0, does not really work for me; I have problems
-sending long files via the IR tower. RIS2.0 came our later, not 1998 but 2001, so I wanted to
+sending long files via the IR tower. RIS2.0 came out later, not 1998 but 2001, so I wanted to
 try using virtual WinXP with RIS2.0. That has proven to be easier and more stable.
 
 ### Requirements
@@ -720,13 +720,13 @@ We need the following parts
 
 These steps are similare to the Win98 setup above, so check there if you are in doubt.
 
-- We create a virtual machine VirtualBox, making sure Version is set th `WIndows XP`.
+- We create a virtual machine in VirtualBox, making sure the `Version` is set to `Windows XP`.
 
-  ![Create VM for WinXP](images/vmxp-1create1.png]
+  ![Create VM for WinXP](images/vmxp-1create1.png)
 
 - Windows XP is later than Windows 98, so we picker a bigger machine: more RAM (256MB)
 
-  ![256MB RAM in VM](images/vmxp-2create-ram.png]
+  ![256MB RAM in VM](images/vmxp-2create-ram.png)
   
   and bigger disk (4GB).
 
@@ -744,7 +744,7 @@ These steps are similare to the Win98 setup above, so check there if you are in 
 
   ![WINXP ISO in VM](images/vmxp-5set-cd.png)
 
-- Then we "turn on": start the virtual machine.
+- Then we "turn on" (start) the virtual machine.
   It took me only 15 minutes to install WinXP:
 
   - Acknowledge setup (it wipes the harddisk, but our virtual haddisk is still empty)
@@ -758,7 +758,7 @@ These steps are similare to the Win98 setup above, so check there if you are in 
     - Set the timezone
     - Typical settings
     - Network workgroup
-  - The VM reboot and Windows starts running
+  - The VM reboots and Windows starts running
     - Screen (resolution) settings
     - Welcome screen & music
     - Skip network
@@ -769,12 +769,13 @@ These steps are similare to the Win98 setup above, so check there if you are in 
   - Via "Add and remove software" I removed MSN
   - For Windows Messenger in Options I selected do not run
 
-- I removed the ISO of WinXP setup disc.
+- I removed the WinXP ISO setup disc from the virtual machine.
 
 This goes fast and easy. No unclear reboots, knew how to do the COM port, no screen resolution issue.
-Up to the next step, installing LEGO IDE. Also the funny mouse pointer capture, which happens in Win98,
+Also the funny mouse pointer capture, which happens in Win98,
 seems to be absent in the virtual WinXP. It might be there is an extension pack for this.
 
+Up to the next step, installing LEGO IDE. 
 
 ### Install LEGO IDE
 
@@ -797,8 +798,6 @@ For me this IDE works fine, but on Philo's home we find a [patch](https://www.ph
 
 ### Run LEGO IDE
 
-Installing the IDE is easy.
-
 - Start the Vitual WinXP machine (make sure the USB to Serial cable is plugged in).
 
 - Start the "Robotics Invention System" and press "Run".
@@ -806,11 +805,11 @@ Installing the IDE is easy.
   ![IDE runs](images/ris2.0-2run.png)
 
 - Follow the instructions to flash firmware.
-  Remember to select serial.
+  Remember to select serial (unless you have the USB IR tower).
 
   ![Select IR tower USB/serial](images/ris2.0-3tower.png)
 
-- Then flashing starts. Unlike Win98/RIS1.0, that now works.
+- Then flashing of the RCX starts. Unlike Win98/RIS1.0, that now works.
 
   ![Flashing](images/ris2.0-4fw.png)
 
@@ -822,9 +821,9 @@ Installing the IDE is easy.
 - I did some personal cleanup afterwards
   - I changed the shortcut from `C:\program Files\LEGO MINDSTORMS\RIS 2.0\LaunchRis2.exe` to
     `C:\program Files\LEGO MINDSTORMS\RIS 2.0\RIS2.exe`.
-    You can skip the falling LEGO block animation (video) by pressing any key).
+    You can skip the falling LEGO block animation (video) by pressing any key.
   - I configured the WinXP machine to start RIS automatically when the machine starts
-    (Drag the RIS shortcut to Start > All Programs > Startup
+    (drag the RIS shortcut to Start > All Programs > Startup).
   - In the VirtualBox Manager I created a shortcut of the WinXP machine on the desktop of my hypervisor.
   - I also changed the icon of that shortcut to [![RIS icon](images/RIS.ICO)](images/RIS.ICO).
   
