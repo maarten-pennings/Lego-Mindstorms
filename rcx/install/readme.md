@@ -714,7 +714,7 @@ We need the following parts
    
  - RIS2.0 CD-ROM, I used `3804_Mindstorms_2.0_english` from 
    [brickfactory](https://www.brickfactory.info/iso/)
-   (but [mediafire](https://www.mediafire.com/folder/ohsruj4zmjy9g) might alos work).
+   (but [mediafire](https://www.mediafire.com/folder/ohsruj4zmjy9g) might also work).
 
 ### Create a virtual machine
 
@@ -730,14 +730,14 @@ These steps are similare to the Win98 setup above, so check there if you are in 
   
   and bigger disk (4GB).
 
-  ![2G HD in VM](images/vmxp-3create-hd.png]
+  ![2G HD in VM](images/vmxp-3create-hd.png)
   
 - This time, I decided to map COM7 from the hypervisor (the serial port of the IR tower) 
   to COM1 in the virtual Windows XP right from the start (so that Windows Setup adds the correct driver).
   
   ![COM1 in VM](images/vmxp-4set-serial.png)
 
-  What I forgot, but might be wise is to remove the virtual network card.
+  What I forgot, but might be wise, is to remove the network card in the virtual machine.
   I do not want my WinXP machine to be connected to the internet, but VirtualBox will do that.
   
 - The final step is mouting the ISO (of the WinXP CD-ROM).
@@ -771,7 +771,7 @@ These steps are similare to the Win98 setup above, so check there if you are in 
 
 - I removed the WinXP ISO setup disc from the virtual machine.
 
-This goes fast and easy. No unclear reboots, knew how to do the COM port, no screen resolution issue.
+This was fast and easy. No unclear reboots, knew how to do the COM port, no screen resolution issue.
 Also the funny mouse pointer capture, which happens in Win98,
 seems to be absent in the virtual WinXP. It might be there is an extension pack for this.
 
@@ -779,8 +779,8 @@ Up to the next step, installing LEGO IDE.
 
 ### Install LEGO IDE
 
-Also this is fast and easy.
-For me this IDE works fine, but on Philo's home we find a [patch](https://www.philohome.com/sdk25/sdk25.htm), maybe you need it.
+I had no issues installing (and using) the LEGO RIS2.0 IDE.
+However, on Philo's home, we find a [patch](https://www.philohome.com/sdk25/sdk25.htm), maybe you need it.
 
 - Insert the RIS2.0 ISO in the virtual CD-ROM player.
   If you do that while the virtual Windows XP machine is running, it performs an auto-play of the CD-ROM.
@@ -789,8 +789,8 @@ For me this IDE works fine, but on Philo's home we find a [patch](https://www.ph
 
 - Select `Install` and follow all steps. Click next several times.
 
-- I selected Keep existing DirectX and Defaults for QuickTime.
-  Setup will reboot your machine.
+- I selected "Keep existing DirectX" and "Defaults for QuickTime".
+  Setup will reboot your (virtual) machine.
 
 - Remove the ISO (CD-ROM) of the virtual WinXP.
   Unlike the RIS1.0 disc, it seems the RIS2.0 disc was completely copied to the (virtual) harddisk.
@@ -804,12 +804,12 @@ For me this IDE works fine, but on Philo's home we find a [patch](https://www.ph
 
   ![IDE runs](images/ris2.0-2run.png)
 
-- Follow the instructions to flash firmware.
+- Follow the instructions to flash firmware to the RCX.
   Remember to select serial (unless you have the USB IR tower).
 
   ![Select IR tower USB/serial](images/ris2.0-3tower.png)
 
-- Then flashing of the RCX starts. Unlike Win98/RIS1.0, that now works.
+- Then flashing of the RCX starts. Unlike Win98/RIS1.0, that now works (unlike on virtual Win98).
 
   ![Flashing](images/ris2.0-4fw.png)
 
