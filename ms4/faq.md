@@ -55,11 +55,11 @@ and click on one of the "stores" to download the app.
 ![Available stores](images/stores.png)
 
 Instead of the Mindstorms app, you might like to try the [Spike prime software](https://education.lego.com/en-us/downloads/spike-prime/software).
-It seems identical, and it has support for the force sensor, which is missing in the Mindstorms app. Did not try.
+It seems identical, and it has support for the force sensor, which is missing in the Mindstorms app.
 
 This "app" is what is normally known as an IDE (integrated development environment).
 It is an editor, compiler, uploader, debugger and help system in one.
-But LEGO calls  "the app".
+But LEGO calls it "the app".
 
 I have the feeling that the app updates itself, because sometimes the version number in the titlebar changes.
 However, you not always have the latest-greatest, the update is "slow".
@@ -125,9 +125,9 @@ The program in a slot is activated by pressing the center button
    - The harder you press the force sensor the faster the motor rotates.
    - The shorter the distance measured by the distance sensor, the faster the motor goes.
    - If color _c_ is detected by the color sensor, the motor is switched to speed _10×c_.
-  
-![LED matrix via Force sensor](images/LEDmatrix-test.jpg)
-
+   - The harder you press the force sensor the higher the level shown on the 3x3 color matrix.
+     ![LED matrix via Force sensor](images/LEDmatrix-test.jpg)
+   - If color _c_ is detected by the color sensor, that color is shown on the 3x3 color matrix.
 
 ## Is there help from LEGO?
 
@@ -347,9 +347,11 @@ provided USB cable (standard-A to micro-B).
 
 LEGO recommends using a so-called DVP (dedicated charging port) or CDP (charging downstream port) charger.
 Standalone chargers from a known brand (Samsung, Apple) or USB ports from new laptops
-typically have that type. Charging from these ports takes about 2 hours.
+typically have one of those two types. Charging from these ports takes about 2 hours.
 
 Cheaper chargers have type SDP (Standard Downstream Port) and then charging takes 5 hours.
+
+See [testusb](http://www.testusb.com/BC_test.html) for details on these types.
 
 While charging, the LED next to the micro USB port is red. 
 Once the battery is fully charged, that LED turns green.
@@ -785,13 +787,13 @@ As of now (jan 2023), the Robot Inventor software is fully supported, EV3 still 
 and RCX PC software is hard to get running. In general, on the long run you are better of with community supported software 
 (e.g. [BricxCC](https://bricxcc.sourceforge.net/) or [pybricks](https://pybricks.com/)).
 
-As mentioned, the hardware is less troublesome, but certaunly not without worries.
+As mentioned, the hardware is less troublesome, but certainly not without worries.
 Especially the RCX generation cables start to crumble.
 
 On 26 Oct 2022, the LEGO group had bad [news](https://brickset.com/article/84219/lego-mindstorms-to-be-discontinued).
 **LEGO decided to stop Mindstorms** retail: "Robot Inventor ... to exit our portfolio from the end of 2022, 
 whilst digital platforms – such as the LEGO Mindstorms Robot Inventor App – will remain live until at least the end of 2024."
-LEGO "will continue to support it [Build and Code - Maarten] through platforms such as SPIKE Prime".
+LEGO "will continue to support it [code software - Maarten] through platforms such as SPIKE Prime".
 
 
 
@@ -832,7 +834,7 @@ The monitor feature does work in "download mode", you do not have to use "stream
 
 There are actually three ways to do that.
 
-- The most straightforward way is to press the Play button.
+- The most straightforward way is to press the Play button in the IDE.
   Your program is compiled, uploaded and run. If a program was running on the hub, it is stopped.
   Note that the Hub has 20 slots (0..19), the app calls them "storage positions".
   By default your program goes to slot 0, but if you click one of the two "slot select buttons" (the arrows), you can specify another slot.
@@ -840,7 +842,7 @@ There are actually three ways to do that.
   If you open the Hub connection on the PC, and then select tab Programs,
   you see the slots with the names of the project they currently store. Plus the option to delete or reorder slots.
 
-- Another way it to only download, not _run_: press the Download button in the slot selection pane.
+- Another way is to only download, not _run_: press the Download button in the slot selection pane.
 
 - A special way to run is _streaming_ mode.
   It does not save the project in a slot. So code is lost on the hub after stopping the program.
@@ -1263,7 +1265,7 @@ For example, here I have a variable `value` that is a list of four integers, set
 ![list values](images/list-values.png)
 
 As a fan of strong typing, I now wonder what the type of variable `value` is. 
-I guess, it is string, sinve Word Blocks does not put quotes around strings (see eg Light > Write).
+I guess, it is string, since Word Blocks does not put quotes around strings (see eg Light > Write).
 What we learn here is that some arguments that look like needing an integer, are actually capable of parsing a string.
 
 
@@ -1785,7 +1787,7 @@ the Raspberry pi Hat.
    Mode 1 has an argument from 0 to 10, and all LEDs will light up brightly in that **color** (see table above).
    
  - **mode 2 = M2 = "PIX O" = pixel output**  
-   Mode 2 has nine arguments: b*16+c, where b is brightness (0..9) and c is color (0..10) for each of the nine **pixels**
+   Mode 2 has nine arguments: b*16+c, where b is brightness (0..10) and c is color (0..10) for each of the nine **pixels**
  
  - **mode 3 = M3 = "TRANS" = transitions**  
    Mode 3 has one argument the **transition** effect: 0 is none (default), 1 is row-by-row, and 2 fade-down-fade-up.
@@ -2028,7 +2030,7 @@ If you slow the motor with your hand, you see the first number stay at 30, but t
 ```
 
 If on the other hand, you issue `hub_runtime.hub.port.B.motor.pwm(40)` and then do `get()`s, 
-this changes (note that PWM is a frm of power control).
+this changes (note that PWM is a form of power control).
 The first number returned is ~40. 
 If you slow the motor with your hand, you see the first number drop, but the last number stays at 40: with constant power, the speed reduces with friction.
 
