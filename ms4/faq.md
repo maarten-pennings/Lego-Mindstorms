@@ -163,7 +163,8 @@ Then, more than a year later more (advanced) videos.
 
  - [python readthedocs](https://hubmodule.readthedocs.io/en/latest/) from Nard Strijbosch
  - [python API](https://lego.github.io/MINDSTORMS-Robot-Inventor-hub-API/) from LEGO
- 
+ - [internal translation from WordBlock to Python](https://github.com/azzieg/mindstorms-inventor/tree/main/word_blocks)
+
 
 ## What are the differences with Spike Prime?
 
