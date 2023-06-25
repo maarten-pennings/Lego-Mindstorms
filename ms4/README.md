@@ -37,4 +37,7 @@ I have written a [Mindstorms robot inventor FAQ](faq.md).
  - Made a [script](color-table) to generate a png with all colors supported by the 3x3 LED matrix.
 
 
+## Firmware
+ - I made a backup of the hub's [firmware](firmware).
+
 (end)
