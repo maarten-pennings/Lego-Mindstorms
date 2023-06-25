@@ -58,7 +58,7 @@ Instead of the Mindstorms app, you might like to try the [Spike prime software](
 It seems identical, and it has support for the force sensor, which is missing in the Mindstorms app.
 
 This "app" is what is normally known as an IDE (integrated development environment).
-It is an editor, compiler, uploader, debugger and help system in one.
+It is an editor, compiler, up-loader, debugger and help system in one.
 But LEGO calls it "the app".
 
 I have the feeling that the app updates itself, because sometimes the version number in the titlebar changes.
@@ -90,7 +90,7 @@ LEGO has leaflets on [Spike prime](https://education.lego.com/en-gb/product-reso
 is largely the same as Mindstorms Robot Inventor.
 
 - **hub**: 5x5 LEDs, 6 ports, gyro, 3 buttons, one with RGB LED, beeper, Bluetooth, USB, MicroPython  
-  **cpu:** 100MHz M4, 320 kB RAM, 1M FLASH; 32MB RAM extern  
+  **cpu:** 100MHz M4, 320 kB RAM, 1M FLASH; 32MB RAM external  
   **battery**:  2100 mAh @ 7.3 V  >500 cycles
 - **color sensor**: 100 Hz sample rate,  color sensing (RGB/HSV), reflectivity sensing, ambient sensing, white LED emission
 - **distance sensor**: 100 Hz sample rate, range 50..2000 mm, resolution 1 mm, 4 LEDs for decoration
@@ -103,15 +103,18 @@ is largely the same as Mindstorms Robot Inventor.
 The standard Robot Inventor firmware for the hub has slots for 21 programs.
 Slots 0..19 store user programs (either WordBlock or Python).
 There is one special slot, it is reserved for a (fixed) test program.
-The left and right buttons on the hub "walk" throught these slots.
+The left and right buttons on the hub "walk" through these slots.
 The user slots show the number 0..19 on the hub's display,
 the test slot shows a play symbol (triangle).
-The Spike Prime shows a heart instead of a play symbol.
+The Spike Prime shows a heart instead of a play symbol (and [Pybricks](https://pybricks.com/) shows a stop symbol (square)).
 
 ![the slots](images/slots.png)
 
 The program in a slot is activated by pressing the center button 
-(center button LED switches from gray to white).
+(center button LED then switches from gray to white).
+
+So pressing the center button why the play symbol (triangle) is showing 
+starts a test program that allows us to test all sensors an actuators:
 
 - When the test program is running, we see a LED light up for each of the six ports.
 - When we plug in an "actuator" (e.g. motor, or 3x3 LED matrix), an animation shows up "pushing data out of the port".
@@ -213,12 +216,13 @@ are big and small, depending on what is relevant for you
    ![Icon Blocks](images/example-iconblocks.png)
 
 
-This looks like a lot of differences, so why would you say Spike is not different from Robot Inventor?
+This looks like a lot of differences, so why would one say Spike is not different from Robot Inventor?
 
  - They use the same [hub](https://www.bricklink.com/v2/catalog/catalogitem.page?P=bb1142c01).
  - They have the same electrical system ("electrical plug"). 
    It was originally known as "LEGO Power Functions 2.0", but was later renamed to "LEGO Powered Up".
    It is also used in "LEGO WeDo 2.0", "LEGO BOOST", "LEGO City and Duplo Trains".
+ - They use the same actuators (motors) and sensors.
  - The Robot Inventor hub can be changed into a Spike hub by flashing it with the Spike firmware.
    Just install the [SPIKE LEGO Education app](https://www.microsoft.com/en-us/p/spike-lego-education/9nfqz9rdnd2q),
    connect the hub, and you are asked to replace the firmware (this does take over a minute).
@@ -339,7 +343,7 @@ You can however Save As and _select_ the existing `xxx 1.lms`.
 That pops up an "are you sure you want to overwrite" dialogue.
 
 It also means you can't call your program `beep3`, because the LEGO app gets confused by the 3, 
-strips it and appends a space and another number. grr.
+strips it and appends a space and another number. Grr.
 
 
 ## How do I charge the hub?
@@ -380,10 +384,10 @@ There click `Rename Hub`.
 It seems that if you use the hub via Bluetooth, you must unpair it (to clear the Bluetooth cache of named devices). 
 
 
-## What is the meaning of the color center button/LED on the hub?
+## What is the meaning of the color of the center button/LED on the hub?
 
 When you start the hub, the center button/LED is a **dim gray** (on, but "dark white").
-This means the hub is idle, and the user (you) can interact by pressing the left or right button to select a program
+This means the hub is idle, and the user (you) can interact by pressing the left or right button to select a program slot 
 (one of twenty of your own, or the built-in "play" program). 
 A click on the center button starts the selected program (it starts running).
 
@@ -391,7 +395,7 @@ When a program is running, the center button is **bright white**.
 When the program stops, either by executing "stop [and exit program]" or by a press on the center button,
 the center button is dim gray again.
 
-When the program encounters a bug (e.g. "sqrt of -5"), the center buttons **flashes red**.
+When the program encounters a bug (e.g. "square root of -5"), the center buttons **flashes red**.
 Normally such errors can be fixed easily in your program, if not restart the hub by holding the center button 3 seconds.
 
 If the center button flashes **orange**, the battery is nearly empty (low charge).
@@ -490,7 +494,7 @@ Note the attached `TwoBlocks.lms`.
 
 ![m2w-win-mail](images/m2w-win-mail.png)
 
-Open a file explorer and drag the attachment `TwoBlocks.lms`. to the mindstorms directory.
+Open a file explorer and drag the attachment `TwoBlocks.lms` to the Mindstorms directory.
 For me that is `C:\Users\maarten\Documents\LEGO MINDSTORMS`.
 
 ![m2w-win-file](images/m2w-win-file.png)
@@ -523,8 +527,8 @@ A new pane pops up, and the upper right corner has a hub menu (three dots)
 There click `Reset Hub`.
 
 By the way, if you open a serial port to the Python REPL (see other question), and press ^C you stop the run-time (?).
-If you then close REPL and start the LEGO mindstorms app, it believes the hub firmware is broken and suggest to flash it again.
-You could do that. You could also just powercycle the hub (or press ^D for soft reset while still in REPL).
+If you then close REPL and start the LEGO Mindstorms app, it believes the hub firmware is broken and suggest to flash it again.
+You could do that. You could also just power-cycle the hub (or press ^D for soft reset while still in REPL).
 
 
 
@@ -559,7 +563,7 @@ not they date that version was released (between brackets, my guess).
      
    - Python is no longer tagged as "beta"
 - The Hub OS version is 3.2.36 (1.5.6.0)
-- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.implementation` MicroPython 1.14.0, mpy 517
 - The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.5.0.png)
@@ -572,7 +576,7 @@ not they date that version was released (between brackets, my guess).
 ### Per 2022 August 18 (released 5th?)
 
 - The app version is 10.4.0
-   - Help Center now has the instruction videos (from Youtube) [is that new?]
+   - Help Center now has the instruction videos (from YouTube) [is that new?]
    - Help Center now has topics 'The App' and 'The Hub' [is that new?]
    - There are many (13) new community contributions (note that some require two sets):
      **LightPlane**, **Course Bot**, **Lilly**,  
@@ -589,7 +593,7 @@ not they date that version was released (between brackets, my guess).
      - Two new Experimental: **Machine Learning** and **Hub to Hub Communication**
    - The "Bug in Robot Inventor Debug blocks" (see question below) is not fixed :-(
 - The Hub OS version is 3.2.29
-- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.implementation` MicroPython 1.14.0, mpy 517
 - The `sys.version` 3.4.0
 
   
@@ -598,7 +602,7 @@ not they date that version was released (between brackets, my guess).
 - The app version is 10.3.1
   - I did not notice any changes
 - The Hub OS version is 3.1.43
-- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.implementation` MicroPython 1.14.0, mpy 517
 - The `sys.version` 3.4.0
 
 
@@ -610,7 +614,7 @@ not they date that version was released (between brackets, my guess).
   - Bluetooth auto connect  
     ![app 10.3.0 auto BT](images/version10.3.0-autobt.png)
 - The Hub OS version is 3.1.43 (no fourth number)
-- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.implementation` MicroPython 1.14.0, mpy 517
 - The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.3.0.png)
@@ -624,7 +628,7 @@ not they date that version was released (between brackets, my guess).
    - My projects is now easier to work with
    - It seems there is hub-to-hub communication (see Tips & Tricks in the Help Center)
 - The Hub OS version is 3.1.29 (no fourth number)
-- The `sys.implementation` micropython 1.14.0, mpy 517
+- The `sys.implementation` MicroPython 1.14.0, mpy 517
 - The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.2.0.png)
@@ -648,7 +652,7 @@ Exploration Rover, Sea Turtle, Melody Maker,
   Some [users](https://www.facebook.com/legomindstorms/posts/3704825206290085) 
   report three more: Salamoot, Wreckin' Bot, Print and Scan.
 - The Hub OS version is 3.1.7.2
-- The `sys.implementation` micropython 1.12.0, mpy 517
+- The `sys.implementation` MicroPython 1.12.0, mpy 517
 - The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.1.0.png)
@@ -661,7 +665,7 @@ Exploration Rover, Sea Turtle, Melody Maker,
   Now has motor calibration (that O is 0 degrees).  
   Now has robot (extensions) from the community.
 - The Hub OS version is 2.1.4.13
-- The `sys.implementation` micropython 1.11.0
+- The `sys.implementation` MicroPython 1.11.0
 - The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.0.3.png)
@@ -671,7 +675,7 @@ Exploration Rover, Sea Turtle, Melody Maker,
 
 - The app version 10.0.2
 - The Hub OS version is 2.1.4.10
-- The `sys.implementation` micropython 1.11.0
+- The `sys.implementation` MicroPython 1.11.0
 - The `sys.version` 3.4.0
 
 ![App and OS version](images/version10.0.2.png)
@@ -681,7 +685,7 @@ Exploration Rover, Sea Turtle, Melody Maker,
 
 - The app version is 4.0.4-dev.99999
 - The Hub OS version is 2.1.4.10
-- The `sys.implementation` micropython 1.11.0
+- The `sys.implementation` MicroPython 1.11.0
 - The `sys.version` 3.4.0
 
 ![App and OS Version](images/version.png)
@@ -715,7 +719,7 @@ The good news is that it is structural, so you can compensate in software.
 
 **Update:** the LEGO app version 10.0.3 has a calibration procedure that presumably programs the O correction in the motors.
 
-To force a motor update, goto the Hub connection, and find the "Update motors" in the overflow menu. You need the LEGO app version 10.0.3 or higher.
+To force a motor update, go to the Hub connection, and find the "Update motors" in the overflow menu. You need the LEGO app version 10.0.3 or higher.
 
 ![Motor update](images/updatemotors.png)
 
@@ -745,7 +749,7 @@ It seems that a lighter approach does work with the LEGO app:
 
 ## Are there any hotkeys?
 
-I think LEGO did a bad job here. Many functions are not operatable by key.
+I think LEGO did a bad job here. Many functions are not operable by key.
 Probably LEGO aims at touch screens.
 
 Note #=shift, ^=ctrl, @=alt
@@ -927,7 +931,7 @@ The python version is even simpler, see question below.
 The motors in Mindstorms 4 are a bit different from the earlier ones (NXT and EV3).
 The motors in the last 3 generations of Mindstorms all have a position sensor, but the one in Mindstorms 4 is _absolute_.
 So, for example, it not only knows that it _moved_ 45 degrees, it also knows it is _at_ 60 degrees (assuming the motor started at 15).
-The "0 degrees" is arbitrary, but it is marked on the motorhub.
+The "0 degrees" is arbitrary, but it is marked on the motor-hub.
 
 ![Position](images/position.jpg)
 
@@ -1078,7 +1082,7 @@ This completes the explanation of the last three block (5, 6, and 7), the settin
 The blocks that are left (1-4) are familiar.
 We have two target blocks (1 and 2), where we can set the target (in cm, inch, rotations, degrees, seconds).
 We have the no-target blocks (block 3 and 4) that start and stop.
-All block have in common that we need to set the "synchronisation" between the motors.
+All block have in common that we need to set the "synchronization" between the motors.
 
 The first block allows forward and backward (both motors same speed), or left and right (one motor still, the other rotating).
 
@@ -1100,7 +1104,7 @@ And I have the not yet understood stop, stall or acceleration blocks.
 
 ## How do I add an extension?
 
-The Word Blocks has a full palet of blocks to chose from.
+The Word Blocks has a full pallet of blocks to chose from.
 But you can add even more blocks, from so-called extensions.
 Example are
 
@@ -1138,7 +1142,7 @@ For example a virtual LED would be nice, or a string box, or a string list (dare
 
 At this moment in beta, there is the option to add support for game controllers (Sony, Microsoft).
 
-Click the Block Extension button and then either enable the Playstation DualShock or XBox One controller.
+Click the Block Extension button and then either enable the PlayStation DualShock or XBox One controller.
 New blocks will pop-up in your palette (left).
 
 There is one serious drawback: the program [needs](https://www.lego.com/en-us/service/help/products/themes-sets/lego-mindstorms-robot-inventor/coding-with-the-lego-mindstorms-robot-inventor-app-408100000020946#:~:text=Because%20Streaming,running) to execute in streaming mode (ie live connection to the PC). Another drawback is the latency, lingo for "slow": the button press goes from controller, via Bluetooth link, to the PC; the PC streams actions to the hub. 
@@ -1190,10 +1194,10 @@ I wrote a [test](blocks/DualShockTest.lms), which test all buttons, except SHARE
 
 Good question. Don't know myself.
 
-I think that on Playstation 4 devices, you can click OPTIONS, then you get a menu and chose "power off" of the Playstation 4.
-Or you press the power button on the Playstation 4 - this likely also switches off it "keyboard" - the game controller.
+I think that on PlayStation 4 devices, you can click OPTIONS, then you get a menu and chose "power off" of the PlayStation 4.
+Or you press the power button on the PlayStation 4 - this likely also switches off it "keyboard" - the game controller.
 
-But we don't have a Playstation 4 to switch off.
+But we don't have a PlayStation 4 to switch off.
 What I do is to power cycle (switch off and on) Bluetooth in "action center".
 
 
@@ -1292,7 +1296,7 @@ This gives us a dialog with several options
    all these files are already stored on the hub (part of the standard firmware) 
    and are part of the IDE on the laptop.
    
-   Using such file does not take up any space, not when storing your lms file on your laptop's harddisk
+   Using such file does not take up any space, not when storing your lms file on your laptop's hard-disk
    (it is already part of the IDE), nor when uploading your project to the hub (it is already part of the firmware).
    
  - **Library**  ("Sounds library for on-laptop")
@@ -1300,7 +1304,7 @@ This gives us a dialog with several options
    This gives a list of 193 files.
    These files are part of the LEGO IDE. If such a file is used, the sound will be produced by the laptop.
 
-   Using such file does not take up any space, not when storing your lms file on your laptop's harddisk
+   Using such file does not take up any space, not when storing your lms file on your laptop's hard-disk
    (it is already part of the IDE), nor when uploading your project to the hub (it is not used/stored there).
    
  - **Record** ("Record sound for on-laptop")
@@ -1309,7 +1313,7 @@ This gives us a dialog with several options
    The recorded file becomes part of your project. 
    If such a file is used, the sound will be produced by the laptop.
    
-   Using such file does take up space when storing your lms file on your laptop's harddisk.
+   Using such file does take up space when storing your lms file on your laptop's hard-disk.
    It does not take up any space on the hub (it is not used/stored there).
    
  - **Editor** ("Edit sounds on-laptop")
@@ -1317,11 +1321,11 @@ This gives us a dialog with several options
    This lists all the sound files _on-laptop_ previously added with "Library" or "Record".
    Here they can be deleted (from the project - except the first "Cat Meow 1"), amplified, cropped, reversed, etc.
    
-   Using edited file does take up space when storing your lms file on your laptop's harddisk.
+   Using edited file does take up space when storing your lms file on your laptop's hard-disk.
    It does not take up any space on the hub (it is not used/stored there).
    
-We tested all flavours.
-Note that when selecting the sound, a purple buble folds open. 
+We tested all flavors.
+Note that when selecting the sound, a purple bubble folds open. 
 It shows a tiny hub icon right of the name, indicating that a sound is produced from the hub. 
 We have also explicitly labeled that via the comments.
  
@@ -1935,7 +1939,7 @@ I have saved the complete output as [excel](MotorPairSync.xlsx), and plotted thi
  
 ![MotorPair Sync](images/motorpairsync.png)
  
-Looking at this graph I have the following obeservations
+Looking at this graph I have the following observations
 - It is symmetrical (positive versus negative steering) - that's good.
 - Let's only look at positive steering 0..100 (steer to the right).
 - The left wheel has constant speed (800) over nearly the full range (0 to ~90) - make sense.
@@ -2502,7 +2506,7 @@ the series of 9 numbers to a byte array. That array is depicted on the third row
 
 However, there is a bug in the Word Block compiler; it uses UTF-8 to form the byte array,
 and that makes LED values above 127 (above 0x7F) to be encoded in _two_ bytes.
-The byte that is prepended is the first UTF "escape" character 0xC2.
+The byte that is pre-pended is the first UTF "escape" character 0xC2.
 
 On the last line we see what that means for the brightest pattern, instead of 9 bytes
 we send 18 bytes to the matrix (which only looks at the first 9). Every odd byte is C2 
@@ -2558,7 +2562,9 @@ The Python interpreter in the Hub has an interactive command shell that executes
 The Hub has two serial links, one over Bluetooth and one over USB. Both are enabled for REPL.
 
 Connect the Hub to your PC either via Bluetooth, or, easier, a USB cable.
-Right click on the Windows start button and select Device Manager, and fold open the _Ports (COM & LPT)_ section. It requires some experimentation (e.g unplug USB to see which port disappears) to determine which port(s) connect to the Hub. In my case it is COM4 (serial over the USB link) and COM5 (serial over Bluetooth).
+Right click on the Windows start button and select Device Manager, and fold open the _Ports (COM & LPT)_ section. 
+It requires some experimentation (e.g unplug USB to see which port disappears) to determine which port(s) connect to the Hub. 
+In my case it is COM4 (serial over the USB link) and COM5 (serial over Bluetooth).
 
 ![COM ports](images/COM.png)
 
@@ -2701,12 +2707,13 @@ MSHubLargeTechnicHub4QcT
 >>>
 ```
 
-Reading the file `__init__.mpy` is not very succseful.
+Reading the file `__init__.mpy` is not very successful.
 An `mpy` file is "a binary container file format that holds precompiled code, and which can be imported like a normal .py module",
 see [doucmentation](https://docs.micropython.org/en/latest/reference/mpyfiles.html#:~:text=a%20binary,module).
 
 But its presence is important: we have a directory `mindstorms` with a file `__init__.[m]py`, and this means we have a package:
-"The `__init__.py` files are required to make Python treat directories containing the file as packages.", see [documentation](https://docs.python.org/3/tutorial/modules.html#:~:text=The%20__init__.py,packages.).
+"The `__init__.py` files are required to make Python treat directories containing the file as packages.", 
+see [documentation](https://docs.python.org/3/tutorial/modules.html#:~:text=The%20__init__.py,packages.).
 
 We even see the string `MSHub` in the `__init__.mpy`. Let's try to import and get the yaw.
 
@@ -2755,12 +2762,12 @@ How do I get that on the hub?
 
 - Connect via UART as above. 
 - Don't forget to press ^C to get the REPL prompt.
-- Copy the above Python script with the extra whiteline at the end (as in get it in the clipboard - ^C).
+- Copy the above Python script with the extra white line at the end (as in get it in the clipboard - ^C).
 - In REPL goto paste mode by pressing ^E (see `help()`).
 - Paste the Python script (as in paste the clipboard).
 - Finish paste mode ^D (see help line at start of paste mode).
 - After that, we test with `dir()` that `ls` and `cat` are present.
-- Then we execte both.
+- Then we execute both.
 
 The whole session looks like this, but I have removed large chunks to keep the overview
 
@@ -2970,7 +2977,7 @@ Just standard Python ... you would expect.
 I stumbled on one tricky thing, an error "object with buffer protocol required".
 
 I believe the root cause is that MicroPython does not support writing numbers, only strings to files (they have the "characters in a buffer").
-The below program takes 10 light measurements (2 seconds appart), converts each measurement to a string, and writes that to a file `data.log`.
+The below program takes 10 light measurements (2 seconds apart), converts each measurement to a string, and writes that to a file `data.log`.
 Each measurement it gives a beep.
 
 ```python
@@ -3021,7 +3028,7 @@ Notes
    '0 1\n1 12\n2 7\n3 7\n4 5\n5 4\n6 6\n7 5\n8 4\n9 4\n'
    ```
 
- - To get them to your PC, you need someting like the [spike tools](https://github.com/nutki/spike-tools).
+ - To get them to your PC, you need something like the [spike tools](https://github.com/nutki/spike-tools).
    To be investigated.
    
  - To delete the log file use e.g. (in REPL)
