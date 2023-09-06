@@ -28,6 +28,12 @@ We then have a one-morning session building robots with NXT (check out the [pdf]
 but also the school's EV3 sets (adapted [pdf](KennisMakingEV3.pdf) or [word](KennisMakingEV3.docx)).
 
 
+## Open day demo - ELEVATOR
+At least once a year, the "open dag" in September, we need to promote the LEGO club.
+We have one "fancy" robot, a four-floor ELEVATOR.
+See the [elevator](elevator) directory for the associated files.
+
+
 ## Laptop for the club
 The Mindstorms NXT is from 2006 the same year that Windows Vista was released.
 In practice the means that the LEGO software runs on Windows XP.

@@ -836,7 +836,7 @@ However, on Philo's home, we find a [patch](https://www.philohome.com/sdk25/sdk2
 
 ## Option 4: GCC
 
-Program RIS in GCC with [brickos](https://brickos.sourceforge.net/).
+Program RIS in GCC with [brickOS](https://brickos.sourceforge.net/) - brickOS is the new name of legOS.
 
 
 (end)
