@@ -2,8 +2,10 @@
 
 This document describes a LEGO Mindstorms NXT elevator.
 
-![LEGO Mindstorms NXT elevator](docs/elevator.jpg)
+Click below image for a video.
+[🎥](https://www.youtube.com/shorts/1_JTvgue5f0)
 
+[![LEGO Mindstorms NXT elevator](docs/elevator.jpg)](https://www.youtube.com/shorts/1_JTvgue5f0)
 
 ## Introduction
 
