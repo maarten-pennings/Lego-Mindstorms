@@ -355,14 +355,14 @@ We multiply `state` with the `sign` of delta.
 Only when the product equals -1, we need to stop the motor.
 
 
-  |                  |sign of delta|  |         -1      |      0       |       +1        |
-  |:----------------:|:-----------:|::|:---------------:|:------------:|:---------------:|
-  |                  |             |  |target above cage|target at cage|target below cage|
-  |                  |             |  |cage below target|cage at target|cage above target|
-  |**state**         |             |× |                 |              |                 |
-  |**-1**            |moving up    |  |        +1       |      0       |       -1 → stop |  
-  |**0**             |not moving   |  |         0       |      0       |        0        |  
-  |**+1**            |moving down  |  |      -1 → stop  |      0       |       +1        |  
+  |                  |sign of delta|   |         -1      |      0       |       +1        |
+  |:----------------:|:-----------:|:-:|:---------------:|:------------:|:---------------:|
+  |                  |             |   |target above cage|target at cage|target below cage|
+  |                  |             |   |cage below target|cage at target|cage above target|
+  |**state**         |             | × |                 |              |                 |
+  |**-1**            |moving up    |   |        +1       |      0       |       -1 → stop |  
+  |**0**             |not moving   |   |         0       |      0       |        0        |  
+  |**+1**            |moving down  |   |      -1 → stop  |      0       |       +1        |  
 
 Next to switching off the cage motor we set `state` to 0, add
 a big floor number to the display, and sound a beep.
