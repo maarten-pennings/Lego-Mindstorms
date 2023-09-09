@@ -1,6 +1,7 @@
 # Elevator
 
-This document describes a LEGO Mindstorms NXT elevator.
+This document describes a LEGO Mindstorms NXT four-floor elevator.
+It focuses on software. 
 
 Click below image for a video.
 [🎥](https://www.youtube.com/shorts/1_JTvgue5f0)
@@ -48,11 +49,14 @@ See for example the big `2` in the below photo of the NXT screen.
 
 The sub-routine `elevator-draw` draws the elevator.
 See the left hand side in the above photo of the NXT screen.
-The elevator consists of three parts, the shaft, the cage, and an arrow (indicating the target floor).
+The elevator consists of three parts: the shaft, the cage, and an arrow (indicating the target floor).
 The cage is drawn (using lines), but the shaft and arrow are images.
 
-All 11 files need to be copied from the [pictures](pictures) sub-directory
-to the development PC. In my case to directory:
+Finally, the main program draws an up or down arrow to show the direction of the cage.
+It also draws a spash screen at the start.
+
+All 11+2+3 or 16 image files need to be copied from the [pictures](pictures) sub-directory
+to the development PC:
 
 `C:\Program Files (x86)\LEGO Software\LEGO MINDSTORMS NXT\engine\Pictures`.
 
@@ -129,6 +133,7 @@ The next block is a loop; it reads the rotation sensor from motor `Port` twice
 longer able to move, and the loop exits.
 Next the motor is stopped (maybe not needed), and then `Direction` is reversed, 
 and the motor backs up for `Duration` degrees (the third input parameter).
+The backing up is needed to relieve the stress of the motor pushing the stop.
 
 
 ### Sub-routine elevator-draw
@@ -148,8 +153,9 @@ and the y is computed by multiplying by `target-floor` by 15 (the floor height) 
 offset (-12), negative because the `target-floor` is 1 based instead of 0 based.
 
 The third input `cage-float` is an floating point value from including 0 to excluding 4.
-Note the inconsistency: `target-floor` is 1 based and integer, whereas `cage-float` is 0-based,
-and float. This happens to best fit the application. 
+Note the inconsistency: `target-floor` is integer and 1-based 
+(since buttons and floors are numbered 1,2,3,4), whereas `cage-float` is float and 0-based
+(since the cage is degrees with floor 1 being at degrees 0). 
 
 The cage horizontal position is fixed: x-coordinates 4 and 15. But the y-coordinates
 are computed from `cage-float`. First is the multiplication with the floor height (15),
@@ -161,7 +167,9 @@ That concludes the sub-routine.
 ### Sub-routine show-digit
 
 The sub-routine `show-digit` draws a big digit on the display.
-It consist of a single 11-way switch.
+It consist of a single 11-way switch. This is more than we need for the elevator
+application (1-4 would suffice), but this makes the My Block reusable for other
+applications.
 
 ![show-digit](docs/show-digit.png)
 
@@ -234,10 +242,10 @@ Next comes an infinitely repeating loop with three parts.
 
 The behavior of the system is largely controlled by the `state` variable.
 It records the state of the system (of the cage motor): 
- - 0 means that the cage is _not moving_; it is at the target floor. 
- - -1 means that the cage is _moving up_; we have chosen -1 since 
-   moving the cage up, maps to negative motor degrees.
- - +1 means the cage is _moving down_.
+- 0 means that the cage is _not moving_; it is at the target floor. 
+- -1 means that the cage is _moving up_; we have chosen -1 since 
+  moving the cage up, maps to negative motor degrees.
+- +1 means the cage is _moving down_.
 
 After initialization comes an infinite loop with three parts: 
 - Button check and if a button is pressed switch on the cage motor.
@@ -250,9 +258,9 @@ After initialization comes an infinite loop with three parts:
 
 #### Part 1 initialization
 
-The first part of the application is the initialization. It displays a banner (using three blocks: `De Pracht`, 
-`LEGO club`, and `== ELEVATOR ==`). Then it homes the cage motor, bringing it to the ground 
-floor, floor 1, (which has a stop). Next, it sets the target to that floor number (1), so that
+The first part of the application is the initialization. It starts by displaying a banner,
+while (second block) it homes the motor. This brings the cage to the ground 
+floor, floor 1, (which has a stop). Next, it sets the `target` to that floor number (1), so that
 the elevator idles after initialization, and the global variable `state` is set to 0 
 (cage not moving, see above).
 
@@ -271,12 +279,13 @@ it takes for the audio fragment to play to come to rest.
 #### Part 2 new target: switch motor on
 
 After initialization, the infinite loop starts. The first part of the loop
-is independent of `state`. It checks if any of the four buttons is pressed.
-Note that button `n` maps to (target) floor `n`.
+is independent of `state`. It checks if any of the four buttons is pressed;
+button `n` maps to (the new target) floor `n`.
 Note that `read-button` is initialized with the current `target`.
 This is a small trick to simplify the condition of the subsequent if-block: 
 we do not have to update the `target` and `state` if the same button is pressed 
-as the current `target` or if no button is pressed (also returns current `target`).
+as the current `target` or if no button is pressed (with the default, 
+that also returns current `target`).
 
 ![elevator-part2](docs/elevator-part2.png)
 
@@ -284,16 +293,15 @@ If the newly pressed buttons differs from `target` the then-branch is executed
 (the one shown in the picture above). The else-branch is empty.
 
 In the then-branch, the new button value is stored in `target`.
-User gets audible feedback on recording the new `target`.
+User gets audible feedback that the new `target` is set.
 
-The button gives the new target floor, but the cage motor could be moving.
+The button gives the new target floor, but the cage motor could be moving from a previous target.
 So with the help of sub-routine `delta-from-target` we compute the difference
 between soll (target) and ist (current cage position). 
 
-The switch that follows only looks at the sign of delta.
-The case for sign is 0 is empty; the cases for -1 and +1 are identical, the case of +1
-is depicted in the above picture. Recall +1 is for down.
-- The display block is for debugging it shows "arrow down".
+The switch that follows only looks at the sign of the difference.
+The tab for when sign equals 0 is empty; the tabs for -1 and +1 are very similar, 
+the tab of +1 is depicted in the above picture. Recall +1 is for down.
 - The motor block switches the cage motor in downward direction
 - The `state` is written with +1 to record the cage motor is going down.
 
@@ -302,42 +310,67 @@ is depicted in the above picture. Recall +1 is for down.
 
 The second part of the infinite loop draws an animation frame. 
 It is only performed when `state` indicates moving.
-So, this part starts by reading `state`, and the following if-statement is empty for 0.
+When not moving, the screen is not refreshed.
+
+This part therefore starts by reading `state`, and the following if-statement 
+is empty for state equal to 0 (not moving).
 The picture below shows the then tab taken for -1 and +1.
 
 ![elevator-part3](docs/elevator-part3.png)
 
-It draws the elevator (shaft, cage, target arrow) and keeps the frame visible for 100ms.
-The delay reduces flicker, without it the display is update more frequently, each time
-starting with a frame clear and a redraw.
+The tab for moving draws the elevator (shaft, cage, target arrow) 
+based on the current target ("soll") and the current cage position ("ist").
+The latter is derived from the angle sensor in the motor,
+divided by the number of degrees between two floors (621).
+Note that this makes the "soll" and integer 1,2,3,4 and "ist" 
+a float from 0 to but excluding 4.
 
-> While documenting, I'm surprised to see a subtract of "one floor" from the "ist" state.
+The next two blocks either draw an up or a down arrow
+depending on `state` - the direction the cage is moving.
+
+The GUI update part ends with a delay of 100ms.
+This delay reduces display flicker;
+without it the display is update more frequently, each time
+starting with a frame clear and a redraw.
 
 
 #### Part 4 target reached: stop motor`
 
 The final part of the infinite loop decides if the cage has reached the target, and if so
-switches of the cage motor.
+switches off the cage motor.
 
 ![elevator-part4](docs/elevator-part4.png)
 
 When do we need to switch the cage motor off?
 Only in the case when it is on (`state` is -1 or +1),
 and when the cage has reached the target.
-We have an implementation trick: we multiply `state` with the `sign` of delta.
-Only when the product equals -1, we need to take "action".
+When has the cage reached its target?
+When it is moving up, if the cage has reached or is just above the target degrees.
+When it is moving down, if the cage has reached or is just below the target.
+
+> Recall negative numbers means up.
+
+We have an implementation trick to distinguish these cases.
+We multiply `state` with the `sign` of delta.
+Only when the product equals -1, we need to stop the motor.
 
 
-  |                  |sign of delta|         -1      |      0       |       +1        |
-  |:----------------:|:-----------:|:---------------:|:------------:|:---------------:|
-  |                  |             |target above cage|target at cage|target below cage|
-  |**state**         |             |cage below target|cage at target|cage above target|
-  |**-1**            |moving up    |        +1       |      0       |       -1  stop  |  
-  |**0**             |not moving   |         0       |      0       |        0        |  
-  |**+1**            |moving down  |        -1  stop |      0       |       +1        |  
+  |                  |sign of delta|  |         -1      |      0       |       +1        |
+  |:----------------:|:-----------:|::|:---------------:|:------------:|:---------------:|
+  |                  |             |  |target above cage|target at cage|target below cage|
+  |                  |             |  |cage below target|cage at target|cage above target|
+  |**state**         |             |× |                 |              |                 |
+  |**-1**            |moving up    |  |        +1       |      0       |       -1 → stop |  
+  |**0**             |not moving   |  |         0       |      0       |        0        |  
+  |**+1**            |moving down  |  |      -1 → stop  |      0       |       +1        |  
 
-The "action" is switching off the cage motor; setting `state` to 0, adding
-a big floor number to the display, and sounding a beep.
+Next to switching off the cage motor we set `state` to 0, add
+a big floor number to the display, and sound a beep.
+
+Now that the motor is off, next iterations of the infinite loop will no longer 
+redraw the display. We will see the shaft, cage at current target floor, and the 
+just displayed floor number. Only when a button is pressed (other then of the floor we are on), 
+the `target` floor changes and `state` changes from 0 to either -1 or +1.
 
 
 (end)

@@ -22,6 +22,9 @@ Hints, tips, and tricks for the LEGO NXT Mindstorms robotics system.
 
 ## Projects
 
+- **Elevator**  
+  Made for the LEGO club; only [code](legoclub/elevator/readme.md).
+
 - **Simon**  
   The _Simon says_ game, no documentation, only [code](simon).
 
