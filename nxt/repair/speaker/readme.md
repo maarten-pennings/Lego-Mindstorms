@@ -20,7 +20,7 @@ We start by opening the brick via the 4 screws in the battery compartment.
 
 Next step is to remove the white cover at the top, just shift it up.
 
-![open](open.jpg)
+![Open brick](open.jpg)
 
 On the right-hand side, we find the speaker. In the photo above, the double sided tape is removed
 and the two wires desoldered. We notice that the speaker coil is loose.
@@ -39,3 +39,10 @@ even the specification of the speaker. We rely on the print we found on the old 
 and ordered from [AliExpress](https://www.aliexpress.com/item/4001285570204.html)
 16Ω, 0.25W, and diameter 21mm.
 
+I bought 6 pieces.
+
+![Order](order.jpg).
+
+We resoldered the two wires. Polarity doesn't matter.
+
+(end)
