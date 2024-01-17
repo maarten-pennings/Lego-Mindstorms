@@ -19,7 +19,7 @@ Hints, tips, and tricks for the LEGO NXT Mindstorms robotics system.
   See [blocks](blocks/blocks.md) for some tips.
 
 - **Repair**
-  The NXT starts to be old, showing failing components, see [repair](repairs/readme.md)
+  The NXT starts to be old, showing failing components, see [repair](repair/readme.md)
   for hardware repair hints.
   
 
