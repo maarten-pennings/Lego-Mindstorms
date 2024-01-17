@@ -8,6 +8,7 @@ Hints, tips, and tricks for the LEGO NXT Mindstorms robotics system.
   On Windows 10 PC, the IDE from LEGO does not always install.
   See [install](install/install.md) for some installation tips, 
   extra resources (images), and resetting a clicking brick.
+  For the install on the LEGO club, see below.
   
 - **IDE**  
   NXT-G is the IDE (integrated development environment) of LEGO Mindstorms NXT.
@@ -17,8 +18,10 @@ Hints, tips, and tricks for the LEGO NXT Mindstorms robotics system.
   The NXT-G IDE comes with several "blocks" (subroutines, library functions), but you can also make your own.
   See [blocks](blocks/blocks.md) for some tips.
 
-- **Links**  
-  [Hints by Coert Vonk](https://coertvonk.com/family/school/inquiries/lego-mindstorms-nxt-g-6107)
+- **Repair**
+  The NXT starts to be old, showing failing components, see [repair](repairs/readme.md)
+  for hardware repair hints.
+  
 
 ## Projects
 
